@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
+		F485854914D46E4300B007CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F485854714D46E4300B007CA /* InfoPlist.strings */; };
+		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
+		F485854F14D46E4300B007CA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F485854D14D46E4300B007CA /* Credits.rtf */; };
+		F485855214D46E4300B007CA /* SnapDragonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */; };
+		F485855514D46E4300B007CA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F485855314D46E4300B007CA /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F485853A14D46E4300B007CA /* SnapDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F485854114D46E4300B007CA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F485854214D46E4300B007CA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F485854314D46E4300B007CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F485854614D46E4300B007CA /* SnapDragon-Info.plist */ = {isa = PBXFileReference; path = "SnapDragon-Info.plist"; sourceTree = "<group>"; };
+		F485854814D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F485854A14D46E4300B007CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F485854C14D46E4300B007CA /* SnapDragon-Prefix.pch */ = {isa = PBXFileReference; path = "SnapDragon-Prefix.pch"; sourceTree = "<group>"; };
+		F485854E14D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */ = {isa = PBXFileReference; path = SnapDragonAppDelegate.h; sourceTree = "<group>"; };
+		F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapDragonAppDelegate.m; sourceTree = "<group>"; };
+		F485855414D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F485853714D46E4300B007CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F485852F14D46E4300B007CA = {
+			isa = PBXGroup;
+			children = (
+				F485854414D46E4300B007CA /* SnapDragon */,
+				F485853D14D46E4300B007CA /* Frameworks */,
+				F485853B14D46E4300B007CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F485853B14D46E4300B007CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F485853A14D46E4300B007CA /* SnapDragon.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F485853D14D46E4300B007CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F485853E14D46E4300B007CA /* Cocoa.framework */,
+				F485854014D46E4300B007CA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F485854014D46E4300B007CA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F485854114D46E4300B007CA /* AppKit.framework */,
+				F485854214D46E4300B007CA /* CoreData.framework */,
+				F485854314D46E4300B007CA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F485854414D46E4300B007CA /* SnapDragon */ = {
+			isa = PBXGroup;
+			children = (
+				F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */,
+				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
+				F485855314D46E4300B007CA /* MainMenu.xib */,
+				F485854514D46E4300B007CA /* Supporting Files */,
+			);
+			path = SnapDragon;
+			sourceTree = "<group>";
+		};
+		F485854514D46E4300B007CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F485854614D46E4300B007CA /* SnapDragon-Info.plist */,
+				F485854714D46E4300B007CA /* InfoPlist.strings */,
+				F485854A14D46E4300B007CA /* main.m */,
+				F485854C14D46E4300B007CA /* SnapDragon-Prefix.pch */,
+				F485854D14D46E4300B007CA /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F485853914D46E4300B007CA /* SnapDragon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F485855814D46E4300B007CA /* Build configuration list for PBXNativeTarget "SnapDragon" */;
+			buildPhases = (
+				F485853614D46E4300B007CA /* Sources */,
+				F485853714D46E4300B007CA /* Frameworks */,
+				F485853814D46E4300B007CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SnapDragon;
+			productName = SnapDragon;
+			productReference = F485853A14D46E4300B007CA /* SnapDragon.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F485853114D46E4300B007CA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = F485853414D46E4300B007CA /* Build configuration list for PBXProject "SnapDragon" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F485852F14D46E4300B007CA;
+			productRefGroup = F485853B14D46E4300B007CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F485853914D46E4300B007CA /* SnapDragon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F485853814D46E4300B007CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F485854914D46E4300B007CA /* InfoPlist.strings in Resources */,
+				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
+				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F485853614D46E4300B007CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F485854B14D46E4300B007CA /* main.m in Sources */,
+				F485855214D46E4300B007CA /* SnapDragonAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F485854714D46E4300B007CA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F485854814D46E4300B007CA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F485854D14D46E4300B007CA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F485854E14D46E4300B007CA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F485855314D46E4300B007CA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F485855414D46E4300B007CA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F485855614D46E4300B007CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F485855714D46E4300B007CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F485855914D46E4300B007CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SnapDragon/SnapDragon-Prefix.pch";
+				INFOPLIST_FILE = "SnapDragon/SnapDragon-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F485855A14D46E4300B007CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SnapDragon/SnapDragon-Prefix.pch";
+				INFOPLIST_FILE = "SnapDragon/SnapDragon-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F485853414D46E4300B007CA /* Build configuration list for PBXProject "SnapDragon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F485855614D46E4300B007CA /* Debug */,
+				F485855714D46E4300B007CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F485855814D46E4300B007CA /* Build configuration list for PBXNativeTarget "SnapDragon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F485855914D46E4300B007CA /* Debug */,
+				F485855A14D46E4300B007CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F485853114D46E4300B007CA /* Project object */;
+}
