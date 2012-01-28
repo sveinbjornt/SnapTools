@@ -13,22 +13,41 @@
 		F485854F14D46E4300B007CA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F485854D14D46E4300B007CA /* Credits.rtf */; };
 		F485855214D46E4300B007CA /* SnapDragonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */; };
 		F485855514D46E4300B007CA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F485855314D46E4300B007CA /* MainMenu.xib */; };
+		F485855F14D46E8200B007CA /* ResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855C14D46E8200B007CA /* ResultsController.m */; };
+		F485856214D46EB800B007CA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485856114D46EB800B007CA /* Security.framework */; };
+		F485856614D46ED900B007CA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F485856414D46ED900B007CA /* delete.png */; };
+		F485856714D46ED900B007CA /* trash2.png in Resources */ = {isa = PBXBuildFile; fileRef = F485856514D46ED900B007CA /* trash2.png */; };
+		F485856D14D46F2100B007CA /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485856C14D46F2100B007CA /* Carbon.framework */; };
+		F485857014D470A200B007CA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F485856F14D470A200B007CA /* Defaults.plist */; };
+		F485857714D4796A00B007CA /* STPathTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857414D4796A00B007CA /* STPathTextField.m */; };
+		F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857614D4796A00B007CA /* STPrivilegedTask.m */; };
+		F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857B14D4AB1200B007CA /* NSTask+Description.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F485853A14D46E4300B007CA /* SnapDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		F485854114D46E4300B007CA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		F485854214D46E4300B007CA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		F485854314D46E4300B007CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F485854614D46E4300B007CA /* SnapDragon-Info.plist */ = {isa = PBXFileReference; path = "SnapDragon-Info.plist"; sourceTree = "<group>"; };
+		F485854614D46E4300B007CA /* SnapDragon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapDragon-Info.plist"; sourceTree = "<group>"; };
 		F485854814D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F485854A14D46E4300B007CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F485854C14D46E4300B007CA /* SnapDragon-Prefix.pch */ = {isa = PBXFileReference; path = "SnapDragon-Prefix.pch"; sourceTree = "<group>"; };
+		F485854C14D46E4300B007CA /* SnapDragon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapDragon-Prefix.pch"; sourceTree = "<group>"; };
 		F485854E14D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */ = {isa = PBXFileReference; path = SnapDragonAppDelegate.h; sourceTree = "<group>"; };
+		F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapDragonAppDelegate.h; sourceTree = "<group>"; };
 		F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapDragonAppDelegate.m; sourceTree = "<group>"; };
 		F485855414D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F485855B14D46E8200B007CA /* ResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsController.h; sourceTree = "<group>"; };
+		F485855C14D46E8200B007CA /* ResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsController.m; sourceTree = "<group>"; };
+		F485856114D46EB800B007CA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../System/Library/Frameworks/Security.framework; sourceTree = "<group>"; };
+		F485856414D46ED900B007CA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
+		F485856514D46ED900B007CA /* trash2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash2.png; sourceTree = "<group>"; };
+		F485856C14D46F2100B007CA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = ../../../../System/Library/Frameworks/Carbon.framework; sourceTree = "<group>"; };
+		F485856F14D470A200B007CA /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
+		F485857314D4796A00B007CA /* STPathTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPathTextField.h; sourceTree = "<group>"; };
+		F485857414D4796A00B007CA /* STPathTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPathTextField.m; sourceTree = "<group>"; };
+		F485857514D4796A00B007CA /* STPrivilegedTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPrivilegedTask.h; sourceTree = "<group>"; };
+		F485857614D4796A00B007CA /* STPrivilegedTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPrivilegedTask.m; sourceTree = "<group>"; };
+		F485857A14D4AB1200B007CA /* NSTask+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTask+Description.h"; sourceTree = "<group>"; };
+		F485857B14D4AB1200B007CA /* NSTask+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+Description.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +56,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */,
+				F485856214D46EB800B007CA /* Security.framework in Frameworks */,
+				F485856D14D46F2100B007CA /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,28 +84,18 @@
 		F485853D14D46E4300B007CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F485856C14D46F2100B007CA /* Carbon.framework */,
+				F485856114D46EB800B007CA /* Security.framework */,
 				F485853E14D46E4300B007CA /* Cocoa.framework */,
-				F485854014D46E4300B007CA /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F485854014D46E4300B007CA /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				F485854114D46E4300B007CA /* AppKit.framework */,
-				F485854214D46E4300B007CA /* CoreData.framework */,
-				F485854314D46E4300B007CA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		F485854414D46E4300B007CA /* SnapDragon */ = {
 			isa = PBXGroup;
 			children = (
-				F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */,
-				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
-				F485855314D46E4300B007CA /* MainMenu.xib */,
+				F485857914D4797700B007CA /* App Controllers */,
+				F485857214D4796A00B007CA /* Auxiliary */,
 				F485854514D46E4300B007CA /* Supporting Files */,
 			);
 			path = SnapDragon;
@@ -93,6 +104,9 @@
 		F485854514D46E4300B007CA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F485855314D46E4300B007CA /* MainMenu.xib */,
+				F485856F14D470A200B007CA /* Defaults.plist */,
+				F485856314D46ED900B007CA /* images */,
 				F485854614D46E4300B007CA /* SnapDragon-Info.plist */,
 				F485854714D46E4300B007CA /* InfoPlist.strings */,
 				F485854A14D46E4300B007CA /* main.m */,
@@ -100,6 +114,39 @@
 				F485854D14D46E4300B007CA /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F485856314D46ED900B007CA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F485856414D46ED900B007CA /* delete.png */,
+				F485856514D46ED900B007CA /* trash2.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		F485857214D4796A00B007CA /* Auxiliary */ = {
+			isa = PBXGroup;
+			children = (
+				F485857314D4796A00B007CA /* STPathTextField.h */,
+				F485857414D4796A00B007CA /* STPathTextField.m */,
+				F485857514D4796A00B007CA /* STPrivilegedTask.h */,
+				F485857614D4796A00B007CA /* STPrivilegedTask.m */,
+			);
+			path = Auxiliary;
+			sourceTree = SOURCE_ROOT;
+		};
+		F485857914D4797700B007CA /* App Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */,
+				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
+				F485855B14D46E8200B007CA /* ResultsController.h */,
+				F485855C14D46E8200B007CA /* ResultsController.m */,
+				F485857A14D4AB1200B007CA /* NSTask+Description.h */,
+				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
+			);
+			name = "App Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +199,9 @@
 				F485854914D46E4300B007CA /* InfoPlist.strings in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
+				F485856614D46ED900B007CA /* delete.png in Resources */,
+				F485856714D46ED900B007CA /* trash2.png in Resources */,
+				F485857014D470A200B007CA /* Defaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +214,10 @@
 			files = (
 				F485854B14D46E4300B007CA /* main.m in Sources */,
 				F485855214D46E4300B007CA /* SnapDragonAppDelegate.m in Sources */,
+				F485855F14D46E8200B007CA /* ResultsController.m in Sources */,
+				F485857714D4796A00B007CA /* STPathTextField.m in Sources */,
+				F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */,
+				F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +337,7 @@
 				F485855A14D46E4300B007CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

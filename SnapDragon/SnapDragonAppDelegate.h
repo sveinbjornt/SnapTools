@@ -1,17 +1,16 @@
 //
-//  SnapDragonAppDelegate.h
-//  SnapDragon
+//  MacLocateAppDelegate.h
 //
-//  Created by Sveinbjorn Thordarson on 1/28/12.
+//  Created by Sveinbjorn Thordarson on 1/25/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import "STPrivilegedTask.h"
 
-@interface SnapDragonAppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
+@interface SnapDragonAppDelegate : NSObject 
+{
+    IBOutlet id     resultsController;
 }
-
-@property (assign) IBOutlet NSWindow *window;
 
 @end

@@ -1,8 +1,8 @@
 //
-//  SnapDragonAppDelegate.m
-//  SnapDragon
+//  MacLocateAppDelegate.m
+//  MacLocate
 //
-//  Created by Sveinbjorn Thordarson on 1/28/12.
+//  Created by Sveinbjorn Thordarson on 1/25/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,11 +10,16 @@
 
 @implementation SnapDragonAppDelegate
 
-@synthesize window;
++ (void)initialize 
+{ 
+	NSDictionary *registrationDefaults = [NSDictionary dictionaryWithContentsOfFile: 
+										  [[NSBundle mainBundle] pathForResource: @"Defaults" ofType: @"plist"]];
+    [[NSUserDefaults standardUserDefaults] registerDefaults: registrationDefaults];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+
 }
 
 @end
