@@ -25,6 +25,7 @@
     IBOutlet STPathTextField *queryTextField;
     IBOutlet id     filterTextField;
     IBOutlet id     numResultsTextField;
+    IBOutlet id     tableColumnContextualMenu;
     
     NSTask          *task;    
     NSTimer         *checkStatusTimer;
@@ -39,6 +40,7 @@
 -(IBAction)locate: (id)sender;
 - (void)addPath: (NSString *)path;
 - (void)clear;
+- (IBAction)columnChanged: (id)sender;
 - (IBAction)open: (id)sender;
 - (IBAction)openWith: (id)sender;
 - (IBAction)showInFinder:(id)sender;

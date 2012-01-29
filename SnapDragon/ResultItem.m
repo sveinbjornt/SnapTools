@@ -73,7 +73,8 @@
 
 - (UInt64)size
 {
-
+    [self _stat];
+    return statInfo.st_size;
 }
 
 - (id)calcAttr: (NSString *)theAttribute
@@ -102,7 +103,12 @@
         else    
         {
             [self _stat];
-            NSString *sizeStr = [FILEMGR sizeAsHumanReadable: statInfo.st_size];
+            
+            NSString *sizeStr;
+            if ([[DEFAULTS objectForKey: @"UseHumanReadableSizes"] boolValue])
+                sizeStr = [FILEMGR sizeAsHumanReadable: statInfo.st_size];
+            else
+                sizeStr = [NSString stringWithFormat: @"%d", statInfo.st_size, nil];
             [self setAttr: sizeStr forKey: @"Size"];
         }
     }
@@ -111,9 +117,23 @@
     {
         [self _stat];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970: statInfo.st_birthtime];
-    
         [self setAttr: [date description] forKey: @"CreatedDate"];
     }
+    // accessed 
+    else if ([theAttribute isEqualToString: @"AccessedDate"])
+    {
+        [self _stat];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970: statInfo.st_atime];
+        [self setAttr: [date description] forKey: @"AccessedDate"];
+    }
+    // modified 
+    else if ([theAttribute isEqualToString: @"ModifiedDate"])
+    {
+        [self _stat];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970: statInfo.st_mtime];
+        [self setAttr: [date description] forKey: @"ModifiedDate"];
+    }
+    // kind
     else if ([theAttribute isEqualToString: @"Kind"])
     {
         NSURL *url = [NSURL fileURLWithPath: [self path]];
@@ -127,13 +147,29 @@
         else
             return @"";
     }
-    else if ([theAttribute isEqualToString: @"FilePermissions"])
+    else if ([theAttribute isEqualToString: @"Permissions"])
     {
-        
+        [self _stat];
+        char buf[20];
+        strmode(statInfo.st_mode, (char *)&buf);
+        [self setAttr: [NSString stringWithCString: (char *)&buf encoding: NSUTF8StringEncoding] forKey: @"Permissions"];
     }
-    else if ([theAttribute isEqualToString: @"FilePermissions"])
+    else if ([theAttribute isEqualToString: @"User:Group"])
     {
-        
+        [self _stat];
+        const char *u, *g;
+        u = user_from_uid(statInfo.st_uid, 0);
+        g = group_from_gid(statInfo.st_gid, 0);
+        NSString *user = [NSString stringWithCString: u encoding: NSUTF8StringEncoding];
+        NSString *group = [NSString stringWithCString: g encoding: NSUTF8StringEncoding];
+        NSString *ugStr = [NSString stringWithFormat: @"%@:%@", user, group, nil];
+        [self setAttr: ugStr forKey: @"User:Group"];
+    }
+    else if ([theAttribute isEqualToString: @"UTI"])
+    {
+        NSString *type = [[NSWorkspace sharedWorkspace] typeOfFile: [self path] error: nil];
+        NSString *uti = (type == nil) ? @"" : type;
+        [self setAttr: uti forKey: @"UTI"];
     }
     
     return [self attr: theAttribute];
@@ -194,7 +230,7 @@
 
 -(void)labelSelected: (id)sender
 {
-	[[NSWorkspace sharedWorkspace] setLabel: [sender tag] forFile: [self path]];
+	//[[NSWorkspace sharedWorkspace] setLabel: [sender tag] forFile: [self path]];
 }
 
 -(void)moveToTrash

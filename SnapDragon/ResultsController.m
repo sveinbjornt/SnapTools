@@ -41,14 +41,80 @@
 
 - (void)updateColumns
 {    
-    if ([[DEFAULTS objectForKey: @"ShowFileSize"] boolValue])
+    if ([[DEFAULTS objectForKey: @"ShowFileSize"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"Size"] == nil)
     {
         NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Size"] autorelease];
         [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Size"] autorelease]];
         [resultsTableView addTableColumn: col];
     }
-    if ([[DEFAULTS objectForKey: @"ShowKind"] boolValue])
-        [resultsTableView addTableColumn: [[NSTableColumn alloc] initWithIdentifier: @"Kind"]];
+    if ([[DEFAULTS objectForKey: @"ShowKind"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"Kind"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Kind"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Kind"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowUTI"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"UTI"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"UTI"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"UTI"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowDateCreated"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"CreatedDate"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"CreatedDate"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Date Created"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowDateAccessed"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"AccessedDate"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"AccessedDate"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Date Accessed"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowDateModified"] boolValue]  && [resultsTableView tableColumnWithIdentifier: @"ModifiedDate"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"ModifiedDate"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Date Modified"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowFilePermissions"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"Permissions"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Permissions"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Permissions"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowUserGroup"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"User:group"] == nil)
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"User:Group"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"User:Group"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+}
+
+- (void)menuDidClose:(NSMenu *)menu
+{
+    if (![[DEFAULTS objectForKey: @"ShowFileSize"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Size"]];
+    if (![[DEFAULTS objectForKey: @"ShowKind"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Kind"]];
+    if (![[DEFAULTS objectForKey: @"ShowUTI"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"UTI"]];
+    if (![[DEFAULTS objectForKey: @"ShowDateCreated"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"CreatedDate"]];
+    if (![[DEFAULTS objectForKey: @"ShowDateAccessed"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"AccessedDate"]];
+    if (![[DEFAULTS objectForKey: @"ShowDateModified"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"ModifiedDate"]];
+    if (![[DEFAULTS objectForKey: @"ShowFilePermissions"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Permissions"]];
+    if (![[DEFAULTS objectForKey: @"ShowUserGroup"] boolValue])
+        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"User:Group"]];
+    [self updateColumns];
+
+}
+
+- (IBAction)columnChanged: (id)sender
+{
 }
 
 #pragma mark - Results 
@@ -149,12 +215,27 @@
 
 - (IBAction)copyFile: (id)sender
 {
+    NSIndexSet      *rowIndexes = [self selectedItems];
+    NSMutableArray  *filenames = [NSMutableArray arrayWithCapacity: [rowIndexes count]];
+    NSString        *str = @"";
     
+	NSInteger index = [rowIndexes firstIndex];
+	while (NSNotFound != index) 
+	{
+        NSString *path = [[results objectAtIndex: index] path];
+		[filenames addObject: path];
+        str = [str stringByAppendingFormat: @"\'%@\' ", path, nil];
+		index = [rowIndexes indexGreaterThanIndex: index];
+	}
+    
+    [[NSPasteboard generalPasteboard] declareTypes: [NSArray arrayWithObjects: NSFilenamesPboardType, NSStringPboardType, nil] owner: self];
+    [[NSPasteboard generalPasteboard] setPropertyList: filenames forType: NSFilenamesPboardType];
+    [[NSPasteboard generalPasteboard] setString: str forType: NSStringPboardType];
 }
 
 - (IBAction)quickLook: (id)sender
 {
-    
+    [self performSelector: @selector(quickLook) onIndexes: [self selectedItems]];
 }
 
 - (IBAction)setLabel:(id)sender
@@ -165,7 +246,7 @@
 - (IBAction)deleteFile:(id)sender
 {
     NSIndexSet *indexSet = [self selectedItems];
-    int i;
+    NSUInteger i;
     for (i = [results count] -1; i > 0; i--)
     {
         if ([indexSet containsIndex: i])

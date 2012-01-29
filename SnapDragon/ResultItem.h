@@ -10,6 +10,8 @@
 #import <sys/stat.h>
 #import "NSFileManager+FileOrFolderSize.m"
 #import "Common.h"
+#include <pwd.h>
+#include <grp.h>
 
 @interface ResultItem : NSObject
 {
