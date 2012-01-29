@@ -165,7 +165,7 @@
     AuthorizationRights     myRights = {1, &myItems};
     AuthorizationFlags      flags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed | kAuthorizationFlagPreAuthorize | kAuthorizationFlagExtendRights;
     
-    unsigned int            argumentsCount = [arguments count];
+    NSUInteger              argumentsCount = [arguments count];
     char                    *args[argumentsCount + 1];
     FILE                    *outputFile;
 
@@ -189,7 +189,7 @@
     for (i = 0; i < argumentsCount; i++) 
     {
         NSString *theString = [arguments objectAtIndex:i];
-        unsigned int stringLength = [theString length];
+        NSUInteger stringLength = [theString length];
         
         args[i] = malloc((stringLength + 1) * sizeof(char));
         snprintf(args[i], stringLength + 1, "%s", [theString fileSystemRepresentation]);

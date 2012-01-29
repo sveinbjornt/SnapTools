@@ -7,6 +7,9 @@
 
 #import <AppKit/AppKit.h>
 #import <Carbon/Carbon.h>
+#import "NSTask+Description.m"
+#import "NSFileManager+FileOrFolderSize.m"
+#import <sys/stat.h>
 
 @interface ResultsController: NSObject <NSTableViewDataSource, NSTableViewDelegate>
 {
@@ -27,8 +30,8 @@
     BOOL            isTaskRunning;
     BOOL            outputEmpty;
     NSString        *remnants;
+    UInt64          totalSize;
 
-    
 }
 -(IBAction)locate: (id)sender;
 - (void)addPath: (NSString *)path;
@@ -46,5 +49,8 @@
 - (IBAction)moveToTrash:(id)sender;
 - (IBAction)openDirectoryInTerminal:(id)sender;
 - (IBAction)runInTerminal:(id)sender;
+- (void)updateNumFiles;
+-(void)appendOutput: (NSData *)data;
+-(void)getOutputData: (NSNotification *)aNotification;
 
 @end

@@ -22,6 +22,7 @@
 		F485857714D4796A00B007CA /* STPathTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857414D4796A00B007CA /* STPathTextField.m */; };
 		F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857614D4796A00B007CA /* STPrivilegedTask.m */; };
 		F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857B14D4AB1200B007CA /* NSTask+Description.m */; };
+		F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +47,8 @@
 		F485857414D4796A00B007CA /* STPathTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPathTextField.m; sourceTree = "<group>"; };
 		F485857514D4796A00B007CA /* STPrivilegedTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPrivilegedTask.h; sourceTree = "<group>"; };
 		F485857614D4796A00B007CA /* STPrivilegedTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPrivilegedTask.m; sourceTree = "<group>"; };
-		F485857A14D4AB1200B007CA /* NSTask+Description.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTask+Description.h"; sourceTree = "<group>"; };
-		F485857B14D4AB1200B007CA /* NSTask+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+Description.m"; sourceTree = "<group>"; };
+		F485857B14D4AB1200B007CA /* NSTask+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTask+Description.m"; path = "../SnapDragon/NSTask+Description.m"; sourceTree = "<group>"; };
+		F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+FileOrFolderSize.m"; path = "SnapDragon/NSFileManager+FileOrFolderSize.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +129,8 @@
 		F485857214D4796A00B007CA /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
+				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
+				F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */,
 				F485857314D4796A00B007CA /* STPathTextField.h */,
 				F485857414D4796A00B007CA /* STPathTextField.m */,
 				F485857514D4796A00B007CA /* STPrivilegedTask.h */,
@@ -143,8 +146,6 @@
 				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
 				F485855B14D46E8200B007CA /* ResultsController.h */,
 				F485855C14D46E8200B007CA /* ResultsController.m */,
-				F485857A14D4AB1200B007CA /* NSTask+Description.h */,
-				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
 			);
 			name = "App Controllers";
 			sourceTree = "<group>";
@@ -218,6 +219,7 @@
 				F485857714D4796A00B007CA /* STPathTextField.m in Sources */,
 				F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */,
 				F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */,
+				F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

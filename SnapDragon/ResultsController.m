@@ -30,29 +30,69 @@
     [resultsTableView setTarget: self];
 	[resultsTableView setDoubleAction: @selector(open:)];
     [resultsTableView setDraggingSourceOperationMask: NSDragOperationCopy | NSDragOperationMove forLocal: NO];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(taskFinished:)
+                                                 name: NSTaskDidTerminateNotification
+                                               object: NULL];
 }
 
 #pragma mark - Results 
 
 - (void)addPath: (NSString *)path
 {
+    struct stat statInfo;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys: path, @"Path", nil];
+    
+    // icon
     NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: path];
-    [icon setSize: NSMakeSize(16,16)];
+    if (icon)
+    {
+        [icon setSize: NSMakeSize(16,16)];
+        [dict setObject: icon forKey: @"Icon"];
+    }
     
-    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: path, @"Path", icon, @"Icon", nil];
-    [results addObject: dict];
-    [resultsTableView reloadData];
-    [resultsTableView reloadDataForRowIndexes: [NSIndexSet indexSetWithIndex:[results count] ] columnIndexes: [NSIndexSet indexSetWithIndexesInRange: NSMakeRange(0, 10)]];
+    // get attributes
+    stat([path fileSystemRepresentation], &statInfo);
     
-    [self updateNumFiles];
+    // file size
+    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_size] forKey: @"Size"];
+    totalSize += statInfo.st_size;
+    
+    // access date
+    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_atime] forKey: @"AccessDate"];
+    
+    // create date
+    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_birthtime] forKey: @"CreatedDate"];
+    
+    // modified date
+    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_mtime] forKey: @"ModifiedDate"];
+    
+    [results addObject: [NSDictionary dictionaryWithDictionary: dict]];
+    
+    if ([results count] % 10 == 0)
+    {
+        //NSLog([dict description]);
+        
+        [resultsTableView noteNumberOfRowsChanged];
+        [self updateNumFiles];
+    }
 }
      
      
 - (void)updateNumFiles
 {
     NSInteger lim = [[[NSUserDefaults standardUserDefaults] objectForKey: @"ResultLimit"] intValue];
-    NSString *maxed = ([results count] >= lim) ? @"(!limit)" : @"";
-    NSString *label = [NSString stringWithFormat: @"%d files %@", [results count], maxed];
+    NSString *maxed = ([results count] >= lim) ? @"(hit limit)" : @"";
+    NSString *label = [NSString stringWithFormat: @"%d files %@", [results count], maxed, nil];
+
+    // append total size
+    if (totalSize)
+    {
+        NSString *humanSizeStr = [[NSFileManager defaultManager] sizeAsHumanReadable: totalSize];
+        label = [label stringByAppendingFormat: @" %@", humanSizeStr, nil];
+    }
+    
     [numResultsTextField setStringValue: label];
 }
 
@@ -100,12 +140,12 @@
 {
 }
 
-- (NSUInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	return [results count];
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {	
 	if ([[aTableColumn identifier] caseInsensitiveCompare: @"2"] == NSOrderedSame)//path
 	{
@@ -142,13 +182,24 @@
 
 -(IBAction)locate: (id)sender
 {
+    if (isTaskRunning)
+    {
+        [self taskFinished: nil];
+        return;
+    }
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey: @"IgnoreEmptyQuery"] boolValue] &&
+        [[queryTextField stringValue] isEqualToString: @""])
+         return;
+         
     [self clear];
     [self runLocate];
 }
 
 - (void)runLocate
 {
-    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity: 10];
+    // construct arguments list
+    NSMutableArray *args = [[[NSMutableArray alloc] initWithCapacity: 10] autorelease];
     
     // limit
     int lim = [[[NSUserDefaults standardUserDefaults] objectForKey: @"ResultLimit"] intValue];
@@ -156,7 +207,11 @@
     {
         [args addObject: @"-l"];
         [args addObject: [NSString stringWithFormat: @"%d", lim]];
-    } 
+    }
+    
+    // ignore case
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey: @"IgnoreCase"] boolValue])
+        [args addObject: @"-i"];
     
     //initalize task
     task = [[NSTask alloc] init];
@@ -174,7 +229,14 @@
     [readHandle readInBackgroundAndNotify];
     
     //set it off
+    totalSize = 0;
+    isTaskRunning = YES;
+    NSLog(@"Executing %@", [task fullDescription]);
     [task launch];
+    
+    [locateButton setTitle: @"Stop"];
+    [progressIndicator setUsesThreadedAnimation: YES];
+    [progressIndicator startAnimation: self];
     
     // we wait until task exits if this is for the menu
     //[task waitUntilExit];
@@ -182,7 +244,7 @@
 
 
 //  read from the file handle and append it to the text window
--(void) getOutputData: (NSNotification *)aNotification
+- (void)getOutputData: (NSNotification *)aNotification
 {
     //get the data from notification
     NSData *data = [[aNotification userInfo] objectForKey: NSFileHandleNotificationDataItem];
@@ -201,6 +263,7 @@
     else
     {
         outputEmpty = YES;
+        [self updateNumFiles];
     }
 }
 
@@ -242,18 +305,50 @@
         if ([theLine length] == 0)
             continue;
         
-        // lines starting with PROGRESS:\d+ are interpreted as percentage to set progress bar at
         if ([theLine hasPrefix: @"/"])
         {
             if ([[NSFileManager defaultManager] fileExistsAtPath: theLine])
             {
                 [self addPath: theLine];
-                //[resultsTableView reloadData];
             }
         }
     }
     
     [outputString release];
+}
+
+// OK, called when we receive notification that task is finished
+// Some cleaning up to do, controls need to be adjusted, etc.
+-(void)taskFinished: (NSNotification *)aNotification
+{        
+    // if task already quit, we return    
+    isTaskRunning = NO;
+
+    // did we receive all the data?
+    if (outputEmpty) // if no data left we do the clean up 
+    {
+        // We make sure to clear the filehandle of any remaining data
+        if (readHandle != NULL)
+        {
+            NSData *data;
+            while ((data = [readHandle availableData]) && [data length])
+                [self appendOutput: data];
+        }
+    }
+    
+    // stop and dispose of task
+    if (task != nil)
+    {
+        [task terminate];
+        [task release];
+        task = nil;
+    }
+    
+    // update interface
+    [progressIndicator stopAnimation: self];
+    [locateButton setTitle: @"Locate"];
+    [resultsTableView noteNumberOfRowsChanged];
+    [self updateNumFiles];
 }
 
 

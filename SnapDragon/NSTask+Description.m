@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableArray (Shuffle)
-- (void)shuffle;
+@interface NSTask (Description)
+- (NSString *)fullDescription;
 @end
 
-@implementation NSMutableArray (Shuffle)
+@implementation NSTask (Description)
 
-// Knuth shuffle
-- (void)shuffle 
+- (NSString *)fullDescription 
 {
-	for (NSInteger i = [self count]-1; i > 0; --i) 
-		[self exchangeObjectAtIndex: arc4random() % (i + 1) withObjectAtIndex: i]; 
+    NSString *str = [NSString stringWithFormat: @"%@ ", [self launchPath]];
+    for (NSString *arg in [self arguments])
+        str = [str stringByAppendingFormat: @"%@ ", arg];
+    return str;
 }
 
 @end
