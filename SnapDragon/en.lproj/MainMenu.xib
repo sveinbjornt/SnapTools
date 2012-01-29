@@ -949,13 +949,13 @@
 												</object>
 												<object class="NSTableColumn" id="888617353">
 													<string key="NSIdentifier">Path</string>
-													<double key="NSWidth">494.25</double>
+													<double key="NSWidth">481.25</double>
 													<double key="NSMinWidth">40</double>
 													<double key="NSMaxWidth">100000</double>
 													<object class="NSTableHeaderCell" key="NSHeaderCell">
 														<int key="NSCellFlags">75628096</int>
 														<int key="NSCellFlags2">2048</int>
-														<string key="NSContents"/>
+														<string key="NSContents">Path</string>
 														<reference key="NSSupport" ref="26"/>
 														<reference key="NSBackgroundColor" ref="123327007"/>
 														<reference key="NSTextColor" ref="274597990"/>
@@ -1043,7 +1043,7 @@
 									<string key="NSReuseIdentifierKey">_NS:1214</string>
 									<reference key="NSTarget" ref="728965129"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSPercent">0.94360902255639101</double>
+									<double key="NSPercent">0.94525547445255476</double>
 								</object>
 								<object class="NSScroller" id="901902868">
 									<reference key="NSNextResponder" ref="728965129"/>
@@ -1053,10 +1053,11 @@
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="363663698"/>
 									<string key="NSReuseIdentifierKey">_NS:1216</string>
+									<bool key="NSEnabled">YES</bool>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="728965129"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSPercent">0.99806201550387597</double>
+									<double key="NSPercent">0.88356164383561642</double>
 								</object>
 								<object class="NSClipView" id="450275373">
 									<reference key="NSNextResponder" ref="728965129"/>
@@ -1080,7 +1081,7 @@
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="450275373"/>
 							<string key="NSReuseIdentifierKey">_NS:1193</string>
-							<int key="NSsFlags">133682</int>
+							<int key="NSsFlags">133810</int>
 							<reference key="NSVScroller" ref="148651878"/>
 							<reference key="NSHScroller" ref="901902868"/>
 							<reference key="NSContentView" ref="201204647"/>
@@ -1103,10 +1104,10 @@
 						<object class="NSButton" id="619921955">
 							<reference key="NSNextResponder" ref="439893737"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{17, 329}, {146, 18}}</string>
+							<string key="NSFrame">{{17, 329}, {91, 18}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="820301856"/>
+							<reference key="NSNextKeyView" ref="765288262"/>
 							<string key="NSReuseIdentifierKey">_NS:239</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="49459010">
@@ -1125,6 +1126,32 @@
 								<object class="NSButtonImageSource" key="NSAlternateImage" id="819728782">
 									<string key="NSImageName">NSSwitch</string>
 								</object>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
+							</object>
+						</object>
+						<object class="NSButton" id="765288262">
+							<reference key="NSNextResponder" ref="439893737"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{111, 329}, {104, 18}}</string>
+							<reference key="NSSuperview" ref="439893737"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="820301856"/>
+							<string key="NSReuseIdentifierKey">_NS:239</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="214940787">
+								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags2">131072</int>
+								<string key="NSContents">Exclude folders</string>
+								<reference key="NSSupport" ref="26"/>
+								<string key="NSCellIdentifier">_NS:239</string>
+								<reference key="NSControlView" ref="765288262"/>
+								<int key="NSButtonFlags">1211912703</int>
+								<int key="NSButtonFlags2">2</int>
+								<reference key="NSNormalImage" ref="390744692"/>
+								<reference key="NSAlternateImage" ref="819728782"/>
 								<string key="NSAlternateContents"/>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">200</int>
@@ -1265,6 +1292,7 @@
 							<string key="NSFrame">{{441, 69}, {95, 32}}</string>
 							<reference key="NSSuperview" ref="511428459"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:161</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="500233704">
@@ -2845,35 +2873,123 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.ShowKind</string>
+						<string key="label">value: values.ExcludeFolders</string>
+						<reference key="source" ref="765288262"/>
+						<reference key="destination" ref="245376753"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="765288262"/>
+							<reference key="NSDestination" ref="245376753"/>
+							<string key="NSLabel">value: values.ExcludeFolders</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.ExcludeFolders</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">766</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">open:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="364231197"/>
+					</object>
+					<int key="connectionID">767</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showInFinder:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="427803993"/>
+					</object>
+					<int key="connectionID">768</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">getInfo:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="939749893"/>
+					</object>
+					<int key="connectionID">769</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">copyFile:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="237188881"/>
+					</object>
+					<int key="connectionID">770</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">quickLook:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="711326047"/>
+					</object>
+					<int key="connectionID">771</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">deleteFile:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="15401915"/>
+					</object>
+					<int key="connectionID">772</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">moveToTrash:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="166472560"/>
+					</object>
+					<int key="connectionID">773</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">openDirectoryInTerminal:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="695566353"/>
+					</object>
+					<int key="connectionID">774</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">runInTerminal:</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="293025438"/>
+					</object>
+					<int key="connectionID">775</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.ShowFilePermissions</string>
 						<reference key="source" ref="920715301"/>
 						<reference key="destination" ref="245376753"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="920715301"/>
 							<reference key="NSDestination" ref="245376753"/>
-							<string key="NSLabel">value: values.ShowKind</string>
+							<string key="NSLabel">value: values.ShowFilePermissions</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.ShowKind</string>
+							<string key="NSKeyPath">values.ShowFilePermissions</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">755</int>
+					<int key="connectionID">776</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.HumanReadableSizes</string>
+						<string key="label">value: values.UseHumanReadableSizes</string>
 						<reference key="source" ref="391593447"/>
 						<reference key="destination" ref="245376753"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="391593447"/>
 							<reference key="NSDestination" ref="245376753"/>
-							<string key="NSLabel">value: values.HumanReadableSizes</string>
+							<string key="NSLabel">value: values.UseHumanReadableSizes</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.HumanReadableSizes</string>
+							<string key="NSKeyPath">values.UseHumanReadableSizes</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">760</int>
+					<int key="connectionID">777</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3379,6 +3495,7 @@
 							<reference ref="23009084"/>
 							<reference ref="29785144"/>
 							<reference ref="363663698"/>
+							<reference ref="765288262"/>
 						</array>
 						<reference key="parent" ref="972006081"/>
 					</object>
@@ -4097,6 +4214,19 @@
 						<reference key="object" ref="102131711"/>
 						<reference key="parent" ref="391593447"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">763</int>
+						<reference key="object" ref="765288262"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="214940787"/>
+						</array>
+						<reference key="parent" ref="439893737"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">764</int>
+						<reference key="object" ref="214940787"/>
+						<reference key="parent" ref="765288262"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4285,6 +4415,8 @@
 				<string key="754.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="756.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="757.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="763.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="764.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="78.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4297,7 +4429,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">760</int>
+			<int key="maxID">777</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4306,7 +4438,6 @@
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="copyFile:">id</string>
-						<string key="copyPath:">id</string>
 						<string key="deleteFile:">id</string>
 						<string key="getInfo:">id</string>
 						<string key="locate:">id</string>
@@ -4317,14 +4448,11 @@
 						<string key="quickLook:">id</string>
 						<string key="runInTerminal:">id</string>
 						<string key="setLabel:">id</string>
+						<string key="showInFinder:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="copyFile:">
 							<string key="name">copyFile:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="copyPath:">
-							<string key="name">copyPath:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="deleteFile:">
@@ -4365,6 +4493,10 @@
 						</object>
 						<object class="IBActionInfo" key="setLabel:">
 							<string key="name">setLabel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showInFinder:">
+							<string key="name">showInFinder:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

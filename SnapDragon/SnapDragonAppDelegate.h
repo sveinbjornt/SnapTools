@@ -6,6 +6,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Common.h"
 #import "STPrivilegedTask.h"
 
 @interface SnapDragonAppDelegate : NSObject 

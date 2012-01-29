@@ -14,7 +14,7 @@
 { 
 	NSDictionary *registrationDefaults = [NSDictionary dictionaryWithContentsOfFile: 
 										  [[NSBundle mainBundle] pathForResource: @"Defaults" ofType: @"plist"]];
-    [[NSUserDefaults standardUserDefaults] registerDefaults: registrationDefaults];
+    [DEFAULTS registerDefaults: registrationDefaults];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification

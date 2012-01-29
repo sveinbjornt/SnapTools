@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <sys/stat.h>
+#import "NSFileManager+FileOrFolderSize.m"
+#import "Common.h"
 
 @interface ResultItem : NSObject
 {
     struct stat             statInfo;
     BOOL                    statLoaded;
     NSMutableDictionary     *attr;
+    BOOL                    isDirectory;
 }
+@property (assign) BOOL isDirectory;
 - (id)init;
 - (id)initWithPath: (NSString *)path;
 - (void)dealloc;

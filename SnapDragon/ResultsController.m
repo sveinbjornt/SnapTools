@@ -36,15 +36,28 @@
                                                  name: NSTaskDidTerminateNotification
                                                object: NULL];
     [queryTextField setColorInvalidPath: NO];
+    [self updateColumns];
+}
+
+- (void)updateColumns
+{    
+    if ([[DEFAULTS objectForKey: @"ShowFileSize"] boolValue])
+    {
+        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Size"] autorelease];
+        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Size"] autorelease]];
+        [resultsTableView addTableColumn: col];
+    }
+    if ([[DEFAULTS objectForKey: @"ShowKind"] boolValue])
+        [resultsTableView addTableColumn: [[NSTableColumn alloc] initWithIdentifier: @"Kind"]];
 }
 
 #pragma mark - Results 
 
 - (void)addPath: (NSString *)path
 {
-    NSMutableDictionary *item = [ResultItem itemWithPath: path];
-    
-    
+    ResultItem *item = [ResultItem itemWithPath: path];
+    if ([[DEFAULTS objectForKey: @"ExcludeFolders"] boolValue] && item.isDirectory)
+        return;
     
     // get attributes
     
@@ -76,14 +89,14 @@
      
 - (void)updateNumFiles
 {
-    NSInteger lim = [[[NSUserDefaults standardUserDefaults] objectForKey: @"ResultLimit"] intValue];
+    NSInteger lim = [[DEFAULTS objectForKey: @"ResultLimit"] intValue];
     NSString *maxed = ([results count] >= lim) ? @"(hit limit)" : @"";
-    NSString *label = [NSString stringWithFormat: @"%d files %@", [results count], maxed, nil];
+    NSString *label = [NSString stringWithFormat: @"%d items %@", [results count], maxed, nil];
 
     // append total size
     if (totalSize)
     {
-        NSString *humanSizeStr = [[NSFileManager defaultManager] sizeAsHumanReadable: totalSize];
+        NSString *humanSizeStr = [FILEMGR sizeAsHumanReadable: totalSize];
         label = [label stringByAppendingFormat: @" %@", humanSizeStr, nil];
     }
     
@@ -98,35 +111,84 @@
 
 #pragma mark - File functions
 
+- (NSIndexSet *)selectedItems
+{
+    NSIndexSet *sel = [resultsTableView selectedRowIndexes];
+    if ([sel containsIndex: [resultsTableView clickedRow]])
+        return sel;
+    else
+        return [NSIndexSet indexSetWithIndex: [resultsTableView clickedRow]];
+}
+
+
+- (void)performSelector: (SEL)selector onIndexes: (NSIndexSet *)indexSet
+{
+    [[resultsTableView selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger row, BOOL *stop) 
+     {
+         [[results objectAtIndex: row] performSelector: selector];
+     }];
+}
+
 - (void)open: (id)sender
-{
-	if ([resultsTableView clickedRow] == -1)
-		return;
-	
-	if(GetCurrentKeyModifiers() & cmdKey)
-		[self showInFinder: [resultsTableView clickedRow]];
-	else
-		[self openInFinder: [resultsTableView clickedRow]];
-}
-
-- (void)showInFinder: (NSInteger)index
-{
-	BOOL		isDir;
-	NSString	*path = [[results objectAtIndex: index] path];
-	
-	if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]) 
-	{
-        if (isDir)
-            [[NSWorkspace sharedWorkspace] selectFile:nil inFileViewerRootedAtPath:path];
-        else
-            [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:nil];
-	}
-}
-
-- (void)openInFinder: (NSInteger)index
 {	
-	[[NSWorkspace sharedWorkspace] openFile: [[results objectAtIndex: index] path]];
+	if(GetCurrentKeyModifiers() & cmdKey)
+        [self performSelector: @selector(showInFinder) onIndexes: [self selectedItems]];
+    else
+        [self performSelector: @selector(openInFinder) onIndexes: [self selectedItems]];
 }
+
+- (IBAction)showInFinder:(id)sender
+{
+    [self performSelector: @selector(showInFinder) onIndexes: [self selectedItems]];
+}
+
+- (IBAction)getInfo: (id)sender
+{
+    [self performSelector: @selector(getInfo) onIndexes: [self selectedItems]];
+}
+
+- (IBAction)copyFile: (id)sender
+{
+    
+}
+
+- (IBAction)quickLook: (id)sender
+{
+    
+}
+
+- (IBAction)setLabel:(id)sender
+{
+    
+}
+
+- (IBAction)deleteFile:(id)sender
+{
+    NSIndexSet *indexSet = [self selectedItems];
+    int i;
+    for (i = [results count] -1; i > 0; i--)
+    {
+        if ([indexSet containsIndex: i])
+            [results removeObjectAtIndex: i];
+    }
+    [resultsTableView reloadData];
+}
+
+- (IBAction)moveToTrash:(id)sender
+{
+    [self performSelector: @selector(moveToTrash) onIndexes: [self selectedItems]];
+}
+
+- (IBAction)openDirectoryInTerminal:(id)sender
+{
+    
+}
+
+- (IBAction)runInTerminal:(id)sender
+{
+    
+}
+
 
 #pragma mark - Table View
 
@@ -171,7 +233,7 @@
         return;
     }
     
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey: @"IgnoreEmptyQuery"] boolValue] &&
+    if ([[DEFAULTS objectForKey: @"IgnoreEmptyQuery"] boolValue] &&
         [[queryTextField stringValue] isEqualToString: @""])
          return;
          
@@ -185,7 +247,7 @@
     NSMutableArray *args = [[[NSMutableArray alloc] initWithCapacity: 10] autorelease];
     
     // limit
-    int lim = [[[NSUserDefaults standardUserDefaults] objectForKey: @"ResultLimit"] intValue];
+    int lim = [[DEFAULTS objectForKey: @"ResultLimit"] intValue];
     if (lim)
     {
         [args addObject: @"-l"];
@@ -193,14 +255,14 @@
     }
     
     // ignore case
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey: @"IgnoreCase"] boolValue])
+    if ([[DEFAULTS objectForKey: @"IgnoreCase"] boolValue])
         [args addObject: @"-i"];
     
     //initalize task
     task = [[NSTask alloc] init];
     
     //apply settings for task
-    [task setLaunchPath: [[NSUserDefaults standardUserDefaults] objectForKey: @"ToolPath"]];
+    [task setLaunchPath: [DEFAULTS objectForKey: @"ToolPath"]];
     [args addObject: [queryTextField stringValue]];
     [task setArguments: args];
     
@@ -290,7 +352,7 @@
         
         if ([theLine hasPrefix: @"/"])
         {
-            if ([[NSFileManager defaultManager] fileExistsAtPath: theLine])
+            if ([FILEMGR fileExistsAtPath: theLine])
             {
                 [self addPath: theLine];
             }
@@ -303,7 +365,10 @@
 // OK, called when we receive notification that task is finished
 // Some cleaning up to do, controls need to be adjusted, etc.
 -(void)taskFinished: (NSNotification *)aNotification
-{        
+{   
+    if (aNotification != nil && [aNotification object] != task)
+        return;
+    
     // if task already quit, we return    
     isTaskRunning = NO;
 

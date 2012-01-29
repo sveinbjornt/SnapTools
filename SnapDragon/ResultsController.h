@@ -12,6 +12,7 @@
 #import <sys/stat.h>
 #import "ResultItem.h"
 #import "STPathTextField.h"
+#import "Common.h"
 
 @interface ResultsController: NSObject <NSTableViewDataSource, NSTableViewDelegate>
 {
@@ -40,10 +41,10 @@
 - (void)clear;
 - (IBAction)open: (id)sender;
 - (IBAction)openWith: (id)sender;
-- (void)showInFinder: (NSInteger)index;
+- (IBAction)showInFinder:(id)sender;
+- (void)revealInFinder: (NSInteger)index;
 - (void)openInFinder: (NSInteger)index;
 - (IBAction)getInfo: (id)sender;
-- (IBAction)copyPath: (id)sender;
 - (IBAction)copyFile: (id)sender;
 - (IBAction)quickLook: (id)sender;
 - (IBAction)setLabel:(id)sender;

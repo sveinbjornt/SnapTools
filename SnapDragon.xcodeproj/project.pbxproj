@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F467F38914D5A24100246ABB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* SnapDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F485854614D46E4300B007CA /* SnapDragon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapDragon-Info.plist"; sourceTree = "<group>"; };
@@ -68,6 +69,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F467F38B14D5A44A00246ABB /* STPathTextField */ = {
+			isa = PBXGroup;
+			children = (
+				F485857314D4796A00B007CA /* STPathTextField.h */,
+				F485857414D4796A00B007CA /* STPathTextField.m */,
+			);
+			name = STPathTextField;
+			sourceTree = "<group>";
+		};
+		F467F38C14D5A45700246ABB /* STPrivilegedTask */ = {
+			isa = PBXGroup;
+			children = (
+				F485857514D4796A00B007CA /* STPrivilegedTask.h */,
+				F485857614D4796A00B007CA /* STPrivilegedTask.m */,
+			);
+			name = STPrivilegedTask;
+			sourceTree = "<group>";
+		};
+		F467F38D14D5A46600246ABB /* Cocoa class extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
+				F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */,
+			);
+			name = "Cocoa class extensions";
+			sourceTree = "<group>";
+		};
 		F485852F14D46E4300B007CA = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +126,7 @@
 		F485854414D46E4300B007CA /* SnapDragon */ = {
 			isa = PBXGroup;
 			children = (
+				F467F38914D5A24100246ABB /* Common.h */,
 				F485857914D4797700B007CA /* App Controllers */,
 				F485857214D4796A00B007CA /* Auxiliary */,
 				F485854514D46E4300B007CA /* Supporting Files */,
@@ -132,12 +161,9 @@
 		F485857214D4796A00B007CA /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
-				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
-				F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */,
-				F485857314D4796A00B007CA /* STPathTextField.h */,
-				F485857414D4796A00B007CA /* STPathTextField.m */,
-				F485857514D4796A00B007CA /* STPrivilegedTask.h */,
-				F485857614D4796A00B007CA /* STPrivilegedTask.m */,
+				F467F38D14D5A46600246ABB /* Cocoa class extensions */,
+				F467F38B14D5A44A00246ABB /* STPathTextField */,
+				F467F38C14D5A45700246ABB /* STPrivilegedTask */,
 			);
 			path = Auxiliary;
 			sourceTree = SOURCE_ROOT;

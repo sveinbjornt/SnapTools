@@ -12,7 +12,7 @@
 - (UInt64) fileOrFolderSize: (NSString *)path;
 - (NSString *) fileOrFolderSizeAsHumanReadable: (NSString *)path;
 - (NSString *) sizeAsHumanReadable: (UInt64)size;
-- (BOOL) isFolder;
+- (BOOL) isFolder: (NSString *)path;
 @end
 
 @implementation NSFileManager (Description)
