@@ -23,6 +23,7 @@
 		F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857614D4796A00B007CA /* STPrivilegedTask.m */; };
 		F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857B14D4AB1200B007CA /* NSTask+Description.m */; };
 		F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */; };
+		F485858914D4CD1600B007CA /* ResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858814D4CD1600B007CA /* ResultItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		F485857614D4796A00B007CA /* STPrivilegedTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPrivilegedTask.m; sourceTree = "<group>"; };
 		F485857B14D4AB1200B007CA /* NSTask+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTask+Description.m"; path = "../SnapDragon/NSTask+Description.m"; sourceTree = "<group>"; };
 		F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+FileOrFolderSize.m"; path = "SnapDragon/NSFileManager+FileOrFolderSize.m"; sourceTree = SOURCE_ROOT; };
+		F485858714D4CD1500B007CA /* ResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultItem.h; sourceTree = "<group>"; };
+		F485858814D4CD1600B007CA /* ResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
 				F485855B14D46E8200B007CA /* ResultsController.h */,
 				F485855C14D46E8200B007CA /* ResultsController.m */,
+				F485858714D4CD1500B007CA /* ResultItem.h */,
+				F485858814D4CD1600B007CA /* ResultItem.m */,
 			);
 			name = "App Controllers";
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */,
 				F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */,
 				F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */,
+				F485858914D4CD1600B007CA /* ResultItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

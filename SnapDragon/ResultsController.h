@@ -10,6 +10,8 @@
 #import "NSTask+Description.m"
 #import "NSFileManager+FileOrFolderSize.m"
 #import <sys/stat.h>
+#import "ResultItem.h"
+#import "STPathTextField.h"
 
 @interface ResultsController: NSObject <NSTableViewDataSource, NSTableViewDelegate>
 {
@@ -19,7 +21,7 @@
     IBOutlet id     contextualMenu;
     IBOutlet id     progressIndicator;
     IBOutlet id     locateButton;
-    IBOutlet id     queryTextField;
+    IBOutlet STPathTextField *queryTextField;
     IBOutlet id     filterTextField;
     IBOutlet id     numResultsTextField;
     

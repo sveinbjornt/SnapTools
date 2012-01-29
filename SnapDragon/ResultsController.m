@@ -35,44 +35,38 @@
                                              selector: @selector(taskFinished:)
                                                  name: NSTaskDidTerminateNotification
                                                object: NULL];
+    [queryTextField setColorInvalidPath: NO];
 }
 
 #pragma mark - Results 
 
 - (void)addPath: (NSString *)path
 {
-    struct stat statInfo;
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys: path, @"Path", nil];
+    NSMutableDictionary *item = [ResultItem itemWithPath: path];
     
-    // icon
-    NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: path];
-    if (icon)
-    {
-        [icon setSize: NSMakeSize(16,16)];
-        [dict setObject: icon forKey: @"Icon"];
-    }
+    
     
     // get attributes
-    stat([path fileSystemRepresentation], &statInfo);
+    
     
     // file size
-    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_size] forKey: @"Size"];
-    totalSize += statInfo.st_size;
+//    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_size] forKey: @"Size"];
+//    totalSize += statInfo.st_size;
+//    
+//    // access date
+//    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_atime] forKey: @"AccessDate"];
+//    
+//    // create date
+//    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_birthtime] forKey: @"CreatedDate"];
+//    
+//    // modified date
+//    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_mtime] forKey: @"ModifiedDate"];
     
-    // access date
-    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_atime] forKey: @"AccessDate"];
-    
-    // create date
-    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_birthtime] forKey: @"CreatedDate"];
-    
-    // modified date
-    [dict setObject: [NSNumber numberWithUnsignedLongLong: statInfo.st_mtime] forKey: @"ModifiedDate"];
-    
-    [results addObject: [NSDictionary dictionaryWithDictionary: dict]];
+    [results addObject: item];
     
     if ([results count] % 10 == 0)
     {
-        //NSLog([dict description]);
+        //NSLog([item description]);
         
         [resultsTableView noteNumberOfRowsChanged];
         [self updateNumFiles];
@@ -118,7 +112,7 @@
 - (void)showInFinder: (NSInteger)index
 {
 	BOOL		isDir;
-	NSString	*path = [[results objectAtIndex: index] objectForKey: @"Path"];
+	NSString	*path = [[results objectAtIndex: index] path];
 	
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]) 
 	{
@@ -131,7 +125,7 @@
 
 - (void)openInFinder: (NSInteger)index
 {	
-	[[NSWorkspace sharedWorkspace] openFile: [[results objectAtIndex: index] objectForKey: @"Path"]];
+	[[NSWorkspace sharedWorkspace] openFile: [[results objectAtIndex: index] path]];
 }
 
 #pragma mark - Table View
@@ -147,28 +141,17 @@
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {	
-	if ([[aTableColumn identifier] caseInsensitiveCompare: @"2"] == NSOrderedSame)//path
-	{
-		// check if bundled file still exists at path
-        return([[results objectAtIndex: rowIndex] objectForKey: @"Path"]);
-	}
-	else if ([[aTableColumn identifier] caseInsensitiveCompare: @"1"] == NSOrderedSame)//icon
-	{
-        return [[results objectAtIndex: rowIndex] objectForKey: @"Icon"];
-	}
-	
-	return(@"");
+    return [[results objectAtIndex: rowIndex] attr: [aTableColumn identifier] ];
 }
 
 - (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard*)pboard 
 {
-    pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
 	NSMutableArray *filenames = [NSMutableArray arrayWithCapacity: [rowIndexes count]];
 	NSInteger index = [rowIndexes firstIndex];
 	
 	while (NSNotFound != index) 
 	{
-		[filenames addObject: [[results objectAtIndex: index] objectForKey: @"Path"]];
+		[filenames addObject: [[results objectAtIndex: index] attr: @"Path"]];
 		index = [rowIndexes indexGreaterThanIndex: index];
 	}
     

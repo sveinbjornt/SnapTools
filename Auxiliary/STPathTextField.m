@@ -27,9 +27,9 @@
  
  enum 
  {
- STNoAutocomplete = 0,
- STShellAutocomplete = 1,
- STBrowserAutocomplete = 2
+     STNoAutocomplete = 0,
+     STShellAutocomplete = 1,
+     STBrowserAutocomplete = 2
  };
  
  ************************ LICENSE ***************************
