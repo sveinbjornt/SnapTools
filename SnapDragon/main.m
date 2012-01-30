@@ -3,7 +3,7 @@
 //  SnapDragon
 //
 //  Created by Sveinbjorn Thordarson on 1/28/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Sveinbjorn Thordarson. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

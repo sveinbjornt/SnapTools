@@ -2,7 +2,7 @@
 //  ResultsTableView.m
 //
 //  Created by Sveinbjorn Thordarson on 1/26/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Sveinbjorn Thordarson. All rights reserved.
 //
 
 #import "ResultsController.h"
@@ -40,81 +40,64 @@
 }
 
 - (void)updateColumns
-{    
-    if ([[DEFAULTS objectForKey: @"ShowFileSize"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"Size"] == nil)
+{
+    for (NSString *attr in COLUMNS)
     {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Size"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Size"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowKind"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"Kind"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Kind"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Kind"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowUTI"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"UTI"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"UTI"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"UTI"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowDateCreated"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"CreatedDate"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"CreatedDate"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Date Created"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowDateAccessed"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"AccessedDate"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"AccessedDate"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Date Accessed"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowDateModified"] boolValue]  && [resultsTableView tableColumnWithIdentifier: @"ModifiedDate"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"ModifiedDate"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Date Modified"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowFilePermissions"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"Permissions"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"Permissions"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"Permissions"] autorelease]];
-        [resultsTableView addTableColumn: col];
-    }
-    if ([[DEFAULTS objectForKey: @"ShowUserGroup"] boolValue] && [resultsTableView tableColumnWithIdentifier: @"User:group"] == nil)
-    {
-        NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: @"User:Group"] autorelease];
-        [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: @"User:Group"] autorelease]];
-        [resultsTableView addTableColumn: col];
+        if ([[DEFAULTS objectForKey: attr] boolValue] && [resultsTableView tableColumnWithIdentifier: attr] == nil)
+        {
+            NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: attr] autorelease];
+            [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: attr] autorelease]];
+            [resultsTableView addTableColumn: col];
+        }
     }
 }
 
 - (void)menuDidClose:(NSMenu *)menu
 {
-    if (![[DEFAULTS objectForKey: @"ShowFileSize"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Size"]];
-    if (![[DEFAULTS objectForKey: @"ShowKind"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Kind"]];
-    if (![[DEFAULTS objectForKey: @"ShowUTI"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"UTI"]];
-    if (![[DEFAULTS objectForKey: @"ShowDateCreated"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"CreatedDate"]];
-    if (![[DEFAULTS objectForKey: @"ShowDateAccessed"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"AccessedDate"]];
-    if (![[DEFAULTS objectForKey: @"ShowDateModified"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"ModifiedDate"]];
-    if (![[DEFAULTS objectForKey: @"ShowFilePermissions"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Permissions"]];
-    if (![[DEFAULTS objectForKey: @"ShowUserGroup"] boolValue])
-        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"User:Group"]];
-    [self updateColumns];
+//    if (![[DEFAULTS objectForKey: @"ShowFileSize"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Size"]];
+//    if (![[DEFAULTS objectForKey: @"ShowKind"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Kind"]];
+//    if (![[DEFAULTS objectForKey: @"ShowUTI"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"UTI"]];
+//    if (![[DEFAULTS objectForKey: @"ShowDateCreated"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"CreatedDate"]];
+//    if (![[DEFAULTS objectForKey: @"ShowDateAccessed"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"AccessedDate"]];
+//    if (![[DEFAULTS objectForKey: @"ShowDateModified"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"ModifiedDate"]];
+//    if (![[DEFAULTS objectForKey: @"ShowFilePermissions"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"Permissions"]];
+//    if (![[DEFAULTS objectForKey: @"ShowUserGroup"] boolValue])
+//        [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: @"User:Group"]];
+//    [self updateColumns];
 
 }
 
 - (IBAction)columnChanged: (id)sender
 {
+    NSString *attr = [sender title];
+    
+    if (![sender state])
+        [self addColumnForAttr: attr];
+    else
+        [self removeColumnForAttr: attr];
+}
+
+-(void)addColumnForAttr: (NSString *)attr
+{
+    if ([resultsTableView tableColumnWithIdentifier: attr] != nil)
+        return;
+    NSLog(@"Adding column %@", attr);
+    NSTableColumn *col = [[[NSTableColumn alloc] initWithIdentifier: attr] autorelease];
+    [col setHeaderCell: [[[NSTableHeaderCell alloc] initTextCell: attr] autorelease]];
+    [resultsTableView addTableColumn: col];
+}
+
+-(void)removeColumnForAttr: (NSString *)attr
+{
+    NSLog(@"Removing column %@", attr);
+    [resultsTableView removeTableColumn: [resultsTableView tableColumnWithIdentifier: attr]];
 }
 
 #pragma mark - Results 

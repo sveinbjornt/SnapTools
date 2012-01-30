@@ -2,7 +2,7 @@
 //  ResultsTableView.h
 //
 //  Created by Sveinbjorn Thordarson on 1/26/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Sveinbjorn Thordarson. All rights reserved.
 //
 
 #import <AppKit/AppKit.h>
@@ -13,6 +13,8 @@
 #import "ResultItem.h"
 #import "STPathTextField.h"
 #import "Common.h"
+
+#define COLUMNS [NSArray arrayWithObjects: @"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI", nil]
 
 @interface ResultsController: NSObject <NSTableViewDataSource, NSTableViewDelegate>
 {

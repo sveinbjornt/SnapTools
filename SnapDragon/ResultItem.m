@@ -3,7 +3,7 @@
 //  SnapDragon
 //
 //  Created by Sveinbjorn Thordarson on 1/29/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Sveinbjorn Thordarson. All rights reserved.
 //
 
 #import "ResultItem.h"
@@ -55,15 +55,10 @@
 
 - (id)attr: (NSString *)key
 {
-    if (![self hasAttr: key])
-        return [self calcAttr: key];
+    if ([attr objectForKey: key] == nil)
+        [self calcAttr: key];
     
     return [attr objectForKey: key];
-}
-
-- (BOOL)hasAttr: (NSString *)theAttribute
-{
-    return !([attr objectForKey: theAttribute] == nil);
 }
 
 - (NSString *)path
@@ -87,7 +82,7 @@
         if (icon)
         {
             [icon setSize: NSMakeSize(16,16)];
-            [self setAttr: icon forKey: @"Icon"];
+            [self setAttr: icon forKey: theAttribute];
         }
     }
     // size
@@ -98,7 +93,7 @@
 //            if ([DEFAULTS objectForKey: @"CalculateFolderSizes"])
 //                [self setAttr: [FILEMGR fileOrFolderSizeAsHumanReadable: [self path]] forKey: @"Size"];
 //            else
-                [self setAttr: @"-" forKey: @"Size"];
+                [self setAttr: @"-" forKey: theAttribute];
         }
         else    
         {
@@ -109,29 +104,29 @@
                 sizeStr = [FILEMGR sizeAsHumanReadable: statInfo.st_size];
             else
                 sizeStr = [NSString stringWithFormat: @"%d", statInfo.st_size, nil];
-            [self setAttr: sizeStr forKey: @"Size"];
+            [self setAttr: sizeStr forKey: theAttribute];
         }
     }
     // created 
-    else if ([theAttribute isEqualToString: @"CreatedDate"])
+    else if ([theAttribute isEqualToString: @"Date Created"])
     {
         [self _stat];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970: statInfo.st_birthtime];
-        [self setAttr: [date description] forKey: @"CreatedDate"];
+        [self setAttr: [date description] forKey: theAttribute];
     }
     // accessed 
-    else if ([theAttribute isEqualToString: @"AccessedDate"])
+    else if ([theAttribute isEqualToString: @"Date Accessed"])
     {
         [self _stat];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970: statInfo.st_atime];
-        [self setAttr: [date description] forKey: @"AccessedDate"];
+        [self setAttr: [date description] forKey: theAttribute];
     }
     // modified 
-    else if ([theAttribute isEqualToString: @"ModifiedDate"])
+    else if ([theAttribute isEqualToString: @"Date Modified"])
     {
         [self _stat];
         NSDate *date = [NSDate dateWithTimeIntervalSince1970: statInfo.st_mtime];
-        [self setAttr: [date description] forKey: @"ModifiedDate"];
+        [self setAttr: [date description] forKey: theAttribute];
     }
     // kind
     else if ([theAttribute isEqualToString: @"Kind"])
@@ -141,18 +136,18 @@
         LSCopyKindStringForURL((CFURLRef)url, &kindStr);
         if (kindStr !=  nil)
         {
-            [self setAttr: [NSString stringWithString: (NSString*)kindStr] forKey: @"Kind"];
+            [self setAttr: [NSString stringWithString: (NSString*)kindStr] forKey: theAttribute];
             CFRelease(kindStr);
         }
         else
-            return @"";
+            [self setAttr: @"Unknown" forKey: theAttribute];
     }
     else if ([theAttribute isEqualToString: @"Permissions"])
     {
         [self _stat];
         char buf[20];
         strmode(statInfo.st_mode, (char *)&buf);
-        [self setAttr: [NSString stringWithCString: (char *)&buf encoding: NSUTF8StringEncoding] forKey: @"Permissions"];
+        [self setAttr: [NSString stringWithCString: (char *)&buf encoding: NSUTF8StringEncoding] forKey: theAttribute];
     }
     else if ([theAttribute isEqualToString: @"User:Group"])
     {
@@ -163,16 +158,15 @@
         NSString *user = [NSString stringWithCString: u encoding: NSUTF8StringEncoding];
         NSString *group = [NSString stringWithCString: g encoding: NSUTF8StringEncoding];
         NSString *ugStr = [NSString stringWithFormat: @"%@:%@", user, group, nil];
-        [self setAttr: ugStr forKey: @"User:Group"];
+        [self setAttr: ugStr forKey: theAttribute];
     }
     else if ([theAttribute isEqualToString: @"UTI"])
     {
         NSString *type = [[NSWorkspace sharedWorkspace] typeOfFile: [self path] error: nil];
         NSString *uti = (type == nil) ? @"" : type;
-        [self setAttr: uti forKey: @"UTI"];
+        [self setAttr: uti forKey: theAttribute];
     }
-    
-    return [self attr: theAttribute];
+    return [attr objectForKey: theAttribute];
 }
 
 #pragma mark - Actions

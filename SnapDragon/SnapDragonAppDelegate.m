@@ -3,7 +3,7 @@
 //  MacLocate
 //
 //  Created by Sveinbjorn Thordarson on 1/25/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Copyright 2012 Sveinbjorn Thordarson. All rights reserved.
 //
 
 #import "SnapDragonAppDelegate.h"
