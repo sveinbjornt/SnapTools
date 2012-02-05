@@ -13,6 +13,7 @@
 #import "ResultItem.h"
 #import "STPathTextField.h"
 #import "Common.h"
+#import "NSWorkspaceExtensions.h"
 
 #define COLUMNS [NSArray arrayWithObjects: @"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI", nil]
 
@@ -22,12 +23,15 @@
     IBOutlet id     resultsTableView;
     IBOutlet id     window;
     IBOutlet id     contextualMenu;
+    IBOutlet id     openWithMenuItem;
+    IBOutlet id     labelMenuItem;
     IBOutlet id     progressIndicator;
     IBOutlet id     locateButton;
     IBOutlet STPathTextField *queryTextField;
     IBOutlet id     filterTextField;
     IBOutlet id     numResultsTextField;
     IBOutlet id     tableColumnContextualMenu;
+    
     
     NSTask          *task;    
     NSTimer         *checkStatusTimer;

@@ -3617,6 +3617,30 @@
 					</object>
 					<int key="connectionID">887</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="680361168"/>
+						<reference key="destination" ref="476652728"/>
+					</object>
+					<int key="connectionID">889</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">openWithMenuItem</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="811808485"/>
+					</object>
+					<int key="connectionID">890</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">labelMenuItem</string>
+						<reference key="source" ref="476652728"/>
+						<reference key="destination" ref="646639002"/>
+					</object>
+					<int key="connectionID">891</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -5220,7 +5244,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">887</int>
+			<int key="maxID">891</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5299,8 +5323,10 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="contextualMenu">id</string>
 						<string key="filterTextField">id</string>
+						<string key="labelMenuItem">id</string>
 						<string key="locateButton">id</string>
 						<string key="numResultsTextField">id</string>
+						<string key="openWithMenuItem">id</string>
 						<string key="progressIndicator">id</string>
 						<string key="queryTextField">STPathTextField</string>
 						<string key="resultsTableView">id</string>
@@ -5316,12 +5342,20 @@
 							<string key="name">filterTextField</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="labelMenuItem">
+							<string key="name">labelMenuItem</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="locateButton">
 							<string key="name">locateButton</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="numResultsTextField">
 							<string key="name">numResultsTextField</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="openWithMenuItem">
+							<string key="name">openWithMenuItem</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="progressIndicator">

@@ -11,6 +11,9 @@
 		F430C24D14DEF3DC0026CBDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C24C14DEF3DC0026CBDB /* main.m */; };
 		F430C25114DEF3DC0026CBDB /* snap.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F430C25014DEF3DC0026CBDB /* snap.1 */; };
 		F430C26E14DF08DD0026CBDB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F430C26D14DF08DD0026CBDB /* Cocoa.framework */; };
+		F430C27B14DF33010026CBDB /* NSWorkspaceExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */; };
+		F430C28414DF333C0026CBDB /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */; };
+		F430C28514DF333C0026CBDB /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F485854914D46E4300B007CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F485854714D46E4300B007CA /* InfoPlist.strings */; };
 		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
@@ -50,6 +53,12 @@
 		F430C24F14DEF3DC0026CBDB /* snap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "snap-Prefix.pch"; sourceTree = "<group>"; };
 		F430C25014DEF3DC0026CBDB /* snap.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snap.1; sourceTree = "<group>"; };
 		F430C26D14DF08DD0026CBDB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F430C27914DF33010026CBDB /* NSWorkspaceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSWorkspaceExtensions.h; path = SnapDragon/NSWorkspaceExtensions.h; sourceTree = SOURCE_ROOT; };
+		F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSWorkspaceExtensions.m; path = SnapDragon/NSWorkspaceExtensions.m; sourceTree = SOURCE_ROOT; };
+		F430C28014DF333C0026CBDB /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "SnapDragon/NSString+CarbonFSRefCreation.h"; sourceTree = SOURCE_ROOT; };
+		F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "SnapDragon/NSString+CarbonFSRefCreation.m"; sourceTree = SOURCE_ROOT; };
+		F430C28214DF333C0026CBDB /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SymlinksAndAliases.h"; path = "SnapDragon/NSString+SymlinksAndAliases.h"; sourceTree = SOURCE_ROOT; };
+		F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SymlinksAndAliases.m"; path = "SnapDragon/NSString+SymlinksAndAliases.m"; sourceTree = SOURCE_ROOT; };
 		F467F38914D5A24100246ABB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* SnapDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -132,8 +141,14 @@
 		F467F38D14D5A46600246ABB /* Cocoa class extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F430C28014DF333C0026CBDB /* NSString+CarbonFSRefCreation.h */,
+				F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */,
+				F430C28214DF333C0026CBDB /* NSString+SymlinksAndAliases.h */,
+				F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */,
 				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
 				F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */,
+				F430C27914DF33010026CBDB /* NSWorkspaceExtensions.h */,
+				F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */,
 			);
 			name = "Cocoa class extensions";
 			sourceTree = "<group>";
@@ -324,6 +339,9 @@
 				F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */,
 				F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */,
 				F485858914D4CD1600B007CA /* ResultItem.m in Sources */,
+				F430C27B14DF33010026CBDB /* NSWorkspaceExtensions.m in Sources */,
+				F430C28414DF333C0026CBDB /* NSString+CarbonFSRefCreation.m in Sources */,
+				F430C28514DF333C0026CBDB /* NSString+SymlinksAndAliases.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

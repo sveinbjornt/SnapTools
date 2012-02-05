@@ -159,6 +159,60 @@
     [resultsTableView reloadData];
 }
 
+- (void)menuWillOpen:(NSMenu *)menu
+{
+	// we do this lazily
+    NSIndexSet *indexSet = [self selectedItems];
+    NSString *path = [[results objectAtIndex: [indexSet firstIndex]] path];
+    [openWithMenuItem setSubmenu: [self openWithMenuForFile: path]];
+}
+
+-(NSMenu *)openWithMenuForFile: (NSString *)path
+{
+	// create open with submenu
+	NSMenu *submenu = [[[NSMenu alloc] initWithTitle: @"Open With"] autorelease];
+	
+	//get default app for file
+	NSString *defaultApp = [[NSWorkspace sharedWorkspace] defaultApplicationForFile: path];
+	NSString *defaultAppName = [NSString stringWithFormat:@"%@ (default)", [[NSFileManager defaultManager] displayNameAtPath: defaultApp]];
+	
+	NSMenuItem *defaultAppItem = [submenu addItemWithTitle: defaultAppName action: @selector(openWithFinder:) keyEquivalent: @""];
+	NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: defaultApp];
+	[icon setSize: NSMakeSize(16,16)];
+	[defaultAppItem setImage: icon];
+	[defaultAppItem setTarget: self];
+	
+	[submenu addItem: [NSMenuItem separatorItem]];
+	
+	//get all apps that open this file
+	NSArray *apps = [[NSWorkspace sharedWorkspace] applicationsForFile: path];
+	if (apps == nil)
+		[submenu addItemWithTitle: @"None" action: nil keyEquivalent: @""];
+	
+	apps = [apps sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+	
+	int i;
+	for (i = 0; i < [apps count]; i++)
+	{
+		if ([[apps objectAtIndex: i] isEqualToString: defaultApp])
+			continue;
+		
+		NSString *title = [[NSFileManager defaultManager] displayNameAtPath: [apps objectAtIndex: i]];
+		
+		NSMenuItem *item = [submenu addItemWithTitle: title action: @selector(openWithSender:) keyEquivalent: @""];
+		
+		NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: [apps objectAtIndex: i]];
+		if (icon != nil)
+		{
+			[icon setSize: NSMakeSize(16,16)];
+			[item setImage: icon];
+		}
+		[item setTarget: self];
+	}
+	return submenu;
+}
+
+
 #pragma mark - File functions
 
 - (NSIndexSet *)selectedItems
@@ -169,7 +223,6 @@
     else
         return [NSIndexSet indexSetWithIndex: [resultsTableView clickedRow]];
 }
-
 
 - (void)performSelector: (SEL)selector onIndexes: (NSIndexSet *)indexSet
 {
