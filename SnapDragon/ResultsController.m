@@ -130,9 +130,10 @@
     {
         //NSLog([item description]);
         
-        [resultsTableView noteNumberOfRowsChanged];
-        [self updateNumFiles];
+        
     }
+    [self updateNumFiles];
+    [resultsTableView noteNumberOfRowsChanged];
 }
      
      
