@@ -14,6 +14,8 @@
 #import "STPathTextField.h"
 #import "Common.h"
 #import "NSWorkspaceExtensions.h"
+#import "NSString+InArray.h"
+
 
 #define COLUMNS [NSArray arrayWithObjects: @"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI", nil]
 
@@ -43,7 +45,8 @@
     UInt64          totalSize;
 
 }
--(IBAction)locate: (id)sender;
+- (NSIndexSet *)selectedItems;
+- (IBAction)locate: (id)sender;
 - (void)addPath: (NSString *)path;
 - (void)clear;
 - (IBAction)columnChanged: (id)sender;

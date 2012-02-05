@@ -12,6 +12,7 @@
 #import "Common.h"
 #include <pwd.h>
 #include <grp.h>
+#import "NSString+InArray.h"
 
 @interface ResultItem : NSObject
 {

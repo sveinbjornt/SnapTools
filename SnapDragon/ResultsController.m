@@ -162,54 +162,75 @@
 - (void)menuWillOpen:(NSMenu *)menu
 {
 	// we do this lazily
-    NSIndexSet *indexSet = [self selectedItems];
-    NSString *path = [[results objectAtIndex: [indexSet firstIndex]] path];
-    [openWithMenuItem setSubmenu: [self openWithMenuForFile: path]];
+    NSIndexSet  *indexSet       = [self selectedItems];
+    NSString    *path           = [[results objectAtIndex: [indexSet firstIndex]] path];
+    NSArray     *selectedItems  = [results objectsAtIndexes: [self selectedItems]];
+    
+    [openWithMenuItem setSubmenu: [self openWithMenuForItems: selectedItems]];
 }
 
--(NSMenu *)openWithMenuForFile: (NSString *)path
+-(NSMenuItem *)menuItemForApp: (NSString *)path
 {
-	// create open with submenu
+    NSString *title = [[NSFileManager defaultManager] displayNameAtPath: path];
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle: title action: @selector(openWithSender:) keyEquivalent: @""];
+    NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: path];
+    [icon setSize: NSMakeSize(16,16)];
+    [item setImage: icon];
+    [item setTarget: self];
+    return [item autorelease];
+}
+
+-(NSMenu *)openWithMenuForItems: (NSArray *)items
+{
 	NSMenu *submenu = [[[NSMenu alloc] initWithTitle: @"Open With"] autorelease];
-	
-	//get default app for file
-	NSString *defaultApp = [[NSWorkspace sharedWorkspace] defaultApplicationForFile: path];
-	NSString *defaultAppName = [NSString stringWithFormat:@"%@ (default)", [[NSFileManager defaultManager] displayNameAtPath: defaultApp]];
-	
-	NSMenuItem *defaultAppItem = [submenu addItemWithTitle: defaultAppName action: @selector(openWithFinder:) keyEquivalent: @""];
-	NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: defaultApp];
-	[icon setSize: NSMakeSize(16,16)];
-	[defaultAppItem setImage: icon];
-	[defaultAppItem setTarget: self];
-	
-	[submenu addItem: [NSMenuItem separatorItem]];
-	
-	//get all apps that open this file
-	NSArray *apps = [[NSWorkspace sharedWorkspace] applicationsForFile: path];
-	if (apps == nil)
-		[submenu addItemWithTitle: @"None" action: nil keyEquivalent: @""];
-	
-	apps = [apps sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-	
-	int i;
-	for (i = 0; i < [apps count]; i++)
-	{
-		if ([[apps objectAtIndex: i] isEqualToString: defaultApp])
-			continue;
-		
-		NSString *title = [[NSFileManager defaultManager] displayNameAtPath: [apps objectAtIndex: i]];
-		
-		NSMenuItem *item = [submenu addItemWithTitle: title action: @selector(openWithSender:) keyEquivalent: @""];
-		
-		NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile: [apps objectAtIndex: i]];
-		if (icon != nil)
-		{
-			[icon setSize: NSMakeSize(16,16)];
-			[item setImage: icon];
-		}
-		[item setTarget: self];
-	}
-	return submenu;
+    if (![items count])
+    {
+        [submenu addItemWithTitle: @"None" action: nil keyEquivalent: @""];
+        [submenu addItem: [NSMenuItem separatorItem]];
+        [submenu addItemWithTitle: @"Select..." action: nil keyEquivalent: @""];
+        return submenu;
+    }
+    
+    //get default app for first file, and then separator
+    NSArray *firstFileApps = [[items objectAtIndex: 0] attr: @"HandlerApps"];
+    if (!firstFileApps || ![firstFileApps count])
+    {
+        [submenu addItemWithTitle: @"None" action: nil keyEquivalent: @""];
+        [submenu addItem: [NSMenuItem separatorItem]];
+        [submenu addItemWithTitle: @"Select..." action: nil keyEquivalent: @""];
+        return submenu;
+    }
+    
+    NSString *defaultAppPath = ([items count] > 1) ? nil : [firstFileApps objectAtIndex: 0];
+    if (defaultAppPath)
+    {
+        [submenu addItem: [self menuItemForApp: defaultAppPath]];
+        [submenu addItem: [NSMenuItem separatorItem]];
+    }
+    
+    // build up array of items
+    NSMutableArray *apps = [NSMutableArray arrayWithCapacity: 255];
+    int i;
+    for (i = 0; i < [items count]; i++)
+    {
+        //get all apps that open this file and append to apps
+        NSArray *appsForFile = [[items objectAtIndex: i] attr: @"HandlerApps"];
+        for (NSString *app in appsForFile)
+            if (![app inArray: apps] && !(defaultAppPath && [app isEqualToString: defaultAppPath]))
+                [apps addObject: app];
+    }
+        
+    if ([apps count] == 0)
+        [submenu addItemWithTitle: @"None" action: nil keyEquivalent: @""];
+    else
+    {
+        for (NSString *appPath in [apps sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)])
+            [submenu addItem: [self menuItemForApp: appPath]];
+    }
+    
+    [submenu addItem: [NSMenuItem separatorItem]];
+    [submenu addItemWithTitle: @"Select..." action: nil keyEquivalent: @""];
+    return submenu;
 }
 
 
@@ -232,12 +253,30 @@
      }];
 }
 
+- (void)performSelector: (SEL)selector onIndexes: (NSIndexSet *)indexSet withObject: (id)obj
+{
+    [[resultsTableView selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger row, BOOL *stop) 
+     {
+         [[results objectAtIndex: row] performSelector: selector withObject: obj];
+     }];
+}
+
 - (void)open: (id)sender
 {	
 	if(GetCurrentKeyModifiers() & cmdKey)
         [self performSelector: @selector(showInFinder) onIndexes: [self selectedItems]];
     else
         [self performSelector: @selector(openInFinder) onIndexes: [self selectedItems]];
+}
+
+-(IBAction)selectAppOpenWith: (id)sender
+{
+    
+}
+
+-(IBAction)openWithSender: (id)sender
+{
+    [self performSelector: @selector(openWithApplication:) onIndexes: [self selectedItems] withObject: [sender title]];
 }
 
 - (IBAction)showInFinder:(id)sender

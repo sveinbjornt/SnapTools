@@ -166,6 +166,24 @@
         NSString *uti = (type == nil) ? @"" : type;
         [self setAttr: uti forKey: theAttribute];
     }
+    else if ([theAttribute isEqualToString: @"HandlerApps"])
+    {
+        NSMutableArray *apps = [NSMutableArray array];
+        
+        // first, get default app
+        NSString *defaultApp = [[NSWorkspace sharedWorkspace] defaultApplicationForFile: [self path]];   
+        [apps addObject: defaultApp];
+        
+        // then, add all the others alphabetically
+        NSMutableArray *otherApps = [NSMutableArray array];
+        
+        NSArray *appsForFile = [[NSWorkspace sharedWorkspace] applicationsForFile: [self path]];
+        for (NSString *app in appsForFile)
+            if (![app isEqualToString: defaultApp])
+                [apps addObject: app];
+        [self setAttr: apps forKey: @"HandlerApps"];
+    }
+    
     return [attr objectForKey: theAttribute];
 }
 
@@ -178,7 +196,7 @@
 
 -(void)openWithApplication: (NSString *)appName
 {
-    
+    [[NSWorkspace sharedWorkspace] openFile: [self path] withApplication: appName];
 }
 
 - (void)showInFinder

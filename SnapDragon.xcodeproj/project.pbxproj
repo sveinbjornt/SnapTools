@@ -31,6 +31,7 @@
 		F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857B14D4AB1200B007CA /* NSTask+Description.m */; };
 		F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */; };
 		F485858914D4CD1600B007CA /* ResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858814D4CD1600B007CA /* ResultItem.m */; };
+		F4CC3BC014DF42A7004025D9 /* NSString+InArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC3BBF14DF42A7004025D9 /* NSString+InArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,6 +86,8 @@
 		F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+FileOrFolderSize.m"; path = "SnapDragon/NSFileManager+FileOrFolderSize.m"; sourceTree = SOURCE_ROOT; };
 		F485858714D4CD1500B007CA /* ResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultItem.h; sourceTree = "<group>"; };
 		F485858814D4CD1600B007CA /* ResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultItem.m; sourceTree = "<group>"; };
+		F4CC3BBE14DF42A7004025D9 /* NSString+InArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+InArray.h"; path = "SnapDragon/NSString+InArray.h"; sourceTree = SOURCE_ROOT; };
+		F4CC3BBF14DF42A7004025D9 /* NSString+InArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+InArray.m"; path = "SnapDragon/NSString+InArray.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 		F467F38D14D5A46600246ABB /* Cocoa class extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F4CC3BBE14DF42A7004025D9 /* NSString+InArray.h */,
+				F4CC3BBF14DF42A7004025D9 /* NSString+InArray.m */,
 				F430C28014DF333C0026CBDB /* NSString+CarbonFSRefCreation.h */,
 				F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */,
 				F430C28214DF333C0026CBDB /* NSString+SymlinksAndAliases.h */,
@@ -342,6 +347,7 @@
 				F430C27B14DF33010026CBDB /* NSWorkspaceExtensions.m in Sources */,
 				F430C28414DF333C0026CBDB /* NSString+CarbonFSRefCreation.m in Sources */,
 				F430C28514DF333C0026CBDB /* NSString+SymlinksAndAliases.m in Sources */,
+				F4CC3BC014DF42A7004025D9 /* NSString+InArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
