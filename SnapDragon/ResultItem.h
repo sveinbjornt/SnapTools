@@ -13,6 +13,7 @@
 #include <pwd.h>
 #include <grp.h>
 #import "NSString+InArray.h"
+#import "NSWorkspaceExtensions.h"
 
 @interface ResultItem : NSObject
 {

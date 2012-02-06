@@ -20,7 +20,7 @@
 	
 	NSArray *applications = (NSArray *)LSCopyApplicationURLsForURL((CFURLRef)url, kLSRolesAll);
 	if (applications == NULL)
-		return nil;
+		return [NSArray array];
 	
 	[applications autorelease];
 	

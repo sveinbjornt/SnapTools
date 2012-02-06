@@ -168,20 +168,20 @@
     }
     else if ([theAttribute isEqualToString: @"HandlerApps"])
     {
-        NSMutableArray *apps = [NSMutableArray array];
+        NSMutableArray *apps = [NSMutableArray arrayWithCapacity: 255];
         
         // first, get default app
-        NSString *defaultApp = [[NSWorkspace sharedWorkspace] defaultApplicationForFile: [self path]];   
-        [apps addObject: defaultApp];
+        NSString *defaultApp = [[NSWorkspace sharedWorkspace] defaultApplicationForFile: [self path]];
+        if (defaultApp)
+            [apps addObject: defaultApp];
         
-        // then, add all the others alphabetically
-        NSMutableArray *otherApps = [NSMutableArray array];
-        
+        // then, add other apps, excluding any duplicates of the default app, which is first
         NSArray *appsForFile = [[NSWorkspace sharedWorkspace] applicationsForFile: [self path]];
         for (NSString *app in appsForFile)
-            if (![app isEqualToString: defaultApp])
+            if (!(defaultApp && [app isEqualToString: defaultApp]))
                 [apps addObject: app];
-        [self setAttr: apps forKey: @"HandlerApps"];
+        
+        [self setAttr: apps forKey: theAttribute];
     }
     
     return [attr objectForKey: theAttribute];
