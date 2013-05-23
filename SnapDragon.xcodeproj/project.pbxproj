@@ -289,6 +289,9 @@
 /* Begin PBXProject section */
 		F485853114D46E4300B007CA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = F485853414D46E4300B007CA /* Build configuration list for PBXProject "SnapDragon" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -447,6 +450,7 @@
 		F485855914D46E4300B007CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapDragon/SnapDragon-Prefix.pch";
 				INFOPLIST_FILE = "SnapDragon/SnapDragon-Info.plist";
@@ -458,6 +462,7 @@
 		F485855A14D46E4300B007CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SnapDragon/SnapDragon-Prefix.pch";
 				INFOPLIST_FILE = "SnapDragon/SnapDragon-Info.plist";
