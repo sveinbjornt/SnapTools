@@ -13,11 +13,11 @@
 @interface NSWorkspace (MSExtensions)
 
 - (NSArray *)applicationsForFile:(NSString *)filePath;
-- (NSString *)defaultApplicationForFile: (NSString *)filePath;
+- (NSString *)defaultApplicationForFile:(NSString *)filePath;
 
 - (void)setLabel:(NSUInteger)label forFile:(NSString *)filePath;
-- (int)labelNumberForFile: (NSString *)path;
-- (NSString *)labelNameForFile: (NSString *)path;
-- (NSColor *)labelColorForFile: (NSString *)path;
+- (int)labelNumberForFile:(NSString *)path;
+- (NSString *)labelNameForFile:(NSString *)path;
+- (NSColor *)labelColorForFile:(NSString *)path;
 
 @end

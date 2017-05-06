@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (InArray)
--(BOOL)inArray: (NSArray *)arr;
+-(BOOL)inArray:(NSArray *)arr;
 @end

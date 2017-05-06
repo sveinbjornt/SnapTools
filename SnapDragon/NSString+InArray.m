@@ -10,11 +10,10 @@
 
 @implementation NSString (InArray)
 
--(BOOL)inArray: (NSArray *)arr
-{
+-(BOOL)inArray:(NSArray *)arr {
     for (id obj in arr)
-        if (obj && [obj isKindOfClass: [NSString class]])
-            if ([self isEqualToString: (NSString *)obj])
+        if (obj && [obj isKindOfClass:[NSString class]])
+            if ([self isEqualToString:(NSString *)obj])
                 return YES;
     return NO;
 }

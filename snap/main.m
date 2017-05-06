@@ -1,174 +1,263 @@
-//
-//  main.m
-//  snap
-//
-//  Created by Sveinbjorn Thordarson on 2/5/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
-//
+/*
+ Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+ 
+ 1. Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer.
+ 
+ 2. Redistributions in binary form must reproduce the above copyright notice, this
+ list of conditions and the following disclaimer in the documentation and/or other
+ materials provided with the distribution.
+ 
+ 3. Neither the name of the copyright holder nor the names of its contributors may
+ be used to endorse or promote products derived from this software without specific
+ prior written permission.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+*/
 
 #import <Cocoa/Cocoa.h>
+
 #import <unistd.h>
 #import <stdio.h>
+#import <sysexits.h>
+#import <getopt.h>
+
 #import "Common.h"
 
-
-static NSString* MakeRandomTempFile (void);
 static NSString* MakeAbsolutePath (NSString *path);
-static void NSPrintErr (NSString *format, ...);
-static void NSPrint (NSString *format, ...);
+static NSString *Trim(NSString *str);
+static void NSPrintErr(NSString *format, ...);
+static void NSPrint(NSString *format, ...);
+static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
+static NSString *ReadStandardInput();
+static NSMutableSet *ParseForPaths(NSString *str);
+static void SendOpenDocumentAppleEvent(NSSet *paths);
+static void PrintVersion(void);
+static void PrintHelp(void);
 
-int main (int argc, const char * argv[])
+static const char optstring[] = "vh";
+
+static struct option long_options[] =
 {
-    NSAutoreleasePool   *pool = [[NSAutoreleasePool alloc] init];
-    NSMutableArray      *args = [NSMutableArray arrayWithCapacity: ARG_MAX];
+    {"version",                 no_argument,            0,  'v'},
+    {"help",                    no_argument,            0,  'h'},
+    {0,                         0,                      0,    0}
+};
 
-    // create nsarray of args
-    int i;
-    for (i = 1; i < argc; i++)
-    {
-        NSString *path = MakeAbsolutePath([NSString stringWithCString: argv[i] encoding: NSUTF8StringEncoding]);
-        [args addObject: path];
-    }
+#pragma mark -
+
+int main(int argc, const char * argv[]) { @autoreleasepool {
     
-    // if a single arg
-    if ([args count] == 1)
-    {
-        NSString *path = [args objectAtIndex: 0];
-        if (![FILEMGR fileExistsAtPath: path])
-        {
-            NSPrintErr(@"File does not exist: %@", path, nil);
-            exit(1);
-        }
+    int optch;
+    int long_index = 0;
+    
+    // parse getopt
+    while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         
-        [[NSWorkspace sharedWorkspace] openFile: path withApplication: @"SnapDragon"];
-        exit(0);
-    }
-    
-    NSString *tmpFile = MakeRandomTempFile();;
-    
-    // if zero args, we read from stdin
-    if ([args count] == 0)
-    {
-        // read data
-        NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
-        if (!inData)
-        {
-            NSPrintErr(@"Empty buffer, aborting.");
-            exit(1);
-        }
-        
-        // conver to string
-        NSString *inStr = [[NSString alloc] initWithData: inData encoding: NSUTF8StringEncoding];
-        if (!inStr)
-        {
-            NSPrintErr(@"Cannot handle non-text data.");
-            exit(1);
-        }
-        NSArray *paths = [inStr componentsSeparatedByString: @"\n"];
-        NSString *outStr = @"";
-        for (NSString *path in paths)
-        {
-            if (![path isEqualToString: @""])
-            {
-                NSString *absPath   = MakeAbsolutePath(path);
-                NSString *fmt       = (path == [paths lastObject]) ? @"%@" : @"%@\n";
+        switch (optch) {
                 
-                outStr = [outStr stringByAppendingFormat: fmt, absPath, nil];
+            // print version
+            case 'v':
+            {
+                PrintVersion();
+                exit(EX_OK);
+            }
+                break;
+                
+            // print help with list of options
+            case 'h':
+            default:
+            {
+                PrintHelp();
+                exit(EX_OK);
+            }
+                break;
+        }
+    }
+
+    
+    // read remaining args
+    NSMutableArray *remainingArgs = [NSMutableArray array];
+    while (optind < argc) {
+        NSString *argStr = @(argv[optind]);
+        [remainingArgs addObject:argStr];
+        optind += 1;
+    }
+    
+    NSMutableSet *paths = [NSMutableSet set];
+    
+    // read standard input if no file args
+    if ([remainingArgs count] == 0) {
+        
+        NSString *standardInput = ReadStandardInput();
+        if (!standardInput) {
+            return EX_NOINPUT;
+        }
+        paths = ParseForPaths(standardInput);
+        
+    } else {
+        
+        // process file args
+        for (NSString *filePath in remainingArgs) {
+            NSString *f = MakeAbsolutePath(filePath);
+            if ([[NSFileManager defaultManager] fileExistsAtPath:f]) {
+                [paths addObject:f];
+            } else {
+                NSPrint(@"No such file or directory: %@", f);
             }
         }
         
-        // write to temp file
-        [outStr writeToFile: tmpFile  atomically: NO encoding: NSUTF8StringEncoding error: nil];
+        // a single directory as arg means we list contents
+        if ([paths count] == 1) {
+            NSString *p = [paths anyObject];
+            BOOL isDir = NO;
+            if ([[NSFileManager defaultManager] fileExistsAtPath:p isDirectory:&isDir] && isDir) {
+                paths = ReadDirectoryContents(p);
+            }
+        }
     }
-    else
-    {
-        NSString *str = @"";
-        
-        for (NSString *path in args)
-            str = [str stringByAppendingFormat: @"%@\n", path, nil];
-        
-        [str writeToFile: tmpFile atomically: NO encoding: NSUTF8StringEncoding error: nil];
-    }
-    
-    // make sure file was created
-    if (![FILEMGR fileExistsAtPath: tmpFile])
-    {
-        NSPrintErr(@"Error creating file %@", tmpFile, nil);
-        exit(1);
+
+    for (NSString *p in paths) {
+        NSPrint(@"%@", p);
     }
     
-    // open file w. SnapDragon app
-    [[NSWorkspace sharedWorkspace] openFile: tmpFile withApplication: @"SnapDragon"];
-         
-    [pool drain];
-    return 0;
+    // OK, now we have the paths. Hand them over to SnapDragon app via Apple Event
+    if ([paths count]) {
+        SendOpenDocumentAppleEvent(paths);
+    } else {
+        NSPrintErr(@"No paths provided");
+        exit(EX_USAGE);
+    }
+    
+    return EX_OK;
+} }
+
+#pragma mark -
+
+static NSMutableSet *ReadDirectoryContents(NSString *dirPath) {
+    NSMutableSet *pathSet = [NSMutableSet set];
+    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dirPath error:nil];
+    for (NSString *item in dirContents) {
+        NSString *fpath = [dirPath stringByAppendingPathComponent:item];
+        [pathSet addObject:fpath];
+    }
+    return pathSet;
 }
 
-static NSString* MakeAbsolutePath (NSString *path)
-{
-    path = [path stringByExpandingTildeInPath];
-    if ([path isAbsolutePath] == NO)
-        path = [[FILEMGR currentDirectoryPath] stringByAppendingPathComponent: path];
-    return [path stringByStandardizingPath];
+static NSMutableSet *ParseForPaths(NSString *str) {
+    NSMutableSet *potentialPaths = [NSMutableSet set];
+    
+    // Separate each line of input, parse it for potential paths
+    NSArray *lines = [str componentsSeparatedByString:@"\n"];
+    for (NSString *l in lines) {
+        NSString *line = Trim(l);
+        
+        // is the full line a valid path?
+        NSString *abs = MakeAbsolutePath(line);
+        if ([[NSFileManager defaultManager] fileExistsAtPath:abs]) {
+            [potentialPaths addObject:line];
+            continue;
+        }
+        
+        // otherwise, try to find a path within the string
+        NSUInteger len = [line length];
+        for (int i = 0; i < len; i++) {
+            if ([line characterAtIndex:i] == ' ') {
+                [potentialPaths addObject:Trim([line substringToIndex:i])];
+                [potentialPaths addObject:Trim([line substringFromIndex:i])];
+            }
+        }
+    }
+    
+    // Standardise paths and filter out invalid ones
+    NSMutableSet *paths = [NSMutableSet set];
+    for (NSString *p in potentialPaths) {
+        NSString *absPath = MakeAbsolutePath(p);
+        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath]) {
+            [paths addObject:absPath];
+        }
+    }
+    return paths;
 }
 
-static NSString* MakeRandomTempFile (void)
-{
-    // generate path for tmp file
-    NSString *tempFileTemplate = [SNAP_TMP_DIR stringByAppendingPathComponent: TMP_SCRIPT_TEMPLATE];
-    const char *tempFileTemplateCString = [tempFileTemplate fileSystemRepresentation];
-    char *tempFileNameCString = (char *)malloc(strlen(tempFileTemplateCString) + 1);
-    strcpy(tempFileNameCString, tempFileTemplateCString);
+static void SendOpenDocumentAppleEvent(NSSet *paths) {
     
-    // use mkstemp to expand template
-    int fileDescriptor = mkstemp(tempFileNameCString);
-    if (fileDescriptor == -1)
+    // convert path strings to url objects
+    NSMutableArray *urls = [NSMutableArray array];
+    for (NSString *p in paths) {
+        [urls addObject:[NSURL fileURLWithPath:p]];
+    }
+    
+    [[NSWorkspace sharedWorkspace] openURLs:urls
+                    withAppBundleIdentifier:PROGRAM_BUNDLE_IDENTIFIER
+                                    options:NSWorkspaceLaunchDefault
+             additionalEventParamDescriptor:nil
+                          launchIdentifiers:NULL];
+}
+
+static NSString *Trim(NSString *str) {
+    return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+static NSString *MakeAbsolutePath(NSString *path) {
+    NSString *absPath = [path stringByExpandingTildeInPath];
+    if ([absPath isAbsolutePath] == NO) {
+        absPath = [[[NSFileManager defaultManager] currentDirectoryPath] stringByAppendingPathComponent:path];
+    }
+    return [absPath stringByStandardizingPath];
+}
+
+static NSString *ReadStandardInput() {
+    NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
+    if (!inData) {
         return nil;
-    close(fileDescriptor);
-    
-    // create nsstring from the c-string temp path
-    NSString *tempScriptPath = [FILEMGR stringWithFileSystemRepresentation:tempFileNameCString length:strlen(tempFileNameCString)];
-    free(tempFileNameCString);
-    
-    return tempScriptPath;
+    }
+    return [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];;
 }
 
 #pragma mark -
 
-static void NSPrint (NSString *format, ...)
-{
-    va_list args;
-	
-    va_start (args, format);
-	
-    NSString *string;
-	
-    string = [[NSString alloc] initWithFormat: format  arguments: args];
-	
-    va_end (args);
-	
-	fprintf(stdout, "%s\n", [string UTF8String]);
-	
-    [string release];	
+static void PrintVersion(void) {
+    NSPrint(@"snap version %@", PROGRAM_VERSION);
 }
 
-static void NSPrintErr (NSString *format, ...)
-{
+static void PrintHelp(void) {
+    NSPrint(@"usage: snap [args ...]");
+}
+
+#pragma mark -
+
+// print to stdout
+static void NSPrint(NSString *format, ...) {
     va_list args;
-	
-    va_start (args, format);
-	
-    NSString *string;
-	
-    string = [[NSString alloc] initWithFormat: format  arguments: args];
-	
-    va_end (args);
-	
+    
+    va_start(args, format);
+    NSString *string  = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    
+    fprintf(stdout, "%s\n", [string UTF8String]);
+}
+
+// print to stderr
+static void NSPrintErr(NSString *format, ...) {
+    va_list args;
+    
+    va_start(args, format);
+    NSString *string  = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    
     fprintf(stderr, "%s\n", [string UTF8String]);
-	
-    [string release];
-	
-} 
-
-
-
+}

@@ -222,8 +222,7 @@
 				if (resolvedUrl != NULL)
 				{
 					resolvedPath =
-						[(id)CFURLCopyFileSystemPath(resolvedUrl, kCFURLPOSIXPathStyle)
-							autorelease];
+						(id)CFBridgingRelease(CFURLCopyFileSystemPath(resolvedUrl, kCFURLPOSIXPathStyle));
 					CFRelease(resolvedUrl);
 				}
 			}

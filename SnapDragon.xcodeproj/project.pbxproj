@@ -7,28 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F42730901EAFA3D400F3F7A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F430C24A14DEF3DC0026CBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F430C24914DEF3DC0026CBDB /* Foundation.framework */; };
 		F430C24D14DEF3DC0026CBDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C24C14DEF3DC0026CBDB /* main.m */; };
 		F430C25114DEF3DC0026CBDB /* snap.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F430C25014DEF3DC0026CBDB /* snap.1 */; };
-		F430C26E14DF08DD0026CBDB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F430C26D14DF08DD0026CBDB /* Cocoa.framework */; };
 		F430C27B14DF33010026CBDB /* NSWorkspaceExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */; };
 		F430C28414DF333C0026CBDB /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */; };
 		F430C28514DF333C0026CBDB /* NSString+SymlinksAndAliases.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
-		F485854914D46E4300B007CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F485854714D46E4300B007CA /* InfoPlist.strings */; };
 		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
 		F485854F14D46E4300B007CA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F485854D14D46E4300B007CA /* Credits.rtf */; };
 		F485855214D46E4300B007CA /* SnapDragonAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */; };
 		F485855514D46E4300B007CA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F485855314D46E4300B007CA /* MainMenu.xib */; };
 		F485855F14D46E8200B007CA /* ResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855C14D46E8200B007CA /* ResultsController.m */; };
-		F485856214D46EB800B007CA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485856114D46EB800B007CA /* Security.framework */; };
 		F485856614D46ED900B007CA /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = F485856414D46ED900B007CA /* delete.png */; };
 		F485856714D46ED900B007CA /* trash2.png in Resources */ = {isa = PBXBuildFile; fileRef = F485856514D46ED900B007CA /* trash2.png */; };
-		F485856D14D46F2100B007CA /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485856C14D46F2100B007CA /* Carbon.framework */; };
 		F485857014D470A200B007CA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F485856F14D470A200B007CA /* Defaults.plist */; };
-		F485857714D4796A00B007CA /* STPathTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857414D4796A00B007CA /* STPathTextField.m */; };
-		F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857614D4796A00B007CA /* STPrivilegedTask.m */; };
-		F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */ = {isa = PBXBuildFile; fileRef = F485857B14D4AB1200B007CA /* NSTask+Description.m */; };
 		F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */; };
 		F485858914D4CD1600B007CA /* ResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858814D4CD1600B007CA /* ResultItem.m */; };
 		F4CC3BC014DF42A7004025D9 /* NSString+InArray.m in Sources */ = {isa = PBXBuildFile; fileRef = F4CC3BBF14DF42A7004025D9 /* NSString+InArray.m */; };
@@ -51,38 +45,27 @@
 		F430C24714DEF3DC0026CBDB /* snap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = snap; sourceTree = BUILT_PRODUCTS_DIR; };
 		F430C24914DEF3DC0026CBDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F430C24C14DEF3DC0026CBDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F430C24F14DEF3DC0026CBDB /* snap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "snap-Prefix.pch"; sourceTree = "<group>"; };
 		F430C25014DEF3DC0026CBDB /* snap.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snap.1; sourceTree = "<group>"; };
-		F430C26D14DF08DD0026CBDB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F430C27914DF33010026CBDB /* NSWorkspaceExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSWorkspaceExtensions.h; path = SnapDragon/NSWorkspaceExtensions.h; sourceTree = SOURCE_ROOT; };
 		F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSWorkspaceExtensions.m; path = SnapDragon/NSWorkspaceExtensions.m; sourceTree = SOURCE_ROOT; };
 		F430C28014DF333C0026CBDB /* NSString+CarbonFSRefCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+CarbonFSRefCreation.h"; path = "SnapDragon/NSString+CarbonFSRefCreation.h"; sourceTree = SOURCE_ROOT; };
 		F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+CarbonFSRefCreation.m"; path = "SnapDragon/NSString+CarbonFSRefCreation.m"; sourceTree = SOURCE_ROOT; };
 		F430C28214DF333C0026CBDB /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SymlinksAndAliases.h"; path = "SnapDragon/NSString+SymlinksAndAliases.h"; sourceTree = SOURCE_ROOT; };
 		F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SymlinksAndAliases.m"; path = "SnapDragon/NSString+SymlinksAndAliases.m"; sourceTree = SOURCE_ROOT; };
-		F467F38914D5A24100246ABB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		F467F38914D5A24100246ABB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = SnapDragon/Common.h; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* SnapDragon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDragon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F485854614D46E4300B007CA /* SnapDragon-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapDragon-Info.plist"; sourceTree = "<group>"; };
-		F485854814D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F485854A14D46E4300B007CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F485854C14D46E4300B007CA /* SnapDragon-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SnapDragon-Prefix.pch"; sourceTree = "<group>"; };
 		F485854E14D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapDragonAppDelegate.h; sourceTree = "<group>"; };
 		F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapDragonAppDelegate.m; sourceTree = "<group>"; };
 		F485855414D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F485855B14D46E8200B007CA /* ResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsController.h; sourceTree = "<group>"; };
 		F485855C14D46E8200B007CA /* ResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsController.m; sourceTree = "<group>"; };
-		F485856114D46EB800B007CA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../System/Library/Frameworks/Security.framework; sourceTree = "<group>"; };
 		F485856414D46ED900B007CA /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		F485856514D46ED900B007CA /* trash2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash2.png; sourceTree = "<group>"; };
-		F485856C14D46F2100B007CA /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = ../../../../System/Library/Frameworks/Carbon.framework; sourceTree = "<group>"; };
 		F485856F14D470A200B007CA /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
-		F485857314D4796A00B007CA /* STPathTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPathTextField.h; sourceTree = "<group>"; };
-		F485857414D4796A00B007CA /* STPathTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPathTextField.m; sourceTree = "<group>"; };
-		F485857514D4796A00B007CA /* STPrivilegedTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPrivilegedTask.h; sourceTree = "<group>"; };
-		F485857614D4796A00B007CA /* STPrivilegedTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPrivilegedTask.m; sourceTree = "<group>"; };
-		F485857B14D4AB1200B007CA /* NSTask+Description.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTask+Description.m"; path = "../SnapDragon/NSTask+Description.m"; sourceTree = "<group>"; };
 		F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+FileOrFolderSize.m"; path = "SnapDragon/NSFileManager+FileOrFolderSize.m"; sourceTree = SOURCE_ROOT; };
 		F485858714D4CD1500B007CA /* ResultItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultItem.h; sourceTree = "<group>"; };
 		F485858814D4CD1600B007CA /* ResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultItem.m; sourceTree = "<group>"; };
@@ -95,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F430C26E14DF08DD0026CBDB /* Cocoa.framework in Frameworks */,
+				F42730901EAFA3D400F3F7A5 /* Cocoa.framework in Frameworks */,
 				F430C24A14DEF3DC0026CBDB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,8 +88,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */,
-				F485856214D46EB800B007CA /* Security.framework in Frameworks */,
-				F485856D14D46F2100B007CA /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,53 +97,17 @@
 		F430C24B14DEF3DC0026CBDB /* snap */ = {
 			isa = PBXGroup;
 			children = (
-				F430C24F14DEF3DC0026CBDB /* snap-Prefix.pch */,
 				F430C24C14DEF3DC0026CBDB /* main.m */,
 				F430C25014DEF3DC0026CBDB /* snap.1 */,
 			);
 			path = snap;
 			sourceTree = "<group>";
 		};
-		F467F38B14D5A44A00246ABB /* STPathTextField */ = {
-			isa = PBXGroup;
-			children = (
-				F485857314D4796A00B007CA /* STPathTextField.h */,
-				F485857414D4796A00B007CA /* STPathTextField.m */,
-			);
-			name = STPathTextField;
-			sourceTree = "<group>";
-		};
-		F467F38C14D5A45700246ABB /* STPrivilegedTask */ = {
-			isa = PBXGroup;
-			children = (
-				F485857514D4796A00B007CA /* STPrivilegedTask.h */,
-				F485857614D4796A00B007CA /* STPrivilegedTask.m */,
-			);
-			name = STPrivilegedTask;
-			sourceTree = "<group>";
-		};
-		F467F38D14D5A46600246ABB /* Cocoa class extensions */ = {
-			isa = PBXGroup;
-			children = (
-				F4CC3BBE14DF42A7004025D9 /* NSString+InArray.h */,
-				F4CC3BBF14DF42A7004025D9 /* NSString+InArray.m */,
-				F430C28014DF333C0026CBDB /* NSString+CarbonFSRefCreation.h */,
-				F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */,
-				F430C28214DF333C0026CBDB /* NSString+SymlinksAndAliases.h */,
-				F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */,
-				F485857B14D4AB1200B007CA /* NSTask+Description.m */,
-				F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */,
-				F430C27914DF33010026CBDB /* NSWorkspaceExtensions.h */,
-				F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */,
-			);
-			name = "Cocoa class extensions";
-			sourceTree = "<group>";
-		};
 		F485852F14D46E4300B007CA = {
 			isa = PBXGroup;
 			children = (
-				F430C26D14DF08DD0026CBDB /* Cocoa.framework */,
-				F485854414D46E4300B007CA /* SnapDragon */,
+				F467F38914D5A24100246ABB /* Common.h */,
+				F485854414D46E4300B007CA /* SnapDragon App */,
 				F430C24B14DEF3DC0026CBDB /* snap */,
 				F485853D14D46E4300B007CA /* Frameworks */,
 				F485853B14D46E4300B007CA /* Products */,
@@ -181,38 +126,39 @@
 		F485853D14D46E4300B007CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F485856C14D46F2100B007CA /* Carbon.framework */,
-				F485856114D46EB800B007CA /* Security.framework */,
 				F485853E14D46E4300B007CA /* Cocoa.framework */,
 				F430C24914DEF3DC0026CBDB /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F485854414D46E4300B007CA /* SnapDragon */ = {
+		F485854414D46E4300B007CA /* SnapDragon App */ = {
 			isa = PBXGroup;
 			children = (
-				F467F38914D5A24100246ABB /* Common.h */,
-				F485857914D4797700B007CA /* App Controllers */,
-				F485857214D4796A00B007CA /* Auxiliary */,
-				F485854514D46E4300B007CA /* Supporting Files */,
+				F485854A14D46E4300B007CA /* main.m */,
+				F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */,
+				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
+				F485855B14D46E8200B007CA /* ResultsController.h */,
+				F485855C14D46E8200B007CA /* ResultsController.m */,
+				F485858714D4CD1500B007CA /* ResultItem.h */,
+				F485858814D4CD1600B007CA /* ResultItem.m */,
+				F485857214D4796A00B007CA /* Util */,
+				F485854514D46E4300B007CA /* Resources */,
 			);
+			name = "SnapDragon App";
 			path = SnapDragon;
 			sourceTree = "<group>";
 		};
-		F485854514D46E4300B007CA /* Supporting Files */ = {
+		F485854514D46E4300B007CA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				F485855314D46E4300B007CA /* MainMenu.xib */,
 				F485856F14D470A200B007CA /* Defaults.plist */,
 				F485856314D46ED900B007CA /* images */,
 				F485854614D46E4300B007CA /* SnapDragon-Info.plist */,
-				F485854714D46E4300B007CA /* InfoPlist.strings */,
-				F485854A14D46E4300B007CA /* main.m */,
-				F485854C14D46E4300B007CA /* SnapDragon-Prefix.pch */,
 				F485854D14D46E4300B007CA /* Credits.rtf */,
 			);
-			name = "Supporting Files";
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		F485856314D46ED900B007CA /* images */ = {
@@ -224,28 +170,22 @@
 			path = images;
 			sourceTree = "<group>";
 		};
-		F485857214D4796A00B007CA /* Auxiliary */ = {
+		F485857214D4796A00B007CA /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				F467F38D14D5A46600246ABB /* Cocoa class extensions */,
-				F467F38B14D5A44A00246ABB /* STPathTextField */,
-				F467F38C14D5A45700246ABB /* STPrivilegedTask */,
+				F4CC3BBE14DF42A7004025D9 /* NSString+InArray.h */,
+				F4CC3BBF14DF42A7004025D9 /* NSString+InArray.m */,
+				F430C28014DF333C0026CBDB /* NSString+CarbonFSRefCreation.h */,
+				F430C28114DF333C0026CBDB /* NSString+CarbonFSRefCreation.m */,
+				F430C28214DF333C0026CBDB /* NSString+SymlinksAndAliases.h */,
+				F430C28314DF333C0026CBDB /* NSString+SymlinksAndAliases.m */,
+				F485858214D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m */,
+				F430C27914DF33010026CBDB /* NSWorkspaceExtensions.h */,
+				F430C27A14DF33010026CBDB /* NSWorkspaceExtensions.m */,
 			);
+			name = Util;
 			path = Auxiliary;
 			sourceTree = SOURCE_ROOT;
-		};
-		F485857914D4797700B007CA /* App Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				F485855014D46E4300B007CA /* SnapDragonAppDelegate.h */,
-				F485855114D46E4300B007CA /* SnapDragonAppDelegate.m */,
-				F485855B14D46E8200B007CA /* ResultsController.h */,
-				F485855C14D46E8200B007CA /* ResultsController.m */,
-				F485858714D4CD1500B007CA /* ResultItem.h */,
-				F485858814D4CD1600B007CA /* ResultItem.m */,
-			);
-			name = "App Controllers";
-			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -290,7 +230,7 @@
 		F485853114D46E4300B007CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0830;
 			};
 			buildConfigurationList = F485853414D46E4300B007CA /* Build configuration list for PBXProject "SnapDragon" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -315,7 +255,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F485854914D46E4300B007CA /* InfoPlist.strings in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
 				F485856614D46ED900B007CA /* delete.png in Resources */,
@@ -342,9 +281,6 @@
 				F485854B14D46E4300B007CA /* main.m in Sources */,
 				F485855214D46E4300B007CA /* SnapDragonAppDelegate.m in Sources */,
 				F485855F14D46E8200B007CA /* ResultsController.m in Sources */,
-				F485857714D4796A00B007CA /* STPathTextField.m in Sources */,
-				F485857814D4796A00B007CA /* STPrivilegedTask.m in Sources */,
-				F485857C14D4AB1200B007CA /* NSTask+Description.m in Sources */,
 				F485858314D4B2E300B007CA /* NSFileManager+FileOrFolderSize.m in Sources */,
 				F485858914D4CD1600B007CA /* ResultItem.m in Sources */,
 				F430C27B14DF33010026CBDB /* NSWorkspaceExtensions.m in Sources */,
@@ -357,14 +293,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F485854714D46E4300B007CA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F485854814D46E4300B007CA /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		F485854D14D46E4300B007CA /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -387,8 +315,9 @@
 		F430C25214DEF3DC0026CBDB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "snap/snap-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -396,8 +325,9 @@
 		F430C25314DEF3DC0026CBDB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "snap/snap-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -406,11 +336,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -421,10 +361,14 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "";
 			};
 			name = Debug;
 		};
@@ -432,28 +376,45 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
+				SHARED_PRECOMPS_DIR = "";
 			};
 			name = Release;
 		};
 		F485855914D46E4300B007CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SnapDragon/SnapDragon-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "SnapDragon/SnapDragon-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sveinbjorn.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,10 +423,13 @@
 		F485855A14D46E4300B007CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SnapDragon/SnapDragon-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "SnapDragon/SnapDragon-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.sveinbjorn.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
