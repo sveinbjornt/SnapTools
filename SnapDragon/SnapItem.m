@@ -257,9 +257,9 @@
 
 - (void)moveToTrash {
     NSString *trashPath = [[NSString stringWithFormat:@"~/.Trash/%@", [[self path] lastPathComponent]] stringByExpandingTildeInPath];
-    while ([FILEMGR fileExistsAtPath:trashPath])
+    while ([FILEMGR fileExistsAtPath:trashPath]) {
         [trashPath stringByAppendingString:@" copy"];
-    
+    }
     [FILEMGR moveItemAtPath:[self path] toPath:trashPath error:nil];
     [self setAttr:trashPath forKey:@"Path"];
 }
