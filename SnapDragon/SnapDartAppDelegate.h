@@ -30,6 +30,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SnapDragonAppDelegate : NSObject 
+@interface SnapDartAppDelegate : NSObject 
 
 @end

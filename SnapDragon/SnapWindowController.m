@@ -32,30 +32,27 @@
 #import <Carbon/Carbon.h>
 #import <sys/stat.h>
 
-#import "ResultsController.h"
+#import "SnapWindowController.h"
 
 #import "Common.h"
-#import "ResultItem.h"
+#import "SnapItem.h"
 #import "NSFileManager+FileOrFolderSize.h"
 #import "NSWorkspaceExtensions.h"
 
 #define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
 
-@interface ResultsController ()
+@interface SnapWindowController ()
 {
     NSMutableArray  *results;
     
-    IBOutlet id     resultsTableView;
-    IBOutlet id     window;
-    IBOutlet id     contextualMenu;
-    IBOutlet id     openWithMenuItem;
-    IBOutlet id     labelMenuItem;
-    IBOutlet id     progressIndicator;
-    IBOutlet id     locateButton;
-    IBOutlet id     queryTextField;
-    IBOutlet id     filterTextField;
-    IBOutlet id     numResultsTextField;
-    IBOutlet id     tableColumnContextualMenu;
+    IBOutlet NSTableView *resultsTableView;
+    IBOutlet NSMenu *contextualMenu;
+    IBOutlet NSMenuItem *openWithMenuItem;
+    IBOutlet NSMenuItem *labelMenuItem;
+    IBOutlet NSProgressIndicator *progressIndicator;
+    IBOutlet NSSearchField *filterTextField;
+    IBOutlet NSTextField *numResultsTextField;
+    IBOutlet NSMenu *tableColumnContextualMenu;
     
     NSTask          *task;
     NSTimer         *checkStatusTimer;
@@ -86,7 +83,7 @@
 
 @end
 
-@implementation ResultsController
+@implementation SnapWindowController
 
 - (instancetype)init {
     if ((self = [super init])) {
@@ -165,11 +162,17 @@
 
 #pragma mark - Results 
 
-- (void)addPath:(NSString *)path {
-    ResultItem *item = [ResultItem itemWithPath:path];
-    if ([[DEFAULTS objectForKey:@"ExcludeFolders"] boolValue] && item.isDirectory) {
-        return;
+- (void)addPaths:(NSArray *)paths {
+    for (NSString *p in paths) {
+        SnapItem *item = [SnapItem itemWithPath:p];
+        [results addObject:item];
     }
+    [self updateNumFiles];
+    [resultsTableView noteNumberOfRowsChanged];
+}
+
+- (void)addPath:(NSString *)path {
+    SnapItem *item = [SnapItem itemWithPath:path];
     
     // get attributes
     
@@ -423,7 +426,6 @@
     
     //apply settings for task
     [task setLaunchPath:[DEFAULTS objectForKey:@"ToolPath"]];
-    [args addObject:[queryTextField stringValue]];
     [task setArguments:args];
     
     // set output to file handle and start monitoring it if script provides feedback
@@ -439,7 +441,6 @@
     NSLog(@"Executing %@", [task description]);
     [task launch];
     
-    [locateButton setTitle:@"Stop"];
     [progressIndicator setUsesThreadedAnimation:YES];
     [progressIndicator startAnimation:self];
     
@@ -540,7 +541,6 @@
     
     // update interface
     [progressIndicator stopAnimation:self];
-    [locateButton setTitle:@"Locate"];
     [resultsTableView noteNumberOfRowsChanged];
     [self updateNumFiles];
 }

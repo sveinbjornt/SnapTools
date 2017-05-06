@@ -136,26 +136,31 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
                 NSPrint(@"No such file or directory: %@", f);
             }
         }
-        
-        // a single directory as arg means we list contents
-        if ([paths count] == 1) {
-            NSString *p = [paths anyObject];
-            BOOL isDir = NO;
-            if ([FILEMGR fileExistsAtPath:p isDirectory:&isDir] && isDir) {
-                paths = ReadDirectoryContents(p);
-            }
+    }
+    
+    // a single directory as arg means we should list contents
+    if ([paths count] == 1) {
+        NSString *p = [paths anyObject];
+        BOOL isDir = NO;
+        if ([FILEMGR fileExistsAtPath:p isDirectory:&isDir] && isDir) {
+            paths = ReadDirectoryContents(p);
         }
     }
+    
+    // Sort alphabetically
+    NSArray *finalPaths = [paths allObjects];
+    finalPaths = [finalPaths sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 
-    for (NSString *p in paths) {
+    // Print to stdout
+    for (NSString *p in finalPaths) {
         NSPrint(@"%@", p);
     }
     
-    // OK, now we have the paths. Hand them over to SnapDragon app via Apple Event
+    // Hand paths over to SnapDart app via Apple Event
     if ([paths count] && !printOnly) {
         BOOL success = SendOpenDocumentAppleEvent(paths);
         if (!success) {
-            NSPrintErr(@"Error launching SnapDragon app");
+            NSPrintErr(@"Error launching SnapDart app");
             exit(EX_UNAVAILABLE);
         }
     } else {

@@ -30,9 +30,23 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ResultsController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
+@interface SnapItem : NSObject
 
-- (void)addPath:(NSString *)path;
-- (void)clear;
+@property (nonatomic, readonly, copy) NSString *path;
+@property (readonly) BOOL isDirectory;
+
+- (instancetype)initWithPath:(NSString *)path;
++ (instancetype)itemWithPath:(NSString *)path;
+
+- (id)attr:(NSString *)key;
+
+- (void)openInFinder;
+- (void)openWithApplication:(NSString *)appName;
+- (void)showInFinder;
+- (void)openContainingFolder;
+- (void)getInfo;
+- (void)quickLook;
+- (void)labelSelected:(id)sender;
+- (void)moveToTrash;
 
 @end

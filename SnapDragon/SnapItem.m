@@ -32,14 +32,14 @@
 #include <pwd.h>
 #include <grp.h>
 
-#import "ResultItem.h"
+#import "SnapItem.h"
 
 #import "Common.h"
 #import "NSFileManager+FileOrFolderSize.m"
 #import "NSWorkspaceExtensions.h"
 #import "NSFileManager+FileOrFolderSize.m"
 
-@interface ResultItem()
+@interface SnapItem()
 {
     struct stat statInfo;
     BOOL statLoaded;
@@ -48,12 +48,12 @@
 }
 
 - (void)setAttr:(id)obj forKey:(NSString *)key;
-- (BOOL)hasAttr:(NSString *)attr;
-- (id)calcAttr:(NSString *)attr;
+- (BOOL)hasAttr:(NSString *)key;
+- (id)calcAttr:(NSString *)key;
 
 @end
 
-@implementation ResultItem
+@implementation SnapItem
 
 #pragma mark - Initialization
 
@@ -74,7 +74,7 @@
 }
 
 + (instancetype)itemWithPath:(NSString *)path {
-    return [[ResultItem alloc] initWithPath:path];
+    return [[SnapItem alloc] initWithPath:path];
 }
 
 #pragma mark - Attributes

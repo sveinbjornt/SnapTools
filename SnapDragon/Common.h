@@ -28,18 +28,18 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#define PROGRAM_NAME                @"SnapDragon"
+#define PROGRAM_NAME                @"SnapDart"
 #define PROGRAM_VERSION             @"1.0"
 #define PROGRAM_CREATOR_STAMP       [NSString stringWithFormat:@"%@-%@", PROGRAM_NAME, PROGRAM_VERSION]
 #define PROGRAM_MIN_SYS_VERSION     @"10.8.0"
-#define PROGRAM_BUNDLE_IDENTIFIER   @"org.sveinbjorn.SnapDragon"
+#define PROGRAM_BUNDLE_IDENTIFIER   @"org.sveinbjorn.SnapDart"
 #define PROGRAM_AUTHOR              @"Sveinbjorn Thordarson"
-#define PROGRAM_WEBSITE             @"http://sveinbjorn.org/snapdragon"
-#define PROGRAM_GITHUB_WEBSITE      @"http://github.com/sveinbjornt/SnapDragon"
+#define PROGRAM_WEBSITE             @"http://sveinbjorn.org/SnapDart"
+#define PROGRAM_GITHUB_WEBSITE      @"http://github.com/sveinbjornt/SnapDart"
 #define PROGRAM_DONATIONS           @"http://sveinbjorn.org/donations"
 
 #define PROGRAM_MANPAGE_URL         @"http://sveinbjorn.org/files/manpages/snap.man.html"
-#define PROGRAM_DOCUMENTATION_URL   @"http://sveinbjorn.org/files/manpages/SnapDragonDocumentation.html"
+#define PROGRAM_DOCUMENTATION_URL   @"http://sveinbjorn.org/files/manpages/SnapDartDocumentation.html"
 
 // abbreviations
 #define DEFAULTS    [NSUserDefaults standardUserDefaults]

@@ -13,17 +13,17 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application">
+        <customObject id="-3" userLabel="Application" customClass="NSObject">
             <connections>
                 <outlet property="delegate" destination="494" id="746"/>
             </connections>
         </customObject>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
-                <menuItem title="SnapDragon" id="56">
-                    <menu key="submenu" title="SnapDragon" systemMenu="apple" id="57">
+                <menuItem title="SnapDart" id="56">
+                    <menu key="submenu" title="SnapDart" systemMenu="apple" id="57">
                         <items>
-                            <menuItem title="About SnapDragon" id="58">
+                            <menuItem title="About SnapDart" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
@@ -46,7 +46,7 @@
                             <menuItem isSeparatorItem="YES" id="144">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Hide SnapDragon" keyEquivalent="h" id="134">
+                            <menuItem title="Hide SnapDart" keyEquivalent="h" id="134">
                                 <connections>
                                     <action selector="hide:" target="-1" id="367"/>
                                 </connections>
@@ -65,7 +65,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Quit SnapDragon" keyEquivalent="q" id="136">
+                            <menuItem title="Quit SnapDart" keyEquivalent="q" id="136">
                                 <connections>
                                     <action selector="terminate:" target="-3" id="449"/>
                                 </connections>
@@ -76,14 +76,9 @@
                 <menuItem title="File" id="83">
                     <menu key="submenu" title="File" id="81">
                         <items>
-                            <menuItem title="New Window with Command" keyEquivalent="n" id="82">
+                            <menuItem title="New Snap with Command" keyEquivalent="n" id="82">
                                 <connections>
                                     <action selector="newDocument:" target="-1" id="373"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Load Output of Command" keyEquivalent="o" id="72">
-                                <connections>
-                                    <action selector="openDocument:" target="-1" id="374"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="79">
@@ -317,6 +312,47 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="View" id="7mv-Ft-Qdz">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="View" id="Cxd-Fl-oE8">
+                        <items>
+                            <menuItem title="Columns" enabled="NO" id="e07-1u-Mdd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="jZv-kN-S2O"/>
+                            <menuItem title="Size" id="itA-Kd-dRd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Size" id="dc5-n5-ad6">
+                                    <items>
+                                        <menuItem title="Small" id="hTQ-iH-gkH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Medium" id="bJ6-4R-oNT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Large" id="kaG-zX-G0N">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="dqb-sJ-B4W"/>
+                            <menuItem title="Show Status Bar" id="tpB-bf-Zzu">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="685" name="value" keyPath="values.ShowStatusBar" id="scN-4a-8TD"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Separate Files and Folders" id="Ctz-T2-jt7">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="685" name="value" keyPath="values.SeparateFilesAndFolders" id="QXd-Jl-R0T"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="hN4-MF-GLa"/>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="History" id="oC9-vR-oLh">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="History" id="Szk-X6-XqV">
@@ -330,10 +366,10 @@
                 </menuItem>
                 <menuItem title="Bookmarks" id="CZr-Zm-mmX">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Bookmarks" id="HC5-cH-2f3">
+                    <menu key="submenu" title="Bookmarks" id="3Zo-cd-lTN">
                         <items>
-                            <menuItem isSeparatorItem="YES" id="P2S-WD-EgC"/>
-                            <menuItem title="Clear All Bookmarks" id="yzn-UE-1BU">
+                            <menuItem isSeparatorItem="YES" id="FZL-b6-oK4"/>
+                            <menuItem title="Clear All Bookmarks" id="jSZ-tF-YQ6">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
@@ -354,6 +390,15 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="92">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Single Window Mode" id="a2T-01-887">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="685" name="value" keyPath="values.SingleWindowMode" id="4vj-7I-hhf"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="lBC-z7-pxA">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Bring All to Front" id="5">
@@ -377,9 +422,9 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-1" y="-49"/>
+            <point key="canvasLocation" x="-50" y="-156"/>
         </menu>
-        <window title="SnapDragon" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="SnapDragonResultsWindow" animationBehavior="default" tabbingMode="disallowed" id="371">
+        <window title="SnapDart" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="none" frameAutosaveName="SnapDartResultsWindow" tabbingMode="disallowed" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="335" y="390" width="515" height="395"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -495,12 +540,12 @@
             </view>
             <point key="canvasLocation" x="173.5" y="-805.5"/>
         </window>
-        <customObject id="494" customClass="SnapDragonAppDelegate">
+        <customObject id="494" customClass="SnapDartAppDelegate">
             <connections>
                 <outlet property="resultsController" destination="733" id="734"/>
             </connections>
         </customObject>
-        <window title="SnapDragon Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="SnapDragonPreferencesWindow" animationBehavior="default" id="602">
+        <window title="SnapDart Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="SnapDartPreferencesWindow" animationBehavior="default" id="602">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="443" y="300" width="550" height="355"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
@@ -888,7 +933,7 @@ DQ
             </connections>
         </menu>
         <userDefaultsController representsSharedInstance="YES" id="685"/>
-        <customObject id="733" customClass="ResultsController">
+        <customObject id="733" userLabel="Window Controller" customClass="SnapWindowController">
             <connections>
                 <outlet property="contextualMenu" destination="638" id="745"/>
                 <outlet property="filterTextField" destination="729" id="738"/>
@@ -898,7 +943,7 @@ DQ
                 <outlet property="progressIndicator" destination="593" id="736"/>
                 <outlet property="resultsTableView" destination="584" id="741"/>
                 <outlet property="tableColumnContextualMenu" destination="782" id="839"/>
-                <outlet property="window" destination="371" id="840"/>
+                <outlet property="window" destination="371" id="zbJ-DU-rO6"/>
             </connections>
         </customObject>
         <menu id="782">
@@ -906,23 +951,23 @@ DQ
                 <menuItem title="Icon" enabled="NO" id="783">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
+                        <binding destination="685" name="value" keyPath="values.Icon" id="858"/>
                         <binding destination="685" name="enabled" keyPath="values.Icon" id="869">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="685" name="value" keyPath="values.Icon" id="858"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Path" enabled="NO" id="784">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
+                        <binding destination="685" name="value" keyPath="values.Path" id="860"/>
                         <binding destination="685" name="enabled" keyPath="values.Path" id="870">
                             <dictionary key="options">
                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                             </dictionary>
                         </binding>
-                        <binding destination="685" name="value" keyPath="values.Path" id="860"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Size" id="785">

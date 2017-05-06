@@ -29,16 +29,19 @@
 */
 
 #import "Common.h"
-#import "SnapDragonAppDelegate.h"
-#import "ResultsController.h"
+#import "SnapDartAppDelegate.h"
+#import "SnapWindowController.h"
 
-@interface SnapDragonAppDelegate ()
+@interface SnapDartAppDelegate ()
 {
-    IBOutlet ResultsController *resultsController;
+    IBOutlet SnapWindowController *resultsController;
+    CFTimeInterval lastOpenFileEvent;
+    NSMutableArray *filesInOpenEvent;
+    NSTimer *openFilesTimer;
 }
 @end
 
-@implementation SnapDragonAppDelegate
+@implementation SnapDartAppDelegate
 
 + (void)initialize {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
@@ -50,13 +53,45 @@
     // do something
 }
 
+-(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename{
+    return YES;
+}
+
 - (void)application:(NSApplication *)theApplication openFiles:(NSArray *)filenames {
-    [resultsController clear];
-    NSLog(@"Open files: %d", [filenames count]);
-    for (NSString *path in filenames) {
-        [resultsController addPath:path];
+    // This is really hackish but Apple Events are stupid. A single open event
+    // can result in multiple invocations of this method for the files, even
+    // though it was all part of the same user interface action. We need to collect
+    // the files from each event and then process them after a small delay.
+    
+    if (!filesInOpenEvent) {
+        filesInOpenEvent = [NSMutableArray array];
     }
+    
+    if (openFilesTimer) {
+        [openFilesTimer invalidate];
+    }
+
+    [filesInOpenEvent addObjectsFromArray:filenames];
+    openFilesTimer = [NSTimer scheduledTimerWithTimeInterval:0.25f
+                                                      target:self
+                                                    selector:@selector(processOpenFiles)
+                                                    userInfo:nil
+                                                     repeats:NO];
+    
     [theApplication replyToOpenOrPrint:NSApplicationDelegateReplySuccess];
+}
+
+- (void)processOpenFiles {
+    NSArray *filesToOpen = [filesInOpenEvent copy];
+    [openFilesTimer invalidate];
+    openFilesTimer = nil;
+    [filesInOpenEvent removeAllObjects];
+    
+    filesToOpen = [filesToOpen sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    [resultsController clear];
+    [resultsController addPaths:filesToOpen];
+    
+    NSLog(@"Opening %lu files", (unsigned long)[filesToOpen count]);
 }
 
 @end

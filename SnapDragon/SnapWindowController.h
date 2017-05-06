@@ -30,23 +30,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ResultItem : NSObject
+@interface SnapWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate>
 
-@property (nonatomic, readonly, copy) NSString *path;
-@property (readonly) BOOL isDirectory;
-
-- (instancetype)initWithPath:(NSString *)path;
-+ (instancetype)itemWithPath:(NSString *)path;
-
-- (id)attr:(NSString *)key;
-
-- (void)openInFinder;
-- (void)openWithApplication:(NSString *)appName;
-- (void)showInFinder;
-- (void)openContainingFolder;
-- (void)getInfo;
-- (void)quickLook;
-- (void)labelSelected:(id)sender;
-- (void)moveToTrash;
+- (void)addPath:(NSString *)path;
+- (void)addPaths:(NSArray *)paths;
+- (void)clear;
 
 @end
