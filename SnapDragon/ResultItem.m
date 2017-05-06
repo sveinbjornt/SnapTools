@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -36,15 +36,15 @@
 
 #import "Common.h"
 #import "NSFileManager+FileOrFolderSize.m"
-#import "NSString+InArray.h"
 #import "NSWorkspaceExtensions.h"
 #import "NSFileManager+FileOrFolderSize.m"
 
 @interface ResultItem()
 {
-    struct stat             statInfo;
-    BOOL                    statLoaded;
-    NSMutableDictionary     *attr;
+    struct stat statInfo;
+    BOOL statLoaded;
+    
+    NSMutableDictionary *attr;
 }
 
 - (void)setAttr:(id)obj forKey:(NSString *)key;

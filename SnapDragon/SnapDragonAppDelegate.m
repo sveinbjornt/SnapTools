@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -41,19 +41,22 @@
 @implementation SnapDragonAppDelegate
 
 + (void)initialize {
-    NSString *defPath = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
-    NSDictionary *registrationDefaults = [NSDictionary dictionaryWithContentsOfFile:defPath];
-    [DEFAULTS registerDefaults:registrationDefaults];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
+    NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:path];
+    [DEFAULTS registerDefaults:defaults];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
+    // do something
 }
 
 - (void)application:(NSApplication *)theApplication openFiles:(NSArray *)filenames {
+    [resultsController clear];
+    NSLog(@"Open files: %d", [filenames count]);
     for (NSString *path in filenames) {
         [resultsController addPath:path];
     }
+    [theApplication replyToOpenOrPrint:NSApplicationDelegateReplySuccess];
 }
 
 @end

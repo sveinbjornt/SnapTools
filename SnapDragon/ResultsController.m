@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -34,17 +34,17 @@
 
 #import "ResultsController.h"
 
-#import "NSFileManager+FileOrFolderSize.m"
-#import "ResultItem.h"
 #import "Common.h"
+#import "ResultItem.h"
+#import "NSFileManager+FileOrFolderSize.h"
 #import "NSWorkspaceExtensions.h"
-#import "NSString+InArray.h"
 
-#define COLUMNS [NSArray arrayWithObjects:@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI", nil]
+#define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
 
 @interface ResultsController ()
 {
     NSMutableArray  *results;
+    
     IBOutlet id     resultsTableView;
     IBOutlet id     window;
     IBOutlet id     contextualMenu;
@@ -57,7 +57,6 @@
     IBOutlet id     numResultsTextField;
     IBOutlet id     tableColumnContextualMenu;
     
-    
     NSTask          *task;
     NSTimer         *checkStatusTimer;
     NSPipe          *outputPipe;
@@ -66,10 +65,10 @@
     BOOL            outputEmpty;
     NSString        *remnants;
     UInt64          totalSize;
-    
 }
+
 @property (nonatomic, readonly, copy) NSIndexSet *selectedItems;
-- (void)clear;
+
 - (IBAction)columnChanged:(id)sender;
 - (IBAction)open:(id)sender;
 - (IBAction)showInFinder:(id)sender;
@@ -91,13 +90,12 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-
+        results = [NSMutableArray array];
     }
     return self;
 }
 
 - (void)awakeFromNib {
-    results = [[NSMutableArray alloc] initWithCapacity:100000];
     [resultsTableView setTarget:self];
 	[resultsTableView setDoubleAction:@selector(open:)];
     [resultsTableView setDraggingSourceOperationMask:NSDragOperationCopy|NSDragOperationMove forLocal:NO];
@@ -264,7 +262,7 @@
         //get all apps that open this file and append to apps
         NSArray *appsForFile = [items[i] attr:@"HandlerApps"];
         for (NSString *app in appsForFile) {
-            if (![app inArray:apps] && !(defaultAppPath && [app isEqualToString:defaultAppPath])) {
+            if (![apps containsObject:app] && !(defaultAppPath && [app isEqualToString:defaultAppPath])) {
                 [apps addObject:app];
             }
         }
@@ -359,10 +357,10 @@
 
 - (IBAction)deleteFile:(id)sender {
     NSIndexSet *indexSet = [self selectedItems];
-    NSUInteger i;
-    for (i = [results count] -1; i > 0; i--) {
-        if ([indexSet containsIndex:i])
+    for (NSUInteger i = [results count] -1; i > 0; i--) {
+        if ([indexSet containsIndex:i]) {
             [results removeObjectAtIndex:i];
+        }
     }
     [resultsTableView reloadData];
 }

@@ -37,21 +37,27 @@
 
 #import "Common.h"
 
-static NSString* MakeAbsolutePath (NSString *path);
-static NSString *Trim(NSString *str);
-static void NSPrintErr(NSString *format, ...);
-static void NSPrint(NSString *format, ...);
+
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
-static NSString *ReadStandardInput();
 static NSMutableSet *ParseForPaths(NSString *str);
-static void SendOpenDocumentAppleEvent(NSSet *paths);
+
+static NSString *MakeAbsolutePath (NSString *path);
+static NSString *Trim(NSString *str);
+static NSString *ReadStandardInput();
+
+static BOOL SendOpenDocumentAppleEvent(NSSet *paths);
 static void PrintVersion(void);
 static void PrintHelp(void);
 
-static const char optstring[] = "vh";
+static void NSPrintErr(NSString *format, ...);
+static void NSPrint(NSString *format, ...);
 
-static struct option long_options[] =
-{
+
+static const char optstring[] = "apvh";
+
+static struct option long_options[] = {
+    {"all",                     no_argument,            0,  'a'},
+    {"print",                   no_argument,            0,  'p'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -61,13 +67,25 @@ static struct option long_options[] =
 
 int main(int argc, const char * argv[]) { @autoreleasepool {
     
+    BOOL printOnly = NO;
+    BOOL showAll = NO;
+    
     int optch;
     int long_index = 0;
     
     // parse getopt
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
-        
         switch (optch) {
+            
+            // show all hidden files except . and ..
+            case 'a':
+                showAll = YES;
+                break;
+            
+            // only print found paths
+            case 'p':
+                printOnly = YES;
+                break;
                 
             // print version
             case 'v':
@@ -87,7 +105,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
                 break;
         }
     }
-
     
     // read remaining args
     NSMutableArray *remainingArgs = [NSMutableArray array];
@@ -113,7 +130,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         // process file args
         for (NSString *filePath in remainingArgs) {
             NSString *f = MakeAbsolutePath(filePath);
-            if ([[NSFileManager defaultManager] fileExistsAtPath:f]) {
+            if ([FILEMGR fileExistsAtPath:f]) {
                 [paths addObject:f];
             } else {
                 NSPrint(@"No such file or directory: %@", f);
@@ -124,7 +141,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         if ([paths count] == 1) {
             NSString *p = [paths anyObject];
             BOOL isDir = NO;
-            if ([[NSFileManager defaultManager] fileExistsAtPath:p isDirectory:&isDir] && isDir) {
+            if ([FILEMGR fileExistsAtPath:p isDirectory:&isDir] && isDir) {
                 paths = ReadDirectoryContents(p);
             }
         }
@@ -135,8 +152,12 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     }
     
     // OK, now we have the paths. Hand them over to SnapDragon app via Apple Event
-    if ([paths count]) {
-        SendOpenDocumentAppleEvent(paths);
+    if ([paths count] && !printOnly) {
+        BOOL success = SendOpenDocumentAppleEvent(paths);
+        if (!success) {
+            NSPrintErr(@"Error launching SnapDragon app");
+            exit(EX_UNAVAILABLE);
+        }
     } else {
         NSPrintErr(@"No paths provided");
         exit(EX_USAGE);
@@ -149,7 +170,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath) {
     NSMutableSet *pathSet = [NSMutableSet set];
-    NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:dirPath error:nil];
+    NSArray *dirContents = [FILEMGR contentsOfDirectoryAtPath:dirPath error:nil];
     for (NSString *item in dirContents) {
         NSString *fpath = [dirPath stringByAppendingPathComponent:item];
         [pathSet addObject:fpath];
@@ -167,7 +188,7 @@ static NSMutableSet *ParseForPaths(NSString *str) {
         
         // is the full line a valid path?
         NSString *abs = MakeAbsolutePath(line);
-        if ([[NSFileManager defaultManager] fileExistsAtPath:abs]) {
+        if ([FILEMGR fileExistsAtPath:abs]) {
             [potentialPaths addObject:line];
             continue;
         }
@@ -186,14 +207,14 @@ static NSMutableSet *ParseForPaths(NSString *str) {
     NSMutableSet *paths = [NSMutableSet set];
     for (NSString *p in potentialPaths) {
         NSString *absPath = MakeAbsolutePath(p);
-        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath]) {
+        if ([FILEMGR fileExistsAtPath:absPath]) {
             [paths addObject:absPath];
         }
     }
     return paths;
 }
 
-static void SendOpenDocumentAppleEvent(NSSet *paths) {
+static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
     
     // convert path strings to url objects
     NSMutableArray *urls = [NSMutableArray array];
@@ -201,21 +222,23 @@ static void SendOpenDocumentAppleEvent(NSSet *paths) {
         [urls addObject:[NSURL fileURLWithPath:p]];
     }
     
-    [[NSWorkspace sharedWorkspace] openURLs:urls
-                    withAppBundleIdentifier:PROGRAM_BUNDLE_IDENTIFIER
-                                    options:NSWorkspaceLaunchDefault
+    NSPrintErr(@"Sending AEvent to open %d URLs", [urls count]);
+    
+    return [[NSWorkspace sharedWorkspace] openURLs:urls
+                           withAppBundleIdentifier:PROGRAM_BUNDLE_IDENTIFIER
+                                           options:NSWorkspaceLaunchAsync | NSWorkspaceLaunchWithErrorPresentation
              additionalEventParamDescriptor:nil
                           launchIdentifiers:NULL];
 }
 
-static NSString *Trim(NSString *str) {
+static inline NSString *Trim(NSString *str) {
     return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
-static NSString *MakeAbsolutePath(NSString *path) {
+static inline NSString *MakeAbsolutePath(NSString *path) {
     NSString *absPath = [path stringByExpandingTildeInPath];
     if ([absPath isAbsolutePath] == NO) {
-        absPath = [[[NSFileManager defaultManager] currentDirectoryPath] stringByAppendingPathComponent:path];
+        absPath = [[FILEMGR currentDirectoryPath] stringByAppendingPathComponent:path];
     }
     return [absPath stringByStandardizingPath];
 }

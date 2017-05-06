@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -33,5 +33,6 @@
 @interface ResultsController : NSObject <NSTableViewDataSource, NSTableViewDelegate>
 
 - (void)addPath:(NSString *)path;
+- (void)clear;
 
 @end
