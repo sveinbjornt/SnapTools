@@ -35,6 +35,86 @@
 
 @implementation NSWorkspace (Additions)
 
+#pragma mark - Application that handle files
+
+- (NSArray *)applicationsForFile:(NSString *)filePath {
+    NSURL *url = [NSURL fileURLWithPath:filePath];
+    NSMutableArray *appPaths = [[NSMutableArray alloc] initWithCapacity:256];
+    
+    NSArray *applications = (NSArray *)CFBridgingRelease(LSCopyApplicationURLsForURL((__bridge CFURLRef)url, kLSRolesAll));
+    if (applications == nil) {
+        return @[];
+    }
+    
+    for (int i = 0; i < [applications count]; i++) {
+        [appPaths addObject:[applications[i] path]];
+    }
+    return appPaths;
+}
+
+- (NSString *)defaultApplicationForFile:(NSString *)filePath {
+    FSRef fileRef;
+    CFURLRef appURL;
+    
+    if (![filePath getFSRef:&fileRef createFileIfNecessary:NO]) {
+        return nil;
+    }
+    
+    // use Launch Services function to get default app
+    OSStatus ret = LSGetApplicationForItem(&fileRef, kLSRolesAll, NULL, &appURL);
+    
+    if (ret != noErr || appURL == NULL) {
+        return nil;
+    }
+    return [(__bridge NSURL *)appURL path];
+}
+
+#pragma mark - Labels
+
+- (BOOL)setLabel:(NSUInteger)label forFile:(NSString *)filePath {
+    if (label > 7) {
+        NSLog(@"Error setting label %lu. Finder label must be in range 0-7", (unsigned long)label);
+        return NO;
+    }
+    
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    NSError *error = nil;
+    if (![fileURL setResourceValue:@(label) forKey:NSURLLabelNumberKey error:&error]) {
+        NSLog(@"Error setting label: %@", [error localizedDescription]);
+        return NO;
+    }
+    return YES;
+}
+
+- (int)labelNumberForFile:(NSString *)path {
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+    id labelValue = nil;
+    NSError *error;
+    
+    if (![fileURL getResourceValue:&labelValue forKey:NSURLLabelNumberKey error:&error]) {
+        NSLog(@"An error occurred: %@", [error localizedDescription]);
+        return -1;
+    }
+    
+    return [labelValue intValue];
+}
+
+- (NSString *)labelNameForFile:(NSString *)path {
+    int labelNum = [self labelNumberForFile:path];
+    if (labelNum == 0) {
+        return nil;
+    }
+    return [self fileLabels][labelNum];
+}
+
+- (NSColor *)labelColorForFile:(NSString *)path {
+    int labelNum = [self labelNumberForFile:path];
+    if (labelNum == -1) {
+        return nil;
+    }
+    return [self fileLabelColors][labelNum];
+}
+
 #pragma mark - File/folder size
 
 //  Copyright (c) 2015 Nikolai Ruhe. All rights reserved.

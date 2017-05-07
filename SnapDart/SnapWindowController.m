@@ -37,7 +37,7 @@
 #import "Common.h"
 #import "SnapItem.h"
 #import "NSFileManager+FileOrFolderSize.h"
-#import "NSWorkspaceExtensions.h"
+#import "NSWorkspace+Additions.h"
 
 @interface SnapWindowController ()
 {
@@ -95,7 +95,8 @@
 }
 
 - (void)windowDidLoad {
-    
+    [super windowDidLoad];
+
     results = [NSMutableArray array];
 
     // put application icon in window title bar
@@ -312,13 +313,13 @@
 
 - (void)performSelector:(SEL)selector onIndexes:(NSIndexSet *)indexSet {
     [[resultsTableView selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger row, BOOL *stop){
-         [results[row] performSelector:selector];
+//         [results[row] performSelector:selector];
     }];
 }
 
 - (void)performSelector:(SEL)selector onIndexes:(NSIndexSet *)indexSet withObject:(id)obj {
     [[resultsTableView selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger row, BOOL *stop){
-         [results[row] performSelector:selector withObject:obj];
+//         [results[row] performSelector:selector withObject:obj];
     }];
 }
 

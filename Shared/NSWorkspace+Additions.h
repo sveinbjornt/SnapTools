@@ -28,10 +28,18 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
+#import "NSString+CarbonFSRefCreation.h"
 
 @interface NSWorkspace (Additions)
+
+- (NSArray *)applicationsForFile:(NSString *)filePath;
+- (NSString *)defaultApplicationForFile:(NSString *)filePath;
+
+- (BOOL)setLabel:(NSUInteger)label forFile:(NSString *)filePath;
+- (int)labelNumberForFile:(NSString *)path;
+- (NSString *)labelNameForFile:(NSString *)path;
+- (NSColor *)labelColorForFile:(NSString *)path;
 
 - (unsigned long long)nrCalculateFolderSize:(NSString *)folderPath;
 - (UInt64)fileOrFolderSize:(NSString *)path;

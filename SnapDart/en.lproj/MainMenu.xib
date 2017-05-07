@@ -519,16 +519,16 @@
                 <outlet property="mainMenu" destination="29" id="gZk-IZ-CFf"/>
             </connections>
         </customObject>
-        <window title="SnapDart Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="SnapDartPreferencesWindow" animationBehavior="default" id="602">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="443" y="300" width="550" height="355"/>
+        <window title="SnapDart Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="SnapDartPreferencesWindow" animationBehavior="default" tabbingMode="disallowed" id="602">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <rect key="contentRect" x="443" y="300" width="364" height="350"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <view key="contentView" id="603">
-                <rect key="frame" x="0.0" y="0.0" width="550" height="355"/>
+            <view key="contentView" misplaced="YES" id="603">
+                <rect key="frame" x="0.0" y="0.0" width="364" height="350"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="604">
-                        <rect key="frame" x="441" y="42" width="95" height="32"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" imageHugsTitle="YES" id="604">
+                        <rect key="frame" x="255" y="13" width="95" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="605">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -541,8 +541,181 @@ DQ
                             <action selector="performClose:" target="602" id="726"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="608">
-                        <rect key="frame" x="14" y="37" width="95" height="32"/>
+                    <box autoresizesSubviews="NO" misplaced="YES" borderType="line" titlePosition="noTitle" id="612">
+                        <rect key="frame" x="17" y="57" width="330" height="278"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView" id="Vb3-uE-alU">
+                            <rect key="frame" x="1" y="1" width="328" height="276"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button misplaced="YES" imageHugsTitle="YES" id="656">
+                                    <rect key="frame" x="31" y="193" width="81" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Icon" bezelStyle="regularSquare" imagePosition="leading" alignment="left" enabled="NO" state="on" inset="2" id="657">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Icon" id="855"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="714">
+                                    <rect key="frame" x="31" y="213" width="81" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Path" bezelStyle="regularSquare" imagePosition="leading" alignment="left" enabled="NO" state="on" inset="2" id="715">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Path" id="857"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="660">
+                                    <rect key="frame" x="163" y="213" width="110" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Date Modified" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="661">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Date Modified" id="842"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="662">
+                                    <rect key="frame" x="163" y="193" width="105" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Date Created" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="663">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Date Created" id="843"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="704">
+                                    <rect key="frame" x="163" y="173" width="114" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Date Accessed" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="705">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Date Accessed" id="845"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="664">
+                                    <rect key="frame" x="31" y="173" width="48" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Size" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="665">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Size" id="854"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="749">
+                                    <rect key="frame" x="31" y="153" width="51" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Kind" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="750">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Kind" id="852"/>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="679">
+                                    <rect key="frame" x="18" y="239" width="148" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Results show columns:" id="680">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button misplaced="YES" imageHugsTitle="YES" id="753">
+                                    <rect key="frame" x="163" y="153" width="98" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Permissions" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="754">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.Permissions" id="847"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="778">
+                                    <rect key="frame" x="163" y="133" width="98" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="UTI" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="779">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.UTI" id="848"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="813">
+                                    <rect key="frame" x="31" y="133" width="94" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="User:Group" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="814">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.User:Group" id="850"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="645">
+                                    <rect key="frame" x="18" y="97" width="198" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Calculate folder sizes (slow)" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="646">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.CalculateFolderSizes" id="708"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="677">
+                                    <rect key="frame" x="18" y="72" width="169" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Ask before deleting file" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="678">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.ConfirmDelete" id="709"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="710">
+                                    <rect key="frame" x="18" y="47" width="221" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Ask before moving file to Trash" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="711">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.ConfirmTrash" id="713"/>
+                                    </connections>
+                                </button>
+                                <button misplaced="YES" imageHugsTitle="YES" id="756">
+                                    <rect key="frame" x="18" y="18" width="191" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Use human-readable sizes" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="757">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <binding destination="685" name="value" keyPath="values.UseHumanReadableSizes" id="777"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                    </box>
+                    <button verticalHuggingPriority="750" misplaced="YES" imageHugsTitle="YES" id="608">
+                        <rect key="frame" x="14" y="13" width="95" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="609">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -554,181 +727,9 @@ DQ
                             <action selector="revertToInitialValues:" target="685" id="690"/>
                         </connections>
                     </button>
-                    <box autoresizesSubviews="NO" borderType="line" title="Interface" id="612">
-                        <rect key="frame" x="276" y="74" width="257" height="266"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView" id="Vb3-uE-alU">
-                            <rect key="frame" x="1" y="1" width="255" height="250"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <button imageHugsTitle="YES" id="645">
-                                    <rect key="frame" x="16" y="80" width="198" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Calculate folder sizes (slow)" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="646">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.CalculateFolderSizes" id="708"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="677">
-                                    <rect key="frame" x="16" y="57" width="169" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Ask before deleting file" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="678">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.ConfirmDelete" id="709"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="710">
-                                    <rect key="frame" x="16" y="35" width="221" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Ask before moving file to Trash" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="711">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.ConfirmTrash" id="713"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="756">
-                                    <rect key="frame" x="16" y="19" width="191" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Use human-readable sizes" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="757">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.UseHumanReadableSizes" id="777"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="656">
-                                    <rect key="frame" x="28" y="182" width="81" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Icon" bezelStyle="regularSquare" imagePosition="leading" alignment="left" enabled="NO" state="on" inset="2" id="657">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Icon" id="855"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="714">
-                                    <rect key="frame" x="28" y="202" width="81" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Path" bezelStyle="regularSquare" imagePosition="leading" alignment="left" enabled="NO" state="on" inset="2" id="715">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Path" id="857"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="660">
-                                    <rect key="frame" x="117" y="202" width="110" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Date Modified" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="661">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Date Modified" id="842"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="662">
-                                    <rect key="frame" x="117" y="182" width="105" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Date Created" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="663">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Date Created" id="843"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="704">
-                                    <rect key="frame" x="117" y="162" width="114" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Date Accessed" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="705">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Date Accessed" id="845"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="664">
-                                    <rect key="frame" x="28" y="162" width="48" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Size" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="665">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Size" id="854"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="749">
-                                    <rect key="frame" x="28" y="142" width="51" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Kind" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="750">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Kind" id="852"/>
-                                    </connections>
-                                </button>
-                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="679">
-                                    <rect key="frame" x="15" y="228" width="148" height="17"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Results show columns:" id="680">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <button imageHugsTitle="YES" id="753">
-                                    <rect key="frame" x="117" y="142" width="98" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Permissions" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="754">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.Permissions" id="847"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="778">
-                                    <rect key="frame" x="117" y="122" width="43" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="UTI" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="779">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.UTI" id="848"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="813">
-                                    <rect key="frame" x="28" y="122" width="94" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="User:Group" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="814">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.User:Group" id="850"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </view>
-                    </box>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="44" y="140"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="685"/>
     </objects>

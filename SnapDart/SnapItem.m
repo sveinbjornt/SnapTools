@@ -35,9 +35,8 @@
 #import "SnapItem.h"
 
 #import "Common.h"
-#import "NSFileManager+FileOrFolderSize.m"
-#import "NSWorkspaceExtensions.h"
-#import "NSFileManager+FileOrFolderSize.m"
+#import "NSFileManager+FileOrFolderSize.h"
+#import "NSWorkspace+Additions.h"
 
 @interface SnapItem()
 {
