@@ -31,17 +31,30 @@
 #import "Common.h"
 #import "SnapDartAppDelegate.h"
 #import "SnapWindowController.h"
+#import "CmdWindowController.h"
+#import "NSWorkspace+Additions.h"
 
 @interface SnapDartAppDelegate ()
 {
-    IBOutlet SnapWindowController *resultsController;
-    CFTimeInterval lastOpenFileEvent;
+    IBOutlet NSMenu *mainMenu;
+    IBOutlet NSMenu *columnsMenu;
+    
+    NSStatusItem *statusItem;
     NSMutableArray *filesInOpenEvent;
     NSTimer *openFilesTimer;
+    
+    CmdWindowController *cmdController;
+    NSMutableArray *controllers;
 }
 @end
 
 @implementation SnapDartAppDelegate
+
+- (void)awakeFromNib {
+    controllers = [NSMutableArray array];
+    [self createColumnsSubmenu];
+    [self createStatusMenuItem];
+}
 
 + (void)initialize {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
@@ -50,7 +63,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // do something
+    
 }
 
 -(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename{
@@ -61,7 +74,7 @@
     // This is really hackish but Apple Events are stupid. A single open event
     // can result in multiple invocations of this method for the files, even
     // though it was all part of the same user interface action. We need to collect
-    // the files from each event and then process them after a small delay.
+    // the files from each event and then process them after a small delay [!].
     
     if (!filesInOpenEvent) {
         filesInOpenEvent = [NSMutableArray array];
@@ -88,10 +101,87 @@
     [filesInOpenEvent removeAllObjects];
     
     filesToOpen = [filesToOpen sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    [resultsController clear];
-    [resultsController addPaths:filesToOpen];
     
     NSLog(@"Opening %lu files", (unsigned long)[filesToOpen count]);
+    [self newSnapWindowWithPaths:filesToOpen];
+}
+
+- (void)newSnapWindowWithPaths:(NSArray *)paths {
+    SnapWindowController *c = [[SnapWindowController alloc] initWithWindowNibName:@"SnapWindow"];
+    [[c window] makeKeyWindow];
+    [controllers addObject:c];
+    [c addPaths:paths];
+}
+
+#pragma mark -
+
+- (void)createStatusMenuItem {
+    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    [statusItem setHighlightMode:YES];
+    [statusItem setMenu:mainMenu];
+    [statusItem setImage:[NSImage imageNamed:@"Status Menu Icon"]];
+    
+    [[statusItem image] setTemplate:YES];
+    [statusItem setEnabled:YES];
+}
+
+- (void)createColumnsSubmenu {
+    for (NSString *colName in COLUMNS) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:colName action:nil keyEquivalent:@""];
+        [columnsMenu insertItem:item atIndex:0];
+        
+        NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
+        [bindingOptions setObject:@(YES) forKey:NSValidatesImmediatelyBindingOption];
+        [item bind:@"value" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:colName options:@{}];
+    }
+}
+
+#pragma mark - Command Window
+
+- (IBAction)showCmdWindow:(id)sender {
+    if (cmdController == nil) {
+        cmdController = [[CmdWindowController alloc] initWithWindowNibName:@"CmdWindow"];
+    }
+    [[cmdController window] center];
+    [[cmdController window] makeKeyAndOrderFront:self];
+}
+
+#pragma mark - Uninstall
+
+- (IBAction)uninstallProgram:(id)sender {
+    
+}
+
+#pragma mark - Help/Documentation/Website
+
+// Open Documentation.html file within app bundle
+- (IBAction)showHelp:(id)sender {
+    [WORKSPACE openPathInDefaultBrowser:[[NSBundle mainBundle] pathForResource:PROGRAM_DOCUMENTATION ofType:nil]];
+}
+
+// Open HTML version of snap command line tool's man page
+- (IBAction)showManPage:(id)sender {
+    [WORKSPACE openPathInDefaultBrowser:[[NSBundle mainBundle] pathForResource:PROGRAM_MANPAGE ofType:nil]];
+}
+
+// Open program website
+- (IBAction)openWebsite:(id)sender {
+    [WORKSPACE openURL:[NSURL URLWithString:PROGRAM_WEBSITE]];
+}
+
+// Open program GitHub website
+- (IBAction)openGitHubWebsite:(id)sender {
+    [WORKSPACE openURL:[NSURL URLWithString:PROGRAM_GITHUB_WEBSITE]];
+}
+
+// Open License HTML file
+- (IBAction)openLicense:(id)sender {
+    [WORKSPACE openPathInDefaultBrowser:[[NSBundle mainBundle] pathForResource:PROGRAM_LICENSE_FILE ofType:nil]];
+}
+
+// Open donations website
+- (IBAction)openDonations:(id)sender {
+    [WORKSPACE openURL:[NSURL URLWithString:PROGRAM_DONATIONS]];
 }
 
 @end

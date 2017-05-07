@@ -39,8 +39,6 @@
 #import "NSFileManager+FileOrFolderSize.h"
 #import "NSWorkspaceExtensions.h"
 
-#define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
-
 @interface SnapWindowController ()
 {
     NSMutableArray  *results;
@@ -66,6 +64,7 @@
 
 @property (nonatomic, readonly, copy) NSIndexSet *selectedItems;
 
+- (IBAction)interfaceSizeSelectd:(id)sender;
 - (IBAction)columnChanged:(id)sender;
 - (IBAction)open:(id)sender;
 - (IBAction)showInFinder:(id)sender;
@@ -85,16 +84,28 @@
 
 @implementation SnapWindowController
 
-- (instancetype)init {
-    if ((self = [super init])) {
-        results = [NSMutableArray array];
-    }
-    return self;
+- (BOOL)window:(NSWindow *)window shouldPopUpDocumentPathMenu:(NSMenu *)menu {
+    // prevent popup menu when window icon/title is cmd-clicked
+    return NO;
 }
 
-- (void)awakeFromNib {
+- (BOOL)window:(NSWindow *)window shouldDragDocumentWithEvent:(NSEvent *)event from:(NSPoint)dragImageLocation withPasteboard:(NSPasteboard *)pasteboard {
+    // prevent dragging of title bar icon
+    return NO;
+}
+
+- (void)windowDidLoad {
+    
+    results = [NSMutableArray array];
+
+    // put application icon in window title bar
+    [[self window] setRepresentedURL:[NSURL URLWithString:PROGRAM_WEBSITE]];
+    NSButton *button = [[self window] standardWindowButton:NSWindowDocumentIconButton];
+    [button setImage:[NSApp applicationIconImage]];
+    
+    // table view
     [resultsTableView setTarget:self];
-	[resultsTableView setDoubleAction:@selector(open:)];
+    [resultsTableView setDoubleAction:@selector(open:)];
     [resultsTableView setDraggingSourceOperationMask:NSDragOperationCopy|NSDragOperationMove forLocal:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -158,6 +169,10 @@
 - (void)removeColumnForAttr:(NSString *)attr {
     NSLog(@"Removing column %@", attr);
     [resultsTableView removeTableColumn:[resultsTableView tableColumnWithIdentifier:attr]];
+}
+
+- (IBAction)interfaceSizeSelectd:(id)sender {
+    
 }
 
 #pragma mark - Results 

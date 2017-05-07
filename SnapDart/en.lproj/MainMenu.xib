@@ -29,12 +29,39 @@
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="xAc-Iy-ZYR">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Check for Updates…" id="vx3-Uv-dRk">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Uninstall SnapDart" id="Fgx-Ti-mD7">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="uninstallProgram:" target="494" id="WGQ-QJ-GUp"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="236">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Preferences…" keyEquivalent="," id="129">
                                 <connections>
                                     <action selector="makeKeyAndOrderFront:" target="602" id="731"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="JVo-0V-tCY">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Donate to Support SnapDart" id="g1u-GY-Zxp">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openDonations:" target="494" id="bbF-5j-Nb0"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="BSD License" id="t7u-LX-9y9">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openLicense:" target="494" id="gUG-tO-FnH"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="143">
@@ -76,10 +103,20 @@
                 <menuItem title="File" id="83">
                     <menu key="submenu" title="File" id="81">
                         <items>
-                            <menuItem title="New Snap with Command" keyEquivalent="n" id="82">
+                            <menuItem title="New with Command" keyEquivalent="n" id="82">
                                 <connections>
-                                    <action selector="newDocument:" target="-1" id="373"/>
+                                    <action selector="showCmdWindow:" target="494" id="ehF-tc-AMt"/>
                                 </connections>
+                            </menuItem>
+                            <menuItem title="Run Recent Command" id="Z6h-7X-zgN">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Run Recent Command" systemMenu="recentDocuments" id="C2e-Lu-dBQ">
+                                    <items>
+                                        <menuItem title="Clear Menu" id="lXM-hS-vFT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="79">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
@@ -92,6 +129,12 @@
                             <menuItem title="Save…" keyEquivalent="s" id="75">
                                 <connections>
                                     <action selector="saveDocument:" target="-1" id="362"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Save As…" id="yJL-GW-hRJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="saveDocument:" target="-1" id="b3C-ky-ySw"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="74">
@@ -316,22 +359,32 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="View" id="Cxd-Fl-oE8">
                         <items>
-                            <menuItem title="Columns" enabled="NO" id="e07-1u-Mdd">
+                            <menuItem title="Columns" id="5h3-oy-vCM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Columns" id="Sei-Mr-r51"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="jZv-kN-S2O"/>
-                            <menuItem title="Size" id="itA-Kd-dRd">
+                            <menuItem title="List Size" id="itA-Kd-dRd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Size" id="dc5-n5-ad6">
+                                <menu key="submenu" title="List Size" id="dc5-n5-ad6">
                                     <items>
                                         <menuItem title="Small" id="hTQ-iH-gkH">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="Ywd-Jd-ADm"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Medium" id="bJ6-4R-oNT">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="VWw-UA-PgI"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Large" id="kaG-zX-G0N">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="QC7-UH-fw7"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
@@ -413,136 +466,57 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="491">
                         <items>
-                            <menuItem title="MacLocate Help" keyEquivalent="?" id="492">
+                            <menuItem title="SnapDart Documentation" keyEquivalent="?" toolTip="Open the Platypus Documentation file" id="ubm-kV-hN1">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="493"/>
+                                    <action selector="showHelp:" target="494" id="9vI-6R-oEB"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Man Page for 'snap' Tool" toolTip="View the man page for the platypus command line tool" id="Jl1-m3-lb7">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showManPage:" target="494" id="Ris-fe-5WW"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="nNr-Xb-zyE">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="BSD License" id="Fa3-Hj-fDd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openLicense:" target="494" id="t6X-VY-Zd7"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="SnapDart Website" toolTip="Visit the Platypus website" id="fvu-oN-4dD">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openWebsite:" target="494" id="NqH-jv-jaa"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="SnapDart on GitHub" toolTip="Visit the Platypus GitHub site" id="mwd-Ic-EWt">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openGitHubWebsite:" target="494" id="6rb-de-D7G"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="vg5-c0-2Os">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Donate to Support SnapDart Development" id="PpL-7e-Wfg">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openDonations:" target="494" id="rqZ-0s-NEV"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-50" y="-156"/>
+            <point key="canvasLocation" x="90" y="-161"/>
         </menu>
-        <window title="SnapDart" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="none" frameAutosaveName="SnapDartResultsWindow" tabbingMode="disallowed" id="371">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-            <rect key="contentRect" x="335" y="390" width="515" height="395"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <value key="minSize" type="size" width="400" height="200"/>
-            <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="515" height="395"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="580">
-                        <rect key="frame" x="-1" y="31" width="518" height="365"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" id="csv-Y8-uSR">
-                            <rect key="frame" x="1" y="0.0" width="516" height="364"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" alternatingRowBackgroundColors="YES" autosaveColumns="NO" headerView="582" id="584">
-                                    <rect key="frame" x="0.0" y="0.0" width="516" height="341"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                    <tableColumns>
-                                        <tableColumn identifier="Icon" editable="NO" width="20" minWidth="20" maxWidth="20" id="585">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageAlignment="right" imageScaling="proportionallyDown" id="601"/>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        </tableColumn>
-                                        <tableColumn identifier="Path" editable="NO" width="489.75" minWidth="40" maxWidth="100000" id="586">
-                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Path">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
-                                            </tableHeaderCell>
-                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="587">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        </tableColumn>
-                                    </tableColumns>
-                                    <connections>
-                                        <outlet property="dataSource" destination="733" id="743"/>
-                                        <outlet property="delegate" destination="733" id="744"/>
-                                        <outlet property="menu" destination="638" id="675"/>
-                                    </connections>
-                                </tableView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="583">
-                            <rect key="frame" x="1" y="268" width="515" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="581">
-                            <rect key="frame" x="224" y="17" width="15" height="102"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <tableHeaderView key="headerView" id="582">
-                            <rect key="frame" x="0.0" y="0.0" width="516" height="23"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <connections>
-                                <outlet property="menu" destination="782" id="810"/>
-                            </connections>
-                        </tableHeaderView>
-                    </scrollView>
-                    <button misplaced="YES" imageHugsTitle="YES" id="763">
-                        <rect key="frame" x="239" y="8" width="104" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="check" title="Exclude folders" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" state="on" inset="2" id="764">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="685" name="value" keyPath="values.ExcludeFolders" id="766"/>
-                        </connections>
-                    </button>
-                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="727">
-                        <rect key="frame" x="6" y="10" width="164" height="14"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="728">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="729">
-                        <rect key="frame" x="384" y="7" width="124" height="19"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="730">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </searchFieldCell>
-                    </searchField>
-                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="747">
-                        <rect key="frame" x="347" y="10" width="32" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Filter" id="748">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="593">
-                        <rect key="frame" x="218" y="8" width="16" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                    </progressIndicator>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="173.5" y="-805.5"/>
-        </window>
         <customObject id="494" customClass="SnapDartAppDelegate">
             <connections>
-                <outlet property="resultsController" destination="733" id="734"/>
+                <outlet property="columnsMenu" destination="Sei-Mr-r51" id="plq-75-D4h"/>
+                <outlet property="mainMenu" destination="29" id="gZk-IZ-CFf"/>
             </connections>
         </customObject>
         <window title="SnapDart Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="SnapDartPreferencesWindow" animationBehavior="default" id="602">
@@ -580,87 +554,6 @@ DQ
                             <action selector="revertToInitialValues:" target="685" id="690"/>
                         </connections>
                     </button>
-                    <box autoresizesSubviews="NO" borderType="line" title="Locate" id="611">
-                        <rect key="frame" x="17" y="106" width="257" height="234"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView" id="2s3-cN-qOs">
-                            <rect key="frame" x="1" y="1" width="255" height="218"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="613">
-                                    <rect key="frame" x="98" y="178" width="133" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="/usr/bin/locate" drawsBackground="YES" id="614">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.ToolPath" id="691">
-                                            <dictionary key="options">
-                                                <integer key="NSValidatesImmediately" value="1"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textField>
-                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="615">
-                                    <rect key="frame" x="29" y="181" width="64" height="17"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Tool Path" id="616">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="625">
-                                    <rect key="frame" x="17" y="150" width="76" height="17"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Result limit" id="626">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="635">
-                                    <rect key="frame" x="98" y="147" width="63" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1000" drawsBackground="YES" id="636">
-                                        <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="637">
-                                            <real key="minimum" value="1"/>
-                                        </numberFormatter>
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.ResultLimit" id="693"/>
-                                    </connections>
-                                </textField>
-                                <button imageHugsTitle="YES" id="681">
-                                    <rect key="frame" x="54" y="60" width="107" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Cache results" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="682">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.CacheResults" id="697"/>
-                                    </connections>
-                                </button>
-                                <button imageHugsTitle="YES" id="718">
-                                    <rect key="frame" x="54" y="82" width="146" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Ignore empty query" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="719">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <binding destination="685" name="value" keyPath="values.IgnoreEmptyQuery" id="721"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </view>
-                    </box>
                     <box autoresizesSubviews="NO" borderType="line" title="Interface" id="612">
                         <rect key="frame" x="276" y="74" width="257" height="266"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -720,7 +613,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="879"/>
                                         <binding destination="685" name="value" keyPath="values.Icon" id="855"/>
                                     </connections>
                                 </button>
@@ -732,7 +624,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="878"/>
                                         <binding destination="685" name="value" keyPath="values.Path" id="857"/>
                                     </connections>
                                 </button>
@@ -744,7 +635,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="883"/>
                                         <binding destination="685" name="value" keyPath="values.Date Modified" id="842"/>
                                     </connections>
                                 </button>
@@ -756,7 +646,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="884"/>
                                         <binding destination="685" name="value" keyPath="values.Date Created" id="843"/>
                                     </connections>
                                 </button>
@@ -768,7 +657,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="885"/>
                                         <binding destination="685" name="value" keyPath="values.Date Accessed" id="845"/>
                                     </connections>
                                 </button>
@@ -780,7 +668,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="880"/>
                                         <binding destination="685" name="value" keyPath="values.Size" id="854"/>
                                     </connections>
                                 </button>
@@ -792,7 +679,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="881"/>
                                         <binding destination="685" name="value" keyPath="values.Kind" id="852"/>
                                     </connections>
                                 </button>
@@ -813,7 +699,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="886"/>
                                         <binding destination="685" name="value" keyPath="values.Permissions" id="847"/>
                                     </connections>
                                 </button>
@@ -825,7 +710,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="887"/>
                                         <binding destination="685" name="value" keyPath="values.UTI" id="848"/>
                                     </connections>
                                 </button>
@@ -837,7 +721,6 @@ DQ
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="columnChanged:" target="733" id="882"/>
                                         <binding destination="685" name="value" keyPath="values.User:Group" id="850"/>
                                     </connections>
                                 </button>
@@ -847,193 +730,6 @@ DQ
                 </subviews>
             </view>
         </window>
-        <menu id="638">
-            <items>
-                <menuItem title="Open" id="640">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="open:" target="733" id="767"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Open With" id="671">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Open With" id="672">
-                        <items>
-                            <menuItem title="Item" id="673">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Show in Finder" id="639">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="showInFinder:" target="733" id="768"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Get Info" id="732">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="getInfo:" target="733" id="769"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="650"/>
-                <menuItem title="Copy" id="652">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="copyFile:" target="733" id="770"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Quick Look" id="676">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="quickLook:" target="733" id="771"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="647"/>
-                <menuItem title="Label" id="666">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Label" id="669">
-                        <items>
-                            <menuItem title="Item" id="670">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="642"/>
-                <menuItem title="Delete" image="delete" id="643">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="deleteFile:" target="733" id="772"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Move to Trash" image="trash2" id="644">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="moveToTrash:" target="733" id="773"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="654"/>
-                <menuItem title="Open Directory in Terminal" id="653">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="openDirectoryInTerminal:" target="733" id="774"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Run in Terminal" id="655">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="runInTerminal:" target="733" id="775"/>
-                    </connections>
-                </menuItem>
-            </items>
-            <connections>
-                <outlet property="delegate" destination="733" id="889"/>
-            </connections>
-        </menu>
         <userDefaultsController representsSharedInstance="YES" id="685"/>
-        <customObject id="733" userLabel="Window Controller" customClass="SnapWindowController">
-            <connections>
-                <outlet property="contextualMenu" destination="638" id="745"/>
-                <outlet property="filterTextField" destination="729" id="738"/>
-                <outlet property="labelMenuItem" destination="666" id="891"/>
-                <outlet property="numResultsTextField" destination="727" id="737"/>
-                <outlet property="openWithMenuItem" destination="671" id="890"/>
-                <outlet property="progressIndicator" destination="593" id="736"/>
-                <outlet property="resultsTableView" destination="584" id="741"/>
-                <outlet property="tableColumnContextualMenu" destination="782" id="839"/>
-                <outlet property="window" destination="371" id="zbJ-DU-rO6"/>
-            </connections>
-        </customObject>
-        <menu id="782">
-            <items>
-                <menuItem title="Icon" enabled="NO" id="783">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="685" name="value" keyPath="values.Icon" id="858"/>
-                        <binding destination="685" name="enabled" keyPath="values.Icon" id="869">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </menuItem>
-                <menuItem title="Path" enabled="NO" id="784">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <binding destination="685" name="value" keyPath="values.Path" id="860"/>
-                        <binding destination="685" name="enabled" keyPath="values.Path" id="870">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </menuItem>
-                <menuItem title="Size" id="785">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="828"/>
-                        <binding destination="685" name="value" keyPath="values.Size" id="861"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Kind" id="786">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="831"/>
-                        <binding destination="685" name="value" keyPath="values.Kind" id="862"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Date Modified" id="787">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="830"/>
-                        <binding destination="685" name="value" keyPath="values.Date Modified" id="863"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Date Created" id="788">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="832"/>
-                        <binding destination="685" name="value" keyPath="values.Date Created" id="864"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Date Accessed" id="790">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="833"/>
-                        <binding destination="685" name="value" keyPath="values.Date Accessed" id="865"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="User:Group" id="817">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="834"/>
-                        <binding destination="685" name="value" keyPath="values.User:Group" id="866"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Permissions" id="791">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="835"/>
-                        <binding destination="685" name="value" keyPath="values.Permissions" id="867"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="UTI" id="793">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="columnChanged:" target="733" id="836"/>
-                        <binding destination="685" name="value" keyPath="values.UTI" id="868"/>
-                    </connections>
-                </menuItem>
-            </items>
-            <connections>
-                <outlet property="delegate" destination="733" id="838"/>
-            </connections>
-        </menu>
     </objects>
-    <resources>
-        <image name="delete" width="16" height="16"/>
-        <image name="trash2" width="16" height="16"/>
-    </resources>
 </document>
