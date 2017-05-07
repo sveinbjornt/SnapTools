@@ -38,7 +38,7 @@
 #define PROGRAM_GITHUB_WEBSITE      @"http://github.com/sveinbjornt/SnapDart"
 #define PROGRAM_DONATIONS           @"http://sveinbjorn.org/donations"
 
-#define PROGRAM_MANPAGE             @"platypus.man.html"
+#define PROGRAM_MANPAGE             @"snap.man.html"
 #define PROGRAM_LICENSE_FILE        @"License.html"
 #define PROGRAM_DOCUMENTATION       @"Documentation.html"
 

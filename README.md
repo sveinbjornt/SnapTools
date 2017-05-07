@@ -16,7 +16,7 @@ UNIX command line interface
 
 SnapDart is open source software, available under the three-clause BSD license:
 
-> Copyright (c) 2004-2016, Sveinbjorn Thordarson &lt;sveinbjornt@gmail.com&gt;
+> Copyright (c) 2012-2017, Sveinbjorn Thordarson &lt;sveinbjornt@gmail.com&gt;
 > 
 > Redistribution and use in source and binary forms, with or without modification,
 > are permitted provided that the following conditions are met:
