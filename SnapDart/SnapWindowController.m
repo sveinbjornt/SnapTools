@@ -62,8 +62,6 @@
     UInt64          totalSize;
 }
 
-@property (nonatomic, readonly, copy) NSIndexSet *selectedItems;
-
 - (IBAction)interfaceSizeSelectd:(id)sender;
 - (IBAction)columnChanged:(id)sender;
 - (IBAction)open:(id)sender;
@@ -211,8 +209,7 @@
     [self updateNumFiles];
     [resultsTableView noteNumberOfRowsChanged];
 }
-     
-     
+
 - (void)updateNumFiles {
     NSInteger lim = [[DEFAULTS objectForKey:@"ResultLimit"] intValue];
     NSString *maxed = ([results count] >= lim) ? @"(hit limit)" : @"";
@@ -406,7 +403,7 @@
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-    return [results[rowIndex] attr:[aTableColumn identifier] ];
+    return [results[rowIndex] attr:[aTableColumn identifier]];
 }
 
 - (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard*)pboard {
@@ -424,18 +421,15 @@
 	return YES;
 }
 
+- (CGFloat)tableView:(NSTableView *)theTableView heightOfRow:(NSInteger)row {
+    return 20;
+}
+
 #pragma mark - Task
 
 - (void)runLocate {
     // construct arguments list
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:10];
-    
-    // limit
-    int lim = [[DEFAULTS objectForKey:@"ResultLimit"] intValue];
-    if (lim) {
-        [args addObject:@"-l"];
-        [args addObject:[NSString stringWithFormat:@"%d", lim]];
-    }
     
     //initalize task
     task = [[NSTask alloc] init];
@@ -464,8 +458,7 @@
     //[task waitUntilExit];
 }
 
-
-//  read from the file handle and append it to the text window
+// read from the file handle and append it to the text window
 - (void)getOutputData:(NSNotification *)aNotification {
     //get the data from notification
     NSData *data = [aNotification userInfo][NSFileHandleNotificationDataItem];

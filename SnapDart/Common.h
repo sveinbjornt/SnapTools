@@ -45,6 +45,10 @@
 #define PROGRAM_MANPAGE_URL         @"http://sveinbjorn.org/files/manpages/snap.man.html"
 #define PROGRAM_DOCUMENTATION_URL   @"http://sveinbjorn.org/files/manpages/SnapDartDocumentation.html"
 
+#define PROGRAM_APP_SUPPORT_PATH    [[NSString stringWithFormat:@"~/Library/Application Support/%@", PROGRAM_NAME] stringByExpandingTildeInPath]
+#define PROGRAM_HISTORY_PATH        [NSString stringWithFormat:@"%@/History", PROGRAM_APP_SUPPORT_PATH]
+#define PROGRAM_HISTORY_BOOKMARKS   [NSString stringWithFormat:@"%@/Bookmarks", PROGRAM_APP_SUPPORT_PATH]
+#define PROGRAM_REQUIRED_DIRS       @[PROGRAM_APP_SUPPORT_PATH, PROGRAM_HISTORY_PATH, PROGRAM_HISTORY_BOOKMARKS]
 
 #define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
 

@@ -28,8 +28,9 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Cocoa/Cocoa.h>
+#import "SnapHistory.h"
+#import "Common.h"
 
-@interface CmdWindowController : NSWindowController
+@implementation SnapHistory
 
 @end

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -30,6 +30,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AppFinder : NSObject
+@interface SnapHistory : NSObject
+
++ (void)writeSnapToHistoryFile:(NSArray *)items;
 
 @end

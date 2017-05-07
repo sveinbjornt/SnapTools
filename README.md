@@ -2,7 +2,7 @@
 
 # SnapDart
 
-Mac OS X file browser that integrates in powerful and convenient ways with the 
+Mac OS X file browser that integrates in powerful ways with the 
 UNIX command line interface
 
 <!--* [Download SnapDart 1.0]() (Intel 64-bit, 10.8 or later, ~0.5 MB)

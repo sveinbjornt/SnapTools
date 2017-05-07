@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2003-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -26,10 +26,24 @@
  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
-#import "AppFinder.h"
+#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
-@implementation AppFinder
+@interface Alerts : NSObject
+
++ (void)alert:(NSString *)message subText:(NSString *)subtext style:(NSAlertStyle)style;
++ (void)alert:(NSString *)message subText:(NSString *)subtext;
++ (void)alert:(NSString *)message subTextFormat:(NSString *)formatString, ...;
+
++ (void)fatalAlert:(NSString *)message subText:(NSString *)subtext;
++ (void)fatalAlert:(NSString *)message subTextFormat:(NSString *)formatString, ...;
+
++ (void)sheetAlert:(NSString *)message forWindow:(NSWindow *)window subTextFormat:(NSString *)formatString, ...;
++ (void)sheetAlert:(NSString *)message subText:(NSString *)subtext forWindow:(NSWindow *)window;
++ (void)sheetAlert:(NSString *)message subText:(NSString *)subtext style:(NSAlertStyle)style forWindow:(NSWindow *)window;
+
++ (BOOL)proceedAlert:(NSString *)message subText:(NSString *)subtext withActionNamed:(NSString *)action;
 
 @end

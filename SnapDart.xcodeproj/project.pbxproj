@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		F42730901EAFA3D400F3F7A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F430C24A14DEF3DC0026CBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F430C24914DEF3DC0026CBDB /* Foundation.framework */; };
-		F430C24D14DEF3DC0026CBDB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C24C14DEF3DC0026CBDB /* main.m */; };
+		F430C24D14DEF3DC0026CBDB /* snap.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C24C14DEF3DC0026CBDB /* snap.m */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
 		F485854F14D46E4300B007CA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F485854D14D46E4300B007CA /* Credits.rtf */; };
@@ -23,14 +23,15 @@
 		F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F118811EBF431E00E99B9A /* SnapWindow.xib */; };
 		F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F4F118901EBF69F400E99B9A /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
-		F4F118931EBF6A1300E99B9A /* AppFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118921EBF6A1300E99B9A /* AppFinder.m */; };
-		F4F118941EBF6A1300E99B9A /* AppFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118921EBF6A1300E99B9A /* AppFinder.m */; };
 		F4F118981EBF6DBA00E99B9A /* CmdWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118961EBF6DBA00E99B9A /* CmdWindowController.m */; };
 		F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F118971EBF6DBA00E99B9A /* CmdWindow.xib */; };
 		F4F1189C1EBF724E00E99B9A /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
 		F4F118A31EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189E1EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m */; };
 		F4F118A41EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118A01EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m */; };
 		F4F118B21EBF9CA700E99B9A /* snap.man.html in Resources */ = {isa = PBXBuildFile; fileRef = F4F118B11EBF9CA700E99B9A /* snap.man.html */; };
+		F4F118B51EBFCB7500E99B9A /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118B41EBFCB7500E99B9A /* Alerts.m */; };
+		F4F118B81EBFDFC700E99B9A /* SnapHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118B71EBFDFC700E99B9A /* SnapHistory.m */; };
+		F4F118B91EBFDFC700E99B9A /* SnapHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118B71EBFDFC700E99B9A /* SnapHistory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +61,7 @@
 /* Begin PBXFileReference section */
 		F430C24714DEF3DC0026CBDB /* snap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = snap; sourceTree = BUILT_PRODUCTS_DIR; };
 		F430C24914DEF3DC0026CBDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F430C24C14DEF3DC0026CBDB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F430C24C14DEF3DC0026CBDB /* snap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snap.m; sourceTree = "<group>"; };
 		F467F38914D5A24100246ABB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = SnapDart/Common.h; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* SnapDart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -82,8 +83,6 @@
 		F4F118881EBF46FB00E99B9A /* status-menu-silhouette.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = "status-menu-silhouette.psd"; sourceTree = "<group>"; };
 		F4F1188D1EBF69F400E99B9A /* PathParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathParser.h; sourceTree = "<group>"; };
 		F4F1188E1EBF69F400E99B9A /* PathParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathParser.m; sourceTree = "<group>"; };
-		F4F118911EBF6A1300E99B9A /* AppFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppFinder.h; sourceTree = "<group>"; };
-		F4F118921EBF6A1300E99B9A /* AppFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppFinder.m; sourceTree = "<group>"; };
 		F4F118951EBF6DBA00E99B9A /* CmdWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CmdWindowController.h; sourceTree = "<group>"; };
 		F4F118961EBF6DBA00E99B9A /* CmdWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CmdWindowController.m; sourceTree = "<group>"; };
 		F4F118971EBF6DBA00E99B9A /* CmdWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CmdWindow.xib; sourceTree = "<group>"; };
@@ -103,6 +102,10 @@
 		F4F118AE1EBF9C0900E99B9A /* snap.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snap.1; sourceTree = "<group>"; };
 		F4F118AF1EBF9C0900E99B9A /* update_website_docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = update_website_docs.sh; sourceTree = "<group>"; };
 		F4F118B11EBF9CA700E99B9A /* snap.man.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snap.man.html; sourceTree = "<group>"; };
+		F4F118B31EBFCB7500E99B9A /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
+		F4F118B41EBFCB7500E99B9A /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
+		F4F118B61EBFDFC700E99B9A /* SnapHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapHistory.h; sourceTree = "<group>"; };
+		F4F118B71EBFDFC700E99B9A /* SnapHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapHistory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +132,7 @@
 		F430C24B14DEF3DC0026CBDB /* snap */ = {
 			isa = PBXGroup;
 			children = (
-				F430C24C14DEF3DC0026CBDB /* main.m */,
+				F430C24C14DEF3DC0026CBDB /* snap.m */,
 				F4F118A71EBF9C0900E99B9A /* man */,
 			);
 			path = snap;
@@ -220,12 +223,14 @@
 		F4F1188C1EBF69DD00E99B9A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F4F118B61EBFDFC700E99B9A /* SnapHistory.h */,
+				F4F118B71EBFDFC700E99B9A /* SnapHistory.m */,
 				F4F1188D1EBF69F400E99B9A /* PathParser.h */,
 				F4F1188E1EBF69F400E99B9A /* PathParser.m */,
-				F4F118911EBF6A1300E99B9A /* AppFinder.h */,
-				F4F118921EBF6A1300E99B9A /* AppFinder.m */,
 				F4F1189A1EBF724E00E99B9A /* NSWorkspace+Additions.h */,
 				F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */,
+				F4F118B31EBFCB7500E99B9A /* Alerts.h */,
+				F4F118B41EBFCB7500E99B9A /* Alerts.m */,
 				F4F1189D1EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.h */,
 				F4F1189E1EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m */,
 				F4F1189F1EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.h */,
@@ -376,9 +381,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F430C24D14DEF3DC0026CBDB /* main.m in Sources */,
+				F4F118B91EBFDFC700E99B9A /* SnapHistory.m in Sources */,
+				F430C24D14DEF3DC0026CBDB /* snap.m in Sources */,
 				F4F118901EBF69F400E99B9A /* PathParser.m in Sources */,
-				F4F118941EBF6A1300E99B9A /* AppFinder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,13 +393,14 @@
 			files = (
 				F485854B14D46E4300B007CA /* main.m in Sources */,
 				F485855214D46E4300B007CA /* SnapDartAppDelegate.m in Sources */,
+				F4F118B51EBFCB7500E99B9A /* Alerts.m in Sources */,
 				F485855F14D46E8200B007CA /* SnapWindowController.m in Sources */,
 				F4F118A31EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m in Sources */,
 				F4F1189C1EBF724E00E99B9A /* NSWorkspace+Additions.m in Sources */,
 				F485858914D4CD1600B007CA /* SnapItem.m in Sources */,
 				F4F118981EBF6DBA00E99B9A /* CmdWindowController.m in Sources */,
-				F4F118931EBF6A1300E99B9A /* AppFinder.m in Sources */,
 				F4F118A41EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m in Sources */,
+				F4F118B81EBFDFC700E99B9A /* SnapHistory.m in Sources */,
 				F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

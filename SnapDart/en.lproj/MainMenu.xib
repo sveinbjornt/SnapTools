@@ -368,10 +368,16 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="List Size" id="dc5-n5-ad6">
                                     <items>
-                                        <menuItem title="Small" id="hTQ-iH-gkH">
+                                        <menuItem title="Very Small" id="hTQ-iH-gkH">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="interfaceSizeSelectd:" target="-1" id="Ywd-Jd-ADm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Small" id="sOu-h8-y2v">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="NOb-HD-zzr"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Medium" id="bJ6-4R-oNT">
@@ -384,6 +390,23 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="interfaceSizeSelectd:" target="-1" id="QC7-UH-fw7"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Very Large" id="9tN-09-QSz">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="OdY-Mh-Sla"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="bzH-57-ETe"/>
+                                        <menuItem title="Decrease List Size " keyEquivalent="-" id="qd5-x5-YYM">
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="2gR-cy-7TX"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Increase List Size " keyEquivalent="+" id="u8J-VT-w5e">
+                                            <connections>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="8pt-gR-YvK"/>
                                             </connections>
                                         </menuItem>
                                     </items>

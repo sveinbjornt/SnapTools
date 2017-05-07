@@ -33,6 +33,7 @@
 #import "SnapWindowController.h"
 #import "CmdWindowController.h"
 #import "NSWorkspace+Additions.h"
+#import "Alerts.h"
 
 @interface SnapDartAppDelegate ()
 {
@@ -63,7 +64,16 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    
+    // created required App Support folders
+    BOOL isDir;
+    NSError *err;
+    for (NSString *dirPath in PROGRAM_REQUIRED_DIRS) {
+        BOOL existingDir = ([FILEMGR fileExistsAtPath:dirPath isDirectory:&isDir] && isDir);
+        if (!existingDir && ![FILEMGR createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:&err]) {
+            [Alerts alert:@"Error" subTextFormat:@"Could not create directory '%@', %@",
+             dirPath, [err localizedDescription]];
+        }
+    }
 }
 
 -(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename{

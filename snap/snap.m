@@ -36,13 +36,10 @@
 #import <getopt.h>
 
 #import "Common.h"
-
+#import "PathParser.h"
 
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
-static NSMutableSet *ParseForPaths(NSString *str);
 
-static NSString *MakeAbsolutePath (NSString *path);
-static NSString *Trim(NSString *str);
 static NSString *ReadStandardInput();
 
 static BOOL SendOpenDocumentAppleEvent(NSSet *paths);
@@ -51,7 +48,6 @@ static void PrintHelp(void);
 
 static void NSPrintErr(NSString *format, ...);
 static void NSPrint(NSString *format, ...);
-
 
 static const char optstring[] = "apvh";
 
@@ -123,13 +119,13 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         if (!standardInput) {
             return EX_NOINPUT;
         }
-        paths = ParseForPaths(standardInput);
+        paths = [PathParser parse:standardInput];
         
     } else {
         
         // process file args
         for (NSString *filePath in remainingArgs) {
-            NSString *f = MakeAbsolutePath(filePath);
+            NSString *f = [PathParser makeAbsolutePath:filePath];
             if ([FILEMGR fileExistsAtPath:f]) {
                 [paths addObject:f];
             } else {
@@ -157,7 +153,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     }
     
     // Hand paths over to SnapDart app via Apple Event
-    if ([paths count] && !printOnly) {
+    if ([paths count]) {
         BOOL success = SendOpenDocumentAppleEvent(paths);
         if (!success) {
             NSPrintErr(@"Error launching SnapDart app");
@@ -183,42 +179,6 @@ static NSMutableSet *ReadDirectoryContents(NSString *dirPath) {
     return pathSet;
 }
 
-static NSMutableSet *ParseForPaths(NSString *str) {
-    NSMutableSet *potentialPaths = [NSMutableSet set];
-    
-    // Separate each line of input, parse it for potential paths
-    NSArray *lines = [str componentsSeparatedByString:@"\n"];
-    for (NSString *l in lines) {
-        NSString *line = Trim(l);
-        
-        // is the full line a valid path?
-        NSString *abs = MakeAbsolutePath(line);
-        if ([FILEMGR fileExistsAtPath:abs]) {
-            [potentialPaths addObject:line];
-            continue;
-        }
-        
-        // otherwise, try to find a path within the string
-        NSUInteger len = [line length];
-        for (int i = 0; i < len; i++) {
-            if ([line characterAtIndex:i] == ' ') {
-                [potentialPaths addObject:Trim([line substringToIndex:i])];
-                [potentialPaths addObject:Trim([line substringFromIndex:i])];
-            }
-        }
-    }
-    
-    // Standardise paths and filter out invalid ones
-    NSMutableSet *paths = [NSMutableSet set];
-    for (NSString *p in potentialPaths) {
-        NSString *absPath = MakeAbsolutePath(p);
-        if ([FILEMGR fileExistsAtPath:absPath]) {
-            [paths addObject:absPath];
-        }
-    }
-    return paths;
-}
-
 static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
     
     // convert path strings to url objects
@@ -236,24 +196,12 @@ static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
                           launchIdentifiers:NULL];
 }
 
-static inline NSString *Trim(NSString *str) {
-    return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-}
-
-static inline NSString *MakeAbsolutePath(NSString *path) {
-    NSString *absPath = [path stringByExpandingTildeInPath];
-    if ([absPath isAbsolutePath] == NO) {
-        absPath = [[FILEMGR currentDirectoryPath] stringByAppendingPathComponent:path];
-    }
-    return [absPath stringByStandardizingPath];
-}
-
 static NSString *ReadStandardInput() {
     NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
     if (!inData) {
         return nil;
     }
-    return [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];;
+    return [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark -

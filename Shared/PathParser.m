@@ -32,4 +32,55 @@
 
 @implementation PathParser
 
++ (NSString *)makeAbsolutePath:(NSString *)path {
+    NSString *absPath = [path stringByExpandingTildeInPath];
+    if ([absPath isAbsolutePath] == NO) {
+        NSString *currDir = [[NSFileManager defaultManager] currentDirectoryPath];
+        absPath = [currDir stringByAppendingPathComponent:path];
+    }
+    return [absPath stringByStandardizingPath];
+}
+
++ (NSString *)trim:(NSString *)str {
+    return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
++ (NSMutableSet *)parse:(NSString *)str {
+    NSMutableSet *potentialPaths = [NSMutableSet set];
+    
+    // Separate each line of input, parse it for potential paths
+    NSArray *lines = [str componentsSeparatedByString:@"\n"];
+    for (NSString *l in lines) {
+        NSString *line = [self trim:l];
+        
+        // is the full line a valid path?
+        NSString *abs = [self makeAbsolutePath:line];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:abs]) {
+            [potentialPaths addObject:line];
+            continue;
+        }
+        
+        // otherwise, try to find a path within the string
+        NSUInteger len = [line length];
+        for (int i = 0; i < len; i++) {
+            if ([line characterAtIndex:i] == ' ') {
+                NSString *preStr = [line substringToIndex:i];
+                NSString *postStr = [line substringFromIndex:i];
+                [potentialPaths addObject:[self trim:preStr]];
+                [potentialPaths addObject:[self trim:postStr]];
+            }
+        }
+    }
+    
+    // Standardise paths and filter out invalid ones
+    NSMutableSet *paths = [NSMutableSet set];
+    for (NSString *p in potentialPaths) {
+        NSString *absPath = [self makeAbsolutePath:p];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath]) {
+            [paths addObject:absPath];
+        }
+    }
+    return paths;
+}
+
 @end

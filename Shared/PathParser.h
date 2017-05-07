@@ -32,4 +32,7 @@
 
 @interface PathParser : NSObject
 
++ (NSString *)makeAbsolutePath:(NSString *)path;
++ (NSMutableSet *)parse:(NSString *)str;
+
 @end
