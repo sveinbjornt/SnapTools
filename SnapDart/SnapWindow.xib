@@ -178,13 +178,13 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="uKa-GM-8UA"/>
-                <menuItem title="Delete" image="delete" id="SxF-Es-6Hp">
+                <menuItem title="Delete" image="Delete" id="SxF-Es-6Hp">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="deleteFile:" target="-2" id="FC9-Yv-1D9"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Move to Trash" image="trash2" id="u8g-rM-J4i">
+                <menuItem title="Move to Trash" image="Trash" id="u8g-rM-J4i">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="moveToTrash:" target="-2" id="YJF-vR-4uA"/>
@@ -241,7 +241,7 @@
         </menu>
     </objects>
     <resources>
-        <image name="delete" width="16" height="16"/>
-        <image name="trash2" width="16" height="16"/>
+        <image name="Delete" width="16" height="16"/>
+        <image name="Trash" width="16" height="16"/>
     </resources>
 </document>

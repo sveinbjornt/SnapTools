@@ -51,15 +51,6 @@
     IBOutlet NSSearchField *filterTextField;
     IBOutlet NSTextField *numResultsTextField;
     IBOutlet NSMenu *tableColumnContextualMenu;
-    
-    NSTask          *task;
-    NSTimer         *checkStatusTimer;
-    NSPipe          *outputPipe;
-    NSFileHandle    *readHandle;
-    BOOL            isTaskRunning;
-    BOOL            outputEmpty;
-    NSString        *remnants;
-    UInt64          totalSize;
 }
 
 - (IBAction)interfaceSizeSelectd:(id)sender;
@@ -75,8 +66,6 @@
 - (IBAction)openDirectoryInTerminal:(id)sender;
 - (IBAction)runInTerminal:(id)sender;
 - (void)updateNumFiles;
-- (void)appendOutput:(NSData *)data;
-- (void)getOutputData:(NSNotification *)aNotification;
 
 @end
 
@@ -106,11 +95,6 @@
     [resultsTableView setTarget:self];
     [resultsTableView setDoubleAction:@selector(open:)];
     [resultsTableView setDraggingSourceOperationMask:NSDragOperationCopy|NSDragOperationMove forLocal:NO];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(taskFinished:)
-                                                 name:NSTaskDidTerminateNotification
-                                               object:nil];
     [self updateColumns];
 }
 
@@ -187,14 +171,10 @@
 
 - (void)addPath:(NSString *)path {
     SnapItem *item = [SnapItem itemWithPath:path];
-    
-    // get attributes
-    
-    
-    // file size
+
+//    // file size
 //    [dict setObject:[NSNumber numberWithUnsignedLongLong:statInfo.st_size] forKey:@"Size"];
-//    totalSize += statInfo.st_size;
-//    
+//
 //    // access date
 //    [dict setObject:[NSNumber numberWithUnsignedLongLong:statInfo.st_atime] forKey:@"AccessDate"];
 //    
@@ -211,16 +191,7 @@
 }
 
 - (void)updateNumFiles {
-    NSInteger lim = [[DEFAULTS objectForKey:@"ResultLimit"] intValue];
-    NSString *maxed = ([results count] >= lim) ? @"(hit limit)" : @"";
-    NSString *label = [NSString stringWithFormat:@"%lu items %@", (unsigned long)[results count], maxed, nil];
-
-    // append total size
-    if (totalSize) {
-        NSString *humanSizeStr = [FILEMGR sizeAsHumanReadable:totalSize];
-        label = [label stringByAppendingFormat:@" %@", humanSizeStr, nil];
-    }
-    
+    NSString *label = [NSString stringWithFormat:@"%lu items", (unsigned long)[results count]];
     [numResultsTextField setStringValue:label];
 }
 
@@ -295,7 +266,6 @@
     [submenu addItemWithTitle:@"Select..." action:nil keyEquivalent:@""];
     return submenu;
 }
-
 
 #pragma mark - File functions
 
@@ -423,135 +393,6 @@
 
 - (CGFloat)tableView:(NSTableView *)theTableView heightOfRow:(NSInteger)row {
     return 20;
-}
-
-#pragma mark - Task
-
-- (void)runLocate {
-    // construct arguments list
-    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:10];
-    
-    //initalize task
-    task = [[NSTask alloc] init];
-    
-    //apply settings for task
-    [task setLaunchPath:[DEFAULTS objectForKey:@"ToolPath"]];
-    [task setArguments:args];
-    
-    // set output to file handle and start monitoring it if script provides feedback
-    outputPipe = [NSPipe pipe];
-    [task setStandardOutput:outputPipe];
-    readHandle = [outputPipe fileHandleForReading];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getOutputData:) name:NSFileHandleReadCompletionNotification object:readHandle];
-    [readHandle readInBackgroundAndNotify];
-    
-    //set it off
-    totalSize = 0;
-    isTaskRunning = YES;
-    NSLog(@"Executing %@", [task description]);
-    [task launch];
-    
-    [progressIndicator setUsesThreadedAnimation:YES];
-    [progressIndicator startAnimation:self];
-    
-    // we wait until task exits if this is for the menu
-    //[task waitUntilExit];
-}
-
-// read from the file handle and append it to the text window
-- (void)getOutputData:(NSNotification *)aNotification {
-    //get the data from notification
-    NSData *data = [aNotification userInfo][NSFileHandleNotificationDataItem];
-    
-    //make sure there's actual data
-    if ([data length]) {
-        outputEmpty = NO;
-        
-        //append the output to the text field        
-        [self appendOutput:data];
-        
-        // we schedule the file handle to go and read more data in the background again.
-        [[aNotification object] readInBackgroundAndNotify];
-    } else {
-        outputEmpty = YES;
-        [self updateNumFiles];
-    }
-}
-
-- (void)appendOutput:(NSData *)data {
-    // we decode the script output according to specified character encoding
-    NSMutableString *outputString = [[NSMutableString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    if (!outputString) {
-        return;
-    }
-    if (remnants != NULL && [remnants length] > 0) {
-        [outputString insertString:remnants atIndex:0];
-    }
-    
-    // parse the data just dumped out
-    NSMutableArray *lines = [NSMutableArray arrayWithArray:[outputString componentsSeparatedByString:@"\n"]];
-    
-    // if the line did not end with a newline, it wasn't a complete line of output
-    // Thus, we store the last line and then delete it from the outputstring
-    // It'll be appended next time we get output
-    if ([(NSString *)[lines lastObject] length] > 0) {
-        if (remnants != NULL) {  remnants = NULL; }
-        remnants = [[NSString alloc] initWithString:[lines lastObject]];
-        [outputString deleteCharactersInRange:NSMakeRange([outputString length]-[remnants length], [remnants length])];
-    } else {
-        remnants = NULL;
-    }
-    [lines removeLastObject];
-    
-    for (int i = 0; i < [lines count]; i++) {
-        NSString *theLine = lines[i];
-        
-        // if the line is empty, we ignore it
-        if ([theLine length] == 0) {
-            continue;
-        }
-        
-        if ([theLine hasPrefix:@"/"]) {
-            if ([FILEMGR fileExistsAtPath:theLine]) {
-                [self addPath:theLine];
-            }
-        }
-    }
-    
-}
-
-// OK, called when we receive notification that task is finished
-// Some cleaning up to do, controls need to be adjusted, etc.
-- (void)taskFinished:(NSNotification *)aNotification {
-    if (aNotification != nil && [aNotification object] != task) {
-        return;
-    }
-    
-    // if task already quit, we return    
-    isTaskRunning = NO;
-
-    // did we receive all the data?
-    if (outputEmpty) {
-        // We make sure to clear the filehandle of any remaining data
-        if (readHandle != nil) {
-            NSData *data;
-            while ((data = [readHandle availableData]) && [data length]) {
-                [self appendOutput:data];
-            }
-        }
-    }
-    
-    // stop and dispose of task
-    if (task != nil) {
-        [task terminate];
-        task = nil;
-    }
-    
-    // update interface
-    [progressIndicator stopAnimation:self];
-    [resultsTableView noteNumberOfRowsChanged];
-    [self updateNumFiles];
 }
 
 @end

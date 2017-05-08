@@ -32,4 +32,6 @@
 
 @interface SnapDartAppDelegate : NSObject 
 
+- (void)newSnapWindowWithPaths:(NSArray *)paths;
+
 @end

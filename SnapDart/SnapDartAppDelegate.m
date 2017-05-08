@@ -125,6 +125,14 @@
 
 #pragma mark -
 
+//- (void)newSnapWithPaths:(NSArray *)paths {
+//    
+//}
+
+
+
+#pragma mark -
+
 - (void)createStatusMenuItem {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [statusItem setHighlightMode:YES];

@@ -46,6 +46,13 @@
 }
 
 + (NSMutableSet *)parse:(NSString *)str {
+    
+    // empty string?
+    str = [self trim:str];
+    if (![str length]) {
+        return [NSMutableSet set];
+    }
+    
     NSMutableSet *potentialPaths = [NSMutableSet set];
     
     // Separate each line of input, parse it for potential paths
