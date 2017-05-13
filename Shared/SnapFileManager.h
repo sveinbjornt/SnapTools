@@ -30,8 +30,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SnapHistory : NSObject
+@interface SnapFileManager : NSObject
 
-+ (void)writeSnapToHistoryFile:(NSArray *)items;
++ (NSArray *)readHistory;
++ (NSArray *)readBookmarks;
+
++ (NSArray *)readSnapFileAtPath:(NSString *)path;
++ (BOOL)writeSnap:(NSArray *)items toPath:(NSString *)path;
 
 @end

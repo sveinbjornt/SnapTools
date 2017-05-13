@@ -108,6 +108,11 @@
                                     <action selector="showCmdWindow:" target="494" id="ehF-tc-AMt"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="New with Files…" keyEquivalent="o" id="hYm-As-vmL">
+                                <connections>
+                                    <action selector="showCmdWindow:" target="494" id="Bfy-pQ-Y0L"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Run Recent Command" id="Z6h-7X-zgN">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Run Recent Command" systemMenu="recentDocuments" id="C2e-Lu-dBQ">
@@ -436,8 +441,14 @@
                             <menuItem isSeparatorItem="YES" id="qxD-Xx-bea"/>
                             <menuItem title="Clear History" id="5Mc-Re-4jF">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="clearHistory:" target="494" id="dEs-dI-msx"/>
+                                </connections>
                             </menuItem>
                         </items>
+                        <connections>
+                            <outlet property="delegate" destination="494" id="iM5-Nj-5bG"/>
+                        </connections>
                     </menu>
                 </menuItem>
                 <menuItem title="Bookmarks" id="CZr-Zm-mmX">
@@ -447,8 +458,14 @@
                             <menuItem isSeparatorItem="YES" id="FZL-b6-oK4"/>
                             <menuItem title="Clear All Bookmarks" id="jSZ-tF-YQ6">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="clearBookmarks:" target="494" id="51U-1Z-7SZ"/>
+                                </connections>
                             </menuItem>
                         </items>
+                        <connections>
+                            <outlet property="delegate" destination="494" id="rSF-ar-bKI"/>
+                        </connections>
                     </menu>
                 </menuItem>
                 <menuItem title="Window" id="19">
@@ -538,7 +555,9 @@
         </menu>
         <customObject id="494" customClass="SnapDartAppDelegate">
             <connections>
+                <outlet property="bookmarksMenu" destination="3Zo-cd-lTN" id="F47-A2-0cc"/>
                 <outlet property="columnsMenu" destination="Sei-Mr-r51" id="plq-75-D4h"/>
+                <outlet property="historyMenu" destination="Szk-X6-XqV" id="ihK-PF-KuK"/>
                 <outlet property="mainMenu" destination="29" id="gZk-IZ-CFf"/>
             </connections>
         </customObject>

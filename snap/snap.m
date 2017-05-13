@@ -146,19 +146,23 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     // Sort alphabetically
     NSArray *finalPaths = [paths allObjects];
     finalPaths = [finalPaths sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-
-    // Print to stdout
-    for (NSString *p in finalPaths) {
-        NSPrint(@"%@", p);
-    }
     
     // Hand paths over to SnapDart app via Apple Event
     if ([paths count]) {
-        BOOL success = SendOpenDocumentAppleEvent(paths);
-        if (!success) {
-            NSPrintErr(@"Error launching SnapDart app");
-            exit(EX_UNAVAILABLE);
+        
+        if (printOnly) {
+            for (NSString *p in finalPaths) {
+                NSPrint(@"%@", p);
+            }
         }
+        else {
+            BOOL success = SendOpenDocumentAppleEvent(paths);
+            if (!success) {
+                NSPrintErr(@"Error launching SnapDart app");
+                exit(EX_UNAVAILABLE);
+            }
+        }
+
     } else {
         NSPrintErr(@"No paths provided");
         exit(EX_USAGE);

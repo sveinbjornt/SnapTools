@@ -380,7 +380,6 @@
 }
 
 - (BOOL)runCommandInTerminal:(NSString *)cmd {
-    
     NSString *osaCmd = [NSString stringWithFormat:@"tell application \"Terminal\"\n\tdo script \"%@\"\nactivate\nend tell", cmd];
     NSAppleScript *script = [[NSAppleScript alloc] initWithSource:osaCmd];
     id ret = [script executeAndReturnError:nil];
@@ -388,6 +387,16 @@
     [script release];
 #endif
     return (ret != nil);
+}
+
+- (BOOL)isFinderRunning {
+    NSArray *apps = [self runningApplications];
+    for (NSRunningApplication *app in apps) {
+        if ([[app bundleIdentifier] isEqualToString:@"com.apple.finder"]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

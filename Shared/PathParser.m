@@ -45,6 +45,10 @@
     return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
++ (BOOL)isHiddenFileAtPath:(NSString *)path {
+    return [[path lastPathComponent] hasPrefix:@"."];
+}
+
 + (NSMutableSet *)parse:(NSString *)str {
     
     // empty string?

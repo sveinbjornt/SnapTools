@@ -34,5 +34,6 @@
 
 + (NSString *)makeAbsolutePath:(NSString *)path;
 + (NSMutableSet *)parse:(NSString *)str;
++ (BOOL)isHiddenFileAtPath:(NSString *)path;
 
 @end

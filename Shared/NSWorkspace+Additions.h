@@ -53,5 +53,6 @@
 - (void)flushServices;
 - (BOOL)openPathInDefaultBrowser:(NSString *)path;
 - (BOOL)runCommandInTerminal:(NSString *)cmd;
+- (BOOL)isFinderRunning;
 
 @end

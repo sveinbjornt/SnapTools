@@ -147,7 +147,7 @@
     SnapDartAppDelegate *del = (SnapDartAppDelegate *)[[NSApplication sharedApplication] delegate];
     
     NSLog(@"Output: %@", outputString);
-    NSLog([paths description]);
+    NSLog(@"%@", [paths description]);
     
     if ([paths count]) {
         [del newSnapWindowWithPaths:[paths allObjects]];

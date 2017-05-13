@@ -33,12 +33,15 @@
 #import "SnapWindowController.h"
 #import "CmdWindowController.h"
 #import "NSWorkspace+Additions.h"
+#import "SnapFileManager.h"
 #import "Alerts.h"
 
 @interface SnapDartAppDelegate ()
 {
     IBOutlet NSMenu *mainMenu;
     IBOutlet NSMenu *columnsMenu;
+    IBOutlet NSMenu *historyMenu;
+    IBOutlet NSMenu *bookmarksMenu;
     
     NSStatusItem *statusItem;
     NSMutableArray *filesInOpenEvent;
@@ -112,6 +115,13 @@
     
     filesToOpen = [filesToOpen sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     
+    if ([filesToOpen[0] hasSuffix:@".snap"]) {
+        NSString *str = [NSString stringWithContentsOfFile:filesToOpen[0]
+                                                  encoding:NSUTF8StringEncoding
+                                                     error:nil];
+        filesToOpen = [str componentsSeparatedByString:@"\n"];
+    }
+    
     NSLog(@"Opening %lu files", (unsigned long)[filesToOpen count]);
     [self newSnapWindowWithPaths:filesToOpen];
 }
@@ -162,6 +172,133 @@
     }
     [[cmdController window] center];
     [[cmdController window] makeKeyAndOrderFront:self];
+}
+
+#pragma mark - History & Bookmarks
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    //[self constructMenus:self];
+    
+    NSArray *historyItems = [SnapFileManager readHistory];
+  
+    // Create icon
+    NSImage *icon = [NSImage imageNamed:@"DocumentIcon"];
+    [icon setSize:NSMakeSize(16, 16)];
+
+    
+    [historyMenu removeAllItems];
+    
+    if ([historyItems count] > 0) {
+        for (NSString *name in historyItems) {
+            NSMenuItem *menuItem = [historyMenu addItemWithTitle:[name stringByDeletingPathExtension]
+                                                           action:@selector(historyItemSelected:)
+                                                    keyEquivalent:@""];
+            [menuItem setTarget:self];
+            [menuItem setEnabled:YES];
+            [menuItem setImage:icon];
+        }
+        [historyMenu addItem:[NSMenuItem separatorItem]];
+        [historyMenu addItemWithTitle:@"Clear History" action:@selector(clearHistory:) keyEquivalent:@""];
+        
+    } else {
+        [historyMenu addItemWithTitle:@"Empty" action:nil keyEquivalent:@""];
+    }
+}
+
+- (IBAction)constructMenus:(id)sender {
+    
+    
+    
+//    NSArray *profiles = [self readProfilesList];
+//    NSArray *examples = [self readExamplesList];
+//    
+//    // Create icon
+//    NSImage *icon = [NSImage imageNamed:@"PlatypusProfile"];
+//    [icon setSize:NSMakeSize(16, 16)];
+//    
+//    // Create Examples menu
+//    NSMenu *examplesMenu = [[NSMenu alloc] init];
+//    
+//    for (NSString *exampleName in examples) {
+//        NSMenuItem *menuItem = [examplesMenu addItemWithTitle:[exampleName stringByDeletingPathExtension]
+//                                                       action:@selector(profileMenuItemSelected:)
+//                                                keyEquivalent:@""];
+//        [menuItem setTarget:self];
+//        [menuItem setEnabled:YES];
+//        [menuItem setImage:icon];
+//    }
+//    [examplesMenu addItem:[NSMenuItem separatorItem]];
+//    
+//    NSMenuItem *examplesFolderItem = [examplesMenu addItemWithTitle:@"Open Examples Folder"
+//                                                             action:@selector(openExamplesFolder)
+//                                                      keyEquivalent:@""];
+//    [examplesFolderItem setTarget:self];
+//    [examplesFolderItem setEnabled:YES];
+//    
+//    [examplesMenu addItem:[NSMenuItem separatorItem]];
+//    
+//    NSMenuItem *createExamplesMenu = [examplesMenu addItemWithTitle:@"Build All Examples"
+//                                                             action:@selector(buildAllExamples)
+//                                                      keyEquivalent:@""];
+//    [createExamplesMenu setTarget:self];
+//    [createExamplesMenu setEnabled:YES];
+//    
+//    [examplesMenuItem setSubmenu:examplesMenu];
+//    
+//    //clear out all menu items
+//    while ([profilesMenu numberOfItems] > numNonDynamicMenuitems) {
+//        [profilesMenu removeItemAtIndex:numNonDynamicMenuitems];
+//    }
+//    
+//    if ([profiles count] > 0) {
+//        for (NSString *profileName in profiles) {
+//            NSMenuItem *menuItem = [profilesMenu addItemWithTitle:[profileName stringByDeletingPathExtension]
+//                                                           action:@selector(profileMenuItemSelected:)
+//                                                    keyEquivalent:@""];
+//            [menuItem setTarget:self];
+//            [menuItem setEnabled:YES];
+//            [menuItem setImage:icon];
+//        }
+//        
+//        [profilesMenu addItem:[NSMenuItem separatorItem]];
+//        
+//        NSMenuItem *menuItem = [profilesMenu addItemWithTitle:@"Open Profiles Folder"
+//                                                       action:@selector(openProfilesFolder)
+//                                                keyEquivalent:@""];
+//        [menuItem setTarget:self];
+//        [menuItem setEnabled:YES];
+//        
+//    } else {
+//        [profilesMenu addItemWithTitle:@"Empty" action:nil keyEquivalent:@""];
+//    }
+}
+
+
+- (IBAction)historyItemSelected:(id)sender {
+    BOOL isBookmark = ([sender tag]  == 10);
+    NSString *folder = isBookmark ? PROGRAM_BOOKMARKS_PATH : PROGRAM_HISTORY_PATH;
+    NSString *fullPath = [NSString stringWithFormat:@"%@/%@%@", folder, [sender title], PROGRAM_FILENAME_SUFFIX];
+    
+    // if command key is down, we reveal in finder
+    BOOL commandKeyDown = (([[NSApp currentEvent] modifierFlags] & NSCommandKeyMask) == NSCommandKeyMask);
+    if (commandKeyDown) {
+        [WORKSPACE selectFile:fullPath inFileViewerRootedAtPath:fullPath];
+    } else {
+        [self application:[NSApplication sharedApplication] openFiles:@[fullPath]];
+    }
+
+}
+
+- (IBAction)clearHistory:(id)sender {
+    
+}
+
+- (IBAction)bookmarkItemSelected:(id)sender {
+    
+}
+
+- (IBAction)clearBookmarks:(id)sender {
+    
 }
 
 #pragma mark - Uninstall
