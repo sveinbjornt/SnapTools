@@ -37,7 +37,6 @@
 #import "NSCommandLine.h"
 #import "PathParser.h"
 
-static void PrintVersion(void);
 static void PrintHelp(void);
 
 static const char optstring[] = "ivh";
@@ -59,7 +58,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             // print version
             case 'v':
             {
-                PrintVersion();
+                NSPrint(@"copy version %@", PROGRAM_VERSION);
                 exit(EX_OK);
             }
                 break;
@@ -91,7 +90,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         [remainingArgs addObject:absPath];
     }
     
-    BOOL readStdin = (BOOL)[remainingArgs count];
+    BOOL readStdin = !(BOOL)[remainingArgs count];
     
     NSMutableArray *filePaths = [NSMutableArray array];
     
@@ -156,10 +155,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 }}
 
 #pragma mark -
-
-static void PrintVersion(void) {
-    NSPrint(@"copy version %@", PROGRAM_VERSION);
-}
 
 static void PrintHelp(void) {
     NSPrint(@"usage: copy [file2 file2 ...]");

@@ -37,7 +37,6 @@
 #import "NSCommandLine.h"
 #import "PathParser.h"
 
-static void PrintVersion(void);
 static void PrintHelp(void);
 
 static const char optstring[] = "vh";
@@ -59,7 +58,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             // print version
             case 'v':
             {
-                PrintVersion();
+                NSPrint(@"labels version %@", PROGRAM_VERSION);
                 exit(EX_OK);
             }
                 break;
@@ -75,15 +74,45 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
-    // ignore any remaining command line args and read from stdin
-    NSString *input = ReadStandardInput();
+    // read remaining args
+    NSMutableArray *remainingArgs = [NSMutableArray array];
+    while (optind < argc) {
+        NSString *argStr = @(argv[optind]);
+        optind += 1;
+        
+        [remainingArgs addObject:absPath];
+    }
     
-    NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
-    [filePaths addObjectsFromArray:[set allObjects]];
+    NSString *labelArg = remainingArgs[0];
+    [remainingArgs removeObjectAtIndex:0];
+    
+    NSMutableArray *filePaths = [NSMutableArray array];
+    
+    // read from stdin if label identifier is the only arg
+    if ([remainingArgs count] == 0) {
+        // ignore any remaining command line args and read from stdin
+        NSString *input = ReadStandardInput();
+        
+        NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
+        [filePaths addObjectsFromArray:[set allObjects]];
+    }
+    else {
+        fiiePaths = remainingArgs;
+        
+        for (NSString *arg in remainingArgs) {
+            NSString *absPath = [PathParser makeAbsolutePath:arg];
+        
+            if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
+                NSPrintErr(@"no such file, skipping: %@", absPath);
+                continue;
+            }
+            
+            [filePaths addObject:absPath];
+    }
     
     for (NSString *path in filePaths) {
         // do label thing
-        NSPrint(path);
+        // NSPrint(path);
     }
     
     return EX_OK;
@@ -91,10 +120,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 
 #pragma mark -
 
-static void PrintVersion(void) {
-    NSPrint(@"paths version %@", PROGRAM_VERSION);
-}
-
 static void PrintHelp(void) {
-    NSPrint(@"usage: paths [avh]");
+    NSPrint(@"usage: label identifier [file ...]");
 }

@@ -38,7 +38,6 @@
 #import "PathParser.h"
 
 static void PrintVersion(void);
-static void PrintHelp(void);
 
 static const char optstring[] = "vh";
 
@@ -67,7 +66,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             // print version
             case 'v':
             {
-                PrintVersion();
+                NSPrint(@"paths version %@", PROGRAM_VERSION);
                 exit(EX_OK);
             }
                 break;
@@ -85,7 +84,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     
     // ignore any remaining command line args and read from stdin
     NSString *input = ReadStandardInput();
-        
+    
     NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
     [filePaths addObjectsFromArray:[set allObjects]];
     
@@ -97,10 +96,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 }}
 
 #pragma mark -
-
-static void PrintVersion(void) {
-    NSPrint(@"paths version %@", PROGRAM_VERSION);
-}
 
 static void PrintHelp(void) {
     NSPrint(@"usage: paths [avh]");

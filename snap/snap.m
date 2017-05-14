@@ -40,7 +40,6 @@
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
 
 static BOOL SendOpenDocumentAppleEvent(NSSet *paths);
-static void PrintVersion(void);
 static void PrintHelp(void);
 
 static const char optstring[] = "apvh";
@@ -80,7 +79,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             // print version
             case 'v':
             {
-                PrintVersion();
+                NSPrint(@"snap version %@", PROGRAM_VERSION);
                 exit(EX_OK);
             }
                 break;
@@ -187,18 +186,15 @@ static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
     
     NSPrintErr(@"Sending AEvent to open %d URLs", [urls count]);
     
+    NSWorkspaceLaunchOptions opt = NSWorkspaceLaunchAsync | NSWorkspaceLaunchWithErrorPresentation;
     return [[NSWorkspace sharedWorkspace] openURLs:urls
                            withAppBundleIdentifier:PROGRAM_BUNDLE_IDENTIFIER
-                                           options:NSWorkspaceLaunchAsync | NSWorkspaceLaunchWithErrorPresentation
-             additionalEventParamDescriptor:nil
+                                           options:opt
+                    additionalEventParamDescriptor:nil
                           launchIdentifiers:NULL];
 }
 
 #pragma mark -
-
-static void PrintVersion(void) {
-    NSPrint(@"snap version %@", PROGRAM_VERSION);
-}
 
 static void PrintHelp(void) {
     NSPrint(@"usage: snap [args ...]");
