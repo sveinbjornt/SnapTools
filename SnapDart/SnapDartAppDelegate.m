@@ -273,7 +273,6 @@
 //    }
 }
 
-
 - (IBAction)historyItemSelected:(id)sender {
     BOOL isBookmark = ([sender tag]  == 10);
     NSString *folder = isBookmark ? PROGRAM_BOOKMARKS_PATH : PROGRAM_HISTORY_PATH;

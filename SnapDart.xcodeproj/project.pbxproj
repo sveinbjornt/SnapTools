@@ -16,6 +16,16 @@
 		F42730901EAFA3D400F3F7A5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F430C24A14DEF3DC0026CBDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F430C24914DEF3DC0026CBDB /* Foundation.framework */; };
 		F430C24D14DEF3DC0026CBDB /* snap.m in Sources */ = {isa = PBXBuildFile; fileRef = F430C24C14DEF3DC0026CBDB /* snap.m */; };
+		F47B5ED61EC8A14100AC2DEA /* copy.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5ED51EC8A14100AC2DEA /* copy.m */; };
+		F47B5ED91EC8A1BE00AC2DEA /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = F47B5ED71EC8A1BE00AC2DEA /* Common.c */; };
+		F47B5EDA1EC8A1BE00AC2DEA /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = F47B5ED71EC8A1BE00AC2DEA /* Common.c */; };
+		F47B5EDB1EC8A1BE00AC2DEA /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = F47B5ED71EC8A1BE00AC2DEA /* Common.c */; };
+		F47B5EDE1EC8A44200AC2DEA /* NSCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */; };
+		F47B5EDF1EC8A44200AC2DEA /* NSCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */; };
+		F47B5EE21EC8A60700AC2DEA /* copy in Resources */ = {isa = PBXBuildFile; fileRef = F47B5ECD1EC8A10000AC2DEA /* copy */; };
+		F47B5EE31EC8A60B00AC2DEA /* snap in Resources */ = {isa = PBXBuildFile; fileRef = F430C24714DEF3DC0026CBDB /* snap */; };
+		F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
+		F47B5EED1EC8ACC800AC2DEA /* show.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5EEC1EC8ACC800AC2DEA /* show.m */; };
 		F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
@@ -25,7 +35,8 @@
 		F485855F14D46E8200B007CA /* SnapWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855C14D46E8200B007CA /* SnapWindowController.m */; };
 		F485857014D470A200B007CA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F485856F14D470A200B007CA /* Defaults.plist */; };
 		F485858914D4CD1600B007CA /* SnapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858814D4CD1600B007CA /* SnapItem.m */; };
-		F4F118751EBE0E5F00E99B9A /* snap in Copy Command Line Tool */ = {isa = PBXBuildFile; fileRef = F430C24714DEF3DC0026CBDB /* snap */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F4C0FD581EC8AE79004439EF /* NSCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */; };
+		F4C0FD591EC8AE80004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F4F118791EBE151700E99B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F118781EBE151700E99B9A /* Images.xcassets */; };
 		F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F118811EBF431E00E99B9A /* SnapWindow.xib */; };
 		F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
@@ -35,13 +46,19 @@
 		F4F1189C1EBF724E00E99B9A /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
 		F4F118A31EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189E1EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m */; };
 		F4F118A41EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118A01EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m */; };
-		F4F118B21EBF9CA700E99B9A /* snap.man.html in Resources */ = {isa = PBXBuildFile; fileRef = F4F118B11EBF9CA700E99B9A /* snap.man.html */; };
 		F4F118B51EBFCB7500E99B9A /* Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118B41EBFCB7500E99B9A /* Alerts.m */; };
 		F4F118B81EBFDFC700E99B9A /* SnapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118B71EBFDFC700E99B9A /* SnapFileManager.m */; };
 		F4F118B91EBFDFC700E99B9A /* SnapFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F118B71EBFDFC700E99B9A /* SnapFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F47B5EE01EC8A5E500AC2DEA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47B5ECC1EC8A10000AC2DEA;
+			remoteInfo = copy;
+		};
 		F4F118761EBE0E8200E99B9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F485853114D46E4300B007CA /* Project object */;
@@ -52,13 +69,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F47B5ECB1EC8A10000AC2DEA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		F47B5EE81EC8ACC800AC2DEA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		F4F118741EBE0E5600E99B9A /* Copy Command Line Tool */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				F4F118751EBE0E5F00E99B9A /* snap in Copy Command Line Tool */,
 			);
 			name = "Copy Command Line Tool";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,7 +109,17 @@
 		F430C24714DEF3DC0026CBDB /* snap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = snap; sourceTree = BUILT_PRODUCTS_DIR; };
 		F430C24914DEF3DC0026CBDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F430C24C14DEF3DC0026CBDB /* snap.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = snap.m; sourceTree = "<group>"; };
-		F467F38914D5A24100246ABB /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = SnapDart/Common.h; sourceTree = "<group>"; };
+		F47B5EC81EC89EB600AC2DEA /* CHANGES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGES.txt; sourceTree = "<group>"; };
+		F47B5ECD1EC8A10000AC2DEA /* copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = copy; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47B5ED41EC8A14100AC2DEA /* copy.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = copy.1; sourceTree = "<group>"; };
+		F47B5ED51EC8A14100AC2DEA /* copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = copy.m; sourceTree = "<group>"; };
+		F47B5ED71EC8A1BE00AC2DEA /* Common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Common.c; sourceTree = "<group>"; };
+		F47B5ED81EC8A1BE00AC2DEA /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCommandLine.m; sourceTree = "<group>"; };
+		F47B5EDD1EC8A44200AC2DEA /* NSCommandLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCommandLine.h; sourceTree = "<group>"; };
+		F47B5EE51EC8A89200AC2DEA /* snap.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snap.1; sourceTree = "<group>"; };
+		F47B5EEA1EC8ACC800AC2DEA /* show */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = show; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47B5EEC1EC8ACC800AC2DEA /* show.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = show.m; sourceTree = "<group>"; };
 		F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* SnapDart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapDart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -90,6 +134,7 @@
 		F485856F14D470A200B007CA /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		F485858714D4CD1500B007CA /* SnapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapItem.h; sourceTree = "<group>"; };
 		F485858814D4CD1600B007CA /* SnapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapItem.m; sourceTree = "<group>"; };
+		F4C0FD5A1EC8B062004439EF /* show.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = show.1; sourceTree = "<group>"; };
 		F4F118781EBE151700E99B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4F118811EBF431E00E99B9A /* SnapWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapWindow.xib; sourceTree = "<group>"; };
 		F4F118851EBF46FB00E99B9A /* dragon.ai */ = {isa = PBXFileReference; lastKnownFileType = text; path = dragon.ai; sourceTree = "<group>"; };
@@ -109,13 +154,6 @@
 		F4F118A11EBF79AB00E99B9A /* NSString+SymlinksAndAliases.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SymlinksAndAliases.h"; sourceTree = "<group>"; };
 		F4F118A21EBF79AB00E99B9A /* NSString+SymlinksAndAliases.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SymlinksAndAliases.m"; sourceTree = "<group>"; };
 		F4F118A61EBF7EB800E99B9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F4F118AA1EBF9C0900E99B9A /* build_cat2html.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_cat2html.sh; sourceTree = "<group>"; };
-		F4F118AB1EBF9C0900E99B9A /* cat2html */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = cat2html; sourceTree = "<group>"; };
-		F4F118AC1EBF9C0900E99B9A /* cat2html.l */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.lex; path = cat2html.l; sourceTree = "<group>"; };
-		F4F118AD1EBF9C0900E99B9A /* make_man_html.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = make_man_html.sh; sourceTree = "<group>"; };
-		F4F118AE1EBF9C0900E99B9A /* snap.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = snap.1; sourceTree = "<group>"; };
-		F4F118AF1EBF9C0900E99B9A /* update_website_docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = update_website_docs.sh; sourceTree = "<group>"; };
-		F4F118B11EBF9CA700E99B9A /* snap.man.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = snap.man.html; sourceTree = "<group>"; };
 		F4F118B31EBFCB7500E99B9A /* Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Alerts.h; sourceTree = "<group>"; };
 		F4F118B41EBFCB7500E99B9A /* Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Alerts.m; sourceTree = "<group>"; };
 		F4F118B61EBFDFC700E99B9A /* SnapFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapFileManager.h; sourceTree = "<group>"; };
@@ -129,6 +167,20 @@
 			files = (
 				F42730901EAFA3D400F3F7A5 /* Cocoa.framework in Frameworks */,
 				F430C24A14DEF3DC0026CBDB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47B5ECA1EC8A10000AC2DEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47B5EE71EC8ACC800AC2DEA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,17 +212,38 @@
 			isa = PBXGroup;
 			children = (
 				F430C24C14DEF3DC0026CBDB /* snap.m */,
-				F4F118A71EBF9C0900E99B9A /* man */,
+				F47B5EE51EC8A89200AC2DEA /* snap.1 */,
 			);
 			path = snap;
+			sourceTree = "<group>";
+		};
+		F47B5ECE1EC8A10000AC2DEA /* copy */ = {
+			isa = PBXGroup;
+			children = (
+				F47B5ED51EC8A14100AC2DEA /* copy.m */,
+				F47B5ED41EC8A14100AC2DEA /* copy.1 */,
+			);
+			path = copy;
+			sourceTree = "<group>";
+		};
+		F47B5EEB1EC8ACC800AC2DEA /* show */ = {
+			isa = PBXGroup;
+			children = (
+				F47B5EEC1EC8ACC800AC2DEA /* show.m */,
+				F4C0FD5A1EC8B062004439EF /* show.1 */,
+			);
+			path = show;
 			sourceTree = "<group>";
 		};
 		F485852F14D46E4300B007CA = {
 			isa = PBXGroup;
 			children = (
+				F47B5EC81EC89EB600AC2DEA /* CHANGES.txt */,
 				F4F118A61EBF7EB800E99B9A /* README.md */,
-				F467F38914D5A24100246ABB /* Common.h */,
-				F4F118891EBF69A200E99B9A /* Programs */,
+				F47B5ED81EC8A1BE00AC2DEA /* Common.h */,
+				F47B5ED71EC8A1BE00AC2DEA /* Common.c */,
+				F485854414D46E4300B007CA /* SnapDart App */,
+				F4F118891EBF69A200E99B9A /* Command Line Tools */,
 				F4F1188C1EBF69DD00E99B9A /* Shared */,
 				F4F118841EBF46FB00E99B9A /* Assets */,
 				F485853D14D46E4300B007CA /* Frameworks */,
@@ -183,6 +256,8 @@
 			children = (
 				F485853A14D46E4300B007CA /* SnapDart.app */,
 				F430C24714DEF3DC0026CBDB /* snap */,
+				F47B5ECD1EC8A10000AC2DEA /* copy */,
+				F47B5EEA1EC8ACC800AC2DEA /* show */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,13 +314,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		F4F118891EBF69A200E99B9A /* Programs */ = {
+		F4F118891EBF69A200E99B9A /* Command Line Tools */ = {
 			isa = PBXGroup;
 			children = (
-				F485854414D46E4300B007CA /* SnapDart App */,
 				F430C24B14DEF3DC0026CBDB /* snap */,
+				F47B5EEB1EC8ACC800AC2DEA /* show */,
+				F47B5ECE1EC8A10000AC2DEA /* copy */,
 			);
-			name = Programs;
+			name = "Command Line Tools";
 			sourceTree = "<group>";
 		};
 		F4F1188C1EBF69DD00E99B9A /* Shared */ = {
@@ -259,6 +335,8 @@
 				F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */,
 				F4F118B31EBFCB7500E99B9A /* Alerts.h */,
 				F4F118B41EBFCB7500E99B9A /* Alerts.m */,
+				F47B5EDD1EC8A44200AC2DEA /* NSCommandLine.h */,
+				F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */,
 				F423DA801EC61B12005AA2FC /* LZ4 */,
 				F4F1189D1EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.h */,
 				F4F1189E1EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m */,
@@ -268,28 +346,6 @@
 				F4F118A21EBF79AB00E99B9A /* NSString+SymlinksAndAliases.m */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		F4F118A71EBF9C0900E99B9A /* man */ = {
-			isa = PBXGroup;
-			children = (
-				F4F118AE1EBF9C0900E99B9A /* snap.1 */,
-				F4F118B11EBF9CA700E99B9A /* snap.man.html */,
-				F4F118A91EBF9C0900E99B9A /* cat2html */,
-				F4F118AD1EBF9C0900E99B9A /* make_man_html.sh */,
-				F4F118AF1EBF9C0900E99B9A /* update_website_docs.sh */,
-			);
-			path = man;
-			sourceTree = "<group>";
-		};
-		F4F118A91EBF9C0900E99B9A /* cat2html */ = {
-			isa = PBXGroup;
-			children = (
-				F4F118AA1EBF9C0900E99B9A /* build_cat2html.sh */,
-				F4F118AB1EBF9C0900E99B9A /* cat2html */,
-				F4F118AC1EBF9C0900E99B9A /* cat2html.l */,
-			);
-			path = cat2html;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,6 +368,40 @@
 			productReference = F430C24714DEF3DC0026CBDB /* snap */;
 			productType = "com.apple.product-type.tool";
 		};
+		F47B5ECC1EC8A10000AC2DEA /* copy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F47B5ED11EC8A10000AC2DEA /* Build configuration list for PBXNativeTarget "copy" */;
+			buildPhases = (
+				F47B5EC91EC8A10000AC2DEA /* Sources */,
+				F47B5ECA1EC8A10000AC2DEA /* Frameworks */,
+				F47B5ECB1EC8A10000AC2DEA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = copy;
+			productName = copy;
+			productReference = F47B5ECD1EC8A10000AC2DEA /* copy */;
+			productType = "com.apple.product-type.tool";
+		};
+		F47B5EE91EC8ACC800AC2DEA /* show */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F47B5EEE1EC8ACC800AC2DEA /* Build configuration list for PBXNativeTarget "show" */;
+			buildPhases = (
+				F47B5EE61EC8ACC800AC2DEA /* Sources */,
+				F47B5EE71EC8ACC800AC2DEA /* Frameworks */,
+				F47B5EE81EC8ACC800AC2DEA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = show;
+			productName = show;
+			productReference = F47B5EEA1EC8ACC800AC2DEA /* show */;
+			productType = "com.apple.product-type.tool";
+		};
 		F485853914D46E4300B007CA /* SnapDart */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F485855814D46E4300B007CA /* Build configuration list for PBXNativeTarget "SnapDart" */;
@@ -325,6 +415,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F47B5EE11EC8A5E500AC2DEA /* PBXTargetDependency */,
 				F4F118771EBE0E8200E99B9A /* PBXTargetDependency */,
 			);
 			name = SnapDart;
@@ -339,6 +430,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
+				TargetAttributes = {
+					F47B5ECC1EC8A10000AC2DEA = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					F47B5EE91EC8ACC800AC2DEA = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = F485853414D46E4300B007CA /* Build configuration list for PBXProject "SnapDart" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -354,6 +455,8 @@
 			targets = (
 				F485853914D46E4300B007CA /* SnapDart */,
 				F430C24614DEF3DC0026CBDB /* snap */,
+				F47B5ECC1EC8A10000AC2DEA /* copy */,
+				F47B5EE91EC8ACC800AC2DEA /* show */,
 			);
 		};
 /* End PBXProject section */
@@ -363,12 +466,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47B5EE21EC8A60700AC2DEA /* copy in Resources */,
 				F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */,
+				F47B5EE31EC8A60B00AC2DEA /* snap in Resources */,
 				F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
 				F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */,
-				F4F118B21EBF9CA700E99B9A /* snap.man.html in Resources */,
 				F4F118791EBE151700E99B9A /* Images.xcassets in Resources */,
 				F485857014D470A200B007CA /* Defaults.plist in Resources */,
 			);
@@ -411,12 +515,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F47B5EDE1EC8A44200AC2DEA /* NSCommandLine.m in Sources */,
 				F423DA7B1EC61B0C005AA2FC /* lz4.c in Sources */,
 				F4F118B91EBFDFC700E99B9A /* SnapFileManager.m in Sources */,
 				F430C24D14DEF3DC0026CBDB /* snap.m in Sources */,
 				F423DA7F1EC61B0C005AA2FC /* NSData+LZ4.m in Sources */,
 				F423DA7D1EC61B0C005AA2FC /* lz4hc.c in Sources */,
+				F47B5EDA1EC8A1BE00AC2DEA /* Common.c in Sources */,
 				F4F118901EBF69F400E99B9A /* PathParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47B5EC91EC8A10000AC2DEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47B5EDB1EC8A1BE00AC2DEA /* Common.c in Sources */,
+				F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */,
+				F47B5ED61EC8A14100AC2DEA /* copy.m in Sources */,
+				F47B5EDF1EC8A44200AC2DEA /* NSCommandLine.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47B5EE61EC8ACC800AC2DEA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C0FD581EC8AE79004439EF /* NSCommandLine.m in Sources */,
+				F4C0FD591EC8AE80004439EF /* PathParser.m in Sources */,
+				F47B5EED1EC8ACC800AC2DEA /* show.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +558,7 @@
 				F485855F14D46E8200B007CA /* SnapWindowController.m in Sources */,
 				F423DA7C1EC61B0C005AA2FC /* lz4hc.c in Sources */,
 				F4F118A31EBF79AB00E99B9A /* NSFileManager+FileOrFolderSize.m in Sources */,
+				F47B5ED91EC8A1BE00AC2DEA /* Common.c in Sources */,
 				F4F1189C1EBF724E00E99B9A /* NSWorkspace+Additions.m in Sources */,
 				F485858914D4CD1600B007CA /* SnapItem.m in Sources */,
 				F423DA7E1EC61B0C005AA2FC /* NSData+LZ4.m in Sources */,
@@ -444,6 +572,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F47B5EE11EC8A5E500AC2DEA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47B5ECC1EC8A10000AC2DEA /* copy */;
+			targetProxy = F47B5EE01EC8A5E500AC2DEA /* PBXContainerItemProxy */;
+		};
 		F4F118771EBE0E8200E99B9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F430C24614DEF3DC0026CBDB /* snap */;
@@ -487,6 +620,98 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F47B5ED21EC8A10000AC2DEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F47B5ED31EC8A10000AC2DEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F47B5EEF1EC8ACC800AC2DEA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F47B5EF01EC8ACC800AC2DEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -604,6 +829,24 @@
 			buildConfigurations = (
 				F430C25214DEF3DC0026CBDB /* Debug */,
 				F430C25314DEF3DC0026CBDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F47B5ED11EC8A10000AC2DEA /* Build configuration list for PBXNativeTarget "copy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47B5ED21EC8A10000AC2DEA /* Debug */,
+				F47B5ED31EC8A10000AC2DEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F47B5EEE1EC8ACC800AC2DEA /* Build configuration list for PBXNativeTarget "show" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47B5EEF1EC8ACC800AC2DEA /* Debug */,
+				F47B5EF01EC8ACC800AC2DEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

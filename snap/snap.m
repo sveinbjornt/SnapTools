@@ -36,6 +36,7 @@
 #import <getopt.h>
 
 #import "Common.h"
+#import "NSPrint.h"
 #import "PathParser.h"
 
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
@@ -45,9 +46,6 @@ static NSString *ReadStandardInput();
 static BOOL SendOpenDocumentAppleEvent(NSSet *paths);
 static void PrintVersion(void);
 static void PrintHelp(void);
-
-static void NSPrintErr(NSString *format, ...);
-static void NSPrint(NSString *format, ...);
 
 static const char optstring[] = "apvh";
 
@@ -200,14 +198,6 @@ static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
                           launchIdentifiers:NULL];
 }
 
-static NSString *ReadStandardInput() {
-    NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
-    if (!inData) {
-        return nil;
-    }
-    return [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
-}
-
 #pragma mark -
 
 static void PrintVersion(void) {
@@ -216,28 +206,4 @@ static void PrintVersion(void) {
 
 static void PrintHelp(void) {
     NSPrint(@"usage: snap [args ...]");
-}
-
-#pragma mark -
-
-// print to stdout
-static void NSPrint(NSString *format, ...) {
-    va_list args;
-    
-    va_start(args, format);
-    NSString *string  = [[NSString alloc] initWithFormat:format arguments:args];
-    va_end(args);
-    
-    fprintf(stdout, "%s\n", [string UTF8String]);
-}
-
-// print to stderr
-static void NSPrintErr(NSString *format, ...) {
-    va_list args;
-    
-    va_start(args, format);
-    NSString *string  = [[NSString alloc] initWithFormat:format arguments:args];
-    va_end(args);
-    
-    fprintf(stderr, "%s\n", [string UTF8String]);
 }

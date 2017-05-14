@@ -1,0 +1,29 @@
+.Dd May 14, 2017
+.Dt COPY 1
+.Os Darwin
+.Sh NAME
+.Nm copy
+.Nd Copy one or more files to the Mac OS X Pasteboard
+.Sh SYNOPSIS
+.Nm
+.Op Fl vh
+.Op Ar
+.Sh DESCRIPTION
+.Nm
+is a command line tool which copies any file arguments to the Mac OS X
+Pasteboard. Files copied in this way can subsequently be pasted or moved
+using the Finder.
+.Pp
+The following flags are supported:
+.Bl -tag -width -indent
+.It Fl v, -version
+Print program version and exit
+.It Fl h, -help
+Print help and exit
+.El
+.Sh SEE ALSO
+.Xr pbcopy 1 ,
+.Xr pbpaste 1 ,
+.Xr snap 1
+.Sh AUTHORS
+.An Sveinbjorn Thordarson <sveinbjornt@gmail.com>
