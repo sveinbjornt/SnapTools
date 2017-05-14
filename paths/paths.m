@@ -30,8 +30,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <unistd.h>
-#import <stdio.h>
 #import <sysexits.h>
 #import <getopt.h>
 
@@ -45,6 +43,7 @@ static void PrintHelp(void);
 static const char optstring[] = "vh";
 
 static struct option long_options[] = {
+    {"absolutely-only",         no_argument,            0,  'a'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -60,6 +59,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         switch (optch) {
             
+            // only parse absolute paths
             case 'a':
                 absolutePathsOnly = YES;
                 break;

@@ -26,7 +26,7 @@
  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
 #import <Cocoa/Cocoa.h>
 
@@ -40,7 +40,7 @@
 static void PrintVersion(void);
 static void PrintHelp(void);
 
-static const char optstring[] = "ivh";
+static const char optstring[] = "vh";
 
 static struct option long_options[] = {
     {"version",                 no_argument,            0,  'v'},
@@ -75,82 +75,16 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
-    // read remaining args
-    NSMutableArray *remainingArgs = [NSMutableArray array];
-    while (optind < argc) {
-        NSString *argStr = @(argv[optind]);
-        optind += 1;
-        
-        NSString *absPath = [PathParser makeAbsolutePath:argStr];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-            NSPrintErr(@"no such file, skipping: %@", absPath);
-            continue;
-        }
-        
-        [remainingArgs addObject:absPath];
+    // ignore any remaining command line args and read from stdin
+    NSString *input = ReadStandardInput();
+    
+    NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
+    [filePaths addObjectsFromArray:[set allObjects]];
+    
+    for (NSString *path in filePaths) {
+        // do label thing
+        NSPrint(path);
     }
-    
-    BOOL readStdin = (BOOL)[remainingArgs count];
-    
-    NSMutableArray *filePaths = [NSMutableArray array];
-    
-    if (readStdin) {
-        NSString *input = ReadStandardInput();
-        
-        NSMutableSet *set = [PathParser parse:input];
-        [filePaths addObjectsFromArray:[set allObjects]];
-    } else {
-        
-        // read remaining args
-        while (optind < argc) {
-            NSString *argStr = @(argv[optind]);
-            optind += 1;
-            
-            NSString *absPath = [PathParser makeAbsolutePath:argStr];
-            
-            if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-                NSPrintErr(@"no such file, skipping: %@", absPath);
-                continue;
-            }
-            
-            [filePaths addObject:absPath];
-        }
-        
-        if ([filePaths count] < 1) {
-            PrintHelp();
-            exit(EX_USAGE);
-        }
-    }
-    
-    NSPasteboard *pboard = [NSPasteboard generalPasteboard];
-    if (pboard == nil) {
-        NSPrintErr(@"Unable to connect to pasteboard");
-        exit(EX_UNAVAILABLE);
-    }
-    
-    if ([filePaths count] == 1) {
-        [pboard clearContents];
-        
-        NSString *path = [filePaths firstObject];
-        NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
-        
-        BOOL success = [pboard writeObjects:@[url]];
-        [pboard setString:path forType:NSStringPboardType]; // TODO Also for multiple files
-        
-        NSLog(@"Writing URL %@ to pasteboiard", [url description]);
-        if (!success) {
-            NSPrintErr(@"Error writing URL %@ to pasteboard", [url description]);
-            exit(EX_DATAERR);
-        }
-
-    } else {
-        [pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
-        [pboard setPropertyList:filePaths forType:NSFilenamesPboardType];
-        [pboard setString:[filePaths componentsJoinedByString:@"\n"] forType:NSStringPboardType];
-    }
-    
-    NSPrint(@"%d file%@ copied to pasteboard", [filePaths count], [filePaths count] > 1 ? @"s" : @"");
     
     return EX_OK;
 }}
@@ -158,9 +92,9 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 #pragma mark -
 
 static void PrintVersion(void) {
-    NSPrint(@"copy version %@", PROGRAM_VERSION);
+    NSPrint(@"paths version %@", PROGRAM_VERSION);
 }
 
 static void PrintHelp(void) {
-    NSPrint(@"usage: copy [file2 file2 ...]");
+    NSPrint(@"usage: paths [avh]");
 }

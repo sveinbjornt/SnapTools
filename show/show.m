@@ -30,8 +30,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import <unistd.h>
-#import <stdio.h>
 #import <sysexits.h>
 #import <getopt.h>
 

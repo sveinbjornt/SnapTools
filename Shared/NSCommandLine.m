@@ -28,7 +28,8 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "NSCommandLine.h"
+#import "NSCommandLine.h"
+#import <stdio.h>
 
 NSString *ReadStandardInput(void) {
     NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
