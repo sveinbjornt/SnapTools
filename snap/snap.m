@@ -36,12 +36,10 @@
 #import <getopt.h>
 
 #import "Common.h"
-#import "NSPrint.h"
+#import "NSCommandLine.h"
 #import "PathParser.h"
 
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
-
-static NSString *ReadStandardInput();
 
 static BOOL SendOpenDocumentAppleEvent(NSSet *paths);
 static void PrintVersion(void);

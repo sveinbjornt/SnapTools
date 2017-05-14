@@ -37,6 +37,7 @@
 		F485858914D4CD1600B007CA /* SnapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858814D4CD1600B007CA /* SnapItem.m */; };
 		F4C0FD581EC8AE79004439EF /* NSCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */; };
 		F4C0FD591EC8AE80004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
+		F4C0FD621EC9023F004439EF /* paths.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD611EC9023F004439EF /* paths.m */; };
 		F4F118791EBE151700E99B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F118781EBE151700E99B9A /* Images.xcassets */; };
 		F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F118811EBF431E00E99B9A /* SnapWindow.xib */; };
 		F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
@@ -79,6 +80,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		F47B5EE81EC8ACC800AC2DEA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		F4C0FD5D1EC9023F004439EF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -135,6 +145,9 @@
 		F485858714D4CD1500B007CA /* SnapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapItem.h; sourceTree = "<group>"; };
 		F485858814D4CD1600B007CA /* SnapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapItem.m; sourceTree = "<group>"; };
 		F4C0FD5A1EC8B062004439EF /* show.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = show.1; sourceTree = "<group>"; };
+		F4C0FD5F1EC9023F004439EF /* paths */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = paths; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C0FD611EC9023F004439EF /* paths.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = paths.m; sourceTree = "<group>"; };
+		F4C0FD661EC90280004439EF /* paths.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = paths.1; sourceTree = "<group>"; };
 		F4F118781EBE151700E99B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4F118811EBF431E00E99B9A /* SnapWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapWindow.xib; sourceTree = "<group>"; };
 		F4F118851EBF46FB00E99B9A /* dragon.ai */ = {isa = PBXFileReference; lastKnownFileType = text; path = dragon.ai; sourceTree = "<group>"; };
@@ -189,6 +202,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C0FD5C1EC9023F004439EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +278,7 @@
 				F430C24714DEF3DC0026CBDB /* snap */,
 				F47B5ECD1EC8A10000AC2DEA /* copy */,
 				F47B5EEA1EC8ACC800AC2DEA /* show */,
+				F4C0FD5F1EC9023F004439EF /* paths */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +325,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		F4C0FD601EC9023F004439EF /* paths */ = {
+			isa = PBXGroup;
+			children = (
+				F4C0FD611EC9023F004439EF /* paths.m */,
+				F4C0FD661EC90280004439EF /* paths.1 */,
+			);
+			path = paths;
+			sourceTree = "<group>";
+		};
 		F4F118841EBF46FB00E99B9A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				F430C24B14DEF3DC0026CBDB /* snap */,
+				F4C0FD601EC9023F004439EF /* paths */,
 				F47B5EEB1EC8ACC800AC2DEA /* show */,
 				F47B5ECE1EC8A10000AC2DEA /* copy */,
 			);
@@ -357,7 +388,6 @@
 			buildPhases = (
 				F430C24314DEF3DC0026CBDB /* Sources */,
 				F430C24414DEF3DC0026CBDB /* Frameworks */,
-				F4F118B01EBF9C7B00E99B9A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -423,6 +453,23 @@
 			productReference = F485853A14D46E4300B007CA /* SnapDart.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F4C0FD5E1EC9023F004439EF /* paths */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C0FD631EC9023F004439EF /* Build configuration list for PBXNativeTarget "paths" */;
+			buildPhases = (
+				F4C0FD5B1EC9023F004439EF /* Sources */,
+				F4C0FD5C1EC9023F004439EF /* Frameworks */,
+				F4C0FD5D1EC9023F004439EF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = paths;
+			productName = paths;
+			productReference = F4C0FD5F1EC9023F004439EF /* paths */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -436,6 +483,10 @@
 						ProvisioningStyle = Automatic;
 					};
 					F47B5EE91EC8ACC800AC2DEA = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					F4C0FD5E1EC9023F004439EF = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -457,6 +508,7 @@
 				F430C24614DEF3DC0026CBDB /* snap */,
 				F47B5ECC1EC8A10000AC2DEA /* copy */,
 				F47B5EE91EC8ACC800AC2DEA /* show */,
+				F4C0FD5E1EC9023F004439EF /* paths */,
 			);
 		};
 /* End PBXProject section */
@@ -494,19 +546,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\nBUILD_NUMBER=`git rev-list HEAD | wc -l`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD_NUMBER\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nif [ \"$?\" -ne 0 ] ; then\necho \"warning:Error incrementing CFBundleVersion\"\nfi";
-		};
-		F4F118B01EBF9C7B00E99B9A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Create HTML document from man page\n/usr/bin/man snap/man/snap.1 | snap/man/cat2html/cat2html > snap/man/snap.man.html\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -566,6 +605,14 @@
 				F4F118A41EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m in Sources */,
 				F4F118B81EBFDFC700E99B9A /* SnapFileManager.m in Sources */,
 				F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4C0FD5B1EC9023F004439EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4C0FD621EC9023F004439EF /* paths.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +868,52 @@
 			};
 			name = Release;
 		};
+		F4C0FD641EC9023F004439EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F4C0FD651EC9023F004439EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -868,6 +961,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F4C0FD631EC9023F004439EF /* Build configuration list for PBXNativeTarget "paths" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4C0FD641EC9023F004439EF /* Debug */,
+				F4C0FD651EC9023F004439EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

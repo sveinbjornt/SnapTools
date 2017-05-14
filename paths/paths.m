@@ -42,10 +42,9 @@
 static void PrintVersion(void);
 static void PrintHelp(void);
 
-static const char optstring[] = "nvh";
+static const char optstring[] = "vh";
 
 static struct option long_options[] = {
-    {"new",                     no_argument,            0,  'n'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -55,15 +54,14 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     int optch;
     int long_index = 0;
     
-    BOOL inNewViewer = NO;
+    BOOL absolutePathsOnly = NO;
     
     // parse getopt
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         switch (optch) {
             
-            // open in new viewer
-            case 'n':
-                inNewViewer = YES;
+            case 'a':
+                absolutePathsOnly = YES;
                 break;
                 
             // print version
@@ -85,70 +83,14 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
-    // read remaining args
-    NSMutableArray *remainingArgs = [NSMutableArray array];
-    while (optind < argc) {
-        NSString *argStr = @(argv[optind]);
-        optind += 1;
+    // ignore any remaining command line args and read from stdin
+    NSString *input = ReadStandardInput();
         
-        NSString *absPath = [PathParser makeAbsolutePath:argStr];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-            NSPrintErr(@"no such file, skipping: %@", absPath);
-            continue;
-        }
-        
-        [remainingArgs addObject:absPath];
-    }
-    
-    BOOL readStdin = (BOOL)[remainingArgs count];
-    
-    NSMutableArray *filePaths = [NSMutableArray array];
-    
-    if (readStdin) {
-        NSString *input = ReadStandardInput();
-        
-        NSMutableSet *set = [PathParser parse:input];
-        [filePaths addObjectsFromArray:[set allObjects]];
-    } else {
-        
-        // read remaining args
-        while (optind < argc) {
-            NSString *argStr = @(argv[optind]);
-            optind += 1;
-            
-            NSString *absPath = [PathParser makeAbsolutePath:argStr];
-            
-            if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-                NSPrintErr(@"no such file, skipping: %@", absPath);
-                continue;
-            }
-            
-            [filePaths addObject:absPath];
-        }
-        
-        if ([filePaths count] < 1) {
-            PrintHelp();
-            exit(EX_USAGE);
-        }
-    }
+    NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
+    [filePaths addObjectsFromArray:[set allObjects]];
     
     for (NSString *path in filePaths) {
-        NSString *basename = [path lastPathComponent];
-        if ([basename hasPrefix:@"."]) {
-            NSPrintErr(@"warning: %@ is hidden and may not be shown", basename);
-        }
-        
-        /* Activate the Finder and open a window selecting the file at the given path.  If fullPath is nil, this will instead open the directory specified by rootFullPath, and not select any file. If rootFullPath is the empty string (@""), the file is selected in the main viewer. Otherwise, a new file viewer is opened.
-         */
-        NSString *parentDirectoryPath = [path stringByDeletingLastPathComponent];
-        NSString *rootFullPath = inNewViewer ? parentDirectoryPath : @"";
-        
-        if (inNewViewer && parentDirectoryPath != nil) {
-            [[NSWorkspace sharedWorkspace] openFile:parentDirectoryPath withApplication:@"Finder"];
-        }
-        
-        [[NSWorkspace sharedWorkspace] selectFile:path inFileViewerRootedAtPath:rootFullPath];
+        NSPrint(path);
     }
     
     return EX_OK;
@@ -157,9 +99,9 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 #pragma mark -
 
 static void PrintVersion(void) {
-    NSPrint(@"show version %@", PROGRAM_VERSION);
+    NSPrint(@"paths version %@", PROGRAM_VERSION);
 }
 
 static void PrintHelp(void) {
-    NSPrint(@"usage: show [file2 file2 ...]");
+    NSPrint(@"usage: paths [avh]");
 }

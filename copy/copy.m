@@ -45,7 +45,6 @@ static void PrintHelp(void);
 static const char optstring[] = "ivh";
 
 static struct option long_options[] = {
-    {"input",                   no_argument,            0,  'i'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -54,16 +53,10 @@ static struct option long_options[] = {
 int main(int argc, const char * argv[]) { @autoreleasepool {
     int optch;
     int long_index = 0;
-    int readStdin = FALSE;
     
     // parse getopt
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         switch (optch) {
-            
-            // read from stdin
-            case 'i':
-                readStdin = YES;
-                break;
                 
             // print version
             case 'v':
@@ -84,16 +77,33 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
+    // read remaining args
+    NSMutableArray *remainingArgs = [NSMutableArray array];
+    while (optind < argc) {
+        NSString *argStr = @(argv[optind]);
+        optind += 1;
+        
+        NSString *absPath = [PathParser makeAbsolutePath:argStr];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
+            NSPrintErr(@"no such file, skipping: %@", absPath);
+            continue;
+        }
+        
+        [remainingArgs addObject:absPath];
+    }
+    
+    BOOL readStdin = (BOOL)[remainingArgs count];
+    
     NSMutableArray *filePaths = [NSMutableArray array];
     
     if (readStdin) {
         NSString *input = ReadStandardInput();
-
+        
         NSMutableSet *set = [PathParser parse:input];
         [filePaths addObjectsFromArray:[set allObjects]];
-        
     } else {
-    
+        
         // read remaining args
         while (optind < argc) {
             NSString *argStr = @(argv[optind]);
@@ -108,11 +118,11 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             
             [filePaths addObject:absPath];
         }
-    }
-    
-    if ([filePaths count] < 1) {
-        PrintHelp();
-        exit(EX_USAGE);
+        
+        if ([filePaths count] < 1) {
+            PrintHelp();
+            exit(EX_USAGE);
+        }
     }
     
     NSPasteboard *pboard = [NSPasteboard generalPasteboard];

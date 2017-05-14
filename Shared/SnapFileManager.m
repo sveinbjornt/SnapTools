@@ -57,10 +57,9 @@
     return arr;
 }
 
-
 #pragma mark -
 
-- (NSArray *)readSnapFileAtPath:(NSString *)path {
++ (NSArray *)readSnapFileAtPath:(NSString *)path {
     NSData *fileData = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]
                                              options:NSDataReadingMappedAlways
                                                error:nil];
@@ -81,7 +80,7 @@
     return [str componentsSeparatedByString:@"\n"];
 }
 
-- (BOOL)writeSnap:(NSArray *)items toPath:(NSString *)path {
++ (BOOL)writeSnap:(NSArray *)items toPath:(NSString *)path {
     NSString *str = [items componentsJoinedByString:@"\n"];
     
     NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];

@@ -1,30 +1,29 @@
 .Dd May 14, 2017
-.Dt SHOW 1
+.Dt PATHS 1
 .Os Darwin
 .Sh NAME
-.Nm show
-.Nd Show one or more files in the Mac OS X Finder
+.Nm paths
+.Nd Find file system paths in input
 .Sh SYNOPSIS
 .Nm
-.Op Fl nvh
-.Op Ar
+.Op Fl avh
 .Sh DESCRIPTION
 .Nm
-is a command line tool which shows file arguments in the Mac
-OS X Finder.
+is a command line tool which finds file system paths in standard
+input and prints it to standard output.
 .Pp
 The following flags are supported:
 .Bl -tag -width -indent
-.It Fl n, -new
-Open new file viewer when showing file(s)
+.It Fl a, -absolute-only
+Do not resolve and include relative paths
 .It Fl v, -version
 Print program version and exit
 .It Fl h, -help
 Print help and exit
 .El
 .Sh SEE ALSO
-.Xr snap 1 ,
 .Xr copy 1 ,
-.Xr paths 1
+.Xr show 1 ,
+.Xr snap 1 
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>
