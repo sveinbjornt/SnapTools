@@ -28,14 +28,7 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Cocoa/Cocoa.h>
-
-#import <sysexits.h>
-#import <getopt.h>
-
-#import "Common.h"
-#import "NSCommandLine.h"
-#import "PathParser.h"
+#import "CLI.h"
 #import "NSWorkspace+Additions.h"
 
 static void PrintHelp(void);
@@ -66,10 +59,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
                 
             // print version
             case 'v':
-            {
-                NSPrint(@"labels version %@", PROGRAM_VERSION);
-                exit(EX_OK);
-            }
+                PrintProgramVersion();
                 break;
                 
             // print help with list of options
@@ -86,50 +76,23 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     
     [[NSWorkspace sharedWorkspace] labelDictionary];
     
-    // read remaining args
-    NSMutableArray *remainingArgs = [NSMutableArray array];
-    while (optind < argc) {
-        NSString *argStr = @(argv[optind]);
-        optind += 1;
-        [remainingArgs addObject:argStr];
-    }
-    
-    if (![remainingArgs count]) {
+    NSMutableArray *args = ReadRemainingArgs(argc, argv);
+    if (![args count]) {
         PrintHelp();
         exit(EX_USAGE);
     }
     
     // First arg is label identifier
-    NSString *labelArg = remainingArgs[0];
-    [remainingArgs removeObjectAtIndex:0];
+    NSString *labelArg = args[0];
+    [args removeObjectAtIndex:0];
     // TODO: Get label ID from label arg
     
-    NSMutableArray *filePaths = [NSMutableArray array];
-    
-    // read from stdin if label identifier is the only arg
-    if ([remainingArgs count] == 0) {
-        NSString *input = ReadStandardInput();
-        NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
-        [filePaths addObjectsFromArray:[set allObjects]];
-    }
-    else {
-        // Interpret remaining args as file paths
-        for (NSString *arg in remainingArgs) {
-            NSString *absPath = [PathParser makeAbsolutePath:arg];
+    NSMutableArray *filePaths = [args count] ? ValidPathsInArguments(args) : ReadPathsFromStandardInput();
         
-            if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-                NSPrintErr(@"no such file, skipping: %@", absPath);
-                continue;
-            }
-            
-            [filePaths addObject:absPath];
-        }
-    }
-    
     // Check if number of files exceeds limit
-    int lim = DANGEROUS_FILE_OPERATIONS_LIMIT;
-    if (([filePaths count] > lim) && !force) {
-        NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.", lim);
+    if (([filePaths count] > DANGEROUS_FILE_LIMIT) && !force) {
+        NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.",
+                   DANGEROUS_FILE_LIMIT);
         exit(EX_USAGE);
     }
     
@@ -160,5 +123,5 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 #pragma mark -
 
 static void PrintHelp(void) {
-    NSPrint(@"usage: label identifier [file ...]");
+    NSPrint(@"usage: %@ identifier [file1 file2 ...]", [[NSProcessInfo processInfo] processName]);
 }

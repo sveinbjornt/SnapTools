@@ -28,21 +28,14 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Cocoa/Cocoa.h>
-
-#import <sysexits.h>
-#import <getopt.h>
-
-#import "Common.h"
-#import "NSCommandLine.h"
-#import "PathParser.h"
+#import "CLI.h"
 
 static void PrintHelp(void);
 
 static const char optstring[] = "avh";
 
 static struct option long_options[] = {
-    {"absolutely-only",         no_argument,            0,  'a'},
+    {"absolute-only",           no_argument,            0,  'a'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -65,10 +58,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
                 
             // print version
             case 'v':
-            {
-                NSPrint(@"paths version %@", PROGRAM_VERSION);
-                exit(EX_OK);
-            }
+                PrintProgramVersion();
                 break;
                 
             // print help with list of options
@@ -83,10 +73,8 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     }
     
     // ignore any remaining command line args and read from stdin
-    NSString *input = ReadStandardInput();
-    
-    NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
-    NSArray *filePaths = [set allObjects];
+    // TODO: Do something with absolutePathsOnly
+    NSMutableArray *filePaths = ReadPathsFromStandardInput();
     
     for (NSString *path in filePaths) {
         NSPrint(path);
@@ -98,5 +86,5 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 #pragma mark -
 
 static void PrintHelp(void) {
-    NSPrint(@"usage: paths [avh]");
+    NSPrint(@"usage: %@ [avh]", [[NSProcessInfo processInfo] processName]);
 }

@@ -28,18 +28,11 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Cocoa/Cocoa.h>
-
-#import <sysexits.h>
-#import <getopt.h>
-
-#import "Common.h"
-#import "NSCommandLine.h"
-#import "PathParser.h"
+#import "CLI.h"
 
 static void PrintHelp(void);
 
-static const char optstring[] = "nivh";
+static const char optstring[] = "nfvh";
 
 static struct option long_options[] = {
     {"new",                     no_argument,            0,  'n'},
@@ -72,10 +65,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
                 
             // print version
             case 'v':
-            {
-                NSPrint(@"show version %@", PROGRAM_VERSION);
-                exit(EX_OK);
-            }
+                PrintProgramVersion();
                 break;
                 
             // print help with list of options
@@ -89,35 +79,15 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
-    // read remaining args
-    NSMutableArray *remainingArgs = [NSMutableArray array];
-    while (optind < argc) {
-        NSString *argStr = @(argv[optind]);
-        optind += 1;
-        [remainingArgs addObject:argStr];
-    }
-    
-    BOOL readStdin = !(BOOL)[remainingArgs count];
+    NSMutableArray *args = ReadRemainingArgs(argc, argv);
+    BOOL readStdin = ([args count] == 0);
     
     NSMutableArray *filePaths = [NSMutableArray array];
     
     if (readStdin) {
-        NSString *input = ReadStandardInput();
-        NSMutableSet *set = [PathParser parse:input];
-        [filePaths addObjectsFromArray:[set allObjects]];
+        filePaths = ReadPathsFromStandardInput();
     } else {
-        
-        for (NSString *arg in remainingArgs) {
-            NSString *absPath = [PathParser makeAbsolutePath:arg];
-            
-            if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-                NSPrintErr(@"no such file, skipping: %@", absPath);
-                continue;
-            }
-            
-            [filePaths addObject:absPath];
-        }
-        
+        filePaths = ValidPathsInArguments(args);
         if ([filePaths count] < 1) {
             PrintHelp();
             exit(EX_USAGE);
@@ -125,9 +95,9 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     }
     
     // Check if number of files exceeds limit
-    int lim = DANGEROUS_FILE_OPERATIONS_LIMIT;
-    if (([filePaths count] > lim) && !force) {
-        NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.", lim);
+    if (([filePaths count] > DANGEROUS_FILE_LIMIT) && !force) {
+        NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.",
+                   DANGEROUS_FILE_LIMIT);
         exit(EX_USAGE);
     }
     
@@ -154,7 +124,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 
 #pragma mark -
 
-
 static void PrintHelp(void) {
-    NSPrint(@"usage: show [file2 file2 ...]");
+    NSPrint(@"usage: %@ [file1 file2 ...]", [[NSProcessInfo processInfo] processName]);
 }

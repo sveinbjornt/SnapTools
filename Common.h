@@ -52,8 +52,6 @@
 #define PROGRAM_BOOKMARKS_PATH      [NSString stringWithFormat:@"%@/Bookmarks", PROGRAM_APP_SUPPORT_PATH]
 #define PROGRAM_REQUIRED_DIRS       @[PROGRAM_APP_SUPPORT_PATH, PROGRAM_HISTORY_PATH, PROGRAM_BOOKMARKS_PATH]
 
-#define DANGEROUS_FILE_OPERATIONS_LIMIT     50
-
 #define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
 
 // abbreviations

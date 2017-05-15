@@ -1,30 +1,37 @@
 .Dd May 14, 2017
-.Dt COPY 1
+.Dt GETINFO 1
 .Os Darwin
 .Sh NAME
-.Nm copy
-.Nd Copy one or more files to the Mac OS X Pasteboard
+.Nm getinfo
+.Nd Show Finder Get Info window for one or more files
 .Sh SYNOPSIS
 .Nm
-.Op Fl vh
+.Op Fl svh
 .Op Ar
 .Sh DESCRIPTION
 .Nm
-is a command line tool which copies any file arguments to the Mac OS X
-Pasteboard. Files copied in this way can subsequently be pasted or moved
-using the Finder.
+is a command line tool which opens a Get Info window
+in the Mac OS X Finder for files passed as arguments.
+If no files are provided as arguments,
+.Nm
+will read standard input looking for paths.
 .Pp
 The following flags are supported:
 .Bl -tag -width -indent
+.It Fl s, -single
+Show a single, combined Get Info window for all items
+.It Fl f, -force
+Ignore file limit
 .It Fl v, -version
 Print program version and exit
 .It Fl h, -help
 Print help and exit
 .El
 .Sh SEE ALSO
-.Xr pbcopy 1 ,
-.Xr pbpaste 1 ,
-.Xr snap 1 ,
-.Xr paths 1
+.Xr copy 1 ,
+.Xr open 1 ,
+.Xr paths 1 ,
+.Xr show 1 ,
+.Xr snap 1
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>

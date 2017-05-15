@@ -45,6 +45,15 @@
 		F4C0FD761EC92166004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F4C0FD771EC9CB96004439EF /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
 		F4C0FD7F1EC9CC48004439EF /* getinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD7E1EC9CC48004439EF /* getinfo.m */; };
+		F4C0FD841EC9EA7D004439EF /* NSCommandLine.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B5EDC1EC8A44200AC2DEA /* NSCommandLine.m */; };
+		F4C0FD851EC9EA80004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
+		F4C0FD861EC9EAB8004439EF /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
+		F4C0FD8A1EC9F47D004439EF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD871EC9F2B9004439EF /* CLI.m */; };
+		F4C0FD8B1EC9F47E004439EF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD871EC9F2B9004439EF /* CLI.m */; };
+		F4C0FD8C1EC9F47F004439EF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD871EC9F2B9004439EF /* CLI.m */; };
+		F4C0FD8D1EC9F480004439EF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD871EC9F2B9004439EF /* CLI.m */; };
+		F4C0FD8E1EC9F480004439EF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD871EC9F2B9004439EF /* CLI.m */; };
+		F4C0FD8F1EC9F481004439EF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FD871EC9F2B9004439EF /* CLI.m */; };
 		F4F118791EBE151700E99B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F118781EBE151700E99B9A /* Images.xcassets */; };
 		F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F118811EBF431E00E99B9A /* SnapWindow.xib */; };
 		F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
@@ -66,6 +75,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = F47B5ECC1EC8A10000AC2DEA;
 			remoteInfo = copy;
+		};
+		F4C0FD901EC9FD3F004439EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47B5EE91EC8ACC800AC2DEA;
+			remoteInfo = show;
+		};
+		F4C0FD921EC9FD42004439EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4C0FD5E1EC9023F004439EF;
+			remoteInfo = paths;
+		};
+		F4C0FD941EC9FD43004439EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4C0FD6A1EC909A1004439EF;
+			remoteInfo = label;
+		};
+		F4C0FD961EC9FD45004439EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4C0FD7B1EC9CC48004439EF;
+			remoteInfo = getinfo;
 		};
 		F4F118761EBE0E8200E99B9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -178,6 +215,9 @@
 		F4C0FD721EC90B68004439EF /* label.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = label.1; sourceTree = "<group>"; };
 		F4C0FD7C1EC9CC48004439EF /* getinfo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = getinfo; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0FD7E1EC9CC48004439EF /* getinfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = getinfo.m; sourceTree = "<group>"; };
+		F4C0FD831EC9E661004439EF /* getinfo.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = getinfo.1; sourceTree = "<group>"; };
+		F4C0FD871EC9F2B9004439EF /* CLI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLI.m; sourceTree = "<group>"; };
+		F4C0FD881EC9F2B9004439EF /* CLI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLI.h; sourceTree = "<group>"; };
 		F4F118781EBE151700E99B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F4F118811EBF431E00E99B9A /* SnapWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapWindow.xib; sourceTree = "<group>"; };
 		F4F118851EBF46FB00E99B9A /* dragon.ai */ = {isa = PBXFileReference; lastKnownFileType = text; path = dragon.ai; sourceTree = "<group>"; };
@@ -393,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				F4C0FD7E1EC9CC48004439EF /* getinfo.m */,
+				F4C0FD831EC9E661004439EF /* getinfo.1 */,
 			);
 			path = getinfo;
 			sourceTree = "<group>";
@@ -410,6 +451,8 @@
 		F4F118891EBF69A200E99B9A /* Command Line Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F4C0FD881EC9F2B9004439EF /* CLI.h */,
+				F4C0FD871EC9F2B9004439EF /* CLI.m */,
 				F430C24B14DEF3DC0026CBDB /* snap */,
 				F4C0FD6C1EC909A1004439EF /* label */,
 				F4C0FD601EC9023F004439EF /* paths */,
@@ -512,6 +555,10 @@
 			dependencies = (
 				F47B5EE11EC8A5E500AC2DEA /* PBXTargetDependency */,
 				F4F118771EBE0E8200E99B9A /* PBXTargetDependency */,
+				F4C0FD911EC9FD3F004439EF /* PBXTargetDependency */,
+				F4C0FD951EC9FD43004439EF /* PBXTargetDependency */,
+				F4C0FD971EC9FD45004439EF /* PBXTargetDependency */,
+				F4C0FD931EC9FD42004439EF /* PBXTargetDependency */,
 			);
 			name = SnapDart;
 			productName = SnapDart;
@@ -669,6 +716,7 @@
 				F430C24D14DEF3DC0026CBDB /* snap.m in Sources */,
 				F423DA7F1EC61B0C005AA2FC /* NSData+LZ4.m in Sources */,
 				F423DA7D1EC61B0C005AA2FC /* lz4hc.c in Sources */,
+				F4C0FD8A1EC9F47D004439EF /* CLI.m in Sources */,
 				F47B5EDA1EC8A1BE00AC2DEA /* Common.c in Sources */,
 				F4F118901EBF69F400E99B9A /* PathParser.m in Sources */,
 			);
@@ -682,6 +730,7 @@
 				F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */,
 				F47B5ED61EC8A14100AC2DEA /* copy.m in Sources */,
 				F47B5EDF1EC8A44200AC2DEA /* NSCommandLine.m in Sources */,
+				F4C0FD8B1EC9F47E004439EF /* CLI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +738,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C0FD8C1EC9F47F004439EF /* CLI.m in Sources */,
 				F4C0FD581EC8AE79004439EF /* NSCommandLine.m in Sources */,
 				F4C0FD591EC8AE80004439EF /* PathParser.m in Sources */,
 				F47B5EED1EC8ACC800AC2DEA /* show.m in Sources */,
@@ -721,6 +771,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C0FD8D1EC9F480004439EF /* CLI.m in Sources */,
 				F4C0FD731EC9215C004439EF /* NSCommandLine.m in Sources */,
 				F4C0FD751EC92166004439EF /* PathParser.m in Sources */,
 				F4C0FD621EC9023F004439EF /* paths.m in Sources */,
@@ -735,6 +786,7 @@
 				F4C0FD741EC9215D004439EF /* NSCommandLine.m in Sources */,
 				F4C0FD761EC92166004439EF /* PathParser.m in Sources */,
 				F4C0FD6E1EC909A1004439EF /* label.m in Sources */,
+				F4C0FD8E1EC9F480004439EF /* CLI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,7 +794,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C0FD861EC9EAB8004439EF /* NSWorkspace+Additions.m in Sources */,
+				F4C0FD841EC9EA7D004439EF /* NSCommandLine.m in Sources */,
+				F4C0FD851EC9EA80004439EF /* PathParser.m in Sources */,
 				F4C0FD7F1EC9CC48004439EF /* getinfo.m in Sources */,
+				F4C0FD8F1EC9F481004439EF /* CLI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,6 +809,26 @@
 			isa = PBXTargetDependency;
 			target = F47B5ECC1EC8A10000AC2DEA /* copy */;
 			targetProxy = F47B5EE01EC8A5E500AC2DEA /* PBXContainerItemProxy */;
+		};
+		F4C0FD911EC9FD3F004439EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47B5EE91EC8ACC800AC2DEA /* show */;
+			targetProxy = F4C0FD901EC9FD3F004439EF /* PBXContainerItemProxy */;
+		};
+		F4C0FD931EC9FD42004439EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4C0FD5E1EC9023F004439EF /* paths */;
+			targetProxy = F4C0FD921EC9FD42004439EF /* PBXContainerItemProxy */;
+		};
+		F4C0FD951EC9FD43004439EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4C0FD6A1EC909A1004439EF /* label */;
+			targetProxy = F4C0FD941EC9FD43004439EF /* PBXContainerItemProxy */;
+		};
+		F4C0FD971EC9FD45004439EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4C0FD7B1EC9CC48004439EF /* getinfo */;
+			targetProxy = F4C0FD961EC9FD45004439EF /* PBXContainerItemProxy */;
 		};
 		F4F118771EBE0E8200E99B9A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

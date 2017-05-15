@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2003-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -29,33 +29,16 @@
 */
 
 #import <Cocoa/Cocoa.h>
-#import "NSString+CarbonFSRefCreation.h"
+#import <sysexits.h>
+#import <getopt.h>
 
-@interface NSWorkspace (Additions)
+#import "Common.h"
+#import "NSCommandLine.h"
+#import "PathParser.h"
 
-- (NSArray *)applicationsForFile:(NSString *)filePath;
-- (NSString *)defaultApplicationForFile:(NSString *)filePath;
+#define DANGEROUS_FILE_LIMIT 50
 
-- (NSDictionary *)labelDictionary;
-- (BOOL)setLabelNamed:(NSString *)labelStr forFile:(NSString *)filePath;
-- (BOOL)setLabelNumber:(NSUInteger)label forFile:(NSString *)filePath;
-- (int)labelNumberForFile:(NSString *)path;
-- (NSString *)labelNameForFile:(NSString *)path;
-- (NSColor *)labelColorForFile:(NSString *)path;
-
-- (unsigned long long)nrCalculateFolderSize:(NSString *)folderPath;
-- (UInt64)fileOrFolderSize:(NSString *)path;
-- (NSString *)fileSizeAsHumanReadableString:(UInt64)size;
-- (NSString *)fileOrFolderSizeAsHumanReadable:(NSString *)path;
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str encoding:(NSStringEncoding)encoding;
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str;
-- (NSString *)createTempFileWithContents:(NSString *)contentStr;
-- (NSString *)createTempFileWithContents:(NSString *)contentStr encoding:(NSStringEncoding)textEncoding;
-- (void)showFinderGetInfoForFile:(NSString *)path;
-- (void)notifyFinderFileChangedAtPath:(NSString *)path;
-- (void)flushServices;
-- (BOOL)openPathInDefaultBrowser:(NSString *)path;
-- (BOOL)runCommandInTerminal:(NSString *)cmd;
-- (BOOL)isFinderRunning;
-
-@end
+NSMutableArray *ReadRemainingArgs(int argc, const char **argv);
+NSMutableArray *ReadPathsFromStandardInput(void);
+NSMutableArray *ValidPathsInArguments(NSArray *args);
+void PrintProgramVersion(void);

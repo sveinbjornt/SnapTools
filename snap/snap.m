@@ -28,14 +28,7 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Cocoa/Cocoa.h>
-
-#import <sysexits.h>
-#import <getopt.h>
-
-#import "Common.h"
-#import "NSCommandLine.h"
-#import "PathParser.h"
+#import "CLI.h"
 
 static NSMutableSet *ReadDirectoryContents(NSString *dirPath);
 
@@ -78,10 +71,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
                 
             // print version
             case 'v':
-            {
-                NSPrint(@"snap version %@", PROGRAM_VERSION);
-                exit(EX_OK);
-            }
+                PrintProgramVersion();
                 break;
                 
             // print help with list of options
@@ -197,5 +187,5 @@ static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
 #pragma mark -
 
 static void PrintHelp(void) {
-    NSPrint(@"usage: snap [args ...]");
+    NSPrint(@"usage: %@ [file1 file2 ...]", [[NSProcessInfo processInfo] processName]);
 }

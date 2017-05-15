@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2003-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -28,34 +28,46 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Cocoa/Cocoa.h>
-#import "NSString+CarbonFSRefCreation.h"
+#import "CLI.h"
+#import "NSCommandLine.h"
+#import "PathParser.h"
 
-@interface NSWorkspace (Additions)
+NSMutableArray *ReadRemainingArgs(int argc, const char **argv) {
+    NSMutableArray *remainingArgs = [NSMutableArray array];
+    while (optind < argc) {
+        NSString *argStr = @(argv[optind]);
+        optind += 1;
+        [remainingArgs addObject:argStr];
+    }
+    return remainingArgs;
+}
 
-- (NSArray *)applicationsForFile:(NSString *)filePath;
-- (NSString *)defaultApplicationForFile:(NSString *)filePath;
+NSMutableArray *ReadPathsFromStandardInput(void) {
+    NSString *input = ReadStandardInput();
+    NSMutableSet *set = [PathParser parse:input];
+    return [NSMutableArray arrayWithArray:[set allObjects]];
+}
 
-- (NSDictionary *)labelDictionary;
-- (BOOL)setLabelNamed:(NSString *)labelStr forFile:(NSString *)filePath;
-- (BOOL)setLabelNumber:(NSUInteger)label forFile:(NSString *)filePath;
-- (int)labelNumberForFile:(NSString *)path;
-- (NSString *)labelNameForFile:(NSString *)path;
-- (NSColor *)labelColorForFile:(NSString *)path;
+NSMutableArray *ValidPathsInArguments(NSArray *args) {
+    NSMutableArray *paths = [NSMutableArray array];
+    
+    for (NSString *a in args) {
+        NSString *absPath = [PathParser makeAbsolutePath:a];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
+            NSPrintErr(@"no such file, skipping: %@", absPath);
+            continue;
+        }
+        
+        [paths addObject:absPath];
+    }
+    return paths;
+}
 
-- (unsigned long long)nrCalculateFolderSize:(NSString *)folderPath;
-- (UInt64)fileOrFolderSize:(NSString *)path;
-- (NSString *)fileSizeAsHumanReadableString:(UInt64)size;
-- (NSString *)fileOrFolderSizeAsHumanReadable:(NSString *)path;
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str encoding:(NSStringEncoding)encoding;
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str;
-- (NSString *)createTempFileWithContents:(NSString *)contentStr;
-- (NSString *)createTempFileWithContents:(NSString *)contentStr encoding:(NSStringEncoding)textEncoding;
-- (void)showFinderGetInfoForFile:(NSString *)path;
-- (void)notifyFinderFileChangedAtPath:(NSString *)path;
-- (void)flushServices;
-- (BOOL)openPathInDefaultBrowser:(NSString *)path;
-- (BOOL)runCommandInTerminal:(NSString *)cmd;
-- (BOOL)isFinderRunning;
-
-@end
+void PrintProgramVersion(void) {
+    NSPrint(@"%@ version %@ (%@)",
+            [[NSProcessInfo processInfo] processName],
+            PROGRAM_VERSION,
+            PROGRAM_NAME);
+    exit(EX_OK);
+}

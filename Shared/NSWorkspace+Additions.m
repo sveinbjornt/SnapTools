@@ -379,19 +379,46 @@
     return [self createTempFileNamed:nil withContents:contentStr encoding:textEncoding];
 }
 
-#pragma mark - Notify Finder
+#pragma mark - Finder
 
-- (void)notifyFinderFileChangedAtPath:(NSString *)path {
-    [[NSWorkspace sharedWorkspace] noteFileSystemChanged:path];
-    NSString *source = [NSString stringWithFormat:@"tell application \"Finder\" to update item (POSIX file \"%@\") with necessity", path];
+- (void)showFinderGetInfoForFile:(NSString *)path {
+    BOOL isDir;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path
+                                                       isDirectory:&isDir];
+    if (!exists) {
+        NSLog(@"Cannot show Get Info. File does not exist: %@", path);
+        return;
+    }
+    
+    NSString *type = isDir && ![self isFilePackageAtPath:path] ? @"folder" : @"file";
+    
+    NSString *source = [NSString stringWithFormat:
+@"set aFile to (POSIX file \"%@\") as text\n\
+tell application \"Finder\"\n\
+\tactivate\n\
+\topen information window of %@ aFile\n\
+end tell", path, type];
     
     NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:source];
     if (appleScript != nil) {
-        [appleScript executeAndReturnError:nil];
+        NSDictionary *errorInfo;
+        if ([appleScript executeAndReturnError:&errorInfo] == nil) {
+            NSLog(@"%@", [errorInfo description]);
+        }
     }
-#if !__has_feature(objc_arc)
-    [appleScript release];
-#endif
+}
+
+- (void)notifyFinderFileChangedAtPath:(NSString *)path {
+    [[NSWorkspace sharedWorkspace] noteFileSystemChanged:path];
+    NSString *source = [NSString stringWithFormat:@"tell application \"Finder\" to update item (POSIX file \"%@\")", path];
+    
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:source];
+    if (appleScript != nil) {
+        NSDictionary *errorInfo;
+        if ([appleScript executeAndReturnError:&errorInfo] == nil) {
+            NSLog(@"%@", [errorInfo description]);
+        }
+    }
 }
 
 #pragma mark - Services
