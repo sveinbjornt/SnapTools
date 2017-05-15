@@ -40,7 +40,6 @@
 
 #define PROGRAM_FILENAME_SUFFIX     @".snap"
 
-#define PROGRAM_MANPAGE             @"snap.man.html"
 #define PROGRAM_LICENSE_FILE        @"License.html"
 #define PROGRAM_DOCUMENTATION       @"Documentation.html"
 

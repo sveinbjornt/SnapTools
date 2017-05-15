@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2007, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -28,9 +28,26 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
+
+#import <stdio.h>
+#import <sysexits.h>
+#import <getopt.h>
+
+#import "Common.h"
+#import "PathParser.h"
+
+#define DANGEROUS_FILE_LIMIT 50
 
 NSString *ReadStandardInput(void);
 
 void NSPrintErr(NSString *format, ...);
 void NSPrint(NSString *format, ...);
+
+NSMutableArray *ReadRemainingArgs(int argc, const char **argv);
+NSMutableArray *ReadPathsFromStandardInput(void);
+NSMutableArray *ValidPathsInArguments(NSArray *args);
+
+void PrintProgramVersion(void);
+
+

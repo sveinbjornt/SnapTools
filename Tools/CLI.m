@@ -29,8 +29,14 @@
 */
 
 #import "CLI.h"
-#import "NSCommandLine.h"
-#import "PathParser.h"
+
+NSString *ReadStandardInput(void) {
+    NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
+    if (!inData) {
+        return nil;
+    }
+    return [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
+}
 
 NSMutableArray *ReadRemainingArgs(int argc, const char **argv) {
     NSMutableArray *remainingArgs = [NSMutableArray array];
@@ -41,6 +47,8 @@ NSMutableArray *ReadRemainingArgs(int argc, const char **argv) {
     }
     return remainingArgs;
 }
+
+#pragma mark - 
 
 NSMutableArray *ReadPathsFromStandardInput(void) {
     NSString *input = ReadStandardInput();
@@ -64,6 +72,8 @@ NSMutableArray *ValidPathsInArguments(NSArray *args) {
     return paths;
 }
 
+#pragma mark -
+
 void PrintProgramVersion(void) {
     NSPrint(@"%@ version %@ (%@)",
             [[NSProcessInfo processInfo] processName],
@@ -71,3 +81,28 @@ void PrintProgramVersion(void) {
             PROGRAM_NAME);
     exit(EX_OK);
 }
+
+#pragma mark - 
+
+// print NSString to stdout
+void NSPrint(NSString *format, ...) {
+    va_list args;
+    
+    va_start(args, format);
+    NSString *string  = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    
+    fprintf(stdout, "%s\n", [string UTF8String]);
+}
+
+// print NSString to stderr
+void NSPrintErr(NSString *format, ...) {
+    va_list args;
+    
+    va_start(args, format);
+    NSString *string  = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    
+    fprintf(stderr, "%s\n", [string UTF8String]);
+}
+

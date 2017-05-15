@@ -315,7 +315,8 @@
 
 // Open HTML version of snap command line tool's man page
 - (IBAction)showManPage:(id)sender {
-    [WORKSPACE openPathInDefaultBrowser:[[NSBundle mainBundle] pathForResource:PROGRAM_MANPAGE ofType:nil]];
+//    [WORKSPACE openPathInDefaultBrowser:[[NSBundle mainBundle] pathForResource:PROGRAM_MANPAGE ofType:nil]];
+    NSBeep();
 }
 
 // Open program website
