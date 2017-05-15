@@ -39,9 +39,10 @@
 
 static void PrintHelp(void);
 
-static const char optstring[] = "ivh";
+static const char optstring[] = "fvh";
 
 static struct option long_options[] = {
+    {"force",                   no_argument,            0,  'f'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -51,10 +52,16 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     int optch;
     int long_index = 0;
     
+    BOOL force = NO;
+    
     // parse getopt
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         switch (optch) {
-                
+            
+            case 'f':
+                force = YES;
+                break;
+            
             // print version
             case 'v':
             {
@@ -79,40 +86,26 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     while (optind < argc) {
         NSString *argStr = @(argv[optind]);
         optind += 1;
-        
-        NSString *absPath = [PathParser makeAbsolutePath:argStr];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-            NSPrintErr(@"no such file, skipping: %@", absPath);
-            continue;
-        }
-        
-        [remainingArgs addObject:absPath];
+        [remainingArgs addObject:argStr];
     }
     
-    BOOL readStdin = !(BOOL)[remainingArgs count];
+    BOOL readStdin = ([remainingArgs count] == 0);
     
     NSMutableArray *filePaths = [NSMutableArray array];
     
     if (readStdin) {
         NSString *input = ReadStandardInput();
-        
         NSMutableSet *set = [PathParser parse:input];
         [filePaths addObjectsFromArray:[set allObjects]];
     } else {
         
-        // read remaining args
-        while (optind < argc) {
-            NSString *argStr = @(argv[optind]);
-            optind += 1;
-            
-            NSString *absPath = [PathParser makeAbsolutePath:argStr];
+        for (NSString *path in remainingArgs) {
+            NSString *absPath = [PathParser makeAbsolutePath:path];
             
             if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
                 NSPrintErr(@"no such file, skipping: %@", absPath);
                 continue;
             }
-            
             [filePaths addObject:absPath];
         }
         
@@ -128,26 +121,17 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         exit(EX_UNAVAILABLE);
     }
     
-    if ([filePaths count] == 1) {
-        [pboard clearContents];
-        
-        NSString *path = [filePaths firstObject];
-        NSURL *url = [[NSURL alloc] initFileURLWithPath:path];
-        
-        BOOL success = [pboard writeObjects:@[url]];
-        [pboard setString:path forType:NSStringPboardType]; // TODO Also for multiple files
-        
-        NSLog(@"Writing URL %@ to pasteboiard", [url description]);
-        if (!success) {
-            NSPrintErr(@"Error writing URL %@ to pasteboard", [url description]);
-            exit(EX_DATAERR);
-        }
-
-    } else {
-        [pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
-        [pboard setPropertyList:filePaths forType:NSFilenamesPboardType];
-        [pboard setString:[filePaths componentsJoinedByString:@"\n"] forType:NSStringPboardType];
+    // Check if number of files exceeds limit
+    int lim = DANGEROUS_FILE_OPERATIONS_LIMIT;
+    if (([filePaths count] > lim) && !force) {
+        NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.", lim);
+        exit(EX_USAGE);
     }
+    
+    // Write to pasteboard
+    [pboard declareTypes:[NSArray arrayWithObject:NSFilenamesPboardType] owner:nil];
+    [pboard setPropertyList:filePaths forType:NSFilenamesPboardType];
+    [pboard setString:[filePaths componentsJoinedByString:@"\n"] forType:NSStringPboardType];
     
     NSPrint(@"%d file%@ copied to pasteboard", [filePaths count], [filePaths count] > 1 ? @"s" : @"");
     

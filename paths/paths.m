@@ -26,7 +26,7 @@
  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
- */
+*/
 
 #import <Cocoa/Cocoa.h>
 
@@ -37,9 +37,9 @@
 #import "NSCommandLine.h"
 #import "PathParser.h"
 
-static void PrintVersion(void);
+static void PrintHelp(void);
 
-static const char optstring[] = "vh";
+static const char optstring[] = "avh";
 
 static struct option long_options[] = {
     {"absolutely-only",         no_argument,            0,  'a'},
@@ -86,7 +86,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     NSString *input = ReadStandardInput();
     
     NSMutableSet *set = [PathParser parse:input]; // TODO: Do something with absolutePathsOnly
-    [filePaths addObjectsFromArray:[set allObjects]];
+    NSArray *filePaths = [set allObjects];
     
     for (NSString *path in filePaths) {
         NSPrint(path);

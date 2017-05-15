@@ -1,3 +1,4 @@
 CHANGES.txt
 
-* 
+* Ignore hidden files vs. not ignore flags
+* Sorting and unique options for parse results, which should deliver nsarray not set

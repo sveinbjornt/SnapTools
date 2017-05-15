@@ -26,7 +26,7 @@
  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
- */
+*/
 
 #import <Cocoa/Cocoa.h>
 
@@ -39,10 +39,11 @@
 
 static void PrintHelp(void);
 
-static const char optstring[] = "nvh";
+static const char optstring[] = "nivh";
 
 static struct option long_options[] = {
     {"new",                     no_argument,            0,  'n'},
+    {"force",                   no_argument,            0,  'f'},
     {"version",                 no_argument,            0,  'v'},
     {"help",                    no_argument,            0,  'h'},
     {0,                         0,                      0,    0}
@@ -53,6 +54,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     int long_index = 0;
     
     BOOL inNewViewer = NO;
+    BOOL force = NO;
     
     // parse getopt
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
@@ -61,6 +63,11 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             // open in new viewer
             case 'n':
                 inNewViewer = YES;
+                break;
+            
+            // ignore file limit
+            case 'f':
+                force = YES;
                 break;
                 
             // print version
@@ -87,15 +94,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     while (optind < argc) {
         NSString *argStr = @(argv[optind]);
         optind += 1;
-        
-        NSString *absPath = [PathParser makeAbsolutePath:argStr];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-            NSPrintErr(@"no such file, skipping: %@", absPath);
-            continue;
-        }
-        
-        [remainingArgs addObject:absPath];
+        [remainingArgs addObject:argStr];
     }
     
     BOOL readStdin = !(BOOL)[remainingArgs count];
@@ -104,17 +103,12 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     
     if (readStdin) {
         NSString *input = ReadStandardInput();
-        
         NSMutableSet *set = [PathParser parse:input];
         [filePaths addObjectsFromArray:[set allObjects]];
     } else {
         
-        // read remaining args
-        while (optind < argc) {
-            NSString *argStr = @(argv[optind]);
-            optind += 1;
-            
-            NSString *absPath = [PathParser makeAbsolutePath:argStr];
+        for (NSString *arg in remainingArgs) {
+            NSString *absPath = [PathParser makeAbsolutePath:arg];
             
             if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
                 NSPrintErr(@"no such file, skipping: %@", absPath);
@@ -128,6 +122,13 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             PrintHelp();
             exit(EX_USAGE);
         }
+    }
+    
+    // Check if number of files exceeds limit
+    int lim = DANGEROUS_FILE_OPERATIONS_LIMIT;
+    if (([filePaths count] > lim) && !force) {
+        NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.", lim);
+        exit(EX_USAGE);
     }
     
     for (NSString *path in filePaths) {
