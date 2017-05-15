@@ -36,7 +36,9 @@
 - (NSArray *)applicationsForFile:(NSString *)filePath;
 - (NSString *)defaultApplicationForFile:(NSString *)filePath;
 
-- (BOOL)setLabel:(NSUInteger)label forFile:(NSString *)filePath;
+- (NSDictionary *)labelDictionary;
+- (BOOL)setLabelNamed:(NSString *)labelStr forFile:(NSString *)filePath;
+- (BOOL)setLabelNumber:(NSUInteger)label forFile:(NSString *)filePath;
 - (int)labelNumberForFile:(NSString *)path;
 - (NSString *)labelNameForFile:(NSString *)path;
 - (NSColor *)labelColorForFile:(NSString *)path;
@@ -45,10 +47,10 @@
 - (UInt64)fileOrFolderSize:(NSString *)path;
 - (NSString *)fileSizeAsHumanReadableString:(UInt64)size;
 - (NSString *)fileOrFolderSizeAsHumanReadable:(NSString *)path;
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)contentStr usingTextEncoding:(NSStringEncoding)textEncoding;
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)contentStr;
+- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str encoding:(NSStringEncoding)encoding;
+- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str;
 - (NSString *)createTempFileWithContents:(NSString *)contentStr;
-- (NSString *)createTempFileWithContents:(NSString *)contentStr usingTextEncoding:(NSStringEncoding)textEncoding;
+- (NSString *)createTempFileWithContents:(NSString *)contentStr encoding:(NSStringEncoding)textEncoding;
 - (void)notifyFinderFileChangedAtPath:(NSString *)path;
 - (void)flushServices;
 - (BOOL)openPathInDefaultBrowser:(NSString *)path;

@@ -83,6 +83,9 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
+    
+    [[NSWorkspace sharedWorkspace] labelDictionary];
+    
     // read remaining args
     NSMutableArray *remainingArgs = [NSMutableArray array];
     while (optind < argc) {
@@ -135,21 +138,21 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     for (NSString *path in filePaths) {
         // do label thing
         
-        NSURL *fileURL = [NSURL fileURLWithPath:path];
-        NSError *err;
-        BOOL succ = [fileURL setResourceValue:@6
-                                       forKey:NSURLLabelNumberKey
-                                        error:&err];
-        if (!succ) {
-            NSPrint(@"%@", [err localizedDescription]);
+        BOOL success = [[NSWorkspace sharedWorkspace] setLabelNamed:labelArg
+                                                            forFile:path];
+        if (!success) {
+            NSPrintErr(@"error setting label of %@", path);
             continue;
         }
-        [[NSWorkspace sharedWorkspace] notifyFinderFileChangedAtPath:path];
+        
+        [[NSWorkspace sharedWorkspace] notifyFinderFileChangedAtPath:[path stringByDeletingLastPathComponent]];
         count += 1;
         //NSPrint(path);
     }
     
-    NSPrint(@"Label of %d file%@ set to \"%@\"", count, count > 1 ? @"s" : @"", labelArg);
+    if (count) {
+        NSPrint(@"Label of %d file%@ set to \"%@\"", count, count > 1 ? @"s" : @"", labelArg);
+    }
     
     return EX_OK;
 }}

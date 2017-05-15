@@ -71,7 +71,60 @@
 
 #pragma mark - Labels
 
-- (BOOL)setLabel:(NSUInteger)label forFile:(NSString *)filePath {
+- (NSDictionary *)labelDictionary {
+    NSString *fpath = @"~/Library/SyncedPreferences/com.apple.finder.plist";
+    fpath = [fpath stringByExpandingTildeInPath];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:fpath]) {
+        return [self standardLabelDictionary];
+    }
+    
+    NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:fpath];
+    if (plist == nil) {
+        return [self standardLabelDictionary];
+    }
+    
+    NSArray *tags = [plist valueForKeyPath:@"values.FinderTagDict.value.FinderTags"];
+    if (!tags) {
+        return [self standardLabelDictionary];
+    }
+    
+    
+    return @{};
+}
+
+- (NSDictionary *)standardLabelDictionary {
+    return @{};
+}
+
+- (BOOL)setLabelNamed:(NSString *)labelStr forFile:(NSString *)filePath {
+    NSArray *fileLabels = [[[NSWorkspace sharedWorkspace] fileLabels] copy];
+    NSUInteger labelNum;
+    
+    labelNum = [fileLabels indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop){
+        return (BOOL)([obj caseInsensitiveCompare:labelStr] == NSOrderedSame);
+    }];
+    
+    if (labelNum == NSNotFound) {
+        // no str matches term case-insensitively
+        
+        // check if it's a number
+        if ([labelStr length] != 1) {
+            return NO;
+        }
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        NSNumber *num = [f numberFromString:labelStr];
+        if (num == nil) {
+            return NO;
+        }
+        
+        labelNum = [num unsignedIntegerValue];
+    }
+    
+    return [self setLabelNumber:labelNum forFile:filePath];
+}
+
+- (BOOL)setLabelNumber:(NSUInteger)label forFile:(NSString *)filePath {
     if (label > 7) {
         NSLog(@"Error setting label %lu. Finder label must be in range 0-7", (unsigned long)label);
         return NO;
@@ -212,8 +265,8 @@
     [fileOrFolderPath autorelease];
 #endif
     
-    BOOL isDir;
-    if (path == nil || ![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]) {
+    BOOL isDir = NO;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]) {
         return 0;
     }
     
@@ -268,7 +321,7 @@
 
 #pragma mark - Temp file
 
-- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)contentStr usingTextEncoding:(NSStringEncoding)textEncoding {
+- (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str encoding:(NSStringEncoding)textEncoding {
     // This could be done by just writing to /tmp, but this method is more secure
     // and will result in the script file being created at a path that looks something
     // like this:  /var/folders/yV/yV8nyB47G-WRvC76fZ3Be++++TI/-Tmp-/
@@ -304,7 +357,7 @@
     
     // write script to the temporary path
     NSError *err;
-    BOOL success = [contentStr writeToFile:tempScriptPath atomically:YES encoding:textEncoding error:&err];
+    BOOL success = [str writeToFile:tempScriptPath atomically:YES encoding:textEncoding error:&err];
     
     // make sure writing it was successful
     if (!success || [[NSFileManager defaultManager] fileExistsAtPath:tempScriptPath] == FALSE) {
@@ -315,22 +368,22 @@
 }
 
 - (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)contentStr {
-    return [self createTempFileNamed:fileName withContents:contentStr usingTextEncoding:NSUTF8StringEncoding];
+    return [self createTempFileNamed:fileName withContents:contentStr encoding:NSUTF8StringEncoding];
 }
 
 - (NSString *)createTempFileWithContents:(NSString *)contentStr {
-    return [self createTempFileNamed:nil withContents:contentStr usingTextEncoding:NSUTF8StringEncoding];
+    return [self createTempFileNamed:nil withContents:contentStr encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)createTempFileWithContents:(NSString *)contentStr usingTextEncoding:(NSStringEncoding)textEncoding {
-    return [self createTempFileNamed:nil withContents:contentStr usingTextEncoding:textEncoding];
+- (NSString *)createTempFileWithContents:(NSString *)contentStr encoding:(NSStringEncoding)textEncoding {
+    return [self createTempFileNamed:nil withContents:contentStr encoding:textEncoding];
 }
 
 #pragma mark - Notify Finder
 
 - (void)notifyFinderFileChangedAtPath:(NSString *)path {
     [[NSWorkspace sharedWorkspace] noteFileSystemChanged:path];
-    NSString *source = [NSString stringWithFormat:@"tell application \"Finder\" to update item (POSIX file \"%@\")", path];
+    NSString *source = [NSString stringWithFormat:@"tell application \"Finder\" to update item (POSIX file \"%@\") with necessity", path];
     
     NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:source];
     if (appleScript != nil) {
