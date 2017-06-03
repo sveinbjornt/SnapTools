@@ -52,6 +52,10 @@
 		F4C0FDB81ECA06B4004439EF /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FDB21ECA06B4004439EF /* Common.c */; };
 		F4C0FDB91ECA06B4004439EF /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FDB21ECA06B4004439EF /* Common.c */; };
 		F4C0FDBA1ECA06B4004439EF /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FDB21ECA06B4004439EF /* Common.c */; };
+		F4C0FDBB1ECA27FA004439EF /* show in Resources */ = {isa = PBXBuildFile; fileRef = F47B5EEA1EC8ACC800AC2DEA /* show */; };
+		F4C0FDBC1ECA27FC004439EF /* paths in Resources */ = {isa = PBXBuildFile; fileRef = F4C0FD5F1EC9023F004439EF /* paths */; };
+		F4C0FDBD1ECA27FF004439EF /* label in Resources */ = {isa = PBXBuildFile; fileRef = F4C0FD6B1EC909A1004439EF /* label */; };
+		F4C0FDBE1ECA2801004439EF /* getinfo in Resources */ = {isa = PBXBuildFile; fileRef = F4C0FD7C1EC9CC48004439EF /* getinfo */; };
 		F4F118791EBE151700E99B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F118781EBE151700E99B9A /* Images.xcassets */; };
 		F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F118811EBF431E00E99B9A /* SnapWindow.xib */; };
 		F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
@@ -668,6 +672,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C0FDBC1ECA27FC004439EF /* paths in Resources */,
 				F47B5EE21EC8A60700AC2DEA /* copy in Resources */,
 				F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */,
 				F47B5EE31EC8A60B00AC2DEA /* snap in Resources */,
@@ -676,7 +681,10 @@
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
 				F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */,
 				F4F118791EBE151700E99B9A /* Images.xcassets in Resources */,
+				F4C0FDBD1ECA27FF004439EF /* label in Resources */,
 				F485857014D470A200B007CA /* Defaults.plist in Resources */,
+				F4C0FDBB1ECA27FA004439EF /* show in Resources */,
+				F4C0FDBE1ECA2801004439EF /* getinfo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

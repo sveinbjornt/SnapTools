@@ -146,7 +146,21 @@
 - (void)createStatusMenuItem {
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     [statusItem setHighlightMode:YES];
-    [statusItem setMenu:mainMenu];
+    
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Menu"];
+    for (NSMenuItem *item in [mainMenu itemArray]) {
+        [menu addItem:[item copy]];
+    }
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    
+    NSMenuItem *quitItem = [[NSMenuItem alloc] init];
+    [quitItem setTitle:[NSString stringWithFormat:@"Quit %@", PROGRAM_NAME]];
+    [quitItem setTarget:[NSApplication sharedApplication]];
+    [quitItem setAction:@selector(terminate:)];
+    [menu addItem:quitItem];
+    
+    [statusItem setMenu:menu];
     [statusItem setImage:[NSImage imageNamed:@"Status Menu Icon"]];
     
     [[statusItem image] setTemplate:YES];

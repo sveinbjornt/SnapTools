@@ -33,10 +33,14 @@
 @implementation PathParser
 
 + (NSString *)makeAbsolutePath:(NSString *)path {
+    NSString *currDir = [[NSFileManager defaultManager] currentDirectoryPath];
+    return [self makeAbsolutePath:path relativeToDirectory:currDir];
+}
+
++ (NSString *)makeAbsolutePath:(NSString *)path relativeToDirectory:(NSString *)dirPath {
     NSString *absPath = [path stringByExpandingTildeInPath];
     if ([absPath isAbsolutePath] == NO) {
-        NSString *currDir = [[NSFileManager defaultManager] currentDirectoryPath];
-        absPath = [currDir stringByAppendingPathComponent:path];
+        absPath = [dirPath stringByAppendingPathComponent:path];
     }
     return [absPath stringByStandardizingPath];
 }

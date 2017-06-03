@@ -157,6 +157,10 @@
 - (IBAction)interfaceSizeSelectd:(id)sender {
     
 }
+    
+- (IBAction)filterFind:(id)sender {
+    [self.window makeFirstResponder:filterTextField];
+}
 
 #pragma mark - Results 
 

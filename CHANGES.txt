@@ -5,3 +5,4 @@ CHANGES.txt
 * Print label key value dict option in label tool
 * Rethink the label tool, should be tags now, use existing open source code in Tag project
 * Create trash tool
+* snap -l : Load previous snap

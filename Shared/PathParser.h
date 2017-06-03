@@ -33,6 +33,8 @@
 @interface PathParser : NSObject
 
 + (NSString *)makeAbsolutePath:(NSString *)path;
++ (NSString *)makeAbsolutePath:(NSString *)path relativeToDirectory:(NSString *)dirPath;
+
 + (NSMutableSet *)parse:(NSString *)str;
 + (BOOL)isHiddenFileAtPath:(NSString *)path;
 
