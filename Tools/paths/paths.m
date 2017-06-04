@@ -74,7 +74,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     
     // ignore any remaining command line args and read from stdin
     // TODO: Do something with absolutePathsOnly
-    NSMutableArray *filePaths = ReadPathsFromStandardInput();
+    NSMutableArray *filePaths = ReadPathsFromStandardInput(absolutePathsOnly);
     
     for (NSString *path in filePaths) {
         NSPrint(path);

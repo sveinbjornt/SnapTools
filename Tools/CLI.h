@@ -45,7 +45,7 @@ void NSPrintErr(NSString *format, ...);
 void NSPrint(NSString *format, ...);
 
 NSMutableArray *ReadRemainingArgs(int argc, const char **argv);
-NSMutableArray *ReadPathsFromStandardInput(void);
+NSMutableArray *ReadPathsFromStandardInput(BOOL absOnly);
 NSMutableArray *ValidPathsInArguments(NSArray *args);
 
 void PrintProgramVersion(void);

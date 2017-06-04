@@ -51,6 +51,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     
     BOOL printOnly = NO;
     BOOL showAll = NO;
+    BOOL openLastSnap = NO;
     
     int optch;
     int long_index = 0;
@@ -68,7 +69,15 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             case 'p':
                 printOnly = YES;
                 break;
-                
+            
+            // open last snap
+            case 'l':
+                openLastSnap = YES;
+                break;
+            
+            // don't sort
+            
+            
             // print version
             case 'v':
                 PrintProgramVersion();
@@ -83,6 +92,10 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
             }
                 break;
         }
+    }
+    
+    if (openLastSnap) {
+        // open last snap
     }
     
     // read remaining args

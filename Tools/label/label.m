@@ -87,7 +87,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     [args removeObjectAtIndex:0];
     // TODO: Get label ID from label arg
     
-    NSMutableArray *filePaths = [args count] ? ValidPathsInArguments(args) : ReadPathsFromStandardInput();
+    NSMutableArray *filePaths = [args count] ? ValidPathsInArguments(args) : ReadPathsFromStandardInput(NO);
         
     // Check if number of files exceeds limit
     if (([filePaths count] > DANGEROUS_FILE_LIMIT) && !force) {

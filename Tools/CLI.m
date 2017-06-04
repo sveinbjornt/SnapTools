@@ -50,9 +50,9 @@ NSMutableArray *ReadRemainingArgs(int argc, const char **argv) {
 
 #pragma mark - 
 
-NSMutableArray *ReadPathsFromStandardInput(void) {
+NSMutableArray *ReadPathsFromStandardInput(BOOL absOnly) {
     NSString *input = ReadStandardInput();
-    NSMutableSet *set = [PathParser parse:input];
+    NSMutableSet *set = [PathParser parse:input absoluteOnly:absOnly];
     return [NSMutableArray arrayWithArray:[set allObjects]];
 }
 

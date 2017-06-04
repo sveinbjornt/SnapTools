@@ -54,7 +54,10 @@
 }
 
 + (NSMutableSet *)parse:(NSString *)str {
-    
+    return [PathParser parse:str absoluteOnly:NO];
+}
+
++ (NSMutableSet *)parse:(NSString *)str absoluteOnly:(BOOL)absOnly {
     // empty string?
     str = [self trim:str];
     if (![str length]) {
@@ -69,7 +72,7 @@
         NSString *line = [self trim:l];
         
         // is the full line a valid path?
-        NSString *abs = [self makeAbsolutePath:line];
+        NSString *abs = absOnly ? line : [self makeAbsolutePath:line];
         if ([[NSFileManager defaultManager] fileExistsAtPath:abs]) {
             [potentialPaths addObject:line];
             continue;
@@ -90,7 +93,13 @@
     // Standardise paths and filter out invalid ones
     NSMutableSet *paths = [NSMutableSet set];
     for (NSString *p in potentialPaths) {
-        NSString *absPath = [self makeAbsolutePath:p];
+        
+        NSString *absPath = absOnly ? p : [self makeAbsolutePath:p];
+        
+        if (![absPath hasPrefix:@"/"]) {
+            continue;
+        }
+        
         if ([[NSFileManager defaultManager] fileExistsAtPath:absPath]) {
             [paths addObject:absPath];
         }

@@ -85,7 +85,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     NSMutableArray *filePaths = [NSMutableArray array];
     
     if (readStdin) {
-        filePaths = ReadPathsFromStandardInput();
+        filePaths = ReadPathsFromStandardInput(NO);
     } else {
         filePaths = ValidPathsInArguments(args);
         if ([filePaths count] < 1) {
@@ -112,7 +112,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         NSString *parentDirectoryPath = [path stringByDeletingLastPathComponent];
         NSString *rootFullPath = inNewViewer ? parentDirectoryPath : @"";
         
-        if (inNewViewer && parentDirectoryPath != nil) {
+        if (inNewViewer) {
             [[NSWorkspace sharedWorkspace] openFile:parentDirectoryPath withApplication:@"Finder"];
         }
         
