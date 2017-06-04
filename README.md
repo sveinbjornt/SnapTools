@@ -2,6 +2,8 @@
 
 # SnapDart
 
+** SnapDart is currently a work in progress **
+
 SnapDart is a Mac OS X file browser that integrates in powerful ways with the 
 UNIX command line interface.
 

@@ -53,20 +53,17 @@
 }
 
 - (NSString *)defaultApplicationForFile:(NSString *)filePath {
-    FSRef fileRef;
-    CFURLRef appURL;
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     
-    if (![filePath getFSRef:&fileRef createFileIfNecessary:NO]) {
-        return nil;
+    CFURLRef appURL = LSCopyDefaultApplicationURLForURL((__bridge CFURLRef)fileURL, kLSRolesAll, NULL);
+    
+    if (appURL != NULL) {
+        NSString *appPath = [(__bridge NSURL *)appURL path];
+        CFRelease(appURL);
+        return appPath;
     }
     
-    // use Launch Services function to get default app
-    OSStatus ret = LSGetApplicationForItem(&fileRef, kLSRolesAll, NULL, &appURL);
-    
-    if (ret != noErr || appURL == NULL) {
-        return nil;
-    }
-    return [(__bridge NSURL *)appURL path];
+    return nil;
 }
 
 #pragma mark - Labels
