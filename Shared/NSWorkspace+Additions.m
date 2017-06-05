@@ -379,27 +379,39 @@
 #pragma mark - Finder
 
 - (BOOL)moveFileToTrash:(NSString *)path {
-    NSString *script = @"\
-tell application \"Finder\"\n\
-    move POSIX file \"%@\" to trash\n\
-end tell";
+    
+    NSURL *fileURL = [NSURL fileURLWithPath:path];
+    NSError *error;
+    BOOL result = [[NSFileManager defaultManager] trashItemAtURL:fileURL
+                                                resultingItemURL:nil
+                                                           error:&error];
+    if (!result) {
+        NSLog(@"Error: %@", [error localizedDescription]);
+    }
 
-    NSString *src = [NSString stringWithFormat:script, path];
+    return result;
     
-    // compile
-    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:src];
-    if (appleScript == nil) {
-        return NO;
-    }
-    
-    // execute
-    NSDictionary *errorInfo;
-    if ([appleScript executeAndReturnError:&errorInfo] == nil) {
-        NSLog(@"%@", [errorInfo description]);
-        return NO;
-    }
-    
-    return YES;
+//    NSString *script = @"\
+//tell application \"Finder\"\n\
+//    move POSIX file \"%@\" to trash\n\
+//end tell";
+//
+//    NSString *src = [NSString stringWithFormat:script, path];
+//    
+//    // compile
+//    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:src];
+//    if (appleScript == nil) {
+//        return NO;
+//    }
+//    
+//    // execute
+//    NSDictionary *errorInfo;
+//    if ([appleScript executeAndReturnError:&errorInfo] == nil) {
+//        NSLog(@"%@", [errorInfo description]);
+//        return NO;
+//    }
+//    
+//    return YES;
 }
 
 - (void)showFinderGetInfoForFile:(NSString *)path {
