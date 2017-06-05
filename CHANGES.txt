@@ -8,3 +8,4 @@ DONE * Create trash tool
 * Rethink the label tool, should be tags now, use existing open source code in Tag project
 * snap -l : Load previous snap
 * Ability to copy files and file paths in Snap app
+* Change handling of AEOpenFiles in app delegate

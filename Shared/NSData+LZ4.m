@@ -55,4 +55,5 @@ static const int lz4_header_size = sizeof(uint32_t);
     }
     return [[NSData alloc] initWithBytesNoCopy:out_buff length:original_size];
 }
+
 @end

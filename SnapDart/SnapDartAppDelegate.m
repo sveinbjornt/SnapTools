@@ -116,14 +116,13 @@
     filesToOpen = [filesToOpen sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     
     if ([filesToOpen[0] hasSuffix:@".snap"]) {
-        NSString *str = [NSString stringWithContentsOfFile:filesToOpen[0]
-                                                  encoding:NSUTF8StringEncoding
-                                                     error:nil];
-        filesToOpen = [str componentsSeparatedByString:@"\n"];
+        filesToOpen = [SnapFileManager readSnapFileAtPath:filesToOpen[0]];
     }
     
-    NSLog(@"Opening %lu files", (unsigned long)[filesToOpen count]);
-    [self newSnapWindowWithPaths:filesToOpen];
+    if ([filesToOpen count]) {
+        NSLog(@"Opening %lu files", (unsigned long)[filesToOpen count]);
+        [self newSnapWindowWithPaths:filesToOpen];
+    }
 }
 
 - (void)newSnapWindowWithPaths:(NSArray *)paths {

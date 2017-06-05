@@ -60,15 +60,21 @@
 #pragma mark -
 
 + (NSArray *)readSnapFileAtPath:(NSString *)path {
-    NSData *fileData = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]
+    
+    NSData *fileData = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:path]
                                              options:NSDataReadingMappedAlways
                                                error:nil];
-    if ([SnapFileManager isCompressedData:fileData]) {
-        fileData = [fileData decompressLZ4];
-    }
     if (!fileData) {
         NSLog(@"Unable to read file %@", path);
         return nil;
+    }
+    
+    if ([SnapFileManager isCompressedData:fileData]) {
+        fileData = [fileData decompressLZ4];
+        if (!fileData) {
+            NSLog(@"Unable to decompress data in file %@", path);
+            return nil;
+        }
     }
     
     NSString *str = [[NSString alloc] initWithData:fileData encoding:NSUTF8StringEncoding];
@@ -77,7 +83,12 @@
         return nil;
     }
     
-    return [str componentsSeparatedByString:@"\n"];
+    NSArray *paths = [str componentsSeparatedByString:@"\n"];
+    
+//    NSString *lz4path = [path stringByAppendingString:@".lz4"];
+//    [SnapFileManager writeSnap:paths toPath:path];
+    
+    return paths;
 }
 
 + (BOOL)writeSnap:(NSArray *)items toPath:(NSString *)path {
@@ -94,17 +105,51 @@
         return NO;
     }
     
+    // write 4 byte header
+    /* Magic Number */
+//    LZ4F_writeLE32(dstPtr, LZ4F_MAGICNUMBER);
+//    dstPtr += 4;
+//    headerStart = dstPtr;
+//    
+//    /* FLG Byte */
+//    *dstPtr++ = (uint8_t)(((1 & 0x03) << 6)    /* Version('01') */
+//                       + ((cctxPtr->prefs.frameInfo.blockMode & 0x01 ) << 5)    /* Block mode */
+//                       + ((cctxPtr->prefs.frameInfo.contentChecksumFlag & 0x01 ) << 2)   /* Frame checksum */
+//                       + ((cctxPtr->prefs.frameInfo.contentSize > 0) << 3));   /* Frame content size */
+//    /* BD Byte */
+//    *dstPtr++ = (BYTE)((cctxPtr->prefs.frameInfo.blockSizeID & 0x07) << 4);
+//    /* Optional Frame content size field */
+//    if (cctxPtr->prefs.frameInfo.contentSize) {
+//        LZ4F_writeLE64(dstPtr, cctxPtr->prefs.frameInfo.contentSize);
+//        dstPtr += 8;
+//        cctxPtr->totalInSize = 0;
+//    }
+//    /* CRC Byte */
+//    *dstPtr = LZ4F_headerChecksum(headerStart, dstPtr - headerStart);
+//    dstPtr++;
+
+    
+    
     return [data writeToFile:path atomically:YES];
 }
 
 + (BOOL)isCompressedData:(NSData *)data {
-    if ([data length] < 4) {
+//    if ([data length] < 4) {
+//        return NO;
+//    }
+//    
+//    unsigned long headerLong = 0;
+//    [data getBytes:&headerLong length:4];
+//    return (headerLong == LZ4_MAGIC_HEADER);
+    
+    if ([data length] == 0) {
         return NO;
     }
+
+    unsigned char byte = NULL;
+    [data getBytes:&byte length:1];
+    return (byte != '/');
     
-    unsigned long headerLong = 0;
-    [data getBytes:&headerLong length:4];
-    return (headerLong == 0x184D2204);
 }
 
 @end

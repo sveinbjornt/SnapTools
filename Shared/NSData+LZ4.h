@@ -13,6 +13,8 @@ typedef enum {
     kLZ4HighCompression
 } LZ4CompressionLevel;
 
+#define LZ4_MAGIC_HEADER 0x184D2204
+
 @interface NSData (LZ4)
 
 - (NSData *)compressLZ4;
