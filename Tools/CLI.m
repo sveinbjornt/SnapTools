@@ -32,7 +32,7 @@
 
 NSString *ReadStandardInput(void) {
     NSData *inData = [[NSFileHandle fileHandleWithStandardInput] readDataToEndOfFile];
-    if (!inData) {
+    if (!inData || ![inData length]) {
         return nil;
     }
     return [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding];
@@ -63,7 +63,7 @@ NSMutableArray *ValidPathsInArguments(NSArray *args) {
         NSString *absPath = [PathParser makeAbsolutePath:a];
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:absPath] == NO) {
-            NSPrintErr(@"no such file, skipping: %@", absPath);
+            NSPrintErr(@"no such file, skipping: %@", a);
             continue;
         }
         
@@ -105,4 +105,3 @@ void NSPrintErr(NSString *format, ...) {
     
     fprintf(stderr, "%s\n", [string UTF8String]);
 }
-

@@ -378,6 +378,30 @@
 
 #pragma mark - Finder
 
+- (BOOL)moveFileToTrash:(NSString *)path {
+    NSString *script = @"\
+tell application \"Finder\"\n\
+    move POSIX file \"%@\" to trash\n\
+end tell";
+
+    NSString *src = [NSString stringWithFormat:script, path];
+    
+    // compile
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:src];
+    if (appleScript == nil) {
+        return NO;
+    }
+    
+    // execute
+    NSDictionary *errorInfo;
+    if ([appleScript executeAndReturnError:&errorInfo] == nil) {
+        NSLog(@"%@", [errorInfo description]);
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)showFinderGetInfoForFile:(NSString *)path {
     BOOL isDir;
     BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path

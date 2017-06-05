@@ -1,0 +1,32 @@
+.Dd Jun 5, 2017
+.Dt SHOW 1
+.Os Darwin
+.Sh NAME
+.Nm trash
+.Nd Move one or more files to the Trash
+.Sh SYNOPSIS
+.Nm
+.Op Fl vh
+.Op Ar
+.Sh DESCRIPTION
+.Nm
+is a command line tool which moves files to the Mac OS Trash. This
+program uses the Finder to perform this operation and only works as
+expected if the Finder is running.
+.Pp
+The following flags are supported:
+.Bl -tag -width -indent
+.It Fl v, -version
+Print program version and exit
+.It Fl h, -help
+Print help and exit
+.El
+.Sh SEE ALSO
+.Xr copy 1 ,
+.Xr getinfo 1 ,
+.Xr open 1 ,
+.Xr paths 1 ,
+.Xr show 1 ,
+.Xr snap 1
+.Sh AUTHORS
+.An Sveinbjorn Thordarson <sveinbjornt@gmail.com>

@@ -1,8 +1,10 @@
 CHANGES.txt
 
+DONE * Create trash tool
+
 * Ignore hidden files vs. not ignore flags
 * Sorting and unique options for parse results, which should deliver nsarray not set
 * Print label key value dict option in label tool
 * Rethink the label tool, should be tags now, use existing open source code in Tag project
-* Create trash tool
 * snap -l : Load previous snap
+* Ability to copy files and file paths in Snap app

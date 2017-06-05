@@ -51,6 +51,8 @@
 - (NSString *)createTempFileNamed:(NSString *)fileName withContents:(NSString *)str;
 - (NSString *)createTempFileWithContents:(NSString *)contentStr;
 - (NSString *)createTempFileWithContents:(NSString *)contentStr encoding:(NSStringEncoding)textEncoding;
+
+- (BOOL)moveFileToTrash:(NSString *)path;
 - (void)showFinderGetInfoForFile:(NSString *)path;
 - (void)notifyFinderFileChangedAtPath:(NSString *)path;
 - (void)flushServices;
