@@ -338,8 +338,8 @@
 		F430C24B14DEF3DC0026CBDB /* snap */ = {
 			isa = PBXGroup;
 			children = (
-				F4C0FDA71ECA064F004439EF /* snap.1 */,
 				F4C0FDA81ECA064F004439EF /* snap.m */,
+				F4C0FDA71ECA064F004439EF /* snap.1 */,
 			);
 			path = snap;
 			sourceTree = "<group>";
@@ -365,8 +365,8 @@
 		F47B5EEB1EC8ACC800AC2DEA /* show */ = {
 			isa = PBXGroup;
 			children = (
-				F4C0FD9E1ECA05F9004439EF /* show.1 */,
 				F4C0FD9F1ECA05F9004439EF /* show.m */,
+				F4C0FD9E1ECA05F9004439EF /* show.1 */,
 			);
 			path = show;
 			sourceTree = "<group>";
@@ -447,8 +447,8 @@
 		F4C0FD601EC9023F004439EF /* paths */ = {
 			isa = PBXGroup;
 			children = (
-				F4C0FDA11ECA0604004439EF /* paths.1 */,
 				F4C0FDA21ECA0604004439EF /* paths.m */,
+				F4C0FDA11ECA0604004439EF /* paths.1 */,
 			);
 			path = paths;
 			sourceTree = "<group>";
@@ -456,8 +456,8 @@
 		F4C0FD6C1EC909A1004439EF /* label */ = {
 			isa = PBXGroup;
 			children = (
-				F4C0FDA41ECA060E004439EF /* label.1 */,
 				F4C0FDA51ECA060E004439EF /* label.m */,
+				F4C0FDA41ECA060E004439EF /* label.1 */,
 			);
 			path = label;
 			sourceTree = "<group>";

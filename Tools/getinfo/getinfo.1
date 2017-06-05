@@ -16,12 +16,16 @@ If no files are provided as arguments,
 .Nm
 will read standard input looking for paths.
 .Pp
+.Nm
+only works if the Mac OS Finder is running.
+.Pp
 The following flags are supported:
 .Bl -tag -width -indent
 .It Fl s, -single
 Show a single, combined Get Info window for all items
 .It Fl f, -force
-Ignore file limit
+Ignore file limit. This flag is required to run the tool on
+a large number of files.
 .It Fl v, -version
 Print program version and exit
 .It Fl h, -help
@@ -32,6 +36,7 @@ Print help and exit
 .Xr open 1 ,
 .Xr paths 1 ,
 .Xr show 1 ,
-.Xr snap 1
+.Xr snap 1 ,
+.Xr trash 1
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>

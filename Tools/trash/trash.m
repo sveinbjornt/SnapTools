@@ -88,6 +88,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
+    // Make sure Finder is running
     if ([[NSWorkspace sharedWorkspace] isFinderRunning] == NO) {
         NSPrintErr(@"Unable to trash files. Finder not running.");
         exit(EX_UNAVAILABLE);

@@ -16,6 +16,9 @@ using the Finder.
 .Pp
 The following flags are supported:
 .Bl -tag -width -indent
+.It Fl f, -force
+Ignore file limit. This flag is required to run the tool on
+a large number of files.
 .It Fl v, -version
 Print program version and exit
 .It Fl h, -help
@@ -28,6 +31,7 @@ Print help and exit
 .Xr pbcopy 1 ,
 .Xr pbpaste 1 ,
 .Xr show 1 ,
-.Xr snap 1
+.Xr snap 1 ,
+.Xr trash 1
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>

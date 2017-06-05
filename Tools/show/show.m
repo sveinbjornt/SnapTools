@@ -94,6 +94,12 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         }
     }
     
+    // Make sure Finder is running
+    if ([[NSWorkspace sharedWorkspace] isFinderRunning] == NO) {
+        NSPrintErr(@"Unable to show file in Finder: Finder not running.");
+        exit(EX_UNAVAILABLE);
+    }
+    
     // Check if number of files exceeds limit
     if (([filePaths count] > DANGEROUS_FILE_LIMIT) && !force) {
         NSPrintErr(@"File count exceeds safety limit of %d. Use -f flag to override.",

@@ -11,12 +11,15 @@
 .Sh DESCRIPTION
 .Nm
 is a command line tool which shows file arguments in the Mac
-OS X Finder.
+OS X Finder. It only works as expected if the Finder is running.
 .Pp
 The following flags are supported:
 .Bl -tag -width -indent
 .It Fl n, -new
 Open new file viewer when showing file(s)
+.It Fl f, -force
+Ignore file limit. This flag is required to run the tool on
+a large number of files.
 .It Fl v, -version
 Print program version and exit
 .It Fl h, -help
@@ -28,6 +31,7 @@ Print help and exit
 .Xr open 1 ,
 .Xr paths 1 ,
 .Xr show 1 ,
-.Xr snap 1
+.Xr snap 1 ,
+.Xr trash 1
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>
