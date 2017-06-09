@@ -190,11 +190,13 @@ static BOOL SendOpenDocumentAppleEvent(NSSet *paths) {
     NSPrintErr(@"Sending AEvent to open %d URLs", [urls count]);
     
     NSWorkspaceLaunchOptions opt = NSWorkspaceLaunchAsync | NSWorkspaceLaunchWithErrorPresentation;
-    return [[NSWorkspace sharedWorkspace] openURLs:urls
-                           withAppBundleIdentifier:PROGRAM_BUNDLE_IDENTIFIER
-                                           options:opt
-                    additionalEventParamDescriptor:nil
-                          launchIdentifiers:NULL];
+    BOOL succ = [[NSWorkspace sharedWorkspace] openURLs:urls
+                                withAppBundleIdentifier:PROGRAM_BUNDLE_IDENTIFIER
+                                                options:opt
+                         additionalEventParamDescriptor:nil
+                                      launchIdentifiers:NULL];
+    
+    return succ;
 }
 
 #pragma mark -

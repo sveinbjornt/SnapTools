@@ -19,6 +19,12 @@
 		F47B45221EE579A300D79DFF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FDAB1ECA0677004439EF /* CLI.m */; };
 		F47B45231EE579A600D79DFF /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
 		F47B45241EE579AD00D79DFF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
+		F47B45321EE5D1F400D79DFF /* move.m in Sources */ = {isa = PBXBuildFile; fileRef = F47B45311EE5D1F400D79DFF /* move.m */; };
+		F47B45331EE5D1FA00D79DFF /* CLI.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C0FDAB1ECA0677004439EF /* CLI.m */; };
+		F47B453B1EE9908C00D79DFF /* trash in Resources */ = {isa = PBXBuildFile; fileRef = F47B45181EE5768200D79DFF /* trash */; };
+		F47B453C1EE9909100D79DFF /* move in Resources */ = {isa = PBXBuildFile; fileRef = F47B45291EE5D1DA00D79DFF /* move */; };
+		F47B453D1EEAFAFC00D79DFF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
+		F47B453E1EEAFB0300D79DFF /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
 		F47B5EE21EC8A60700AC2DEA /* copy in Resources */ = {isa = PBXBuildFile; fileRef = F47B5ECD1EC8A10000AC2DEA /* copy */; };
 		F47B5EE31EC8A60B00AC2DEA /* snap in Resources */ = {isa = PBXBuildFile; fileRef = F430C24714DEF3DC0026CBDB /* snap */; };
 		F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
@@ -75,6 +81,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F47B45371EE9903E00D79DFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47B45281EE5D1DA00D79DFF;
+			remoteInfo = move;
+		};
+		F47B45391EE9904000D79DFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F47B45171EE5768200D79DFF;
+			remoteInfo = trash;
+		};
 		F47B5EE01EC8A5E500AC2DEA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F485853114D46E4300B007CA /* Project object */;
@@ -121,6 +141,15 @@
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F47B45161EE5768200D79DFF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		F47B45271EE5D1DA00D79DFF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -198,6 +227,10 @@
 		F47B45181EE5768200D79DFF /* trash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trash; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B451F1EE576C200D79DFF /* trash.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; name = trash.1; path = Tools/trash/trash.1; sourceTree = SOURCE_ROOT; };
 		F47B45201EE576C200D79DFF /* trash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = trash.m; path = Tools/trash/trash.m; sourceTree = SOURCE_ROOT; };
+		F47B45291EE5D1DA00D79DFF /* move */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = move; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47B452B1EE5D1DA00D79DFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F47B45311EE5D1F400D79DFF /* move.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = move.m; sourceTree = "<group>"; };
+		F47B45341EE5D24A00D79DFF /* move.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = move.1; sourceTree = "<group>"; };
 		F47B5EC81EC89EB600AC2DEA /* CHANGES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGES.txt; sourceTree = "<group>"; };
 		F47B5ECD1EC8A10000AC2DEA /* copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = copy; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B5EEA1EC8ACC800AC2DEA /* show */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = show; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -270,6 +303,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F47B45151EE5768200D79DFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47B45261EE5D1DA00D79DFF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -353,6 +393,24 @@
 			path = trash;
 			sourceTree = "<group>";
 		};
+		F47B452A1EE5D1DA00D79DFF /* move */ = {
+			isa = PBXGroup;
+			children = (
+				F47B452B1EE5D1DA00D79DFF /* main.m */,
+			);
+			path = move;
+			sourceTree = "<group>";
+		};
+		F47B45301EE5D1F400D79DFF /* move */ = {
+			isa = PBXGroup;
+			children = (
+				F47B45311EE5D1F400D79DFF /* move.m */,
+				F47B45341EE5D24A00D79DFF /* move.1 */,
+			);
+			name = move;
+			path = Tools/move;
+			sourceTree = "<group>";
+		};
 		F47B5ECE1EC8A10000AC2DEA /* copy */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +440,7 @@
 				F4F118891EBF69A200E99B9A /* Command Line Tools */,
 				F4F1188C1EBF69DD00E99B9A /* Shared */,
 				F4F118841EBF46FB00E99B9A /* Assets */,
+				F47B452A1EE5D1DA00D79DFF /* move */,
 				F485853D14D46E4300B007CA /* Frameworks */,
 				F485853B14D46E4300B007CA /* Products */,
 			);
@@ -398,6 +457,7 @@
 				F4C0FD6B1EC909A1004439EF /* label */,
 				F4C0FD7C1EC9CC48004439EF /* getinfo */,
 				F47B45181EE5768200D79DFF /* trash */,
+				F47B45291EE5D1DA00D79DFF /* move */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -492,6 +552,7 @@
 				F47B5EEB1EC8ACC800AC2DEA /* show */,
 				F47B5ECE1EC8A10000AC2DEA /* copy */,
 				F4C0FD7D1EC9CC48004439EF /* getinfo */,
+				F47B45301EE5D1F400D79DFF /* move */,
 				F47B45191EE5768200D79DFF /* trash */,
 			);
 			name = "Command Line Tools";
@@ -555,6 +616,23 @@
 			productReference = F47B45181EE5768200D79DFF /* trash */;
 			productType = "com.apple.product-type.tool";
 		};
+		F47B45281EE5D1DA00D79DFF /* move */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F47B452D1EE5D1DA00D79DFF /* Build configuration list for PBXNativeTarget "move" */;
+			buildPhases = (
+				F47B45251EE5D1DA00D79DFF /* Sources */,
+				F47B45261EE5D1DA00D79DFF /* Frameworks */,
+				F47B45271EE5D1DA00D79DFF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = move;
+			productName = move;
+			productReference = F47B45291EE5D1DA00D79DFF /* move */;
+			productType = "com.apple.product-type.tool";
+		};
 		F47B5ECC1EC8A10000AC2DEA /* copy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F47B5ED11EC8A10000AC2DEA /* Build configuration list for PBXNativeTarget "copy" */;
@@ -602,12 +680,14 @@
 			buildRules = (
 			);
 			dependencies = (
-				F47B5EE11EC8A5E500AC2DEA /* PBXTargetDependency */,
 				F4F118771EBE0E8200E99B9A /* PBXTargetDependency */,
+				F47B5EE11EC8A5E500AC2DEA /* PBXTargetDependency */,
 				F4C0FD911EC9FD3F004439EF /* PBXTargetDependency */,
+				F4C0FD931EC9FD42004439EF /* PBXTargetDependency */,
 				F4C0FD951EC9FD43004439EF /* PBXTargetDependency */,
 				F4C0FD971EC9FD45004439EF /* PBXTargetDependency */,
-				F4C0FD931EC9FD42004439EF /* PBXTargetDependency */,
+				F47B453A1EE9904000D79DFF /* PBXTargetDependency */,
+				F47B45381EE9903E00D79DFF /* PBXTargetDependency */,
 			);
 			name = SnapDart;
 			productName = SnapDart;
@@ -677,6 +757,10 @@
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
+					F47B45281EE5D1DA00D79DFF = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					F47B5ECC1EC8A10000AC2DEA = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
@@ -719,6 +803,7 @@
 				F4C0FD6A1EC909A1004439EF /* label */,
 				F4C0FD7B1EC9CC48004439EF /* getinfo */,
 				F47B45171EE5768200D79DFF /* trash */,
+				F47B45281EE5D1DA00D79DFF /* move */,
 			);
 		};
 /* End PBXProject section */
@@ -728,19 +813,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C0FDBC1ECA27FC004439EF /* paths in Resources */,
-				F47B5EE21EC8A60700AC2DEA /* copy in Resources */,
-				F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */,
+				F47B453C1EE9909100D79DFF /* move in Resources */,
+				F47B453B1EE9908C00D79DFF /* trash in Resources */,
 				F47B5EE31EC8A60B00AC2DEA /* snap in Resources */,
+				F47B5EE21EC8A60700AC2DEA /* copy in Resources */,
+				F4C0FDBB1ECA27FA004439EF /* show in Resources */,
+				F4C0FDBC1ECA27FC004439EF /* paths in Resources */,
+				F4C0FDBD1ECA27FF004439EF /* label in Resources */,
+				F4C0FDBE1ECA2801004439EF /* getinfo in Resources */,
+				F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */,
 				F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
 				F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */,
 				F4F118791EBE151700E99B9A /* Images.xcassets in Resources */,
-				F4C0FDBD1ECA27FF004439EF /* label in Resources */,
 				F485857014D470A200B007CA /* Defaults.plist in Resources */,
-				F4C0FDBB1ECA27FA004439EF /* show in Resources */,
-				F4C0FDBE1ECA2801004439EF /* getinfo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,6 +874,17 @@
 				F47B45241EE579AD00D79DFF /* PathParser.m in Sources */,
 				F47B45231EE579A600D79DFF /* NSWorkspace+Additions.m in Sources */,
 				F47B45211EE576C200D79DFF /* trash.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F47B45251EE5D1DA00D79DFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47B453E1EEAFB0300D79DFF /* NSWorkspace+Additions.m in Sources */,
+				F47B45331EE5D1FA00D79DFF /* CLI.m in Sources */,
+				F47B453D1EEAFAFC00D79DFF /* PathParser.m in Sources */,
+				F47B45321EE5D1F400D79DFF /* move.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +970,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F47B45381EE9903E00D79DFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47B45281EE5D1DA00D79DFF /* move */;
+			targetProxy = F47B45371EE9903E00D79DFF /* PBXContainerItemProxy */;
+		};
+		F47B453A1EE9904000D79DFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F47B45171EE5768200D79DFF /* trash */;
+			targetProxy = F47B45391EE9904000D79DFF /* PBXContainerItemProxy */;
+		};
 		F47B5EE11EC8A5E500AC2DEA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F47B5ECC1EC8A10000AC2DEA /* copy */;
@@ -968,6 +1076,52 @@
 			name = Debug;
 		};
 		F47B451D1EE5768200D79DFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F47B452E1EE5D1DA00D79DFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "-";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F47B452F1EE5D1DA00D79DFF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1342,6 +1496,14 @@
 			buildConfigurations = (
 				F47B451C1EE5768200D79DFF /* Debug */,
 				F47B451D1EE5768200D79DFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F47B452D1EE5D1DA00D79DFF /* Build configuration list for PBXNativeTarget "move" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F47B452E1EE5D1DA00D79DFF /* Debug */,
+				F47B452F1EE5D1DA00D79DFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -1,21 +1,21 @@
-.Dd May 14, 2017
-.Dt PATHS 1
+.Dd Jun 5, 2017
+.Dt TRASH 1
 .Os Darwin
 .Sh NAME
-.Nm paths
-.Nd Find file system paths in input
+.Nm trash
+.Nd Move one or more files to the Trash
 .Sh SYNOPSIS
 .Nm
-.Op Fl avh
+.Op Fl vh
+.Op Ar
 .Sh DESCRIPTION
 .Nm
-is a command line tool which finds file system paths in standard
-input and prints them to standard output.
+is a command line tool which moves files to the Mac OS Trash.
 .Pp
 The following flags are supported:
 .Bl -tag -width -indent
-.It Fl a, -absolute-only
-Do not resolve and include relative paths
+Ignore file limit. This flag is required to run the tool on
+a large number of files.
 .It Fl v, -version
 Print program version and exit
 .It Fl h, -help
@@ -25,8 +25,8 @@ Print help and exit
 .Xr copy 1 ,
 .Xr getinfo 1 ,
 .Xr open 1 ,
+.Xr paths 1 ,
 .Xr show 1 ,
-.Xr snap 1 ,
-.Xr trash 1
+.Xr snap 1
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>

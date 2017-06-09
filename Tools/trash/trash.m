@@ -52,17 +52,17 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         switch (optch) {
                 
-                // ignore file limit
+            // ignore file limit
             case 'f':
                 force = YES;
                 break;
                 
-                // print version
+            // print version
             case 'v':
                 PrintProgramVersion();
                 break;
                 
-                // print help with list of options
+            // print help with list of options
             case 'h':
             default:
             {
@@ -110,8 +110,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
 }}
 
 #pragma mark -
-
-
 
 static void PrintHelp(void) {
     NSPrint(@"usage: %@ [file1 file2 ...]", [[NSProcessInfo processInfo] processName]);

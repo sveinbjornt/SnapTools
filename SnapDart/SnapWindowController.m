@@ -380,7 +380,7 @@
     return [results[rowIndex] attr:[aTableColumn identifier]];
 }
 
-- (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard*)pboard {
+- (BOOL)tableView:(NSTableView *)tv writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
 	NSMutableArray *filenames = [NSMutableArray arrayWithCapacity:[rowIndexes count]];
 	NSInteger index = [rowIndexes firstIndex];
 	
