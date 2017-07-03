@@ -15,6 +15,7 @@
     IBOutlet NSTableView *tableView;
     IBOutlet NSButton *installButton;
     IBOutlet NSButton *installAllButton;
+    IBOutlet NSPopUpButton *terminalClientPopupButton;
     
     NSDictionary *statusDisplayStrings;
     
@@ -50,6 +51,37 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
 }
+
+- (void)awakeFromNib {
+    [self setIconsForTerminalMenu];
+}
+
+- (void)setIconsForTerminalMenu {
+    for (int i = 0; i < [terminalClientPopupButton numberOfItems]; i++) {
+        [self setIconForTerminalMenuItemAtIndex:i];
+    }
+}
+
+- (void)setIconForTerminalMenuItemAtIndex:(NSInteger)index {
+    NSMenuItem *menuItem = [terminalClientPopupButton itemAtIndex:index];
+    if ([menuItem image] != nil) {
+        return; // already has an icon
+    }
+    NSSize smallIconSize = { 16, 16 };
+    
+    if ([[menuItem title] isEqualToString:@"Select..."] == FALSE) {
+        NSImage *icon;
+        NSString *appPath = [WORKSPACE fullPathForApplication:[menuItem title]];
+        if (appPath) {
+            icon = [WORKSPACE iconForFile:appPath];
+        } else {
+            icon = [NSImage imageNamed:@"NSDefaultApplicationIcon"];
+        }
+        [icon setSize:smallIconSize];
+        [menuItem setImage:icon];
+    }
+}
+
 
 - (IBAction)apply:(id)sender {
     [self.window performClose:self];

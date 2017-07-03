@@ -20,8 +20,8 @@
         </customObject>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
-                <menuItem title="SnapDart" id="56">
-                    <menu key="submenu" title="SnapDart" systemMenu="apple" id="57">
+                <menuItem title="Snap" id="56" userLabel="Snap">
+                    <menu key="submenu" title="Snap" systemMenu="apple" id="57">
                         <items>
                             <menuItem title="About SnapTools" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -32,8 +32,16 @@
                             <menuItem isSeparatorItem="YES" id="xAc-Iy-ZYR">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
+                            <menuItem title="Preferences…" keyEquivalent="," id="129">
+                                <connections>
+                                    <action selector="makeKeyAndOrderFront:" target="3tb-qd-60Q" id="TBa-hm-4UA"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Check for Updates…" id="vx3-Uv-dRk">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="JVo-0V-tCY">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Uninstall SnapTools" id="Fgx-Ti-mD7">
                                 <modifierMask key="keyEquivalentModifierMask"/>
@@ -42,14 +50,6 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="236">
-                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                            </menuItem>
-                            <menuItem title="Preferences…" keyEquivalent="," id="129">
-                                <connections>
-                                    <action selector="makeKeyAndOrderFront:" target="3tb-qd-60Q" id="TBa-hm-4UA"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="JVo-0V-tCY">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Donate to Support SnapTools" id="g1u-GY-Zxp">
@@ -551,7 +551,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="90" y="-161"/>
+            <point key="canvasLocation" x="299" y="-383"/>
         </menu>
         <customObject id="494" customClass="SnapAppDelegate">
             <connections>
@@ -564,28 +564,28 @@
         <userDefaultsController representsSharedInstance="YES" id="685"/>
         <window title="Snap Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="3tb-qd-60Q" userLabel="Preferences Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="131" y="159" width="577" height="315"/>
+            <rect key="contentRect" x="131" y="159" width="577" height="339"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" misplaced="YES" id="R4x-x2-i3X">
-                <rect key="frame" x="0.0" y="0.0" width="577" height="315"/>
+                <rect key="frame" x="0.0" y="0.0" width="577" height="339"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box misplaced="YES" title="Command Line Tools" id="j3D-fF-wer">
-                        <rect key="frame" x="310" y="55" width="250" height="250"/>
+                        <rect key="frame" x="310" y="49" width="250" height="280"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Ahy-VM-gPt">
-                            <rect key="frame" x="2" y="2" width="246" height="233"/>
+                            <rect key="frame" x="2" y="2" width="246" height="263"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="QhP-Iq-zO7">
-                                    <rect key="frame" x="14" y="40" width="218" height="180"/>
+                                    <rect key="frame" x="14" y="46" width="218" height="204"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <clipView key="contentView" id="rG1-mK-3NT">
-                                        <rect key="frame" x="1" y="1" width="216" height="178"/>
+                                        <rect key="frame" x="1" y="1" width="216" height="202"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <tableView verticalHuggingPriority="750" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="SnapCommandLineTools" id="lsS-eK-972">
-                                                <rect key="frame" x="0.0" y="0.0" width="216" height="178"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="216" height="202"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -644,7 +644,7 @@
                                     </scroller>
                                 </scrollView>
                                 <button verticalHuggingPriority="750" misplaced="YES" id="Agi-8R-Eea">
-                                    <rect key="frame" x="9" y="8" width="107" height="28"/>
+                                    <rect key="frame" x="9" y="14" width="107" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Install All" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A6x-EO-OFd">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -655,7 +655,7 @@
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" misplaced="YES" id="Pyj-42-EkB">
-                                    <rect key="frame" x="148" y="8" width="89" height="28"/>
+                                    <rect key="frame" x="148" y="14" width="89" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" controlSize="small" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VPr-sy-On9">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -694,14 +694,14 @@ DQ
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Snap Windows" id="ndp-7i-yuK">
-                        <rect key="frame" x="17" y="55" width="280" height="250"/>
+                        <rect key="frame" x="17" y="49" width="280" height="280"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="OJ8-NW-v4e">
-                            <rect key="frame" x="1" y="1" width="278" height="234"/>
+                            <rect key="frame" x="1" y="1" width="278" height="264"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button misplaced="YES" imageHugsTitle="YES" id="WaU-NJ-Y0j">
-                                    <rect key="frame" x="31" y="154" width="81" height="18"/>
+                                    <rect key="frame" x="31" y="184" width="81" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="10Z-rZ-ewf">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -712,7 +712,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="0Oi-ol-BeU">
-                                    <rect key="frame" x="31" y="174" width="81" height="18"/>
+                                    <rect key="frame" x="31" y="204" width="81" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Path" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="2bA-sT-hWb">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -723,7 +723,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="uWe-5P-P17">
-                                    <rect key="frame" x="142" y="174" width="110" height="18"/>
+                                    <rect key="frame" x="142" y="204" width="110" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Date Modified" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="NKR-at-aYW">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -734,7 +734,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="c7q-lr-h1Y">
-                                    <rect key="frame" x="142" y="154" width="105" height="18"/>
+                                    <rect key="frame" x="142" y="184" width="105" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Date Created" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oNz-8M-5bg">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -745,7 +745,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="AUn-Y5-975">
-                                    <rect key="frame" x="142" y="134" width="114" height="18"/>
+                                    <rect key="frame" x="142" y="164" width="114" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Date Accessed" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hZk-2h-u4x">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -756,7 +756,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="aMG-pk-Owi">
-                                    <rect key="frame" x="31" y="134" width="48" height="18"/>
+                                    <rect key="frame" x="31" y="164" width="48" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Size" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="0NV-Kl-aPa">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -767,7 +767,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="3YR-2e-Nzi">
-                                    <rect key="frame" x="31" y="114" width="51" height="18"/>
+                                    <rect key="frame" x="31" y="144" width="51" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Kind" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="X6o-tU-Fp0">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -778,16 +778,16 @@ DQ
                                     </connections>
                                 </button>
                                 <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="rP6-Eb-Kcz">
-                                    <rect key="frame" x="18" y="200" width="148" height="17"/>
+                                    <rect key="frame" x="18" y="230" width="148" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show Coumns:" id="LeL-in-zIa">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show Columns:" id="LeL-in-zIa">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button misplaced="YES" imageHugsTitle="YES" id="ddh-MQ-8e5">
-                                    <rect key="frame" x="142" y="114" width="98" height="18"/>
+                                    <rect key="frame" x="142" y="144" width="98" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Permissions" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="XdZ-rp-GdK">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -798,7 +798,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="lQz-Y8-huu">
-                                    <rect key="frame" x="142" y="94" width="98" height="18"/>
+                                    <rect key="frame" x="142" y="124" width="98" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="UTI" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ykh-24-qE1">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -809,7 +809,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="pjN-Et-SzD">
-                                    <rect key="frame" x="31" y="94" width="94" height="18"/>
+                                    <rect key="frame" x="31" y="124" width="94" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="User:Group" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="JZX-35-UYd">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -820,7 +820,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="soS-sg-4he">
-                                    <rect key="frame" x="18" y="55" width="232" height="18"/>
+                                    <rect key="frame" x="18" y="85" width="232" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Ask before deleting or moving files" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="zdT-uQ-GZT">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -831,7 +831,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="iNm-Jh-0wu">
-                                    <rect key="frame" x="18" y="29" width="191" height="18"/>
+                                    <rect key="frame" x="18" y="59" width="191" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use human-readable sizes" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="nbK-Sv-Yi1">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -841,6 +841,39 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.UseHumanReadableSizes" id="g40-ZO-QTC"/>
                                     </connections>
                                 </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="AXk-7t-R3B">
+                                    <rect key="frame" x="19" y="24" width="99" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Terminal Client:" id="YTD-kN-YQV">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="5jn-kc-iXH">
+                                    <rect key="frame" x="122" y="18" width="139" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <popUpButtonCell key="cell" type="push" title="Terminal" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="h71-aG-N9n" id="Zyf-UT-bGL">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" id="qgE-Br-sP3">
+                                            <items>
+                                                <menuItem title="Terminal" state="on" id="h71-aG-N9n"/>
+                                                <menuItem title="iTerm" id="hBH-fW-Ef3"/>
+                                                <menuItem title="Cathode" id="qEG-Q2-4rQ"/>
+                                                <menuItem title="Terminator" id="SKB-LY-voZ"/>
+                                                <menuItem title="Visor" id="fB0-aB-RMa"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <binding destination="685" name="selectedValue" keyPath="values.TerminalClient" id="2uw-wA-EwO">
+                                            <dictionary key="options">
+                                                <bool key="NSValidatesImmediately" value="YES"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </popUpButton>
                             </subviews>
                         </view>
                     </box>
@@ -861,13 +894,14 @@ DQ
                 <outlet property="delegate" destination="nfT-sh-QPs" id="FcW-bs-wGv"/>
                 <outlet property="initialFirstResponder" destination="lmp-mz-xJo" id="9M4-mO-AwP"/>
             </connections>
-            <point key="canvasLocation" x="247.5" y="91.5"/>
+            <point key="canvasLocation" x="247.5" y="103.5"/>
         </window>
         <customObject id="nfT-sh-QPs" customClass="PrefsWindowController">
             <connections>
                 <outlet property="installAllButton" destination="Agi-8R-Eea" id="DUh-cq-drr"/>
                 <outlet property="installButton" destination="Pyj-42-EkB" id="CMw-5X-oqH"/>
                 <outlet property="tableView" destination="lsS-eK-972" id="fJX-W0-LaX"/>
+                <outlet property="terminalClientPopupButton" destination="5jn-kc-iXH" id="Rm8-9l-TgT"/>
                 <outlet property="window" destination="3tb-qd-60Q" id="2JK-KO-7nE"/>
             </connections>
         </customObject>
