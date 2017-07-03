@@ -143,7 +143,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     NSArray *finalPaths = [paths allObjects];
     finalPaths = [finalPaths sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     
-    // Hand paths over to SnapDart app via Apple Event
+    // Hand paths over to GUI app via Apple Event
     if ([paths count]) {
         
         if (printOnly) {
@@ -154,7 +154,7 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         else {
             BOOL success = SendOpenDocumentAppleEvent(paths);
             if (!success) {
-                NSPrintErr(@"Error launching SnapDart app");
+                NSPrintErr(@"Error launching Snap application");
                 exit(EX_UNAVAILABLE);
             }
         }

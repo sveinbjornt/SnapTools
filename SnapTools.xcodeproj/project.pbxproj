@@ -30,6 +30,7 @@
 		F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */; };
 		F4843D0E1F0AAF450092A256 /* comment in Resources */ = {isa = PBXBuildFile; fileRef = F48A68541F0A908A003C6F8D /* comment */; };
+		F4843D121F0ABE220092A256 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = F4843D101F0ABE220092A256 /* Documentation.html */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
 		F485854F14D46E4300B007CA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F485854D14D46E4300B007CA /* Credits.rtf */; };
@@ -250,6 +251,8 @@
 		F47B5ECD1EC8A10000AC2DEA /* copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = copy; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B5EEA1EC8ACC800AC2DEA /* show */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = show; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
+		F4843D101F0ABE220092A256 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html.documentation; path = Documentation.html; sourceTree = "<group>"; };
+		F4843D111F0ABE220092A256 /* Documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* Snap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F485854614D46E4300B007CA /* Snap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Snap-Info.plist"; sourceTree = "<group>"; };
@@ -448,11 +451,21 @@
 			path = show;
 			sourceTree = "<group>";
 		};
+		F4843D0F1F0ABE220092A256 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				F4843D101F0ABE220092A256 /* Documentation.html */,
+				F4843D111F0ABE220092A256 /* Documentation.md */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		F485852F14D46E4300B007CA = {
 			isa = PBXGroup;
 			children = (
 				F47B5EC81EC89EB600AC2DEA /* CHANGES.txt */,
 				F4F118A61EBF7EB800E99B9A /* README.md */,
+				F4843D0F1F0ABE220092A256 /* Documentation */,
 				F4C0FDB31ECA06B4004439EF /* Common.h */,
 				F4C0FDB21ECA06B4004439EF /* Common.c */,
 				F485854414D46E4300B007CA /* SnapApp */,
@@ -876,6 +889,7 @@
 				F4C0FDBE1ECA2801004439EF /* getinfo in Resources */,
 				F4843D0E1F0AAF450092A256 /* comment in Resources */,
 				F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */,
+				F4843D121F0ABE220092A256 /* Documentation.html in Resources */,
 				F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,

@@ -1,6 +1,6 @@
 //
 //  PrefsWindowController.h
-//  SnapDart
+//  SnapTools
 //
 //  Created by Sveinbjorn Thordarson on 03/07/2017.
 //

@@ -23,7 +23,7 @@
                 <menuItem title="SnapDart" id="56">
                     <menu key="submenu" title="SnapDart" systemMenu="apple" id="57">
                         <items>
-                            <menuItem title="About SnapDart" id="58">
+                            <menuItem title="About SnapTools" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
@@ -35,7 +35,7 @@
                             <menuItem title="Check for Updates…" id="vx3-Uv-dRk">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Uninstall SnapDart" id="Fgx-Ti-mD7">
+                            <menuItem title="Uninstall SnapTools" id="Fgx-Ti-mD7">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="uninstallProgram:" target="494" id="WGQ-QJ-GUp"/>
@@ -52,7 +52,7 @@
                             <menuItem isSeparatorItem="YES" id="JVo-0V-tCY">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Donate to Support SnapDart" id="g1u-GY-Zxp">
+                            <menuItem title="Donate to Support SnapTools" id="g1u-GY-Zxp">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openDonations:" target="494" id="bbF-5j-Nb0"/>
@@ -73,7 +73,7 @@
                             <menuItem isSeparatorItem="YES" id="144">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Hide SnapDart" keyEquivalent="h" id="134">
+                            <menuItem title="Hide Snap" keyEquivalent="h" id="134">
                                 <connections>
                                     <action selector="hide:" target="-1" id="367"/>
                                 </connections>
@@ -92,7 +92,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Quit SnapDart" keyEquivalent="q" id="136">
+                            <menuItem title="Quit Snap" keyEquivalent="q" id="136">
                                 <connections>
                                     <action selector="terminate:" target="-3" id="449"/>
                                 </connections>
@@ -506,7 +506,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="491">
                         <items>
-                            <menuItem title="SnapDart Documentation" keyEquivalent="?" toolTip="Open the Platypus Documentation file" id="ubm-kV-hN1">
+                            <menuItem title="SnapTools Documentation" keyEquivalent="?" toolTip="Open the Platypus Documentation file" id="ubm-kV-hN1">
                                 <connections>
                                     <action selector="showHelp:" target="494" id="9vI-6R-oEB"/>
                                 </connections>
@@ -526,13 +526,13 @@
                                     <action selector="openLicense:" target="494" id="t6X-VY-Zd7"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="SnapDart Website" toolTip="Visit the Platypus website" id="fvu-oN-4dD">
+                            <menuItem title="SnapTools Website" toolTip="Visit the Platypus website" id="fvu-oN-4dD">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openWebsite:" target="494" id="NqH-jv-jaa"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="SnapDart on GitHub" toolTip="Visit the Platypus GitHub site" id="mwd-Ic-EWt">
+                            <menuItem title="SnapTools on GitHub" toolTip="Visit the Platypus GitHub site" id="mwd-Ic-EWt">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openGitHubWebsite:" target="494" id="6rb-de-D7G"/>
@@ -541,7 +541,7 @@
                             <menuItem isSeparatorItem="YES" id="vg5-c0-2Os">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Donate to Support SnapDart Development" id="PpL-7e-Wfg">
+                            <menuItem title="Donate to Support SnapTools Development" id="PpL-7e-Wfg">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openDonations:" target="494" id="rqZ-0s-NEV"/>

@@ -1,22 +1,22 @@
 <!--<img align="right" src="images/snap_icon.png" style="float: right; margin-left: 30px;" alt="Snap Application Icon">-->
 
-# SnapDart
+# SnapTools
 
-** SnapDart is currently a work in progress **
+** SnapTools is currently a work in progress **
 
-SnapDart is a Mac OS X file browser that integrates in powerful ways with the 
-UNIX command line interface.
+SnapTools is a collection of command line tools and a GUI app that integrate 
+aspects of the macOS GUI with the UNIX command line interface.
 
-<!--* [Download SnapDart 1.0]() (Intel 64-bit, 10.8 or later, ~0.5 MB)
+<!--* [Download SnapTools 1.0]() (Intel 64-bit, 10.8 or later, ~0.5 MB)
 
 ## Screenshot
 
-<img src="images/mandrake_screenshot.png" style="max-width:100%;" alt="ManDrake Screenshot">
+<img src="images/snaptools_screenshot.png" style="max-width:100%;" alt="SnapTools Screenshot">
 -->
 
 ## License
 
-SnapDart is open source software, available under the three-clause BSD license:
+SnapTools is open source software, available under the three-clause BSD license:
 
 > Copyright (c) 2012-2017, Sveinbjorn Thordarson &lt;sveinbjornt@gmail.com&gt;
 > 
