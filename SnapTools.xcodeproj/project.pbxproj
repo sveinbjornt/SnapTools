@@ -29,6 +29,7 @@
 		F47B5EE31EC8A60B00AC2DEA /* snap in Resources */ = {isa = PBXBuildFile; fileRef = F430C24714DEF3DC0026CBDB /* snap */; };
 		F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */; };
+		F4843D0E1F0AAF450092A256 /* comment in Resources */ = {isa = PBXBuildFile; fileRef = F48A68541F0A908A003C6F8D /* comment */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
 		F485854B14D46E4300B007CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F485854A14D46E4300B007CA /* main.m */; };
 		F485854F14D46E4300B007CA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F485854D14D46E4300B007CA /* Credits.rtf */; };
@@ -110,6 +111,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F47B5ECC1EC8A10000AC2DEA;
 			remoteInfo = copy;
+		};
+		F4843D0C1F0AAEEA0092A256 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F485853114D46E4300B007CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F48A68531F0A908A003C6F8D;
+			remoteInfo = comment;
 		};
 		F4C0FD901EC9FD3F004439EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -220,16 +228,6 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-		};
-		F4F118741EBE0E5600E99B9A /* Copy Command Line Tool */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 7;
-			files = (
-			);
-			name = "Copy Command Line Tool";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -706,7 +704,6 @@
 			buildPhases = (
 				F485853614D46E4300B007CA /* Sources */,
 				F485853714D46E4300B007CA /* Frameworks */,
-				F4F118741EBE0E5600E99B9A /* Copy Command Line Tool */,
 				F485853814D46E4300B007CA /* Resources */,
 				F4F1187C1EBE4D0900E99B9A /* Set CFBundleVersion */,
 			);
@@ -721,6 +718,7 @@
 				F4C0FD971EC9FD45004439EF /* PBXTargetDependency */,
 				F47B453A1EE9904000D79DFF /* PBXTargetDependency */,
 				F47B45381EE9903E00D79DFF /* PBXTargetDependency */,
+				F4843D0D1F0AAEEA0092A256 /* PBXTargetDependency */,
 			);
 			name = Snap;
 			productName = Snap;
@@ -876,6 +874,7 @@
 				F4C0FDBC1ECA27FC004439EF /* paths in Resources */,
 				F4C0FDBD1ECA27FF004439EF /* label in Resources */,
 				F4C0FDBE1ECA2801004439EF /* getinfo in Resources */,
+				F4843D0E1F0AAF450092A256 /* comment in Resources */,
 				F4F118991EBF6DBA00E99B9A /* CmdWindow.xib in Resources */,
 				F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
@@ -1055,6 +1054,11 @@
 			isa = PBXTargetDependency;
 			target = F47B5ECC1EC8A10000AC2DEA /* copy */;
 			targetProxy = F47B5EE01EC8A5E500AC2DEA /* PBXContainerItemProxy */;
+		};
+		F4843D0D1F0AAEEA0092A256 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F48A68531F0A908A003C6F8D /* comment */;
+			targetProxy = F4843D0C1F0AAEEA0092A256 /* PBXContainerItemProxy */;
 		};
 		F4C0FD911EC9FD3F004439EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

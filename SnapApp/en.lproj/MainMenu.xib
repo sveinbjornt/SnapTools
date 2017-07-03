@@ -571,55 +571,59 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box misplaced="YES" title="Command Line Tools" id="j3D-fF-wer">
-                        <rect key="frame" x="337" y="55" width="223" height="250"/>
+                        <rect key="frame" x="310" y="55" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="Ahy-VM-gPt">
-                            <rect key="frame" x="2" y="2" width="219" height="233"/>
+                            <rect key="frame" x="2" y="2" width="246" height="233"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="QhP-Iq-zO7">
-                                    <rect key="frame" x="14" y="40" width="191" height="180"/>
+                                    <rect key="frame" x="14" y="40" width="218" height="180"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <clipView key="contentView" id="rG1-mK-3NT">
-                                        <rect key="frame" x="1" y="1" width="189" height="178"/>
+                                        <rect key="frame" x="1" y="1" width="216" height="178"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="lsS-eK-972">
-                                                <rect key="frame" x="0.0" y="0.0" width="189" height="178"/>
+                                            <tableView verticalHuggingPriority="750" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" autosaveName="SnapCommandLineTools" id="lsS-eK-972">
+                                                <rect key="frame" x="0.0" y="0.0" width="216" height="178"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                 <tableColumns>
-                                                    <tableColumn identifier="Icon" width="20" minWidth="20" maxWidth="1000" id="tsv-Ht-trT">
+                                                    <tableColumn identifier="icon" width="20" minWidth="20" maxWidth="1000" id="tsv-Ht-trT">
                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                         </tableHeaderCell>
-                                                        <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h5g-sg-IpB"/>
+                                                        <imageCell key="dataCell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="h5g-sg-IpB"/>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
-                                                    <tableColumn identifier="Name" width="99" minWidth="10" maxWidth="3.4028234663852886e+38" id="8tI-iK-Yr0">
+                                                    <tableColumn identifier="name" width="89" minWidth="10" maxWidth="3.4028234663852886e+38" id="8tI-iK-Yr0">
                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </tableHeaderCell>
-                                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="gvl-xl-yQo">
-                                                            <font key="font" metaFont="system"/>
+                                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" alignment="left" title="Text Cell" allowsEditingTextAttributes="YES" id="gvl-xl-yQo">
+                                                            <font key="font" metaFont="systemBold"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
-                                                    <tableColumn identifier="Install" width="55" minWidth="10" maxWidth="3.4028234663852886e+38" id="3c0-gZ-iH9" userLabel="Install">
+                                                    <tableColumn identifier="status" width="98" minWidth="10" maxWidth="3.4028234663852886e+38" id="3c0-gZ-iH9" userLabel="Install">
                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </tableHeaderCell>
-                                                        <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="IxX-Je-OI5"/>
+                                                        <textFieldCell key="dataCell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" alignment="left" title="Text Cell" allowsEditingTextAttributes="YES" id="oxC-oc-mPl">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
                                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     </tableColumn>
                                                 </tableColumns>
@@ -640,7 +644,7 @@
                                     </scroller>
                                 </scrollView>
                                 <button verticalHuggingPriority="750" misplaced="YES" id="Agi-8R-Eea">
-                                    <rect key="frame" x="9" y="8" width="79" height="28"/>
+                                    <rect key="frame" x="9" y="8" width="107" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="push" title="Install All" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="A6x-EO-OFd">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -651,14 +655,14 @@
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" misplaced="YES" id="Pyj-42-EkB">
-                                    <rect key="frame" x="131" y="8" width="79" height="28"/>
+                                    <rect key="frame" x="148" y="8" width="89" height="28"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VPr-sy-On9">
+                                    <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" controlSize="small" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VPr-sy-On9">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="smallSystem"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="install:" target="nfT-sh-QPs" id="8H4-G6-n9o"/>
+                                        <action selector="installSelectedItem:" target="nfT-sh-QPs" id="TwD-j9-7eJ"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -690,14 +694,14 @@ DQ
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" misplaced="YES" borderType="line" title="Snap Windows" id="ndp-7i-yuK">
-                        <rect key="frame" x="17" y="55" width="318" height="250"/>
+                        <rect key="frame" x="17" y="55" width="280" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="OJ8-NW-v4e">
-                            <rect key="frame" x="1" y="1" width="316" height="234"/>
+                            <rect key="frame" x="1" y="1" width="278" height="234"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <button imageHugsTitle="YES" id="WaU-NJ-Y0j">
-                                    <rect key="frame" x="31" y="151" width="81" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="WaU-NJ-Y0j">
+                                    <rect key="frame" x="31" y="154" width="81" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="10Z-rZ-ewf">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -707,8 +711,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Icon" id="bDg-2V-E8E"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="0Oi-ol-BeU">
-                                    <rect key="frame" x="31" y="171" width="81" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="0Oi-ol-BeU">
+                                    <rect key="frame" x="31" y="174" width="81" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Path" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" state="on" inset="2" id="2bA-sT-hWb">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -718,8 +722,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Path" id="fIn-bP-qxI"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="uWe-5P-P17">
-                                    <rect key="frame" x="163" y="171" width="110" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="uWe-5P-P17">
+                                    <rect key="frame" x="142" y="174" width="110" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Date Modified" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="NKR-at-aYW">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -729,8 +733,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Date Modified" id="OJR-En-YcZ"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="c7q-lr-h1Y">
-                                    <rect key="frame" x="163" y="151" width="105" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="c7q-lr-h1Y">
+                                    <rect key="frame" x="142" y="154" width="105" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Date Created" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oNz-8M-5bg">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -740,8 +744,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Date Created" id="qMF-kC-med"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="AUn-Y5-975">
-                                    <rect key="frame" x="163" y="131" width="114" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="AUn-Y5-975">
+                                    <rect key="frame" x="142" y="134" width="114" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Date Accessed" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hZk-2h-u4x">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -751,8 +755,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Date Accessed" id="cuc-5O-X4s"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="aMG-pk-Owi">
-                                    <rect key="frame" x="31" y="131" width="48" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="aMG-pk-Owi">
+                                    <rect key="frame" x="31" y="134" width="48" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Size" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="0NV-Kl-aPa">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -762,8 +766,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Size" id="ljP-EY-zsU"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="3YR-2e-Nzi">
-                                    <rect key="frame" x="31" y="111" width="51" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="3YR-2e-Nzi">
+                                    <rect key="frame" x="31" y="114" width="51" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Kind" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="X6o-tU-Fp0">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -773,8 +777,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Kind" id="HtM-Ih-jeF"/>
                                     </connections>
                                 </button>
-                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="rP6-Eb-Kcz">
-                                    <rect key="frame" x="18" y="197" width="148" height="17"/>
+                                <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="rP6-Eb-Kcz">
+                                    <rect key="frame" x="18" y="200" width="148" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show Coumns:" id="LeL-in-zIa">
                                         <font key="font" metaFont="system"/>
@@ -782,8 +786,8 @@ DQ
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <button imageHugsTitle="YES" id="ddh-MQ-8e5">
-                                    <rect key="frame" x="163" y="111" width="98" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="ddh-MQ-8e5">
+                                    <rect key="frame" x="142" y="114" width="98" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Permissions" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="XdZ-rp-GdK">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -793,8 +797,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.Permissions" id="9G5-ES-gXX"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="lQz-Y8-huu">
-                                    <rect key="frame" x="163" y="91" width="98" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="lQz-Y8-huu">
+                                    <rect key="frame" x="142" y="94" width="98" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="UTI" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="ykh-24-qE1">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -804,8 +808,8 @@ DQ
                                         <binding destination="685" name="value" keyPath="values.UTI" id="fnY-fU-s7C"/>
                                     </connections>
                                 </button>
-                                <button imageHugsTitle="YES" id="pjN-Et-SzD">
-                                    <rect key="frame" x="31" y="91" width="94" height="18"/>
+                                <button misplaced="YES" imageHugsTitle="YES" id="pjN-Et-SzD">
+                                    <rect key="frame" x="31" y="94" width="94" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="User:Group" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="JZX-35-UYd">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -816,7 +820,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="soS-sg-4he">
-                                    <rect key="frame" x="18" y="52" width="232" height="18"/>
+                                    <rect key="frame" x="18" y="55" width="232" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Ask before deleting or moving files" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="zdT-uQ-GZT">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -827,7 +831,7 @@ DQ
                                     </connections>
                                 </button>
                                 <button misplaced="YES" imageHugsTitle="YES" id="iNm-Jh-0wu">
-                                    <rect key="frame" x="18" y="26" width="191" height="18"/>
+                                    <rect key="frame" x="18" y="29" width="191" height="18"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <buttonCell key="cell" type="check" title="Use human-readable sizes" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="nbK-Sv-Yi1">
                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -854,17 +858,17 @@ DQ
                 </subviews>
             </view>
             <connections>
-                <outlet property="delegate" destination="nfT-sh-QPs" id="uBC-re-lLe"/>
+                <outlet property="delegate" destination="nfT-sh-QPs" id="FcW-bs-wGv"/>
                 <outlet property="initialFirstResponder" destination="lmp-mz-xJo" id="9M4-mO-AwP"/>
             </connections>
-            <point key="canvasLocation" x="108" y="90"/>
+            <point key="canvasLocation" x="247.5" y="91.5"/>
         </window>
         <customObject id="nfT-sh-QPs" customClass="PrefsWindowController">
             <connections>
                 <outlet property="installAllButton" destination="Agi-8R-Eea" id="DUh-cq-drr"/>
                 <outlet property="installButton" destination="Pyj-42-EkB" id="CMw-5X-oqH"/>
                 <outlet property="tableView" destination="lsS-eK-972" id="fJX-W0-LaX"/>
-                <outlet property="window" destination="3tb-qd-60Q" id="XDu-LP-H5s"/>
+                <outlet property="window" destination="3tb-qd-60Q" id="2JK-KO-7nE"/>
             </connections>
         </customObject>
     </objects>

@@ -57,6 +57,7 @@
 - (BOOL)setFinderComment:(NSString *)comment forFile:(NSString *)filePath;
 - (NSString *)finderCommentForFile:(NSString *)path;
 - (void)notifyFinderFileChangedAtPath:(NSString *)path;
+- (NSString *)kindStringForFile:(NSString *)path;
 
 - (void)flushServices;
 - (BOOL)openPathInDefaultBrowser:(NSString *)path;

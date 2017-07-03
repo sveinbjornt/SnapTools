@@ -1,7 +1,9 @@
 CHANGES.txt
 
 DONE * Create trash tool
+DONE * Create tool installer/uninstaller
 
+* Custom tool install location via Cmd-Click
 * Ignore hidden files vs. not ignore flags
 * Sorting and unique options for parse results, which should deliver nsarray not set
 * Print label key value dict option in label tool
@@ -9,3 +11,4 @@ DONE * Create trash tool
 * snap -l : Load previous snap
 * Ability to copy files and file paths in Snap app
 * Change handling of AEOpenFiles in app delegate
+* Prefs should have its own nib, no point in loading on every launch

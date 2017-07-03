@@ -56,6 +56,8 @@
 #define GENERIC_EXEC_ICON_PATH              @"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns"
 
 
+#define DEFAULT_TOOL_INSTALL_DIR    @"/usr/local/bin"
+
 // abbreviations
 #define DEFAULTS    [NSUserDefaults standardUserDefaults]
 #define FILEMGR     [NSFileManager defaultManager]

@@ -492,6 +492,18 @@ end tell", path, escapedComment];
     return c;
 }
 
+- (NSString *)kindStringForFile:(NSString *)path {
+    NSURL *url = [NSURL fileURLWithPath:path];
+    CFStringRef kindCFStr = nil;
+    LSCopyKindStringForURL((__bridge CFURLRef)url, &kindCFStr);
+    if (kindCFStr != nil) {
+        NSString *kindStr = (__bridge NSString *)kindCFStr;
+        CFRelease(kindCFStr);
+        return kindStr;
+    }
+    return @"Unknown";
+}
+
 #pragma mark - Services
 
 - (void)flushServices {

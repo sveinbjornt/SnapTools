@@ -153,15 +153,8 @@
     // kind
     else if ([theAttribute isEqualToString:@"Kind"])
     {
-        NSURL *url = [NSURL fileURLWithPath:[self path]];
-        CFStringRef kindStr = nil;
-        LSCopyKindStringForURL((__bridge CFURLRef)url, &kindStr);
-        if (kindStr !=  nil) {
-            [self setAttr:[NSString stringWithString:(__bridge NSString*)kindStr] forKey:theAttribute];
-            CFRelease(kindStr);
-        } else {
-            [self setAttr:@"Unknown" forKey:theAttribute];
-        }
+        NSString *kindStr = [[NSWorkspace sharedWorkspace] kindStringForFile:[self path]];
+        [self setAttr:kindStr forKey:theAttribute];
     }
     else if ([theAttribute isEqualToString:@"Permissions"]) {
         [self _stat];
