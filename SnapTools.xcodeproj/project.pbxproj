@@ -254,7 +254,7 @@
 		F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* Snap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F485853E14D46E4300B007CA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		F485854614D46E4300B007CA /* SnapTools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SnapTools-Info.plist"; sourceTree = "<group>"; };
+		F485854614D46E4300B007CA /* Snap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Snap-Info.plist"; sourceTree = "<group>"; };
 		F485854A14D46E4300B007CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F485854E14D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F485855014D46E4300B007CA /* SnapAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapAppDelegate.h; sourceTree = "<group>"; };
@@ -508,7 +508,6 @@
 				F489FFB11F0A8BC2002CA850 /* PrefsWindowController.m */,
 				F485854514D46E4300B007CA /* Resources */,
 			);
-			name = SnapApp;
 			path = SnapApp;
 			sourceTree = "<group>";
 		};
@@ -521,7 +520,7 @@
 				F4F118971EBF6DBA00E99B9A /* CmdWindow.xib */,
 				F4F118811EBF431E00E99B9A /* SnapWindow.xib */,
 				F485856F14D470A200B007CA /* Defaults.plist */,
-				F485854614D46E4300B007CA /* SnapTools-Info.plist */,
+				F485854614D46E4300B007CA /* Snap-Info.plist */,
 				F485854D14D46E4300B007CA /* Credits.rtf */,
 			);
 			name = Resources;
@@ -1389,7 +1388,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "SnapApp/SnapTools-Info.plist";
+				INFOPLIST_FILE = "SnapApp/Snap-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.sveinbjorn.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1405,7 +1404,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "SnapApp/SnapTools-Info.plist";
+				INFOPLIST_FILE = "SnapApp/Snap-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.sveinbjorn.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1670,6 +1669,7 @@
 				F48A685A1F0A908A003C6F8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F4C0FD631EC9023F004439EF /* Build configuration list for PBXNativeTarget "paths" */ = {
 			isa = XCConfigurationList;

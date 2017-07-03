@@ -45,8 +45,6 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
     int optch;
     int long_index = 0;
     
-    BOOL force = NO;
-    
     // parse getopt
     while ((optch = getopt_long(argc, (char *const *)argv, optstring, long_options, &long_index)) != -1) {
         switch (optch) {

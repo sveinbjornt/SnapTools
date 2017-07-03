@@ -53,6 +53,9 @@
 
 #define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
 
+#define GENERIC_EXEC_ICON_PATH              @"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns"
+
+
 // abbreviations
 #define DEFAULTS    [NSUserDefaults standardUserDefaults]
 #define FILEMGR     [NSFileManager defaultManager]

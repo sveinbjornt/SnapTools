@@ -7,6 +7,8 @@
 //
 
 #import "PrefsWindowController.h"
+#import "NSWorkspace+Additions.h"
+#import "Common.h"
 
 @interface PrefsWindowController ()
 {
@@ -15,6 +17,7 @@
     IBOutlet NSButton *installAllButton;
     
     NSArray *toolItems;
+    NSImage *genericExecutableIcon;
 }
 @end
 
@@ -23,6 +26,7 @@
 - (instancetype)init {
     if ((self = [super init])) {
         toolItems = @[@"snap", @"label", @"paths", @"show", @"copy", @"getinfo", @"move", @"trash"];
+        genericExecutableIcon = [[NSImage alloc] initWithContentsOfFile:GENERIC_EXEC_ICON_PATH];
     }
     return self;
 }
@@ -45,10 +49,16 @@
 
 - (IBAction)revertToDefaults:(id)sender {
     // load registrationDefaults.plist and apply
+    NSString *defaultsPath = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
+    NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:defaultsPath];
+    for (NSString *key in plist) {
+        [[NSUserDefaults standardUserDefaults] setObject:plist[key] forKey:key];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)showHelp:(id)sender {
-
+    [WORKSPACE openPathInDefaultBrowser:[[NSBundle mainBundle] pathForResource:PROGRAM_DOCUMENTATION ofType:nil]];
 }
 
 #pragma mark - Table View
@@ -61,6 +71,11 @@
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+    NSString *ident = [aTableColumn identifier];
+    if ([ident isEqualToString:@"Icon"] || [ident isEqualToString:@"Install"]) {
+        return genericExecutableIcon;
+    }
+    
     return toolItems[rowIndex];
 }
 
