@@ -414,13 +414,13 @@
 //    return YES;
 }
 
-- (void)showFinderGetInfoForFile:(NSString *)path {
+- (BOOL)showFinderGetInfoForFile:(NSString *)path {
     BOOL isDir;
     BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path
                                                        isDirectory:&isDir];
     if (!exists) {
         NSLog(@"Cannot show Get Info. File does not exist: %@", path);
-        return;
+        return NO;
     }
     
     NSString *type = isDir && ![self isFilePackageAtPath:path] ? @"folder" : @"file";
@@ -437,8 +437,10 @@ end tell", path, type];
         NSDictionary *errorInfo;
         if ([appleScript executeAndReturnError:&errorInfo] == nil) {
             NSLog(@"%@", [errorInfo description]);
+            return NO;
         }
     }
+    return YES;
 }
 
 - (void)notifyFinderFileChangedAtPath:(NSString *)path {
@@ -452,6 +454,42 @@ end tell", path, type];
             NSLog(@"%@", [errorInfo description]);
         }
     }
+}
+
+- (BOOL)setFinderComment:(NSString *)comment forFile:(NSString *)path {
+    NSString *escapedComment = [comment stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+    NSString *source = [NSString stringWithFormat:
+@"set filePath to (POSIX file \"%@\") as text\n\
+tell application \"Finder\"\n\
+\tset comment of (filePath as alias) to \"%@\"\n\
+end tell", path, escapedComment];
+    
+    NSAppleScript *appleScript = [[NSAppleScript alloc] initWithSource:source];
+    if (appleScript != nil) {
+        NSDictionary *errorInfo;
+        if ([appleScript executeAndReturnError:&errorInfo] == nil) {
+            NSLog(@"%@", [errorInfo description]);
+            return NO;
+        }
+    }
+
+    return YES;
+}
+
+- (NSString *)finderCommentForFile:(NSString *)path {
+    NSURL *url = [NSURL fileURLWithPath:path];
+    
+    MDItemRef item = MDItemCreateWithURL(kCFAllocatorDefault, (CFURLRef)url);
+    CFStringRef comment = MDItemCopyAttribute(item, kMDItemFinderComment);
+    if (!comment) {
+        return nil;
+    }
+    
+    NSString *c = (__bridge NSString *)comment;
+    CFRelease(item);
+    CFRelease(comment);
+    
+    return c;
 }
 
 #pragma mark - Services

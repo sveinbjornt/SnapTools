@@ -1,16 +1,17 @@
 .Dd Jun 5, 2017
-.Dt TRASH 1
+.Dt COMMENT 1
 .Os Darwin
 .Sh NAME
-.Nm trash
-.Nd Move one or more files to the Trash
+.Nm comment
+.Nd Add a Finder comment to one or more files
 .Sh SYNOPSIS
 .Nm
 .Op Fl vhf
 .Op Ar
 .Sh DESCRIPTION
 .Nm
-is a command line tool which moves files to the Mac OS Trash.
+is a command line tool which sets the macOS Finder comment for
+one or more files. The Finder must be running when the tool is run.
 .Pp
 The following flags are supported:
 .Bl -tag -width -indent
@@ -27,6 +28,7 @@ Print help and exit
 .Xr open 1 ,
 .Xr paths 1 ,
 .Xr show 1 ,
-.Xr snap 1
+.Xr snap 1 ,
+.Xr trash 1
 .Sh AUTHORS
 .An Sveinbjorn Thordarson <sveinbjornt@gmail.com>

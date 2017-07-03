@@ -54,7 +54,10 @@
 
 - (BOOL)moveFileToTrash:(NSString *)path;
 - (void)showFinderGetInfoForFile:(NSString *)path;
+- (BOOL)setFinderComment:(NSString *)comment forFile:(NSString *)filePath;
+- (NSString *)finderCommentForFile:(NSString *)path;
 - (void)notifyFinderFileChangedAtPath:(NSString *)path;
+
 - (void)flushServices;
 - (BOOL)openPathInDefaultBrowser:(NSString *)path;
 - (BOOL)runCommandInTerminal:(NSString *)cmd;
