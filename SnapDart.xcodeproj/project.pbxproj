@@ -37,6 +37,8 @@
 		F485855F14D46E8200B007CA /* SnapWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F485855C14D46E8200B007CA /* SnapWindowController.m */; };
 		F485857014D470A200B007CA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F485856F14D470A200B007CA /* Defaults.plist */; };
 		F485858914D4CD1600B007CA /* SnapItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F485858814D4CD1600B007CA /* SnapItem.m */; };
+		F489FFAF1F0A85FE002CA850 /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1189B1EBF724E00E99B9A /* NSWorkspace+Additions.m */; };
+		F489FFB21F0A8BC2002CA850 /* PrefsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F489FFB11F0A8BC2002CA850 /* PrefsWindowController.m */; };
 		F4C0FD591EC8AE80004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F4C0FD751EC92166004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
 		F4C0FD761EC92166004439EF /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
@@ -248,6 +250,8 @@
 		F485856F14D470A200B007CA /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
 		F485858714D4CD1500B007CA /* SnapItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapItem.h; sourceTree = "<group>"; };
 		F485858814D4CD1600B007CA /* SnapItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapItem.m; sourceTree = "<group>"; };
+		F489FFB01F0A8BC2002CA850 /* PrefsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefsWindowController.h; sourceTree = "<group>"; };
+		F489FFB11F0A8BC2002CA850 /* PrefsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefsWindowController.m; sourceTree = "<group>"; };
 		F4C0FD5F1EC9023F004439EF /* paths */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = paths; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0FD6B1EC909A1004439EF /* label */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = label; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C0FD7C1EC9CC48004439EF /* getinfo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = getinfo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,6 +487,8 @@
 				F4F118961EBF6DBA00E99B9A /* CmdWindowController.m */,
 				F485858714D4CD1500B007CA /* SnapItem.h */,
 				F485858814D4CD1600B007CA /* SnapItem.m */,
+				F489FFB01F0A8BC2002CA850 /* PrefsWindowController.h */,
+				F489FFB11F0A8BC2002CA850 /* PrefsWindowController.m */,
 				F485854514D46E4300B007CA /* Resources */,
 			);
 			name = "SnapDart App";
@@ -904,6 +910,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4C0FDAE1ECA0677004439EF /* CLI.m in Sources */,
+				F489FFAF1F0A85FE002CA850 /* NSWorkspace+Additions.m in Sources */,
 				F4C0FD591EC8AE80004439EF /* PathParser.m in Sources */,
 				F4C0FDB71ECA06B4004439EF /* Common.c in Sources */,
 				F4C0FDA01ECA05F9004439EF /* show.m in Sources */,
@@ -928,6 +935,7 @@
 				F4F118981EBF6DBA00E99B9A /* CmdWindowController.m in Sources */,
 				F4F118A41EBF79AB00E99B9A /* NSString+CarbonFSRefCreation.m in Sources */,
 				F4F118B81EBFDFC700E99B9A /* SnapFileManager.m in Sources */,
+				F489FFB21F0A8BC2002CA850 /* PrefsWindowController.m in Sources */,
 				F4F1188F1EBF69F400E99B9A /* PathParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1498,6 +1506,7 @@
 				F47B451D1EE5768200D79DFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47B452D1EE5D1DA00D79DFF /* Build configuration list for PBXNativeTarget "move" */ = {
 			isa = XCConfigurationList;
@@ -1506,6 +1515,7 @@
 				F47B452F1EE5D1DA00D79DFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F47B5ED11EC8A10000AC2DEA /* Build configuration list for PBXNativeTarget "copy" */ = {
 			isa = XCConfigurationList;
