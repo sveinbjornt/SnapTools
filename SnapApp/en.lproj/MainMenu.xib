@@ -553,7 +553,7 @@
             </items>
             <point key="canvasLocation" x="90" y="-161"/>
         </menu>
-        <customObject id="494" customClass="SnapDartAppDelegate">
+        <customObject id="494" customClass="SnapAppDelegate">
             <connections>
                 <outlet property="bookmarksMenu" destination="3Zo-cd-lTN" id="F47-A2-0cc"/>
                 <outlet property="columnsMenu" destination="Sei-Mr-r51" id="plq-75-D4h"/>

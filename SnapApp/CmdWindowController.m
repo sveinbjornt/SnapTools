@@ -30,7 +30,7 @@
 
 #import "CmdWindowController.h"
 #import "Common.h"
-#import "SnapDartAppDelegate.h"
+#import "SnapAppDelegate.h"
 #import "PathParser.h"
 
 @interface CmdWindowController ()
@@ -144,7 +144,7 @@
     
     NSMutableSet *paths = [PathParser parse:outputString];
     
-    SnapDartAppDelegate *del = (SnapDartAppDelegate *)[[NSApplication sharedApplication] delegate];
+    SnapAppDelegate *del = (SnapAppDelegate *)[[NSApplication sharedApplication] delegate];
     
     NSLog(@"Output: %@", outputString);
     NSLog(@"%@", [paths description]);

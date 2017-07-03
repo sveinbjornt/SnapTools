@@ -61,7 +61,6 @@
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-    return @"Hello";
     return toolItems[rowIndex];
 }
 

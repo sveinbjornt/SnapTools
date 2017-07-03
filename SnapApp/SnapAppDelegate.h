@@ -30,7 +30,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SnapDartAppDelegate : NSObject 
+@interface SnapAppDelegate : NSObject <NSApplicationDelegate>
 
 - (void)newSnapWindowWithPaths:(NSArray *)paths;
 

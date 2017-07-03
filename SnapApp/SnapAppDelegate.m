@@ -29,14 +29,14 @@
 */
 
 #import "Common.h"
-#import "SnapDartAppDelegate.h"
+#import "SnapAppDelegate.h"
 #import "SnapWindowController.h"
 #import "CmdWindowController.h"
 #import "NSWorkspace+Additions.h"
 #import "SnapFileManager.h"
 #import "Alerts.h"
 
-@interface SnapDartAppDelegate ()
+@interface SnapAppDelegate ()
 {
     IBOutlet NSMenu *mainMenu;
     IBOutlet NSMenu *columnsMenu;
@@ -52,7 +52,7 @@
 }
 @end
 
-@implementation SnapDartAppDelegate
+@implementation SnapAppDelegate
 
 - (void)awakeFromNib {
     controllers = [NSMutableArray array];
@@ -137,8 +137,6 @@
 //- (void)newSnapWithPaths:(NSArray *)paths {
 //    
 //}
-
-
 
 #pragma mark -
 

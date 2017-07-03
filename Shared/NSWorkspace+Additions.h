@@ -53,7 +53,7 @@
 - (NSString *)createTempFileWithContents:(NSString *)contentStr encoding:(NSStringEncoding)textEncoding;
 
 - (BOOL)moveFileToTrash:(NSString *)path;
-- (void)showFinderGetInfoForFile:(NSString *)path;
+- (BOOL)showFinderGetInfoForFile:(NSString *)path;
 - (BOOL)setFinderComment:(NSString *)comment forFile:(NSString *)filePath;
 - (NSString *)finderCommentForFile:(NSString *)path;
 - (void)notifyFinderFileChangedAtPath:(NSString *)path;
