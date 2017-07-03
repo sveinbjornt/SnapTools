@@ -51,6 +51,9 @@
     IBOutlet NSSearchField *filterTextField;
     IBOutlet NSTextField *numResultsTextField;
     IBOutlet NSMenu *tableColumnContextualMenu;
+    IBOutlet NSView *statusBarView;
+    IBOutlet NSScrollView *scrollView;
+
 }
 
 - (IBAction)interfaceSizeSelectd:(id)sender;
@@ -96,6 +99,12 @@
     [resultsTableView setDoubleAction:@selector(open:)];
     [resultsTableView setDraggingSourceOperationMask:NSDragOperationCopy|NSDragOperationMove forLocal:NO];
     [self updateColumns];
+    
+    BOOL showStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusBar"];
+    [self setStatusBarHidden:!showStatusBar];
+
+    
+    [self setObserveDefaults:YES];
 }
 
 - (void)updateColumns {
@@ -365,6 +374,44 @@
 
 - (IBAction)runInTerminal:(id)sender{
     
+}
+
+#pragma mark - Key/value observation
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
+    if ([keyPath hasSuffix:@"ShowStatusBar"]) {
+        [self setStatusBarHidden:![[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusBar"]];
+    }
+}
+
+- (void)setStatusBarHidden:(BOOL)hidden {
+    if (hidden) {
+        [statusBarView setHidden:YES];
+        NSRect windowRect = [[self.window contentView] bounds];
+        [scrollView setFrame:windowRect];
+    } else {
+        NSRect windowRect = [[self.window contentView] bounds];
+        windowRect.origin.y = statusBarView.bounds.size.height;
+        windowRect.size.height = windowRect.size.height - statusBarView.bounds.size.height;
+        [scrollView setFrame:windowRect];
+    }
+}
+
+
+- (void)setObserveDefaults:(BOOL)observeDefaults {
+    NSArray *defaults = @[@"ShowStatusBar"];
+    
+    for (NSString *key in defaults) {
+        if (observeDefaults) {
+            [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self
+                                                                      forKeyPath:VALUES_KEYPATH(key)
+                                                                         options:NSKeyValueObservingOptionNew
+                                                                         context:NULL];
+        } else {
+            [[NSUserDefaultsController sharedUserDefaultsController] removeObserver:self forKeyPath:VALUES_KEYPATH(key)];
+        }
+    }
 }
 
 #pragma mark - Table View

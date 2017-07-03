@@ -418,13 +418,12 @@
                                 </menu>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="dqb-sJ-B4W"/>
-                            <menuItem title="Show Status Bar" id="tpB-bf-Zzu">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Show Status Bar" keyEquivalent="t" id="tpB-bf-Zzu">
                                 <connections>
                                     <binding destination="685" name="value" keyPath="values.ShowStatusBar" id="scN-4a-8TD"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Separate Files and Folders" id="Ctz-T2-jt7">
+                            <menuItem title="Separate Files and Folders" enabled="NO" id="Ctz-T2-jt7">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <binding destination="685" name="value" keyPath="values.SeparateFilesAndFolders" id="QXd-Jl-R0T"/>
@@ -551,7 +550,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="299" y="-383"/>
+            <point key="canvasLocation" x="79" y="-415"/>
         </menu>
         <customObject id="494" customClass="SnapAppDelegate">
             <connections>

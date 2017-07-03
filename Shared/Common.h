@@ -34,7 +34,7 @@
 #define PROGRAM_MIN_SYS_VERSION     @"10.8.0"
 #define PROGRAM_BUNDLE_IDENTIFIER   @"org.sveinbjorn.Snap"
 #define PROGRAM_AUTHOR              @"Sveinbjorn Thordarson"
-#define PROGRAM_WEBSITE             @"http://sveinbjorn.org/snap"
+#define PROGRAM_WEBSITE             @"http://sveinbjorn.org/snaptools"
 #define PROGRAM_GITHUB_WEBSITE      @"http://github.com/sveinbjornt/SnapTools"
 #define PROGRAM_DONATIONS           @"http://sveinbjorn.org/donations"
 
@@ -53,14 +53,14 @@
 
 #define COLUMNS @[@"Icon", @"Path", @"File Size", @"Kind", @"Date Modified", @"Date Created", @"Date Accessed", @"User:Group", @"Permission", @"UTI"]
 
-#define GENERIC_EXEC_ICON_PATH              @"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns"
-
+#define GENERIC_EXEC_ICON_PATH      @"/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ExecutableBinaryIcon.icns"
 
 #define DEFAULT_TOOL_INSTALL_DIR    @"/usr/local/bin"
 
 // abbreviations
-#define DEFAULTS    [NSUserDefaults standardUserDefaults]
-#define FILEMGR     [NSFileManager defaultManager]
-#define WORKSPACE   [NSWorkspace sharedWorkspace]
+#define DEFAULTS            [NSUserDefaults standardUserDefaults]
+#define FILEMGR             [NSFileManager defaultManager]
+#define WORKSPACE           [NSWorkspace sharedWorkspace]
+#define VALUES_KEYPATH(X)   [NSString stringWithFormat:@"values.%@", (X)]
 
 
