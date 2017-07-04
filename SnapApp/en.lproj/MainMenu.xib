@@ -131,13 +131,15 @@
                                     <action selector="performClose:" target="-1" id="193"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save…" keyEquivalent="s" id="75">
+                            <menuItem title="Save as Bookmark…" keyEquivalent="s" id="75">
                                 <connections>
                                     <action selector="saveDocument:" target="-1" id="362"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Save As…" id="yJL-GW-hRJ">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem isSeparatorItem="YES" id="ch1-84-gxO">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Export" keyEquivalent="E" id="yJL-GW-hRJ">
                                 <connections>
                                     <action selector="saveDocument:" target="-1" id="b3C-ky-ySw"/>
                                 </connections>

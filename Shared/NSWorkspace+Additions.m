@@ -494,14 +494,13 @@ end tell", path, escapedComment];
 
 - (NSString *)kindStringForFile:(NSString *)path {
     NSURL *url = [NSURL fileURLWithPath:path];
-    CFStringRef kindCFStr = nil;
-    LSCopyKindStringForURL((__bridge CFURLRef)url, &kindCFStr);
-    if (kindCFStr != nil) {
-        NSString *kindStr = (__bridge NSString *)kindCFStr;
-        CFRelease(kindCFStr);
-        return kindStr;
+    NSString *kindStr;
+    
+    if (![url getResourceValue:&kindStr forKey:NSURLLocalizedTypeDescriptionKey error:nil]) {
+        return @"Unknown";
     }
-    return @"Unknown";
+    
+    return kindStr;
 }
 
 #pragma mark - Services
@@ -519,6 +518,11 @@ end tell", path, escapedComment];
 #pragma mark - Misc
 
 - (BOOL)openPathInDefaultBrowser:(NSString *)path {
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path] == NO) {
+        NSLog(@"File does not exist: %@", path);
+        return NO;
+    }
+    
     NSURL *url = [NSURL URLWithString:@"http://"];
     NSString *appPath = nil;
     
@@ -535,7 +539,7 @@ end tell", path, escapedComment];
     
     if (!appPath) {
         NSLog(@"Unable to find default browser: %@", [err localizedDescription]);
-        return FALSE;
+        return NO;
     }
     
     [[NSWorkspace sharedWorkspace] openFile:path withApplication:appPath];

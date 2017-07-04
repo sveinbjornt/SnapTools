@@ -395,6 +395,8 @@
         windowRect.origin.y = statusBarView.bounds.size.height;
         windowRect.size.height = windowRect.size.height - statusBarView.bounds.size.height;
         [scrollView setFrame:windowRect];
+        [statusBarView setHidden:NO];
+
     }
 }
 

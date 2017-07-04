@@ -70,6 +70,7 @@
                                     <connections>
                                         <outlet property="dataSource" destination="-2" id="wAh-WZ-RXc"/>
                                         <outlet property="delegate" destination="-2" id="JAQ-EF-21n"/>
+                                        <outlet property="menu" destination="Rvk-nR-1vJ" id="9bm-4G-V9b"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -85,15 +86,18 @@
                         <tableHeaderView key="headerView" id="WMT-3c-Zds">
                             <rect key="frame" x="0.0" y="0.0" width="516" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <connections>
+                                <outlet property="menu" destination="s96-IS-Gkl" id="D3x-2b-oob"/>
+                            </connections>
                         </tableHeaderView>
                     </scrollView>
                     <customView misplaced="YES" id="PkI-58-RQX">
-                        <rect key="frame" x="-1" y="0.0" width="518" height="33"/>
+                        <rect key="frame" x="0.0" y="0.0" width="515" height="33"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="2EA-ff-S6Q">
-                                <rect key="frame" x="5" y="10" width="165" height="14"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="5" y="10" width="164" height="14"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="u6A-f2-BKH">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -101,8 +105,8 @@
                                 </textFieldCell>
                             </textField>
                             <searchField wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="tk9-Ow-kM9">
-                                <rect key="frame" x="386" y="7" width="124" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="383" y="7" width="124" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                 <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="mJf-ct-OFg">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -110,8 +114,8 @@
                                 </searchFieldCell>
                             </searchField>
                             <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="bun-hI-IoF">
-                                <rect key="frame" x="349" y="10" width="32" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="346" y="10" width="32" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                 <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Filter" id="hM1-3g-xVr">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -119,8 +123,8 @@
                                 </textFieldCell>
                             </textField>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="ixm-kz-bg5">
-                                <rect key="frame" x="220" y="8" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="217" y="8" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                             </progressIndicator>
                         </subviews>
                     </customView>
@@ -129,7 +133,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="kWG-9H-JL6"/>
             </connections>
-            <point key="canvasLocation" x="65.5" y="-960.5"/>
+            <point key="canvasLocation" x="188" y="-1050"/>
         </window>
         <menu id="Rvk-nR-1vJ" userLabel="Item Contextual Menu">
             <items>

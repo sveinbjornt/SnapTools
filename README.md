@@ -4,8 +4,8 @@
 
 ** SnapTools is currently a work in progress **
 
-SnapTools is a collection of command line tools and a GUI app that integrate 
-aspects of the macOS GUI with the UNIX command line interface.
+SnapTools is a collection of tools that integrate aspects of the macOS GUI 
+with the UNIX command line interface.
 
 <!--* [Download SnapTools 1.0]() (Intel 64-bit, 10.8 or later, ~0.5 MB)
 

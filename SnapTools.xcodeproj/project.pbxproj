@@ -28,7 +28,7 @@
 		F47B5EE21EC8A60700AC2DEA /* copy in Resources */ = {isa = PBXBuildFile; fileRef = F47B5ECD1EC8A10000AC2DEA /* copy */; };
 		F47B5EE31EC8A60B00AC2DEA /* snap in Resources */ = {isa = PBXBuildFile; fileRef = F430C24714DEF3DC0026CBDB /* snap */; };
 		F47B5EE41EC8A79E00AC2DEA /* PathParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F1188E1EBF69F400E99B9A /* PathParser.m */; };
-		F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */; };
+		F47D65C01EC5F9E20000ABAE /* SnapDocumentIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = F47D65BF1EC5F9E20000ABAE /* SnapDocumentIcon.icns */; };
 		F4843D0E1F0AAF450092A256 /* comment in Resources */ = {isa = PBXBuildFile; fileRef = F48A68541F0A908A003C6F8D /* comment */; };
 		F4843D121F0ABE220092A256 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = F4843D101F0ABE220092A256 /* Documentation.html */; };
 		F485853F14D46E4300B007CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F485853E14D46E4300B007CA /* Cocoa.framework */; };
@@ -250,7 +250,7 @@
 		F47B5EC81EC89EB600AC2DEA /* CHANGES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGES.txt; sourceTree = "<group>"; };
 		F47B5ECD1EC8A10000AC2DEA /* copy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = copy; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B5EEA1EC8ACC800AC2DEA /* show */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = show; sourceTree = BUILT_PRODUCTS_DIR; };
-		F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = DocumentIcon.icns; sourceTree = "<group>"; };
+		F47D65BF1EC5F9E20000ABAE /* SnapDocumentIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = SnapDocumentIcon.icns; sourceTree = "<group>"; };
 		F4843D101F0ABE220092A256 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html.documentation; path = Documentation.html; sourceTree = "<group>"; };
 		F4843D111F0ABE220092A256 /* Documentation.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
 		F485853A14D46E4300B007CA /* Snap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -525,7 +525,7 @@
 		F485854514D46E4300B007CA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F47D65BF1EC5F9E20000ABAE /* DocumentIcon.icns */,
+				F47D65BF1EC5F9E20000ABAE /* SnapDocumentIcon.icns */,
 				F4F118781EBE151700E99B9A /* Images.xcassets */,
 				F485855314D46E4300B007CA /* MainMenu.xib */,
 				F4F118971EBF6DBA00E99B9A /* CmdWindow.xib */,
@@ -893,7 +893,7 @@
 				F4F118821EBF431E00E99B9A /* SnapWindow.xib in Resources */,
 				F485854F14D46E4300B007CA /* Credits.rtf in Resources */,
 				F485855514D46E4300B007CA /* MainMenu.xib in Resources */,
-				F47D65C01EC5F9E20000ABAE /* DocumentIcon.icns in Resources */,
+				F47D65C01EC5F9E20000ABAE /* SnapDocumentIcon.icns in Resources */,
 				F4F118791EBE151700E99B9A /* Images.xcassets in Resources */,
 				F485857014D470A200B007CA /* Defaults.plist in Resources */,
 			);
@@ -1358,7 +1358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "";
@@ -1392,7 +1392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 				SHARED_PRECOMPS_DIR = "";
 			};

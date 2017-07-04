@@ -12,7 +12,7 @@
 				<string>snap</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>DocumentIcon.icns</string>
+			<string>SnapDocumentIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>Snap Document</string>
 			<key>CFBundleTypeRole</key>
