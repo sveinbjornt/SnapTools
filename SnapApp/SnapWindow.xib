@@ -9,9 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SnapWindowController">
             <connections>
                 <outlet property="filterTextField" destination="tk9-Ow-kM9" id="K4k-VN-MsX"/>
-                <outlet property="labelMenuItem" destination="RVV-ba-EKc" id="FcK-ax-V8P"/>
                 <outlet property="numResultsTextField" destination="2EA-ff-S6Q" id="qVU-0S-VPc"/>
-                <outlet property="openWithMenuItem" destination="dcw-p4-Fbt" id="T94-fD-vLi"/>
                 <outlet property="progressIndicator" destination="ixm-kz-bg5" id="1pZ-6Y-Lit"/>
                 <outlet property="resultsTableView" destination="ckq-25-pEk" id="0qg-cJ-fjn"/>
                 <outlet property="scrollView" destination="pWn-G7-DW9" id="8lO-S2-70Q"/>
@@ -70,7 +68,6 @@
                                     <connections>
                                         <outlet property="dataSource" destination="-2" id="wAh-WZ-RXc"/>
                                         <outlet property="delegate" destination="-2" id="JAQ-EF-21n"/>
-                                        <outlet property="menu" destination="Rvk-nR-1vJ" id="9bm-4G-V9b"/>
                                     </connections>
                                 </tableView>
                             </subviews>
@@ -135,88 +132,6 @@
             </connections>
             <point key="canvasLocation" x="188" y="-1050"/>
         </window>
-        <menu id="Rvk-nR-1vJ" userLabel="Item Contextual Menu">
-            <items>
-                <menuItem title="Open" id="Fco-gZ-6Kw">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="open:" target="-2" id="Dn9-pN-wRY"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Open With" id="dcw-p4-Fbt">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Open With" id="oRe-x3-Cbg">
-                        <items>
-                            <menuItem title="Item" id="Aoo-EK-7lc">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="Show in Finder" id="tJp-JF-mnK">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="showInFinder:" target="-2" id="yCO-hj-uzw"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Get Info" id="PoQ-rg-MRy">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="getInfo:" target="-2" id="Li3-px-eN0"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="c0M-Ry-Cul"/>
-                <menuItem title="Copy" id="Ftw-XW-lnA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="copyFile:" target="-2" id="cMh-wi-FwU"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Quick Look" id="tPL-6J-Pjz">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="quickLook:" target="-2" id="3pO-sY-6ED"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="PEj-dy-0vU"/>
-                <menuItem title="Label" id="RVV-ba-EKc">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Label" id="2Sq-ty-ZsH">
-                        <items>
-                            <menuItem title="Item" id="8cU-L3-Mb0">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="uKa-GM-8UA"/>
-                <menuItem title="Delete" image="Delete" id="SxF-Es-6Hp">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="deleteFile:" target="-2" id="FC9-Yv-1D9"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Move to Trash" image="Trash" id="u8g-rM-J4i">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="moveToTrash:" target="-2" id="YJF-vR-4uA"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="Mdd-Zk-oo2"/>
-                <menuItem title="Open Directory in Terminal" id="hq3-VT-Iti">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="openDirectoryInTerminal:" target="-2" id="9qf-rE-Gid"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Run in Terminal" id="gTK-9D-aur">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="runInTerminal:" target="-2" id="ftl-Nz-qKM"/>
-                    </connections>
-                </menuItem>
-            </items>
-        </menu>
         <menu id="s96-IS-Gkl" userLabel="Column Menu">
             <items>
                 <menuItem title="Icon" enabled="NO" id="yXD-a4-xwi">
@@ -252,8 +167,4 @@
             </items>
         </menu>
     </objects>
-    <resources>
-        <image name="Delete" width="16" height="16"/>
-        <image name="Trash" width="16" height="16"/>
-    </resources>
 </document>

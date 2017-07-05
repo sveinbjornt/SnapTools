@@ -39,7 +39,6 @@
 @interface SnapAppDelegate ()
 {
     IBOutlet NSMenu *mainMenu;
-    IBOutlet NSMenu *columnsMenu;
     IBOutlet NSMenu *historyMenu;
     IBOutlet NSMenu *bookmarksMenu;
     
@@ -56,7 +55,6 @@
 
 - (void)awakeFromNib {
     controllers = [NSMutableArray array];
-    [self createColumnsSubmenu];
     [self createStatusMenuItem];
 }
 
@@ -162,17 +160,6 @@
     
     [[statusItem image] setTemplate:YES];
     [statusItem setEnabled:YES];
-}
-
-- (void)createColumnsSubmenu {
-    for (NSString *colName in COLUMNS) {
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:colName action:nil keyEquivalent:@""];
-        [columnsMenu insertItem:item atIndex:0];
-        
-        NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
-        [bindingOptions setObject:@(YES) forKey:NSValidatesImmediatelyBindingOption];
-        [item bind:@"value" toObject:[NSUserDefaults standardUserDefaults] withKeyPath:colName options:@{}];
-    }
 }
 
 #pragma mark - Command Window

@@ -32,6 +32,8 @@
 
 @interface SnapAppDelegate : NSObject <NSApplicationDelegate>
 
+@property (assign, nonatomic) IBOutlet NSMenu *actionMenu;
+
 - (void)newSnapWindowWithPaths:(NSArray *)paths;
 
 @end

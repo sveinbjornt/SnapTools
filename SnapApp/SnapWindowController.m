@@ -33,10 +33,10 @@
 #import <sys/stat.h>
 
 #import "SnapWindowController.h"
+#import "SnapAppDelegate.h"
 
 #import "Common.h"
 #import "SnapItem.h"
-#import "NSFileManager+FileOrFolderSize.h"
 #import "NSWorkspace+Additions.h"
 
 @interface SnapWindowController ()
@@ -53,10 +53,9 @@
     IBOutlet NSMenu *tableColumnContextualMenu;
     IBOutlet NSView *statusBarView;
     IBOutlet NSScrollView *scrollView;
-
 }
 
-- (IBAction)interfaceSizeSelectd:(id)sender;
+- (IBAction)interfaceSizeSelected:(id)sender;
 - (IBAction)columnChanged:(id)sender;
 - (IBAction)open:(id)sender;
 - (IBAction)showInFinder:(id)sender;
@@ -99,11 +98,14 @@
     [resultsTableView setDoubleAction:@selector(open:)];
     [resultsTableView setDraggingSourceOperationMask:NSDragOperationCopy|NSDragOperationMove forLocal:NO];
     [self updateColumns];
+
+    SnapAppDelegate *appDelegate = (SnapAppDelegate *)[[NSApplication sharedApplication] delegate];
+    [resultsTableView setMenu:[appDelegate actionMenu]];
     
+    // status bar
     BOOL showStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusBar"];
     [self setStatusBarHidden:!showStatusBar];
 
-    
     [self setObserveDefaults:YES];
 }
 
@@ -163,11 +165,12 @@
     [resultsTableView removeTableColumn:[resultsTableView tableColumnWithIdentifier:attr]];
 }
 
-- (IBAction)interfaceSizeSelectd:(id)sender {
+- (IBAction)interfaceSizeSelected:(id)sender {
     
 }
     
 - (IBAction)filterFind:(id)sender {
+    [DEFAULTS setBool:YES forKey:@"ShowStatusBar"];
     [self.window makeFirstResponder:filterTextField];
 }
 
@@ -293,13 +296,13 @@
 
 - (void)performSelector:(SEL)selector onIndexes:(NSIndexSet *)indexSet {
     [[resultsTableView selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger row, BOOL *stop){
-//         [results[row] performSelector:selector];
+         [results[row] performSelector:selector];
     }];
 }
 
 - (void)performSelector:(SEL)selector onIndexes:(NSIndexSet *)indexSet withObject:(id)obj {
     [[resultsTableView selectedRowIndexes] enumerateIndexesUsingBlock:^(NSUInteger row, BOOL *stop){
-//         [results[row] performSelector:selector withObject:obj];
+         [results[row] performSelector:selector withObject:obj];
     }];
 }
 

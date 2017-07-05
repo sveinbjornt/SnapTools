@@ -364,74 +364,139 @@
                 </menuItem>
                 <menuItem title="View" id="7mv-Ft-Qdz">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="View" id="Cxd-Fl-oE8">
+                    <menu key="submenu" title="View" id="GIY-vt-YKU">
                         <items>
-                            <menuItem title="Columns" id="5h3-oy-vCM">
+                            <menuItem title="Columns" id="0jE-8r-2Z1">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Columns" id="Sei-Mr-r51"/>
+                                <menu key="submenu" title="Columns" id="5AV-E8-k27"/>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="jZv-kN-S2O"/>
-                            <menuItem title="List Size" id="itA-Kd-dRd">
+                            <menuItem isSeparatorItem="YES" id="NzI-zI-8LJ"/>
+                            <menuItem title="List Size" id="4df-cu-eYX">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="List Size" id="dc5-n5-ad6">
+                                <menu key="submenu" title="List Size" id="mbN-fk-4vI">
                                     <items>
-                                        <menuItem title="Very Small" id="hTQ-iH-gkH">
+                                        <menuItem title="Very Small" id="8sc-3n-YOC">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="Ywd-Jd-ADm"/>
-                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Small" id="sOu-h8-y2v">
+                                        <menuItem title="Small" id="Amt-ne-Imt">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="NOb-HD-zzr"/>
-                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Medium" id="bJ6-4R-oNT">
+                                        <menuItem title="Medium" id="PrE-bX-KRW">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="VWw-UA-PgI"/>
-                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Large" id="kaG-zX-G0N">
+                                        <menuItem title="Large" id="W7F-6h-7WW">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="QC7-UH-fw7"/>
-                                            </connections>
                                         </menuItem>
-                                        <menuItem title="Very Large" id="9tN-09-QSz">
+                                        <menuItem title="Very Large" id="lBR-S2-zNv">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="xcp-C7-5JZ"/>
+                                        <menuItem title="Decrease List Size " keyEquivalent="-" id="w3h-xY-HDZ">
                                             <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="OdY-Mh-Sla"/>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="Iwy-AC-CFo"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="bzH-57-ETe"/>
-                                        <menuItem title="Decrease List Size " keyEquivalent="-" id="qd5-x5-YYM">
+                                        <menuItem title="Increase List Size " keyEquivalent="+" id="dlY-YH-Cgk">
                                             <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="2gR-cy-7TX"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Increase List Size " keyEquivalent="+" id="u8J-VT-w5e">
-                                            <connections>
-                                                <action selector="interfaceSizeSelectd:" target="-1" id="8pt-gR-YvK"/>
+                                                <action selector="interfaceSizeSelectd:" target="-1" id="Ciu-wj-tqO"/>
                                             </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="dqb-sJ-B4W"/>
-                            <menuItem title="Show Status Bar" keyEquivalent="t" id="tpB-bf-Zzu">
+                            <menuItem isSeparatorItem="YES" id="UBF-K3-SOS"/>
+                            <menuItem title="Show Status Bar" keyEquivalent="t" id="XwD-uY-gQ4">
                                 <connections>
-                                    <binding destination="685" name="value" keyPath="values.ShowStatusBar" id="scN-4a-8TD"/>
+                                    <binding destination="685" name="value" keyPath="values.ShowStatusBar" id="Rrr-TL-pd9"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Separate Files and Folders" enabled="NO" id="Ctz-T2-jt7">
+                            <menuItem title="Separate Files and Folders" enabled="NO" id="eMG-d0-DAy">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <binding destination="685" name="value" keyPath="values.SeparateFilesAndFolders" id="QXd-Jl-R0T"/>
+                                    <binding destination="685" name="value" keyPath="values.SeparateFilesAndFolders" id="PCF-Zt-zQd"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="hN4-MF-GLa"/>
+                            <menuItem isSeparatorItem="YES" id="TEz-dS-zl5"/>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Action" id="FDh-3h-gjY" userLabel="Action">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Action" id="3bE-xh-bfd" userLabel="Action Menu">
+                        <items>
+                            <menuItem title="Open" id="uhg-JV-Yca">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="open:" target="-1" id="UlA-K9-3c3"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open With" id="hP0-Dz-hiL">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Open With" id="ryU-Ec-Dkx">
+                                    <items>
+                                        <menuItem title="Item" id="96z-Rm-oXJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Show in Finder" keyEquivalent="r" id="KLC-DD-rtE">
+                                <connections>
+                                    <action selector="showInFinder:" target="-1" id="5B7-B5-tsU"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Get Info" keyEquivalent="i" id="24P-It-hhw">
+                                <connections>
+                                    <action selector="getInfo:" target="-1" id="3a8-1y-aJF"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="ASJ-t0-wei"/>
+                            <menuItem title="Copy" keyEquivalent="c" id="9kY-rO-0jG">
+                                <connections>
+                                    <action selector="copyFile:" target="-1" id="Fld-NB-3C5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Quick Look" keyEquivalent="y" id="ZYV-gk-Zti">
+                                <connections>
+                                    <action selector="quickLook:" target="-1" id="uIk-z5-LE7"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="76g-Me-Jcb"/>
+                            <menuItem title="Label" id="Wtt-hJ-EXX">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Label" id="dVh-AQ-fd6">
+                                    <items>
+                                        <menuItem title="Item" id="aTH-Ma-rnI">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="gT3-Rx-ody"/>
+                            <menuItem title="Delete" image="Delete" id="bnn-uz-KxI">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                <connections>
+                                    <action selector="deleteFile:" target="-1" id="hdW-Uy-agr"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Move to Trash" image="Trash" id="uDO-PN-0GN">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                <connections>
+                                    <action selector="moveToTrash:" target="-1" id="egd-Q3-9SQ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="w6q-kH-YwE"/>
+                            <menuItem title="Open Directory in Terminal" keyEquivalent="T" id="Rpd-jP-zii">
+                                <connections>
+                                    <action selector="openDirectoryInTerminal:" target="-1" id="8DO-NP-5Nz"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Run in Terminal" keyEquivalent="R" id="odb-nC-Kfd"/>
                         </items>
                     </menu>
                 </menuItem>
@@ -554,10 +619,10 @@
             </items>
             <point key="canvasLocation" x="79" y="-415"/>
         </menu>
-        <customObject id="494" customClass="SnapAppDelegate">
+        <customObject id="494" userLabel="SnapAppDelegate" customClass="SnapAppDelegate">
             <connections>
+                <outlet property="actionMenu" destination="3bE-xh-bfd" id="pzY-Ab-r0G"/>
                 <outlet property="bookmarksMenu" destination="3Zo-cd-lTN" id="F47-A2-0cc"/>
-                <outlet property="columnsMenu" destination="Sei-Mr-r51" id="plq-75-D4h"/>
                 <outlet property="historyMenu" destination="Szk-X6-XqV" id="ihK-PF-KuK"/>
                 <outlet property="mainMenu" destination="29" id="gZk-IZ-CFf"/>
             </connections>
@@ -907,4 +972,8 @@ DQ
             </connections>
         </customObject>
     </objects>
+    <resources>
+        <image name="Delete" width="16" height="16"/>
+        <image name="Trash" width="16" height="16"/>
+    </resources>
 </document>

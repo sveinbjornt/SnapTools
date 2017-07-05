@@ -2,15 +2,31 @@
 
 # SnapTools
 
-** SnapTools is currently a work in progress **
+**SnapTools is currently a work in progress**
 
 SnapTools is a collection of tools that integrate aspects of the macOS GUI 
 with the UNIX command line interface.
 
-<!--* [Download SnapTools 1.0]() (Intel 64-bit, 10.8 or later, ~0.5 MB)
+<!--* [Download SnapTools 1.0]() (Intel 64-bit, 10.8 or later, ~0.5 MB) -->
 
+SnapTools contains the following programs:
+
+* **Snap.app** - shows windows with files fed in from command line
+* **snap** - display input files in a Snap window
+* **comment** - set or show file's Finder/Spotlight comment
+* **copy** - copy file representation(s) to clipboard
+* **getinfo** - show Finder's 'Get Info window for files(s)
+* **label** - set or print file labels
+* **move** - tell Finder to move file(s)
+* **paths** - show all paths in input
+* **show** - show files(s) in the Finder
+* **trash** - move file(s) to the Trash
+
+Together, they make interaction between the window environment and command line
+a great deal easier.
+ 
+<!--
 ## Screenshot
-
 <img src="images/snaptools_screenshot.png" style="max-width:100%;" alt="SnapTools Screenshot">
 -->
 

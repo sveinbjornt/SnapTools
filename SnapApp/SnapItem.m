@@ -35,7 +35,6 @@
 #import "SnapItem.h"
 
 #import "Common.h"
-#import "NSFileManager+FileOrFolderSize.h"
 #import "NSWorkspace+Additions.h"
 
 @interface SnapItem()
@@ -45,10 +44,6 @@
     
     NSMutableDictionary *attr;
 }
-
-- (void)setAttr:(id)obj forKey:(NSString *)key;
-- (BOOL)hasAttr:(NSString *)key;
-- (id)calcAttr:(NSString *)key;
 
 @end
 
@@ -67,7 +62,7 @@
 - (instancetype)initWithPath:(NSString *)path {
     if ((self = [self init])) {
         [self setAttr:path forKey:@"Path"];
-        _isDirectory = [FILEMGR isFolder:path];
+        [FILEMGR fileExistsAtPath:path isDirectory:&_isDirectory];
     }
     return self;
 }
@@ -113,18 +108,15 @@
     }
     // size
     else if ([theAttribute isEqualToString:@"Size"]) {
+        
         if (self.isDirectory) {
-//            if ([DEFAULTS objectforKey:@"CalculateFolderSizes"])
-//                [self setAttr:[FILEMGR fileOrFolderSizeAsHumanReadable:[self path]] forKey:@"Size"];
-//            else
             [self setAttr:@"-" forKey:theAttribute];
-        }
-        else {
+        } else {
             [self _stat];
             
             NSString *sizeStr;
             if ([[DEFAULTS objectForKey:@"UseHumanReadableSizes"] boolValue]) {
-                sizeStr = [FILEMGR sizeAsHumanReadable:statInfo.st_size];
+                sizeStr = [WORKSPACE fileSizeAsHumanReadableString:statInfo.st_size];
             } else {
                 sizeStr = [NSString stringWithFormat:@"%lld", statInfo.st_size, nil];
             }
@@ -177,7 +169,7 @@
         [self setAttr:uti forKey:theAttribute];
     }
     else if ([theAttribute isEqualToString:@"HandlerApps"]) {
-        NSMutableArray *apps = [NSMutableArray arrayWithCapacity:255];
+        NSMutableArray *apps = [NSMutableArray array];
         
         // first, get default app
         NSString *defaultApp = [[NSWorkspace sharedWorkspace] defaultApplicationForFile:[self path]];
