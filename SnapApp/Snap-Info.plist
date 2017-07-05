@@ -66,7 +66,7 @@
 			<string>Snap Document</string>
 			<key>UTTypeIconFile</key>
 			<array>
-				<string>DocumentIcon.icns</string>
+				<string>SnapDocumentIcon.icns</string>
 			</array>
 			<key>UTTypeIdentifier</key>
 			<string>org.sveinbjorn.snap-document</string>

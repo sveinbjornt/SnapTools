@@ -40,8 +40,8 @@
 
 @interface SnapItem()
 {
-    struct stat statInfo;
     BOOL statLoaded;
+    struct stat statInfo;
     
     NSMutableDictionary *attr;
 }
@@ -58,7 +58,7 @@
 
 - (instancetype)init {
     if ((self = [super init])) {
-        attr = [[NSMutableDictionary alloc] initWithCapacity:12];
+        attr = [NSMutableDictionary dictionary];
         statLoaded = FALSE;
     }
     return self;
@@ -105,7 +105,6 @@
 - (id)calcAttr:(NSString *)theAttribute {
     // icon
     if ([theAttribute isEqualToString:@"Icon"]) {
-        // icon
         NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:[self path]];
         if (icon) {
             [icon setSize:NSMakeSize(16,16)];
@@ -218,22 +217,7 @@
 }
 
 - (void)getInfo {
-	NSString *type = (self.isDirectory && ![[self path] hasSuffix:@".app"]) ? @"folder" : @"file";
-	NSString *osaScript = [NSString stringWithFormat:
-                           @"tell application \"Finder\"\n\
-                           \tactivate\n\
-                           \topen the information window of %@ POSIX file \"%@\"\n\
-                           end tell", type, [self path], nil];
-	
-	NSTask	*theTask = [[NSTask alloc] init];
-	
-	//initialize task -- we launch the AppleScript via the 'osascript' CLI program
-	[theTask setLaunchPath:@"/usr/bin/osascript"];
-	[theTask setArguments:@[@"-e", osaScript]];
-	[theTask launch];
-    //NSLog([theTask fullDescription]);
-    //[theTask waitUntilExit];
-    //[theTask release];
+    [WORKSPACE showFinderGetInfoForFile:[self path]];
 }
 
 - (void)quickLook {
@@ -248,12 +232,10 @@
 }
 
 - (void)moveToTrash {
-    NSString *trashPath = [[NSString stringWithFormat:@"~/.Trash/%@", [[self path] lastPathComponent]] stringByExpandingTildeInPath];
-    while ([FILEMGR fileExistsAtPath:trashPath]) {
-        [trashPath stringByAppendingString:@" copy"];
+    if ([WORKSPACE moveFileToTrash:[self path]] == NO) {
+        NSBeep();
     }
-    [FILEMGR moveItemAtPath:[self path] toPath:trashPath error:nil];
-    [self setAttr:trashPath forKey:@"Path"];
+//    [self setAttr:trashPath forKey:@"Path"];
 }
 
 #pragma mark - Stat

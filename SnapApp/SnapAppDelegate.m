@@ -193,7 +193,7 @@
     NSArray *historyItems = [SnapFileManager readHistory];
   
     // Create icon
-    NSImage *icon = [NSImage imageNamed:@"DocumentIcon"];
+    NSImage *icon = [NSImage imageNamed:@"SnapDocumentIcon"];
     [icon setSize:NSMakeSize(16, 16)];
 
     
