@@ -29,7 +29,6 @@
 */
 
 #import <Cocoa/Cocoa.h>
-#import "NSString+CarbonFSRefCreation.h"
 
 @interface NSWorkspace (Additions)
 

@@ -302,18 +302,14 @@
 }
 
 - (NSString *)fileSizeAsHumanReadableString:(UInt64)size {
-    NSString *str;
-    
     if (size < 1024ULL) {
-        str = [NSString stringWithFormat:@"%u bytes", (unsigned int)size];
+        return [NSString stringWithFormat:@"%u bytes", (unsigned int)size];
     } else if (size < 1048576ULL) {
-        str = [NSString stringWithFormat:@"%llu KB", (UInt64)size / 1024];
+        return [NSString stringWithFormat:@"%llu KB", (UInt64)size / 1024];
     } else if (size < 1073741824ULL) {
-        str = [NSString stringWithFormat:@"%.1f MB", size / 1048576.0];
-    } else {
-        str = [NSString stringWithFormat:@"%.1f GB", size / 1073741824.0];
+        return [NSString stringWithFormat:@"%.1f MB", size / 1048576.0];
     }
-    return str;
+    return [NSString stringWithFormat:@"%.1f GB", size / 1073741824.0];
 }
 
 #pragma mark - Temp file
