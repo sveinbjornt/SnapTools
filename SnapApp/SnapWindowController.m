@@ -44,9 +44,6 @@
     NSMutableArray  *results;
     
     IBOutlet NSTableView *resultsTableView;
-    IBOutlet NSMenu *contextualMenu;
-    IBOutlet NSMenuItem *openWithMenuItem;
-    IBOutlet NSMenuItem *labelMenuItem;
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSSearchField *filterTextField;
     IBOutlet NSTextField *numResultsTextField;
@@ -100,7 +97,11 @@
     [self updateColumns];
 
     SnapAppDelegate *appDelegate = (SnapAppDelegate *)[[NSApplication sharedApplication] delegate];
-    [resultsTableView setMenu:[appDelegate actionMenu]];
+    NSMenu *menu = [appDelegate actionMenu];
+    [resultsTableView setMenu:menu];
+    
+    [[[menu itemAtIndex:1] submenu] setDelegate:self];
+//    [menu setDelegate:self];
     
     // status bar
     BOOL showStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowStatusBar"];
@@ -220,28 +221,17 @@
 	// we do this lazily
 //    NSIndexSet *indexSet = [self selectedItems];
 //    NSString *path = [[results objectAtIndex:[indexSet firstIndex]] path];
-    NSArray *selectedItems = [results objectsAtIndexes:[self selectedItems]];
+    NSArray *items = [results objectsAtIndexes:[self selectedItems]];
     
-    [openWithMenuItem setSubmenu:[self openWithMenuForItems:selectedItems]];
-}
-
-- (NSMenuItem *)menuItemForApp:(NSString *)path {
-    NSString *title = [[NSFileManager defaultManager] displayNameAtPath:path];
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:title action:@selector(openWithSender:) keyEquivalent:@""];
-    NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:path];
-    [icon setSize:NSMakeSize(16,16)];
-    [item setImage:icon];
-    [item setTarget:self];
-    return item;
-}
-
-- (NSMenu *)openWithMenuForItems:(NSArray *)items {
-	NSMenu *submenu = [[NSMenu alloc] initWithTitle:@"Open With"];
-    if (![items count]) {
+    
+    NSMenu *submenu = menu;
+    [submenu removeAllItems];
+    
+    if ([items count] == 0) {
         [submenu addItemWithTitle:@"None" action:nil keyEquivalent:@""];
         [submenu addItem:[NSMenuItem separatorItem]];
-        [submenu addItemWithTitle:@"Select..." action:nil keyEquivalent:@""];
-        return submenu;
+        [submenu addItemWithTitle:@"Select…" action:nil keyEquivalent:@""];
+        return;
     }
     
     //get default app for first file, and then separator
@@ -249,18 +239,18 @@
     if (!firstFileApps || ![firstFileApps count]) {
         [submenu addItemWithTitle:@"None" action:nil keyEquivalent:@""];
         [submenu addItem:[NSMenuItem separatorItem]];
-        [submenu addItemWithTitle:@"Select..." action:nil keyEquivalent:@""];
-        return submenu;
+        [submenu addItemWithTitle:@"Select…" action:@selector(selectAppOpenWith:) keyEquivalent:@""];
+        return;
     }
-    
+
     NSString *defaultAppPath = ([items count] > 1) ? nil : firstFileApps[0];
     if (defaultAppPath) {
-        [submenu addItem:[self menuItemForApp:defaultAppPath]];
+        [submenu addItem:[self menuItemForApp:defaultAppPath default:YES]];
         [submenu addItem:[NSMenuItem separatorItem]];
     }
     
     // build up array of items
-    NSMutableArray *apps = [NSMutableArray arrayWithCapacity:255];
+    NSMutableArray *apps = [NSMutableArray array];
     for (int i = 0; i < [items count]; i++) {
         //get all apps that open this file and append to apps
         NSArray *appsForFile = [items[i] attr:@"HandlerApps"];
@@ -270,17 +260,35 @@
             }
         }
     }
-        
+    
     if ([apps count] == 0) {
-        [submenu addItemWithTitle:@"None" action:nil keyEquivalent:@""];
-    } else {
-        for (NSString *appPath in [apps sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)])
-            [submenu addItem:[self menuItemForApp:appPath]];
+        return;
+    }
+    
+    NSArray *sortedApps = [apps sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [[obj1 lastPathComponent] caseInsensitiveCompare:[obj2 lastPathComponent]];
+    }];
+    for (NSString *appPath in sortedApps) {
+        [submenu addItem:[self menuItemForApp:appPath default:NO]];
     }
     
     [submenu addItem:[NSMenuItem separatorItem]];
-    [submenu addItemWithTitle:@"Select..." action:nil keyEquivalent:@""];
-    return submenu;
+    [submenu addItemWithTitle:@"Select…" action:@selector(selectAppOpenWith:) keyEquivalent:@""];
+}
+
+- (NSMenuItem *)menuItemForApp:(NSString *)appPath default:(BOOL)isDefault {
+    NSString *name = [[NSFileManager defaultManager] displayNameAtPath:appPath];
+    NSString *title = isDefault ? [NSString stringWithFormat:@"%@ (default)", name] : name;
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:name
+                                                  action:@selector(openWithSender:)
+                                           keyEquivalent:@""];
+    NSImage *icon = [[NSWorkspace sharedWorkspace] iconForFile:appPath];
+    [icon setSize:NSMakeSize(16,16)];
+    [item setImage:icon];
+    [item setTarget:self];
+    [item setToolTip:appPath];
+    
+    return item;
 }
 
 #pragma mark - File functions
@@ -320,7 +328,7 @@
 }
 
 -(IBAction)openWithSender:(id)sender {
-    [self performSelector:@selector(openWithApplication:) onIndexes:[self selectedItems] withObject:[sender title]];
+    [self performSelector:@selector(openWithApplication:) onIndexes:[self selectedItems] withObject:[sender toolTip]];
 }
 
 - (IBAction)showInFinder:(id)sender {

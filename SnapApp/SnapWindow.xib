@@ -14,6 +14,7 @@
                 <outlet property="resultsTableView" destination="ckq-25-pEk" id="0qg-cJ-fjn"/>
                 <outlet property="scrollView" destination="pWn-G7-DW9" id="8lO-S2-70Q"/>
                 <outlet property="statusBarView" destination="PkI-58-RQX" id="WsZ-sS-Yug"/>
+                <outlet property="tableColumnContextualMenu" destination="s96-IS-Gkl" id="2Ot-Sa-5xr"/>
                 <outlet property="window" destination="zT2-vk-yzc" id="tr1-WY-lFF"/>
             </connections>
         </customObject>

@@ -12,7 +12,7 @@ with the UNIX command line interface.
 SnapTools contains the following programs:
 
 * **Snap.app** - shows windows with files fed in from command line
-* **snap** - display input files in a Snap window
+* **snap** - open a window in Snap.app with file(s)
 * **comment** - set or show file's Finder/Spotlight comment
 * **copy** - copy file representation(s) to clipboard
 * **getinfo** - show Finder's 'Get Info window for files(s)

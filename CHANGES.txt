@@ -2,8 +2,10 @@ CHANGES.txt
 
 DONE * Create trash tool
 DONE * Create tool installer/uninstaller
+DONE * Enable contextual menu for Snap windows
 
-* Re-enable contextual menu for Snap windows
+* Version breakdown in Open With menu, just like Finder
+* GUI snap app should prompt (with remembrance) when asked to open many files (>50) at once
 * Prompt to install command line tools on launch
 * Custom tool install location via Cmd-Click
 * Ignore hidden files vs. not ignore flags

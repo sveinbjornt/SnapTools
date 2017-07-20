@@ -44,7 +44,6 @@
     
     NSMutableDictionary *attr;
 }
-
 @end
 
 @implementation SnapItem
@@ -147,12 +146,14 @@
         NSString *kindStr = [[NSWorkspace sharedWorkspace] kindStringForFile:[self path]];
         [self setAttr:kindStr forKey:theAttribute];
     }
+    // permissions
     else if ([theAttribute isEqualToString:@"Permissions"]) {
         [self _stat];
         char buf[20];
         strmode(statInfo.st_mode, (char *)&buf);
         [self setAttr:@((char *)&buf) forKey:theAttribute];
     }
+    // owner:group
     else if ([theAttribute isEqualToString:@"User:Group"]) {
         [self _stat];
         const char *u, *g;
@@ -163,11 +164,13 @@
         NSString *ugStr = [NSString stringWithFormat:@"%@:%@", user, group, nil];
         [self setAttr:ugStr forKey:theAttribute];
     }
+    // uniform type identifier
     else if ([theAttribute isEqualToString:@"UTI"]) {
         NSString *type = [[NSWorkspace sharedWorkspace] typeOfFile:[self path] error:nil];
         NSString *uti = (type == nil) ? @"" : type;
         [self setAttr:uti forKey:theAttribute];
     }
+    // handler apps
     else if ([theAttribute isEqualToString:@"HandlerApps"]) {
         NSMutableArray *apps = [NSMutableArray array];
         

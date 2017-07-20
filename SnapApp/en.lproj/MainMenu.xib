@@ -108,7 +108,7 @@
                                     <action selector="showCmdWindow:" target="494" id="ehF-tc-AMt"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="New with Files…" keyEquivalent="o" id="hYm-As-vmL">
+                            <menuItem title="New with Files…" keyEquivalent="O" id="hYm-As-vmL">
                                 <connections>
                                     <action selector="showCmdWindow:" target="494" id="Bfy-pQ-Y0L"/>
                                 </connections>
@@ -424,21 +424,14 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Action" id="3bE-xh-bfd" userLabel="Action Menu">
                         <items>
-                            <menuItem title="Open" id="uhg-JV-Yca">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Open" keyEquivalent="o" id="uhg-JV-Yca">
                                 <connections>
                                     <action selector="open:" target="-1" id="UlA-K9-3c3"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open With" id="hP0-Dz-hiL">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Open With" id="ryU-Ec-Dkx">
-                                    <items>
-                                        <menuItem title="Item" id="96z-Rm-oXJ">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                        </menuItem>
-                                    </items>
-                                </menu>
+                                <menu key="submenu" title="Open With" id="ryU-Ec-Dkx"/>
                             </menuItem>
                             <menuItem title="Show in Finder" keyEquivalent="r" id="KLC-DD-rtE">
                                 <connections>
