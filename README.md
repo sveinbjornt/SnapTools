@@ -34,7 +34,7 @@ a great deal easier.
 
 SnapTools is open source software, available under the three-clause BSD license:
 
-> Copyright (c) 2012-2017, Sveinbjorn Thordarson &lt;sveinbjornt@gmail.com&gt;
+> Copyright (c) 2012-2017, Sveinbjorn Thordarson &lt;sveinbjorn@sveinbjorn.org&gt;
 > 
 > Redistribution and use in source and binary forms, with or without modification,
 > are permitted provided that the following conditions are met:

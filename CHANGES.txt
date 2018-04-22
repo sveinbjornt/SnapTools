@@ -4,6 +4,8 @@ DONE * Create trash tool
 DONE * Create tool installer/uninstaller
 DONE * Enable contextual menu for Snap windows
 
+https://github.com/OlehKulykov/LzmaSDKObjC
+* Trash should use Finder to trash files/folders, so undo-redo works
 * Version breakdown in Open With menu, just like Finder
 * GUI snap app should prompt (with remembrance) when asked to open many files (>50) at once
 * Prompt to install command line tools on launch

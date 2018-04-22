@@ -491,6 +491,9 @@ CA
                             </menuItem>
                             <menuItem title="Run in Terminal" keyEquivalent="R" id="odb-nC-Kfd"/>
                         </items>
+                        <connections>
+                            <outlet property="delegate" destination="494" id="F0o-gz-Vyo"/>
+                        </connections>
                     </menu>
                 </menuItem>
                 <menuItem title="History" id="oC9-vR-oLh">

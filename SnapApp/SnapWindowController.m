@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjorn@sveinbjorn.org>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -327,7 +327,7 @@
     
 }
 
--(IBAction)openWithSender:(id)sender {
+- (IBAction)openWithSender:(id)sender {
     [self performSelector:@selector(openWithApplication:) onIndexes:[self selectedItems] withObject:[sender toolTip]];
 }
 

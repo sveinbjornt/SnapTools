@@ -36,7 +36,7 @@ static const int lz4_header_size = sizeof(uint32_t);
     uint32_t original_size = (uint32_t)self.length;
     char *out_buff = (char *)malloc(lz4_header_size + LZ4_compressBound(original_size));
     memcpy(out_buff, &original_size, lz4_header_size);
-    int out_size = compressFunction(self.bytes, out_buff + lz4_header_size, self.length);
+    int out_size = compressFunction(self.bytes, out_buff + lz4_header_size, (int)self.length);
     if (out_size < 0) {
         free(out_buff);
         return nil;

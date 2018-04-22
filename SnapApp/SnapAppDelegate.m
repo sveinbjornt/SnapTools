@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjornt@gmail.com>
+ Copyright (c) 2012-2017, Sveinbjorn Thordarson <sveinbjorn@sveinbjorn.org>
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without modification,
@@ -155,6 +155,8 @@
     [quitItem setAction:@selector(terminate:)];
     [menu addItem:quitItem];
     
+    [menu setDelegate:self];
+    
     [statusItem setMenu:menu];
     [statusItem setImage:[NSImage imageNamed:@"Status Menu Icon"]];
     
@@ -174,8 +176,17 @@
 
 #pragma mark - History & Bookmarks
 
-- (void)menuWillOpen:(NSMenu *)menu {
+- (void)menuDidClose:(NSMenu *)menu {
     //[self constructMenus:self];
+    
+//    if (menu == mainMenu) {
+        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+                ProcessSerialNumber process;
+                GetCurrentProcess(&process);
+                SetFrontProcess(&process);
+
+        return;
+//    }
     
     NSArray *historyItems = [SnapFileManager readHistory];
   
