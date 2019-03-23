@@ -115,8 +115,9 @@ int main(int argc, const char * argv[]) { @autoreleasepool {
         if (!standardInput) {
             return EX_NOINPUT;
         }
+        NSLog(@"Parsing paths from input length %d", [standardInput length]);
         paths = [PathParser parse:standardInput];
-        
+        NSLog(@"Found %d paths", [paths count]);
     } else {
         
         // process file args

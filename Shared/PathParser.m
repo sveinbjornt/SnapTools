@@ -68,6 +68,7 @@
     
     // Separate each line of input, parse it for potential paths
     NSArray *lines = [str componentsSeparatedByString:@"\n"];
+    NSLog(@"Found %d lines", [lines count]);
     for (NSString *l in lines) {
         NSString *line = [self trim:l];
         

@@ -37,7 +37,8 @@
 
 #pragma mark - Application that handle files
 
-- (NSArray *)applicationsForFile:(NSString *)filePath {
+
+- (NSString *)handlerApplicationsForFile:(NSString *)filePath {
     NSURL *url = [NSURL fileURLWithPath:filePath];
     NSMutableArray *appPaths = [[NSMutableArray alloc] initWithCapacity:256];
     
