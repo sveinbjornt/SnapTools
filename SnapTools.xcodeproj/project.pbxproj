@@ -233,6 +233,7 @@
 /* Begin PBXFileReference section */
 		F430C24714DEF3DC0026CBDB /* snap */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = snap; sourceTree = BUILT_PRODUCTS_DIR; };
 		F430C24914DEF3DC0026CBDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F46A5AB32289AA9B0079B737 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F47B45181EE5768200D79DFF /* trash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = trash; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47B451F1EE576C200D79DFF /* trash.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; name = trash.1; path = Tools/trash/trash.1; sourceTree = SOURCE_ROOT; };
 		F47B45201EE576C200D79DFF /* trash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = trash.m; path = Tools/trash/trash.m; sourceTree = SOURCE_ROOT; };
@@ -258,7 +259,6 @@
 		F485854E14D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		F485855014D46E4300B007CA /* SnapAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnapAppDelegate.h; sourceTree = "<group>"; };
 		F485855114D46E4300B007CA /* SnapAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapAppDelegate.m; sourceTree = "<group>"; };
-		F485855414D46E4300B007CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F485855B14D46E8200B007CA /* SnapWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnapWindowController.h; sourceTree = "<group>"; };
 		F485855C14D46E8200B007CA /* SnapWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnapWindowController.m; sourceTree = "<group>"; };
 		F485856F14D470A200B007CA /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Defaults.plist; sourceTree = "<group>"; };
@@ -798,7 +798,7 @@
 		F485853114D46E4300B007CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				TargetAttributes = {
 					F47B45171EE5768200D79DFF = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -836,10 +836,11 @@
 			};
 			buildConfigurationList = F485853414D46E4300B007CA /* Build configuration list for PBXProject "SnapTools" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = F485852F14D46E4300B007CA;
 			productRefGroup = F485853B14D46E4300B007CA /* Products */;
@@ -1097,7 +1098,7 @@
 		F485855314D46E4300B007CA /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F485855414D46E4300B007CA /* en */,
+				F46A5AB32289AA9B0079B737 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -1337,6 +1338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1386,6 +1388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;

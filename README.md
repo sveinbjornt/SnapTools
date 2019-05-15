@@ -14,7 +14,7 @@ SnapTools contains the following programs:
 * **Snap.app** - shows window with a list of files fed in from command line
 * **snap** - open a window in Snap.app with file(s)
 * **comment** - set or show file's Finder/Spotlight comment
-* **copy** - copy file representation(s) to clipboard
+* **copy** - copy file representation(s) to the clipboard
 * **getinfo** - show Finder's "Get Info" window for files(s)
 * **label** - set or print file labels
 * **move** - tell Finder to move file(s)
